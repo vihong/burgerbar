@@ -1,5 +1,6 @@
 import { Link } from "@reach/router"
 import React from "react"
+import Navbar from "../molecules/Navbar"
 
 interface OrderProps {
   path: string
@@ -8,8 +9,7 @@ interface OrderProps {
 export default function Orders(props: OrderProps) {
   return (
     <>
-      <Link to="/">Commandes</Link>
-      <Link to="login">Login</Link>
+      <Navbar />
     </>
   )
 }
