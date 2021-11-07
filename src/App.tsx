@@ -1,15 +1,17 @@
 import logo from "./logo.svg"
 import "./App.css"
 import { useState } from "react"
+import { Router } from "@reach/router"
+import Order from "./components/pages/Order"
+import Login from "./components/pages/Login"
 
-function App() {
+export default function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-      <header className="App-header">bonjour</header>
-    </div>
+    <Router>
+      <Order path="/" />
+      <Login path="/login" />
+    </Router>
   )
 }
-
-export default App
