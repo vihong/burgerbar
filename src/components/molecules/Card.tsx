@@ -47,14 +47,19 @@ const AddPlusButtonsStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   .plus-icon {
     height: 20px;
     border: 2px solid ${theme.colors.black};
     border-right-width: 1px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    color: ${theme.colors.green};
-    font-weight: ${theme.weights.bold};
+    color: ${theme.colors.white};
+    background-color: ${theme.colors.green};
+    :active {
+      background-color: grey;
+      color: ${theme.colors.white};
+    }
   }
   .minus-icon {
     height: 20px;
@@ -62,7 +67,12 @@ const AddPlusButtonsStyled = styled.div`
     border-left-width: 1px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    color: ${theme.colors.red};
+    color: ${theme.colors.white};
+    background-color: ${theme.colors.red};
+    :active {
+      background-color: grey;
+      color: ${theme.colors.white};
+    }
   }
 `
 
