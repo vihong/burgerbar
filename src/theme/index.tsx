@@ -2,6 +2,8 @@ const colors = {
   black: "#2f2f2f",
   white: "#fdfdfd",
   primary: "#ff9a23",
+  green: "green",
+  red: "red",
 }
 const fonts = {
   P0: "16px",

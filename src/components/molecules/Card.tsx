@@ -33,35 +33,44 @@ export default function Card(props: CardProps) {
 function AddPlusButtons() {
   return (
     <AddPlusButtonsStyled>
-      <MdOutlineAdd className="plus-icon" />
-      <BiMinus className="minus-icon" />
+      <button className="plus-icon">
+        <MdOutlineAdd />
+      </button>
+      <button className="minus-icon">
+        <BiMinus />
+      </button>
     </AddPlusButtonsStyled>
   )
 }
 
 const AddPlusButtonsStyled = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .plus-icon {
+    height: 20px;
     border: 2px solid ${theme.colors.black};
     border-right-width: 1px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    background-color: green;
-    color: white;
+    color: ${theme.colors.green};
+    font-weight: ${theme.weights.bold};
   }
   .minus-icon {
+    height: 20px;
     border: 2px solid ${theme.colors.black};
-    border-left-width: 0px;
+    border-left-width: 1px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    background-color: red;
-    color: white;
+    color: ${theme.colors.red};
   }
 `
 
 const CardStyled = styled.div`
   /* border: 1px solid red; */
-  width: 200px;
-  height: 300px;
+  max-width: 200px;
+  min-height: 300px;
+  height: auto;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
