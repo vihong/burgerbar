@@ -1,30 +1,19 @@
 import React from "react"
 import Card from "components/molecules/Card"
 import styled from "styled-components"
+import { burgersInMenu } from "fakeData/burgers"
 
 export default function Menu() {
   return (
     <MenuStyled>
-      <Card
-        imageSource="https://www.pngplay.com/wp-content/uploads/2/Burger-Transparent-PNG.png"
-        title="Burger House"
-      />
-      <Card
-        imageSource="https://www.pngplay.com/wp-content/uploads/2/Burger-Transparent-PNG.png"
-        title="Burger House"
-      />
-      <Card
-        imageSource="https://www.pngplay.com/wp-content/uploads/2/Burger-Transparent-PNG.png"
-        title="Burger House"
-      />
-      <Card
-        imageSource="https://www.pngplay.com/wp-content/uploads/2/Burger-Transparent-PNG.png"
-        title="Burger House"
-      />
-      <Card
-        imageSource="https://www.pngplay.com/wp-content/uploads/2/Burger-Transparent-PNG.png"
-        title="Burger House"
-      />
+      {burgersInMenu.map((burger) => (
+        <Card
+          key={burger.id}
+          imageSource={burger.imageSource}
+          title={burger.title}
+          price={burger?.price}
+        />
+      ))}
     </MenuStyled>
   )
 }

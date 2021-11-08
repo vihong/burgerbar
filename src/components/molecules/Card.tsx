@@ -2,16 +2,16 @@ import React from "react"
 import AddPlusButtons from "components/atoms/AddPlusButtons"
 import styled from "styled-components"
 import { theme } from "theme/index"
+import { formatPrice } from "utils/maths"
 
 interface CardProps {
   imageSource?: string
   title?: string
-  description?: string
-  price?: number
+  price?: number | undefined
 }
 
 export default function Card(props: CardProps) {
-  const { imageSource, title, description, price } = props
+  const { imageSource, title, price } = props
   return (
     <CardStyled>
       <img src={imageSource} alt="alt_description" />
@@ -19,7 +19,7 @@ export default function Card(props: CardProps) {
       <div className="card-text">
         <span className="card-title">{title}</span>
         <div className="card-description">
-          <span className="left-description">$5.19</span>
+          <span className="left-description">{formatPrice(price)}</span>
           <span className="right-description">
             <AddPlusButtons />
           </span>
