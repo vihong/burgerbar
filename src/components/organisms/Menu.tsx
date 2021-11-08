@@ -7,12 +7,7 @@ export default function Menu() {
   return (
     <MenuStyled>
       {burgersInMenu.map((burger) => (
-        <Card
-          key={burger.id}
-          imageSource={burger.imageSource}
-          title={burger.title}
-          price={burger?.price}
-        />
+        <Card {...burger} />
       ))}
     </MenuStyled>
   )
