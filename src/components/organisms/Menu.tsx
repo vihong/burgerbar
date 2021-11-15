@@ -1,13 +1,22 @@
-import React from "react"
+import React, { useState } from "react"
 import Card from "components/molecules/Card"
 import styled from "styled-components"
 import { burgersInMenu } from "fakeData/burgers"
+import { MenuItems } from "typescript/MenuItems"
 
 export default function Menu() {
+  const [menuItems, setMenuItems] = useState<MenuItems[]>(burgersInMenu)
+
+  const handleDelete = (idToDelete: number): void => {
+    const menuItemsCopy = [...menuItems]
+    const menuItemsUpdated = menuItemsCopy.filter((menuItem) => menuItem.id !== idToDelete)
+    setMenuItems(menuItemsUpdated)
+  }
+
   return (
     <MenuStyled>
-      {burgersInMenu.map((burger) => (
-        <Card {...burger} />
+      {menuItems.map((burger) => (
+        <Card {...burger} handleDelete={handleDelete} />
       ))}
     </MenuStyled>
   )

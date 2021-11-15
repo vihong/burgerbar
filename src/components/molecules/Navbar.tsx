@@ -52,7 +52,6 @@ function NavBarRightSide() {
 
 const NavbarStyled = styled.nav`
   color: ${theme.colors.black};
-  border: 1px solid red;
   background-color: ${theme.colors.primary};
   display: flex;
   justify-content: space-between;
@@ -69,7 +68,6 @@ const NavBarRightSideStyled = styled.div`
   width: auto;
   min-width: 250px;
   padding: 10px 20px;
-  border: 1px solid red;
   display: flex;
   justify-content: space-between;
   .log-out-icon:visited {
