@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { theme } from "theme/index"
 import { formatPrice } from "utils/maths"
 import OrderContext from "components/context/OrderContext"
+import Button from "components/atoms/Button"
 
 interface CardProps {
   imageSource?: string
@@ -18,7 +19,7 @@ export default function Card(props: CardProps) {
 
   return (
     <CardStyled>
-      {isModeAdmin && <button className="delete-button">X</button>}
+      {isModeAdmin && <Button label={"X"} className="delete-button" />}
       <img src={imageSource} alt="alt_description" />
 
       <div className="card-text">
