@@ -6,6 +6,7 @@ import IconLabel from "components/atoms/IconLabel"
 import { Link } from "@reach/router"
 import { theme } from "theme/index"
 import OrderContext from "components/context/OrderContext"
+import Button from "components/atoms/Button"
 
 export default function Navbar() {
   return (
@@ -36,9 +37,11 @@ function NavBarRightSide() {
 
   return (
     <NavBarRightSideStyled>
-      <button onClick={toggleButtonAdmin} style={buttonStyle}>
-        {isModeAdmin ? "Quitter mode Admin" : "Activer mode Admin"}
-      </button>
+      <Button
+        label={isModeAdmin ? "Quitter mode Admin" : "Activer mode Admin"}
+        onClick={toggleButtonAdmin}
+        style={buttonStyle}
+      ></Button>
       <IconLabel IconComponent={<FaUserCircle className="icon" />} label="Arthur" />
       <Link to="login" className="log-out-icon">
         <IconLabel IconComponent={<FiLogOut className="icon" />} label="Log out" />
@@ -65,7 +68,6 @@ const NavbarStyled = styled.nav`
 const NavBarRightSideStyled = styled.div`
   width: auto;
   min-width: 250px;
-  /* margin: 6px 20px; */
   padding: 10px 20px;
   border: 1px solid red;
   display: flex;
