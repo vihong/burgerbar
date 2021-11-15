@@ -1,12 +1,14 @@
-import React from "react"
+import React, { useState } from "react"
 import Card from "components/molecules/Card"
 import styled from "styled-components"
 import { burgersInMenu } from "fakeData/burgers"
 
 export default function Menu() {
+  const [menuItems, setMenuItems] = useState(burgersInMenu)
+
   return (
     <MenuStyled>
-      {burgersInMenu.map((burger) => (
+      {menuItems.map((burger) => (
         <Card {...burger} />
       ))}
     </MenuStyled>

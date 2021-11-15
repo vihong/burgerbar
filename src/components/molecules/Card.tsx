@@ -17,9 +17,13 @@ export default function Card(props: CardProps) {
 
   const { isModeAdmin } = useContext(OrderContext)
 
+  const handleDeleteButton = () => {
+    alert("handleDeleteButton")
+  }
+
   return (
     <CardStyled>
-      {isModeAdmin && <Button label={"X"} className="delete-button" />}
+      {isModeAdmin && <Button label={"X"} className="delete-button" onClick={handleDeleteButton} />}
       <img src={imageSource} alt="alt_description" />
 
       <div className="card-text">
