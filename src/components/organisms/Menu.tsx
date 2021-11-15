@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react"
+import React, { useState } from "react"
 import Card from "components/molecules/Card"
 import styled from "styled-components"
 import { burgersInMenu } from "fakeData/burgers"
-import OrderContext from "components/context/OrderContext"
 import { MenuItems } from "typescript/MenuItems"
 
 export default function Menu() {
