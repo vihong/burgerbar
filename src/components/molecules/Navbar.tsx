@@ -76,8 +76,8 @@ const NavBarRightSideStyled = styled.div`
     text-decoration: none;
   }
   button {
-    border-radius: 5px;
-    margin-right: 20px;
+    border-radius: ${theme.borderRadius.round};
+    margin-right: ${theme.gridUnit * 3};
     white-space: normal;
     max-width: 100px;
     :focus {
