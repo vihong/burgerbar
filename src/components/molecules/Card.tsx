@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useContext } from "react"
 import AddPlusButtons from "components/atoms/AddPlusButtons"
 import styled from "styled-components"
 import { theme } from "theme/index"
 import { formatPrice } from "utils/maths"
+import OrderContext from "components/context/OrderContext"
 
 interface CardProps {
   imageSource?: string
@@ -12,8 +13,12 @@ interface CardProps {
 
 export default function Card(props: CardProps) {
   const { imageSource, title, price } = props
+
+  const { isModeAdmin } = useContext(OrderContext)
+
   return (
     <CardStyled>
+      {isModeAdmin && <button className="delete-button">X</button>}
       <img src={imageSource} alt="alt_description" />
 
       <div className="card-text">
@@ -41,6 +46,13 @@ const CardStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+  .delete-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+
   img {
     /* border: 2px solid green; */
     width: 100%;
