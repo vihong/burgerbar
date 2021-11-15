@@ -10,15 +10,18 @@ interface CardProps {
   imageSource?: string
   title?: string
   price?: number | undefined
+  [x: string]: any
 }
 
 export default function Card(props: CardProps) {
-  const { imageSource, title, price } = props
+  const { id, imageSource, title, price, handleDelete } = props
+
+  console.log("props: ", props)
 
   const { isModeAdmin } = useContext(OrderContext)
 
   const handleDeleteButton = () => {
-    alert("handleDeleteButton")
+    handleDelete(id)
   }
 
   return (
