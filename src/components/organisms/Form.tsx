@@ -62,8 +62,9 @@ const FormStyled = styled.form`
     display: flex;
     flex-direction: column;
     font-size: ${theme.fonts.P0};
+    font-weight: ${theme.weights.medium};
     input {
-      margin-top: 10px;
+      margin-top: 5px;
       width: 300px;
     }
   }
