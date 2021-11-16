@@ -23,7 +23,6 @@ const MenuStyled = styled.div`
   align-items: flex-start;
   padding: 30px;
   overflow-y: scroll;
-  max-height: 72vh;
   > div {
     margin: 20px 10px;
   }
