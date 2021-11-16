@@ -18,7 +18,8 @@ interface CardProps {
 export default function Card(props: CardProps) {
   const { id, imageSource, title, price } = props
 
-  const { menuItems, isModeAdmin, handleDelete, setItemBeingSelected } = useContext(OrderContext)
+  const { menuItems, isModeAdmin, handleDelete, setItemBeingSelected, titleEditBoxRef } =
+    useContext(OrderContext)
 
   const handleDeleteButton = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation()
@@ -30,6 +31,7 @@ export default function Card(props: CardProps) {
     const itemBeingSelected = menuItems?.find((item) => item.id === idSelected)
     //@ts-ignore
     setItemBeingSelected(itemBeingSelected)
+    titleEditBoxRef.current.focus()
   }
 
   return (

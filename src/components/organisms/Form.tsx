@@ -4,7 +4,8 @@ import styled from "styled-components"
 import { theme } from "theme"
 
 export default function Form() {
-  const { itemBeingSelected, setItemBeingSelected, handleEdit } = useContext(OrderContext)
+  const { itemBeingSelected, setItemBeingSelected, handleEdit, titleEditBoxRef } =
+    useContext(OrderContext)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const singleValueBeingChangedNow = event.target.value
@@ -27,6 +28,7 @@ export default function Form() {
           type="text"
           placeholder="Cliquer sur un produit pour l'éditer"
           onChange={handleChange}
+          ref={titleEditBoxRef}
         />
       </label>
       <label>

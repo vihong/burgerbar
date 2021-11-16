@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import OrderContext from "context/OrderContext"
 import Navbar from "components/molecules/Navbar"
 import Menu from "components/organisms/Menu"
@@ -18,6 +18,8 @@ export default function Orders(props: OrderProps) {
   const [menuItems, setMenuItems] = useState<MenuItem[]>(burgersInMenu)
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>({})
+
+  const titleEditBoxRef = useRef()
 
   const handleAdd = async () => {
     const menuItemsCopy = [...menuItems]
@@ -55,6 +57,7 @@ export default function Orders(props: OrderProps) {
     handleEdit,
     itemBeingSelected,
     setItemBeingSelected,
+    titleEditBoxRef,
   }
 
   return (

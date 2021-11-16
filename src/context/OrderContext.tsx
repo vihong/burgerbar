@@ -12,6 +12,7 @@ interface OrderContextValue {
   handleEdit: (itemToEdit: MenuItem) => void
   itemBeingSelected: MenuItem
   setItemBeingSelected: React.Dispatch<React.SetStateAction<MenuItem>>
+  titleEditBoxRef: React.MutableRefObject<any>
 }
 
 export default createContext<OrderContextValue>({
@@ -24,4 +25,5 @@ export default createContext<OrderContextValue>({
   handleEdit: () => {},
   itemBeingSelected: createNewItem(),
   setItemBeingSelected: () => {},
+  titleEditBoxRef: { current: undefined },
 })
