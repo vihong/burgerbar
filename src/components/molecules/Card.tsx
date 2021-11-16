@@ -3,8 +3,8 @@ import AddPlusButtons from "components/atoms/AddPlusButtons"
 import styled from "styled-components"
 import { theme } from "theme/index"
 import { formatPrice } from "utils/maths"
-import OrderContext from "components/context/OrderContext"
 import Button from "components/atoms/Button"
+import OrderContext from "context/OrderContext"
 
 interface CardProps {
   imageSource?: string

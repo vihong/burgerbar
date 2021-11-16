@@ -1,4 +1,4 @@
-import OrderContext from "components/context/OrderContext"
+import OrderContext from "context/OrderContext"
 import Navbar from "components/molecules/Navbar"
 import Menu from "components/organisms/Menu"
 import React, { useState } from "react"
