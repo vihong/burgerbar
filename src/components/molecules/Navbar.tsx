@@ -5,7 +5,7 @@ import { FiLogOut } from "react-icons/fi"
 import IconLabel from "components/atoms/IconLabel"
 import { Link } from "@reach/router"
 import { theme } from "theme/index"
-import OrderContext from "components/context/OrderContext"
+import OrderContext from "context/OrderContext"
 import Button from "components/atoms/Button"
 
 export default function Navbar() {

@@ -1,11 +1,13 @@
 import { createContext } from "react"
-import { MenuItems } from "typescript/MenuItems"
+import { MenuItem } from "typescript/MenuItem"
 
 interface OrderContextValue {
   isModeAdmin?: boolean
   setIsModeAdmin: React.Dispatch<React.SetStateAction<boolean>>
-  menuItems?: MenuItems[]
+  menuItems?: MenuItem[]
   setMenuItems?: any
+  handleAdd: () => void
+  handleDelete: (id: number) => void
 }
 
 export default createContext<OrderContextValue>({
@@ -13,4 +15,6 @@ export default createContext<OrderContextValue>({
   setIsModeAdmin: () => {},
   menuItems: [],
   setMenuItems: () => {},
+  handleAdd: () => {},
+  handleDelete: () => {},
 })
