@@ -2,21 +2,22 @@ import OrderContext from "context/OrderContext"
 import React, { useContext } from "react"
 import styled from "styled-components"
 import { theme } from "theme"
+import Form from "./Form"
 
 export default function PanelAdmin() {
   const { handleAdd } = useContext(OrderContext)
 
-  const handleButtonClick = () => {
+  const handleAddButton = () => {
     handleAdd()
   }
 
   return (
     <PanelAdminStyled>
       <h2>Panel administrateur</h2>
-      <button onClick={handleButtonClick} className="add-item-card">
+      <button onClick={handleAddButton} className="add-item-card">
         Ajouter un produit
       </button>
-      <input type="text" placeholder="cliquer sur un produit pour l'éditer" />
+      <Form />
     </PanelAdminStyled>
   )
 }
