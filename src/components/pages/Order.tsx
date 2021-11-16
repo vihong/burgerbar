@@ -36,14 +36,9 @@ export default function Orders(props: OrderProps) {
   }
 
   const handleEdit = (itemUpdated: MenuItem): void => {
-    //1. copy
     const menuItemsCopy = [...menuItems]
-
-    //2. manip
     const idOfItemUpdated: any = menuItems.findIndex((item) => item.id === itemUpdated.id)
     menuItemsCopy[idOfItemUpdated] = itemUpdated
-
-    //3. setState
     setMenuItems(menuItemsCopy)
   }
 
