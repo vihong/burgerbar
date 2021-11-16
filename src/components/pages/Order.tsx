@@ -13,7 +13,7 @@ interface OrderProps {
 }
 
 export default function Orders(props: OrderProps) {
-  const [isModeAdmin, setIsModeAdmin] = useState(true)
+  const [isModeAdmin, setIsModeAdmin] = useState(false)
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>(burgersInMenu)
 
