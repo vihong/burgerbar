@@ -18,14 +18,24 @@ interface CardProps {
 export default function Card(props: CardProps) {
   const { id, imageSource, title, price } = props
 
-  const { isModeAdmin, handleDelete } = useContext(OrderContext)
+  const { menuItems, isModeAdmin, handleDelete, setItemBeingSelected, titleEditBoxRef } =
+    useContext(OrderContext)
 
-  const handleDeleteButton = () => {
+  const handleDeleteButton = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation()
     handleDelete(id)
   }
 
+  const handleCardSelected = (idSelected: number): void => {
+    if (!isModeAdmin) return
+    const itemBeingSelected = menuItems?.find((item) => item.id === idSelected)
+    //@ts-ignore
+    setItemBeingSelected(itemBeingSelected)
+    titleEditBoxRef.current.focus()
+  }
+
   return (
-    <CardStyled>
+    <CardStyled onClick={() => handleCardSelected(id)}>
       {isModeAdmin && <Button label={"X"} className="delete-button" onClick={handleDeleteButton} />}
       <img src={imageSource ? imageSource : IMAGE_BY_DEFAULT} alt={`alt-${title}`} />
 
