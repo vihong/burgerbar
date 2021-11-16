@@ -4,7 +4,7 @@ import styled from "styled-components"
 import OrderContext from "context/OrderContext"
 
 export default function Menu() {
-  const { menuItems, setMenuItems } = useContext(OrderContext)
+  const { menuItems } = useContext(OrderContext)
 
   return (
     <MenuStyled>
