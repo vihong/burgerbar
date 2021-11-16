@@ -13,9 +13,11 @@ interface OrderProps {
 }
 
 export default function Orders(props: OrderProps) {
-  const [isModeAdmin, setIsModeAdmin] = useState(false)
+  const [isModeAdmin, setIsModeAdmin] = useState(true)
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>(burgersInMenu)
+
+  const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>({})
 
   const handleAdd = async () => {
     const menuItemsCopy = [...menuItems]
@@ -31,6 +33,18 @@ export default function Orders(props: OrderProps) {
     setMenuItems(menuItemsUpdated)
   }
 
+  const handleEdit = (itemUpdated: MenuItem): void => {
+    //1. copy
+    const menuItemsCopy = [...menuItems]
+
+    //2. manip
+    const idOfItemUpdated: any = menuItems.findIndex((item) => item.id === itemUpdated.id)
+    menuItemsCopy[idOfItemUpdated] = itemUpdated
+
+    //3. setState
+    setMenuItems(menuItemsCopy)
+  }
+
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -38,6 +52,9 @@ export default function Orders(props: OrderProps) {
     setMenuItems,
     handleAdd,
     handleDelete,
+    handleEdit,
+    itemBeingSelected,
+    setItemBeingSelected,
   }
 
   return (
