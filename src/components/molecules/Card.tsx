@@ -6,17 +6,19 @@ import { formatPrice } from "utils/maths"
 import Button from "components/atoms/Button"
 import OrderContext from "context/OrderContext"
 
+const IMAGE_BY_DEFAULT = "images/coming-soon.png"
+
 interface CardProps {
   imageSource?: string
-  altDescription?: string
   title?: string
   price?: number | undefined
   [x: string]: any
 }
 
 export default function Card(props: CardProps) {
-  const { id, imageSource, title, price, handleDelete, altDescription } = props
-  const { isModeAdmin } = useContext(OrderContext)
+  const { id, imageSource, title, price } = props
+
+  const { isModeAdmin, handleDelete } = useContext(OrderContext)
 
   const handleDeleteButton = () => {
     handleDelete(id)
@@ -25,7 +27,7 @@ export default function Card(props: CardProps) {
   return (
     <CardStyled>
       {isModeAdmin && <Button label={"X"} className="delete-button" onClick={handleDeleteButton} />}
-      <img src={imageSource} alt={altDescription} />
+      <img src={imageSource ? imageSource : IMAGE_BY_DEFAULT} alt={`alt-${title}`} />
 
       <div className="card-text">
         <span className="card-title">{title}</span>
@@ -79,6 +81,7 @@ const CardStyled = styled.div`
       font-size: ${theme.fonts.P4};
       font-weight: ${theme.weights.semiBold};
       color: ${theme.colors.black};
+      text-align: center;
     }
     .card-description {
       position: relative;

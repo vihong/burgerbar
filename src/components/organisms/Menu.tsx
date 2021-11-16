@@ -1,22 +1,15 @@
-import React, { useState } from "react"
+import React, { useContext } from "react"
 import Card from "components/molecules/Card"
 import styled from "styled-components"
-import { burgersInMenu } from "fakeData/burgers"
-import { MenuItems } from "typescript/MenuItems"
+import OrderContext from "context/OrderContext"
 
 export default function Menu() {
-  const [menuItems, setMenuItems] = useState<MenuItems[]>(burgersInMenu)
-
-  const handleDelete = (idToDelete: number): void => {
-    const menuItemsCopy = [...menuItems]
-    const menuItemsUpdated = menuItemsCopy.filter((menuItem) => menuItem.id !== idToDelete)
-    setMenuItems(menuItemsUpdated)
-  }
+  const { menuItems, setMenuItems } = useContext(OrderContext)
 
   return (
     <MenuStyled>
-      {menuItems.map((burger) => (
-        <Card {...burger} handleDelete={handleDelete} />
+      {menuItems?.map((burger) => (
+        <Card {...burger} />
       ))}
     </MenuStyled>
   )
@@ -25,7 +18,13 @@ export default function Menu() {
 const MenuStyled = styled.div`
   flex: 1;
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: flex-start;
   padding: 30px;
+  overflow-y: scroll;
+  max-height: 72vh;
+  > div {
+    margin: 20px 10px;
+  }
 `
