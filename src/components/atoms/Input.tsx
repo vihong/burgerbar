@@ -2,9 +2,14 @@ import React from "react"
 import styled from "styled-components"
 
 export default function Input() {
-  return <InputStyled>Input</InputStyled>
+  return (
+    <InputStyled>
+      <input type="text" placeholder="pokemon" />
+    </InputStyled>
+  )
 }
 
-const InputStyled = styled.form`
+const InputStyled = styled.div`
   border: 1px solid blue;
+  display: inline;
 `
