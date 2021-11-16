@@ -20,12 +20,17 @@ export default function Card(props: CardProps) {
 
   const { isModeAdmin, handleDelete } = useContext(OrderContext)
 
-  const handleDeleteButton = () => {
+  const handleDeleteButton = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation()
     handleDelete(id)
   }
 
+  const handleEditClick = (id: number): void => {
+    alert("handleEditClick")
+  }
+
   return (
-    <CardStyled>
+    <CardStyled onClick={() => handleEditClick(id)}>
       {isModeAdmin && <Button label={"X"} className="delete-button" onClick={handleDeleteButton} />}
       <img src={imageSource ? imageSource : IMAGE_BY_DEFAULT} alt={`alt-${title}`} />
 
