@@ -26,6 +26,7 @@ export default function Card(props: CardProps) {
   }
 
   const handleCardSelected = (idSelected: number): void => {
+    if (!isModeAdmin) return
     const itemBeingSelected = menuItems?.find((item) => item.id === idSelected)
     //@ts-ignore
     setItemBeingSelected(itemBeingSelected)
