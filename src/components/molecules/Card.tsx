@@ -8,16 +8,14 @@ import OrderContext from "context/OrderContext"
 
 interface CardProps {
   imageSource?: string
+  altDescription?: string
   title?: string
   price?: number | undefined
   [x: string]: any
 }
 
 export default function Card(props: CardProps) {
-  const { id, imageSource, title, price, handleDelete } = props
-
-  console.log("props: ", props)
-
+  const { id, imageSource, title, price, handleDelete, altDescription } = props
   const { isModeAdmin } = useContext(OrderContext)
 
   const handleDeleteButton = () => {
@@ -27,7 +25,7 @@ export default function Card(props: CardProps) {
   return (
     <CardStyled>
       {isModeAdmin && <Button label={"X"} className="delete-button" onClick={handleDeleteButton} />}
-      <img src={imageSource} alt="alt_description" />
+      <img src={imageSource} alt={altDescription} />
 
       <div className="card-text">
         <span className="card-title">{title}</span>
