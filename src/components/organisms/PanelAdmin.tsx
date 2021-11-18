@@ -1,11 +1,9 @@
-import IconLabel from "components/atoms/IconLabel"
 import OrderContext from "context/OrderContext"
 import React, { useContext } from "react"
 import styled from "styled-components"
 import { theme } from "theme"
 import { createNewItem } from "utils/businessLogic"
 import Form from "./Form"
-import { BsPlusSquareFill } from "react-icons/bs"
 import ButtonCallToAction from "components/atoms/ButtonCallToAction"
 
 export default function PanelAdmin() {

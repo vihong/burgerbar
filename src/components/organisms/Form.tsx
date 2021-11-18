@@ -27,7 +27,9 @@ export default function Form({ formTitle }: FormProps) {
       <h2>{formTitle}</h2>
       <div className="inputs-container">
         <div className="image-edit">
-          {itemBeingSelected.imageSource && <img src={itemBeingSelected.imageSource} />}
+          {itemBeingSelected.imageSource && (
+            <img src={itemBeingSelected.imageSource} alt={itemBeingSelected.title} />
+          )}
         </div>
         <div className="inputs">
           <label>
