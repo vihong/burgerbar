@@ -5,8 +5,7 @@ import { theme } from "theme/index"
 import { formatPrice } from "utils/maths"
 import Button from "components/atoms/Button"
 import OrderContext from "context/OrderContext"
-
-const IMAGE_BY_DEFAULT = "images/coming-soon.png"
+import ComingSoon from "components/atoms/ComingSoon"
 
 interface CardProps {
   imageSource?: string
@@ -37,7 +36,7 @@ export default function Card(props: CardProps) {
   return (
     <CardStyled onClick={() => handleCardSelected(id)}>
       {isModeAdmin && <Button label={"X"} className="delete-button" onClick={handleDeleteButton} />}
-      <img src={imageSource ? imageSource : IMAGE_BY_DEFAULT} alt={`alt-${title}`} />
+      {imageSource ? <img src={imageSource} alt={`alt-${title}`} /> : <ComingSoon />}
 
       <div className="card-text">
         <span className="card-title">{title}</span>
@@ -54,7 +53,7 @@ export default function Card(props: CardProps) {
 
 const CardStyled = styled.div`
   /* border: 1px solid red; */
-  max-width: 200px;
+  width: 200px;
   min-height: 300px;
   height: auto;
   border-radius: 5px;
@@ -89,8 +88,8 @@ const CardStyled = styled.div`
       position: relative;
       top: 20px;
       /* border: 1px solid red; */
-      font-size: ${theme.fonts.P4};
-      font-weight: ${theme.weights.semiBold};
+      font-size: ${theme.fonts.P3};
+      font-weight: ${theme.weights.medium};
       color: ${theme.colors.black};
       text-align: center;
     }

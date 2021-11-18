@@ -12,11 +12,16 @@ interface OrderProps {
 }
 
 export default function Orders(props: OrderProps) {
-  const [isModeAdmin, setIsModeAdmin] = useState(true)
+  const [isModeAdmin, setIsModeAdmin] = useState(false)
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>(burgersInMenu)
 
-  const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>({})
+  const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>({
+    id: 0,
+    title: "",
+    imageSource: "",
+    price: 0,
+  })
 
   const titleEditBoxRef = useRef()
 

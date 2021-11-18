@@ -10,7 +10,7 @@ export default function Menu() {
   return (
     <MenuStyled>
       {menuItems?.map((burger) => (
-        <Card {...burger} />
+        <Card key={burger.id} {...burger} />
       ))}
     </MenuStyled>
   )
