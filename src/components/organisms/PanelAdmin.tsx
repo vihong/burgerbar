@@ -21,7 +21,7 @@ export default function PanelAdmin() {
       <button onClick={handleAddButton} className="add-item-button">
         Ajouter un produit
       </button>
-      <Form />
+      <Form formTitle={"Cliquez sur un produit pour le modifier"} />
     </PanelAdminStyled>
   )
 }

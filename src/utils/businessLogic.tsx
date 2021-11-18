@@ -7,7 +7,7 @@ export function createNewItem(
   priceProvided?: number
 ): MenuItem {
   const id = idProvided ? idProvided : new Date().getTime()
-  const imageSource = imageSourceProvided ? imageSourceProvided : ""
+  const imageSource = imageSourceProvided ? imageSourceProvided : "images/coming-soon.png"
   const title = titleProvided ? titleProvided : ""
   const price = priceProvided ? priceProvided : 0.0
 
