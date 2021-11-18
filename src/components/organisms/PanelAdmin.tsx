@@ -1,9 +1,12 @@
+import IconLabel from "components/atoms/IconLabel"
 import OrderContext from "context/OrderContext"
 import React, { useContext } from "react"
 import styled from "styled-components"
 import { theme } from "theme"
 import { createNewItem } from "utils/businessLogic"
 import Form from "./Form"
+import { BsPlusSquareFill } from "react-icons/bs"
+import ButtonCallToAction from "components/atoms/ButtonCallToAction"
 
 export default function PanelAdmin() {
   const { handleAdd, titleEditBoxRef, setItemBeingSelected } = useContext(OrderContext)
@@ -18,9 +21,11 @@ export default function PanelAdmin() {
 
   return (
     <PanelAdminStyled>
-      <button onClick={handleAddButton} className="add-item-button">
-        Ajouter un produit
-      </button>
+      {/* <div className="add-new-item"> */}
+      <ButtonCallToAction onClick={handleAddButton} />
+      {/* </div> */}
+
+      <div className="vertical-separator"></div>
       <Form formTitle={"Cliquez sur un produit pour le modifier"} />
     </PanelAdminStyled>
   )
@@ -30,10 +35,12 @@ const PanelAdminStyled = styled.div`
   border-top: 1px solid ${theme.colors.primary};
   box-shadow: 8px 8px 8px 8px rgb(0 0 0 / 20%);
   min-height: 20vh;
-  padding: 10px 30px;
-  /* background: lightpink; */
+  padding: 20px 30px;
   display: flex;
+  align-items: flex-start;
 
-  .add-item-button {
+  .vertical-separator {
+    height: 100%;
+    border: 1px solid lightgray;
   }
 `

@@ -3,13 +3,14 @@ import styled from "styled-components"
 
 interface IconLabelProps {
   IconComponent: JSX.Element
-  label: string
+  label?: string
+  [x: string]: any
 }
 
 export default function IconLabel(props: IconLabelProps) {
-  const { IconComponent, label } = props
+  const { IconComponent, label, ...rest } = props
   return (
-    <IconLabelStyled>
+    <IconLabelStyled {...rest}>
       {IconComponent}
       <p>{label}</p>
     </IconLabelStyled>

@@ -69,13 +69,19 @@ export default function Form({ formTitle }: FormProps) {
 }
 
 const FormStyled = styled.form`
-  border: 1px solid green;
   display: flex;
   flex-direction: column;
   width: 50%;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-self: flex-start;
-  padding: 5px 20px;
+  padding: 0px 20px 5px;
+  height: 100%;
+  margin-left: 30px;
+
+  h2 {
+    margin: 20 0;
+    color: ${theme.colors.black};
+  }
 
   .inputs-container {
     display: flex;

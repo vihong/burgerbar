@@ -56,7 +56,6 @@ const CardStyled = styled.div`
   /* border: 1px solid red; */
   width: 200px;
   min-height: 300px;
-  height: auto;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
@@ -65,6 +64,7 @@ const CardStyled = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+
   background-color: ${theme.colors.white};
   .delete-button {
     position: absolute;
