@@ -18,7 +18,6 @@ export default function PanelAdmin() {
 
   return (
     <PanelAdminStyled>
-      <h2>Panel administrateur</h2>
       <button onClick={handleAddButton} className="add-item-card">
         Ajouter un produit
       </button>

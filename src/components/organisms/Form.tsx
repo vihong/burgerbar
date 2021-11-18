@@ -20,7 +20,7 @@ export default function Form() {
   return (
     <FormStyled>
       <label>
-        Nom du produit
+        Produit
         <input
           id="title"
           name="title"
@@ -57,17 +57,21 @@ export default function Form() {
 
 const FormStyled = styled.form`
   display: flex;
-  width: 60%;
+  flex-direction: column;
+  width: 50%;
   justify-content: space-between;
-
   label {
     display: flex;
-    flex-direction: column;
+    margin-right: 30px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    justify-content: space-between;
     font-size: ${theme.fonts.P0};
     font-weight: ${theme.weights.medium};
     input {
-      margin-top: 5px;
       width: 300px;
+      flex: 1;
+      margin-left: 30px;
     }
   }
 `
