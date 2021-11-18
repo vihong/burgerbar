@@ -2,13 +2,18 @@ import OrderContext from "context/OrderContext"
 import React, { useContext } from "react"
 import styled from "styled-components"
 import { theme } from "theme"
+import { createNewItem } from "utils/businessLogic"
 import Form from "./Form"
 
 export default function PanelAdmin() {
-  const { handleAdd } = useContext(OrderContext)
+  const { handleAdd, titleEditBoxRef, setItemBeingSelected } = useContext(OrderContext)
 
-  const handleAddButton = () => {
-    handleAdd()
+  const handleAddButton = async () => {
+    const itemCreated = createNewItem()
+
+    handleAdd(itemCreated)
+    setItemBeingSelected(itemCreated)
+    titleEditBoxRef.current.focus()
   }
 
   return (

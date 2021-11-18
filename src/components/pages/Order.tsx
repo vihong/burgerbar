@@ -6,7 +6,6 @@ import styled from "styled-components"
 import PanelAdmin from "components/organisms/PanelAdmin"
 import { MenuItem } from "typescript/MenuItem"
 import { burgersInMenu } from "fakeData/burgers"
-import { createNewItem } from "utils/businessLogic"
 
 interface OrderProps {
   path: string
@@ -21,12 +20,11 @@ export default function Orders(props: OrderProps) {
 
   const titleEditBoxRef = useRef()
 
-  const handleAdd = async () => {
+  const handleAdd = (itemCreated: MenuItem) => {
     const menuItemsCopy = [...menuItems]
 
-    const itemCreated = createNewItem()
     menuItemsCopy.unshift(itemCreated)
-    await setMenuItems(menuItemsCopy)
+    setMenuItems(menuItemsCopy)
   }
 
   const handleDelete = (idToDelete: number): void => {
