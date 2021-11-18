@@ -13,7 +13,7 @@ interface OrderProps {
 }
 
 export default function Orders(props: OrderProps) {
-  const [isModeAdmin, setIsModeAdmin] = useState(false)
+  const [isModeAdmin, setIsModeAdmin] = useState(true)
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>(burgersInMenu)
 
@@ -67,7 +67,6 @@ export default function Orders(props: OrderProps) {
 }
 
 const OrderStyled = styled.div`
-  border: 2px solid green;
   display: flex;
   flex-direction: column;
   height: 100vh;
