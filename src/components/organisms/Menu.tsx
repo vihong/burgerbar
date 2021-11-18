@@ -21,11 +21,13 @@ const MenuStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
   background-color: ${theme.colors.white};
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   padding: 30px;
   overflow-y: scroll;
+  margin: auto;
+  width: 100%;
   > div {
-    margin: 20px 10px;
+    margin: 20px 50px;
   }
 `

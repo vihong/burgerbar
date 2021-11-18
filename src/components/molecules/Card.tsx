@@ -24,6 +24,7 @@ export default function Card(props: CardProps) {
   const handleDeleteButton = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation()
     handleDelete(id)
+    setItemBeingSelected({ id: 0, title: "", imageSource: "", price: 0 })
   }
 
   const handleCardSelected = (idSelected: number): void => {
@@ -56,7 +57,6 @@ const CardStyled = styled.div`
   /* border: 1px solid red; */
   width: 200px;
   min-height: 300px;
-  height: auto;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
@@ -65,6 +65,7 @@ const CardStyled = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+
   background-color: ${theme.colors.white};
   .delete-button {
     position: absolute;
@@ -94,9 +95,10 @@ const CardStyled = styled.div`
       color: ${theme.colors.black};
       text-align: center;
       overflow: hidden;
+      word-break: break-all;
+      text-overflow: ellipsis;
       width: 100%;
       max-height: 30px;
-      text-overflow: ellipsis;
     }
     .card-description {
       position: relative;

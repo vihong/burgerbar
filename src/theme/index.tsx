@@ -1,5 +1,5 @@
 const colors = {
-  black: "#2f2f2f",
+  black: "#212225",
   white: "#f6f6f8",
   primary: "#ff9a23",
   green: "green",
@@ -20,6 +20,7 @@ const gridUnit = 8
 const borderRadius = {
   subtle: 1,
   round: "5px",
+  circle: "50%",
 }
 const shadows = {}
 const weights = {
