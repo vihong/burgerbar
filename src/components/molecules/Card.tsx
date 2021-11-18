@@ -94,9 +94,10 @@ const CardStyled = styled.div`
       color: ${theme.colors.black};
       text-align: center;
       overflow: hidden;
+      word-break: break-all;
+      text-overflow: ellipsis;
       width: 100%;
       max-height: 30px;
-      text-overflow: ellipsis;
     }
     .card-description {
       position: relative;
