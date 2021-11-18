@@ -4,13 +4,17 @@ const colors = {
   primary: "#ff9a23",
   green: "green",
   red: "red",
+  redSecondary: "#c4151c",
 }
 const fonts = {
-  P0: "16px",
+  XS: "12px",
+  P0: "15px",
   P1: "18px",
   P2: "20px",
   P3: "24px",
-  P4: "26px",
+  P4: "36px",
+  P5: "48px",
+  P6: "60px",
 }
 const gridUnit = 8
 const borderRadius = {
