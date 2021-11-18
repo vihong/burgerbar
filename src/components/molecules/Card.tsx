@@ -24,6 +24,7 @@ export default function Card(props: CardProps) {
   const handleDeleteButton = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation()
     handleDelete(id)
+    setItemBeingSelected({ id: 0, title: "", imageSource: "", price: 0 })
   }
 
   const handleCardSelected = (idSelected: number): void => {

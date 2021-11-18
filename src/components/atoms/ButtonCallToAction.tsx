@@ -8,6 +8,8 @@ interface ButtonCallToActionProps {
   onClick: () => {}
 }
 
+//TODO: make it more generic by allowing any Icon in props
+
 export default function ButtonCallToAction({ onClick }: ButtonCallToActionProps) {
   return (
     <ButtonCallToActionStyled>

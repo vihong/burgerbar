@@ -21,10 +21,7 @@ export default function PanelAdmin() {
 
   return (
     <PanelAdminStyled>
-      {/* <div className="add-new-item"> */}
       <ButtonCallToAction onClick={handleAddButton} />
-      {/* </div> */}
-
       <div className="vertical-separator"></div>
       <Form formTitle={"Cliquez sur un produit pour le modifier"} />
     </PanelAdminStyled>
