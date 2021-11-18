@@ -6,14 +6,13 @@ import styled from "styled-components"
 import PanelAdmin from "components/organisms/PanelAdmin"
 import { MenuItem } from "typescript/MenuItem"
 import { burgersInMenu } from "fakeData/burgers"
-import { createNewItem } from "utils/businessLogic"
 
 interface OrderProps {
   path: string
 }
 
 export default function Orders(props: OrderProps) {
-  const [isModeAdmin, setIsModeAdmin] = useState(false)
+  const [isModeAdmin, setIsModeAdmin] = useState(true)
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>(burgersInMenu)
 
@@ -21,12 +20,11 @@ export default function Orders(props: OrderProps) {
 
   const titleEditBoxRef = useRef()
 
-  const handleAdd = async () => {
+  const handleAdd = (itemCreated: MenuItem) => {
     const menuItemsCopy = [...menuItems]
 
-    const itemCreated = createNewItem()
     menuItemsCopy.unshift(itemCreated)
-    await setMenuItems(menuItemsCopy)
+    setMenuItems(menuItemsCopy)
   }
 
   const handleDelete = (idToDelete: number): void => {
@@ -67,7 +65,6 @@ export default function Orders(props: OrderProps) {
 }
 
 const OrderStyled = styled.div`
-  border: 2px solid green;
   display: flex;
   flex-direction: column;
   height: 100vh;

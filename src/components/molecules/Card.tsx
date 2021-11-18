@@ -65,6 +65,7 @@ const CardStyled = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  background-color: ${theme.colors.white};
   .delete-button {
     position: absolute;
     top: 15px;
