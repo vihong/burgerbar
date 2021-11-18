@@ -17,6 +17,7 @@ export default function Form() {
     handleEdit(itemUpdated)
   }
 
+  // créer un composant <Input/>
   return (
     <FormStyled>
       <label>
@@ -56,10 +57,12 @@ export default function Form() {
 }
 
 const FormStyled = styled.form`
+  border: 1px solid green;
   display: flex;
   flex-direction: column;
   width: 50%;
   justify-content: space-between;
+  align-self: center;
   label {
     display: flex;
     margin-right: 30px;

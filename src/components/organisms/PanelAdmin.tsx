@@ -18,7 +18,7 @@ export default function PanelAdmin() {
 
   return (
     <PanelAdminStyled>
-      <button onClick={handleAddButton} className="add-item-card">
+      <button onClick={handleAddButton} className="add-item-button">
         Ajouter un produit
       </button>
       <Form />
@@ -31,9 +31,9 @@ const PanelAdminStyled = styled.div`
   box-shadow: 8px 8px 8px 8px rgb(0 0 0 / 20%);
   min-height: 20vh;
   padding: 10px 30px;
+  /* background: lightpink; */
+  display: flex;
 
-  .add-item-card {
-    display: block;
-    margin-bottom: 10px;
+  .add-item-button {
   }
 `
