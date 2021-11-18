@@ -6,7 +6,6 @@ export default function ComingSoon() {
 }
 
 const ComingSoonStyled = styled.h2`
-  font-family: "Caveat Brush", cursive;
   font-size: ${theme.fonts.P5};
   transform: rotate(10deg);
   color: ${theme.colors.redSecondary};
