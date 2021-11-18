@@ -5,7 +5,6 @@ import { theme } from "theme/index"
 import { formatPrice } from "utils/maths"
 import Button from "components/atoms/Button"
 import OrderContext from "context/OrderContext"
-import ComingSoon from "components/atoms/ComingSoon"
 
 interface CardProps {
   imageSource?: string
@@ -13,6 +12,8 @@ interface CardProps {
   price?: number | undefined
   [x: string]: any
 }
+
+const IMAGE_BY_DEFAULT = "images/coming-soon.png"
 
 export default function Card(props: CardProps) {
   const { id, imageSource, title, price } = props
@@ -36,7 +37,7 @@ export default function Card(props: CardProps) {
   return (
     <CardStyled onClick={() => handleCardSelected(id)}>
       {isModeAdmin && <Button label={"X"} className="delete-button" onClick={handleDeleteButton} />}
-      {imageSource ? <img src={imageSource} alt={`alt-${title}`} /> : <ComingSoon />}
+      <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
 
       <div className="card-text">
         <span className="card-title">{title}</span>
