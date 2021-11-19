@@ -33,6 +33,7 @@ export default function PanelAdmin() {
 
 const PanelAdminStyled = styled.div`
   border-top: 1px solid ${theme.colors.primary};
+  background-color: ${theme.colors.background_white};
   box-shadow: 8px 8px 8px 8px rgb(0 0 0 / 20%);
   min-height: 20vh;
   padding: 20px 30px;

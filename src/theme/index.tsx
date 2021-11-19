@@ -1,11 +1,13 @@
 const colors = {
   black: "#212225",
-  white: "#f6f6f8",
+  white: "#fff", //ghostwhite
+  background_white: "#f5f5f7",
   primary: "#ff9a23",
   green: "green",
   red: "red",
   redSecondary: "#c4151c",
 }
+
 const fonts = {
   XS: "12px",
   P0: "15px",

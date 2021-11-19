@@ -20,7 +20,7 @@ const MenuStyled = styled.div`
   flex: 1;
   display: flex;
   flex-wrap: wrap;
-  background-color: ${theme.colors.white};
+  background-color: ${theme.colors.background_white};
   justify-content: flex-start;
   align-items: flex-start;
   padding: 30px;
