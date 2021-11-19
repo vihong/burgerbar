@@ -5,6 +5,8 @@ import { theme } from "theme"
 import { createNewItem } from "utils/businessLogic"
 import Form from "./Form"
 import ButtonCallToAction from "components/atoms/ButtonCallToAction"
+import { BsPlusSquareFill } from "react-icons/bs"
+import { FiEdit2 } from "react-icons/fi"
 
 export default function PanelAdmin() {
   const { handleAdd, titleEditBoxRef, setItemBeingSelected } = useContext(OrderContext)
@@ -19,9 +21,12 @@ export default function PanelAdmin() {
 
   return (
     <PanelAdminStyled>
-      <ButtonCallToAction onClick={handleAddButton} />
+      <ButtonCallToAction
+        label="Ajouter un produit vide"
+        IconComponent={<BsPlusSquareFill className="icon" onClick={handleAddButton} />}
+      />
       <div className="vertical-separator"></div>
-      <Form formTitle={"Cliquez sur un produit pour le modifier"} />
+      <Form formTitle={"Modifier un produit en temps réel"} />
     </PanelAdminStyled>
   )
 }
