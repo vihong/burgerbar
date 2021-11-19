@@ -72,7 +72,6 @@ const CardStyled = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-
   background-color: ${theme.colors.white};
 
   .delete-button {
@@ -102,8 +101,8 @@ const CardStyled = styled.div`
       font-weight: ${theme.weights.medium};
       color: ${theme.colors.black};
       text-align: center;
+      white-space: nowrap;
       overflow: hidden;
-      word-break: break-all;
       text-overflow: ellipsis;
       width: 100%;
       max-height: 30px;
@@ -117,6 +116,10 @@ const CardStyled = styled.div`
 
       .left-description {
         font-weight: ${theme.weights.semiBold};
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 50%;
       }
       .right-description {
         font-size: ${theme.fonts.P1};
