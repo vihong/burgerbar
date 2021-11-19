@@ -1,6 +1,6 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import AddPlusButtons from "components/atoms/AddPlusButtons"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import { theme } from "theme/index"
 import { formatPrice } from "utils/maths"
 import Button from "components/atoms/Button"
@@ -21,6 +21,8 @@ export default function Card(props: CardProps) {
   const { menuItems, isModeAdmin, handleDelete, setItemBeingSelected, titleEditBoxRef } =
     useContext(OrderContext)
 
+  const [isHoverable, setIsHoverable] = useState(isModeAdmin)
+
   const handleDeleteButton = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation()
     handleDelete(id)
@@ -35,8 +37,13 @@ export default function Card(props: CardProps) {
     titleEditBoxRef.current.focus()
   }
 
+  const className = isHoverable ? "is-hovered" : ""
+
   return (
-    <CardStyled onClick={() => handleCardSelected(id)}>
+    <CardStyled
+      onClick={() => handleCardSelected(id)}
+      className={isModeAdmin ? "is-hoverable" : ""}
+    >
       {isModeAdmin && <Button label={"X"} className="delete-button" onClick={handleDeleteButton} />}
       <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
 
@@ -67,6 +74,7 @@ const CardStyled = styled.div`
   position: relative;
 
   background-color: ${theme.colors.white};
+
   .delete-button {
     position: absolute;
     top: 15px;
@@ -79,7 +87,7 @@ const CardStyled = styled.div`
     object-fit: contain;
   }
   .card-text {
-    /* border: 1px solid yellow; */
+    /* border: 1px soli d yellow; */
 
     width: 100%;
     display: flex;
