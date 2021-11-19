@@ -6,7 +6,6 @@ import { createNewItem } from "utils/businessLogic"
 import Form from "./Form"
 import ButtonCallToAction from "components/atoms/ButtonCallToAction"
 import { BsPlusSquareFill } from "react-icons/bs"
-import { FiEdit2 } from "react-icons/fi"
 
 export default function PanelAdmin() {
   const { handleAdd, titleEditBoxRef, setItemBeingSelected } = useContext(OrderContext)

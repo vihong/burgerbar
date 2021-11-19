@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import AddPlusButtons from "components/atoms/AddPlusButtons"
 import styled from "styled-components/macro"
 import { theme } from "theme/index"
@@ -21,8 +21,6 @@ export default function Card(props: CardProps) {
   const { menuItems, isModeAdmin, handleDelete, setItemBeingSelected, titleEditBoxRef } =
     useContext(OrderContext)
 
-  const [isHoverable, setIsHoverable] = useState(isModeAdmin)
-
   const handleDeleteButton = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation()
     handleDelete(id)
@@ -36,8 +34,6 @@ export default function Card(props: CardProps) {
     setItemBeingSelected(itemBeingSelected)
     titleEditBoxRef.current.focus()
   }
-
-  const className = isHoverable ? "is-hovered" : ""
 
   return (
     <CardStyled

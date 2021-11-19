@@ -1,4 +1,3 @@
-import { IconType } from "react-icons/lib"
 import styled from "styled-components"
 import { theme } from "theme"
 
