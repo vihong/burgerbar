@@ -26,7 +26,7 @@ export default function PanelAdmin() {
         IconComponent={<BsPlusSquareFill className="icon" onClick={handleAddButton} />}
       />
       <div className="vertical-separator"></div>
-      <Form formTitle={"Modifier un produit en temps réel"} />
+      <Form formTitle={"Modifier un produit sur le menu"} />
     </PanelAdminStyled>
   )
 }
