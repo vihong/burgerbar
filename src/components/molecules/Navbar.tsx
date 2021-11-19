@@ -28,19 +28,12 @@ function NavBarRightSide() {
     setIsModeAdmin(!isModeAdmin)
   }
 
-  const buttonStyle = isModeAdmin
-    ? {
-        background: theme.colors.green,
-        color: theme.colors.white,
-      }
-    : {}
-
   return (
     <NavBarRightSideStyled>
       <Button
         label={isModeAdmin ? "Quitter mode Admin" : "Activer mode Admin"}
         onClick={toggleButtonAdmin}
-        style={buttonStyle}
+        className={!isModeAdmin ? "enter-admin-mode" : "quit-admin-mode"}
       ></Button>
       <IconLabel IconComponent={<FaUserCircle className="icon" />} label="Arthur" />
       <Link to="login" className="log-out-icon">
@@ -78,8 +71,15 @@ const NavBarRightSideStyled = styled.div`
     margin-right: ${theme.gridUnit * 3};
     white-space: normal;
     max-width: 100px;
-    :focus {
-      border: 1px solid green;
-    }
+  }
+
+  .enter-admin-mode {
+    background-color: ${theme.colors.green};
+    color: ${theme.colors.white};
+  }
+
+  .quit-admin-mode {
+    background-color: ${theme.colors.redSecondary};
+    color: ${theme.colors.white};
   }
 `
