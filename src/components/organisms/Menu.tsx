@@ -25,8 +25,6 @@ const MenuStyled = styled.div`
   align-items: flex-start;
   padding: 30px;
   overflow-y: scroll;
-  margin: auto;
-  width: 100%;
   > div {
     margin: 20px 50px;
   }
