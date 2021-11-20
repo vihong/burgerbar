@@ -11,7 +11,12 @@ export default function PanelAdmin() {
   const { handleAdd, titleEditBoxRef, setItemBeingSelected } = useContext(OrderContext)
 
   const handleAddButton = async () => {
-    const itemCreated = createNewItem()
+    const itemCreated = {
+      id: 0,
+      title: "",
+      imageSource: "",
+      price: 0,
+    }
 
     handleAdd(itemCreated)
     setItemBeingSelected(itemCreated)
