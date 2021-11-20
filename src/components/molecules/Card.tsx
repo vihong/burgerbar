@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import AddPlusButtons from "components/atoms/AddPlusButtons"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import { theme } from "theme/index"
 import { formatPrice } from "utils/maths"
 import Button from "components/atoms/Button"
@@ -36,7 +36,10 @@ export default function Card(props: CardProps) {
   }
 
   return (
-    <CardStyled onClick={() => handleCardSelected(id)}>
+    <CardStyled
+      onClick={() => handleCardSelected(id)}
+      className={isModeAdmin ? "is-hoverable" : ""}
+    >
       {isModeAdmin && <Button label={"X"} className="delete-button" onClick={handleDeleteButton} />}
       <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
 
@@ -65,8 +68,8 @@ const CardStyled = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-
   background-color: ${theme.colors.white};
+
   .delete-button {
     position: absolute;
     top: 15px;
@@ -79,7 +82,7 @@ const CardStyled = styled.div`
     object-fit: contain;
   }
   .card-text {
-    /* border: 1px solid yellow; */
+    /* border: 1px soli d yellow; */
 
     width: 100%;
     display: flex;
@@ -94,8 +97,8 @@ const CardStyled = styled.div`
       font-weight: ${theme.weights.medium};
       color: ${theme.colors.black};
       text-align: center;
+      white-space: nowrap;
       overflow: hidden;
-      word-break: break-all;
       text-overflow: ellipsis;
       width: 100%;
       max-height: 30px;
@@ -109,6 +112,10 @@ const CardStyled = styled.div`
 
       .left-description {
         font-weight: ${theme.weights.semiBold};
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 50%;
       }
       .right-description {
         font-size: ${theme.fonts.P1};

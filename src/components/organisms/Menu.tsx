@@ -20,14 +20,20 @@ const MenuStyled = styled.div`
   flex: 1;
   display: flex;
   flex-wrap: wrap;
-  background-color: ${theme.colors.white};
+  background-color: ${theme.colors.background_white};
   justify-content: flex-start;
   align-items: flex-start;
   padding: 30px;
   overflow-y: scroll;
-  margin: auto;
-  width: 100%;
   > div {
     margin: 20px 50px;
+  }
+
+  .is-hoverable {
+    :hover {
+      transform: scale(1.05);
+      transition: ease-in-out 0.4s;
+      box-shadow: 0 0 8px 0 rgb(255 154 35 / 100%);
+    }
   }
 `

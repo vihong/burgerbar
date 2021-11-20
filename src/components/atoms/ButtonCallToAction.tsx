@@ -1,20 +1,19 @@
-import React from "react"
-import { BsPlusSquareFill } from "react-icons/bs"
 import styled from "styled-components"
 import { theme } from "theme"
-import IconLabel from "./IconLabel"
 
 interface ButtonCallToActionProps {
-  onClick: () => {}
+  // onClick: () => {}
+  label: string
+  IconComponent?: JSX.Element
 }
 
-//TODO: make it more generic by allowing any Icon in props
+//TODO: find a way to have the onClick callback live inside ButtonCallToAction then raised / exposed aboved.
 
-export default function ButtonCallToAction({ onClick }: ButtonCallToActionProps) {
+export default function ButtonCallToAction({ label, IconComponent }: ButtonCallToActionProps) {
   return (
     <ButtonCallToActionStyled>
-      <h2>Ajouter un produit</h2>
-      <IconLabel onClick={onClick} IconComponent={<BsPlusSquareFill className="icon" />} />
+      <h2>{label}</h2>
+      {IconComponent}
     </ButtonCallToActionStyled>
   )
 }
@@ -31,7 +30,8 @@ const ButtonCallToActionStyled = styled.div`
       color: ${theme.colors.black};
     }
     .icon {
-      color: orange;
+      color: ${theme.colors.primary};
       font-size: ${theme.fonts.P6};
       margin-top: 16px;
+      align-self: center;
 `
