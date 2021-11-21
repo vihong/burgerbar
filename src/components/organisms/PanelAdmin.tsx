@@ -1,10 +1,12 @@
-import { useState } from "react"
+import OrderContext from "context/OrderContext"
+import { useContext, useState } from "react"
 import styled from "styled-components/macro"
 import PanelTab from "./PanelTab"
 import PanelWindow from "./PanelWindow"
 
 export default function PanelAdmin() {
-  const [isCollapsed, setIsCollapsed] = useState(false)
+  const { isCollapsed, setIsCollapsed } = useContext(OrderContext)
+
   return (
     <PanelAdminStyled className="panel">
       <PanelTab isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />

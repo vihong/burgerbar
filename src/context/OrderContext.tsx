@@ -17,6 +17,8 @@ interface OrderContextValue {
   setIsAddFormVisible: React.Dispatch<React.SetStateAction<boolean>>
   isEditFormVisible: boolean
   setIsEditFormVisible: React.Dispatch<React.SetStateAction<boolean>>
+  isCollapsed: boolean
+  setIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default createContext<OrderContextValue>({
@@ -34,4 +36,6 @@ export default createContext<OrderContextValue>({
   setIsAddFormVisible: () => {},
   isEditFormVisible: false,
   setIsEditFormVisible: () => {},
+  isCollapsed: false,
+  setIsCollapsed: () => {},
 })

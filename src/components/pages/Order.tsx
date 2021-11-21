@@ -24,6 +24,7 @@ export default function Orders(props: OrderProps) {
     price: 0,
   })
 
+  const [isCollapsed, setIsCollapsed] = useState(false)
   const [isAddFormVisible, setIsAddFormVisible] = useState(false)
   const [isEditFormVisible, setIsEditFormVisible] = useState(false)
 
@@ -64,6 +65,8 @@ export default function Orders(props: OrderProps) {
     setIsEditFormVisible,
     isAddFormVisible,
     setIsAddFormVisible,
+    isCollapsed,
+    setIsCollapsed,
   }
 
   return (

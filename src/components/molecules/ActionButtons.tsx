@@ -6,8 +6,13 @@ import { theme } from "theme"
 import OrderContext from "context/OrderContext"
 
 export default function ActionButtons() {
-  const { isAddFormVisible, setIsAddFormVisible, isEditFormVisible, setIsEditFormVisible } =
-    useContext(OrderContext)
+  const {
+    isAddFormVisible,
+    setIsAddFormVisible,
+    isEditFormVisible,
+    setIsEditFormVisible,
+    setItemBeingSelected,
+  } = useContext(OrderContext)
 
   let classNameAdd = "inside-buttons"
   let classNameEdit = "inside-buttons"
@@ -50,7 +55,7 @@ const ActionButtonsStyled = styled.div`
     width: 30px;
     height: 30px;
     /* border: 1px solid #6f737e; */
-    border-radius: 50%;
+    border-radius: ${theme.borderRadius.round};
     background: #e4e5e9;
 
     display: flex;

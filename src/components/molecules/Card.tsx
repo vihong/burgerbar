@@ -18,8 +18,16 @@ const IMAGE_BY_DEFAULT = "images/coming-soon.png"
 export default function Card(props: CardProps) {
   const { id, imageSource, title, price } = props
 
-  const { menuItems, isModeAdmin, handleDelete, setItemBeingSelected, titleEditBoxRef } =
-    useContext(OrderContext)
+  const {
+    menuItems,
+    isModeAdmin,
+    handleDelete,
+    setItemBeingSelected,
+    titleEditBoxRef,
+    setIsEditFormVisible,
+    setIsAddFormVisible,
+    setIsCollapsed,
+  } = useContext(OrderContext)
 
   const handleDeleteButton = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation()
@@ -27,11 +35,15 @@ export default function Card(props: CardProps) {
     setItemBeingSelected({ id: 0, title: "", imageSource: "", price: 0 })
   }
 
-  const handleCardSelected = (idSelected: number): void => {
+  //@ts-ignore
+  const handleCardSelected = async (idSelected: number): void => {
     if (!isModeAdmin) return
     const itemBeingSelected = menuItems?.find((item) => item.id === idSelected)
     //@ts-ignore
     setItemBeingSelected(itemBeingSelected)
+    await setIsCollapsed(false)
+    await setIsAddFormVisible(false)
+    await setIsEditFormVisible(true)
     titleEditBoxRef.current.focus()
   }
 
