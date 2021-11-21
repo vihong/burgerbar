@@ -7,6 +7,7 @@ const colors = {
   sucess: "#60bd4f",
   red: "red",
   redSecondary: "#c4151c",
+  blue: "#51a7e1",
 }
 
 const fonts = {

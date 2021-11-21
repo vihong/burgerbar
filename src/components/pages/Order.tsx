@@ -24,8 +24,8 @@ export default function Orders(props: OrderProps) {
   })
 
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [isAddFormVisible, setIsAddFormVisible] = useState(true)
-  const [isEditFormVisible, setIsEditFormVisible] = useState(false)
+  const [isAddFormVisible, setIsAddFormVisible] = useState(false)
+  const [isEditFormVisible, setIsEditFormVisible] = useState(true)
 
   const titleEditBoxRef = useRef()
 

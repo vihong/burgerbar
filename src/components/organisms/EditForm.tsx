@@ -1,7 +1,8 @@
 import OrderContext from "context/OrderContext"
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import styled from "styled-components"
 import { theme } from "theme"
+import { BsCloudCheck } from "react-icons/bs"
 
 interface FormProps {
   formTitle?: string
@@ -11,6 +12,8 @@ interface FormProps {
 export default function EditForm({ formTitle, buttonLabel }: FormProps) {
   const { itemBeingSelected, setItemBeingSelected, handleEdit, titleEditBoxRef } =
     useContext(OrderContext)
+
+  const [isDoneEditing, setIsDoneEditing] = useState(true)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const singleValueBeingChangedNow = event.target.value
@@ -25,7 +28,17 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
   // créer un composant <Input/>
   return (
     <FormStyled>
-      {formTitle && <h2>{formTitle}</h2>}
+      {formTitle && (
+        <div className="form-title">
+          <h2>{formTitle}</h2>
+          {isDoneEditing && (
+            <div className="submit-message">
+              <BsCloudCheck className="icon" />
+              <span className="message">Enregistré</span>
+            </div>
+          )}
+        </div>
+      )}
       <div className="inputs-container">
         <div className="image-edit">
           {itemBeingSelected.imageSource && (
@@ -83,12 +96,34 @@ const FormStyled = styled.form`
   height: 100%;
   margin-left: 30px;
 
-  h2 {
-    margin: 0;
-    margin-bottom: 20px;
-    color: ${theme.colors.primary};
-    line-height: 1;
+  .form-title {
     /* border: 1px solid red; */
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    line-height: 1;
+
+    h2 {
+      /* border: 1px solid blue; */
+      margin: 0;
+      color: ${theme.colors.primary};
+    }
+    .submit-message {
+      display: flex;
+      align-items: center;
+      .icon {
+        color: ${theme.colors.blue};
+        margin-left: 1em;
+        width: 1.2em;
+        height: 1.2em;
+      }
+      .message {
+        margin-left: 0.5em;
+        font-size: ${theme.fonts.P0};
+        color: ${theme.colors.blue};
+        font-weight: ${theme.weights.medium};
+      }
+    }
   }
 
   .inputs-container {
