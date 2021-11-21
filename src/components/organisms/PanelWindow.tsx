@@ -5,7 +5,7 @@ import { theme } from "theme"
 import ButtonCallToAction from "components/atoms/ButtonCallToAction"
 import { BsPlusSquareFill } from "react-icons/bs"
 
-export default function PanelForms() {
+export default function PanelWindow() {
   const [isAddFormVisible, setIsAddFormVisible] = useState(false)
   const [isEditFormVisible, setIsEditFormVisible] = useState(false)
 
@@ -26,7 +26,7 @@ export default function PanelForms() {
   }
 
   return (
-    <PanelFormsStyled>
+    <PanelWindowStyled>
       <button
         onClick={() => setIsAddFormVisible(!isAddFormVisible)}
         className="inside-buttons add-button"
@@ -39,7 +39,7 @@ export default function PanelForms() {
       >
         Edit
       </button>
-    </PanelFormsStyled>
+    </PanelWindowStyled>
   )
   {
     /* {isVisible && (
@@ -55,7 +55,7 @@ export default function PanelForms() {
   }
 }
 
-const PanelFormsStyled = styled.div`
+const PanelWindowStyled = styled.div`
   /* border-top: 1px solid ${theme.colors.primary}; */
   background-color: ${theme.colors.background_white};
   box-shadow: 8px 8px 8px 8px rgb(0 0 0 / 20%);
