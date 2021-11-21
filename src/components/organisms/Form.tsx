@@ -24,7 +24,7 @@ export default function Form({ formTitle }: FormProps) {
   // créer un composant <Input/>
   return (
     <FormStyled>
-      <h2>{formTitle}</h2>
+      {formTitle && <h2>{formTitle}</h2>}
       <div className="inputs-container">
         <div className="image-edit">
           {itemBeingSelected.imageSource && (
@@ -71,6 +71,7 @@ export default function Form({ formTitle }: FormProps) {
 }
 
 const FormStyled = styled.form`
+  /* border: 1px solid blue; */
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -81,8 +82,10 @@ const FormStyled = styled.form`
   margin-left: 30px;
 
   h2 {
-    margin: 20 0;
-    color: ${theme.colors.black};
+    margin: 0;
+    margin-bottom: 20px;
+    color: ${theme.colors.primary};
+    /* border: 1px solid red; */
   }
 
   .inputs-container {

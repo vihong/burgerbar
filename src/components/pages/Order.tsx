@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react"
 import OrderContext from "context/OrderContext"
 import Navbar from "components/molecules/Navbar"
 import Menu from "components/organisms/Menu"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import PanelAdmin from "components/organisms/PanelAdmin"
 import { MenuItem } from "typescript/MenuItem"
 import { burgersInMenu } from "fakeData/burgers"
@@ -22,6 +22,10 @@ export default function Orders(props: OrderProps) {
     imageSource: "",
     price: 0,
   })
+
+  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [isAddFormVisible, setIsAddFormVisible] = useState(false)
+  const [isEditFormVisible, setIsEditFormVisible] = useState(false)
 
   const titleEditBoxRef = useRef()
 
@@ -56,6 +60,12 @@ export default function Orders(props: OrderProps) {
     itemBeingSelected,
     setItemBeingSelected,
     titleEditBoxRef,
+    isEditFormVisible,
+    setIsEditFormVisible,
+    isAddFormVisible,
+    setIsAddFormVisible,
+    isCollapsed,
+    setIsCollapsed,
   }
 
   return (
