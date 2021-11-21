@@ -6,6 +6,6 @@ export const burgersInMenu = [
   { id: 5, imageSource: "images/burger5.png", title: "Cheese Burger", price: 5.2 },
   { id: 6, imageSource: "images/burger5.png", title: "Cheese Burger", price: 5.2 },
   { id: 7, imageSource: "images/burger5.png", title: "Cheese Burger", price: 5.2 },
-  { id: 7, imageSource: "images/burger5.png", title: "Cheese Burger", price: 5.2 },
-  { id: 7, imageSource: "images/burger5.png", title: "Cheese Burger", price: 5.2 },
+  { id: 8, imageSource: "images/burger5.png", title: "Cheese Burger", price: 5.2 },
+  { id: 9, imageSource: "images/burger5.png", title: "Cheese Burger", price: 5.2 },
 ]
