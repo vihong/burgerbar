@@ -6,7 +6,6 @@ import styled from "styled-components/macro"
 import PanelAdmin from "components/organisms/PanelAdmin"
 import { MenuItem } from "typescript/MenuItem"
 import { burgersInMenu } from "fakeData/burgers"
-import { theme } from "theme"
 
 interface OrderProps {
   path: string

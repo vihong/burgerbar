@@ -6,13 +6,8 @@ import { theme } from "theme"
 import OrderContext from "context/OrderContext"
 
 export default function ActionButtons() {
-  const {
-    isAddFormVisible,
-    setIsAddFormVisible,
-    isEditFormVisible,
-    setIsEditFormVisible,
-    setItemBeingSelected,
-  } = useContext(OrderContext)
+  const { isAddFormVisible, setIsAddFormVisible, isEditFormVisible, setIsEditFormVisible } =
+    useContext(OrderContext)
 
   let classNameAdd = "inside-buttons"
   let classNameEdit = "inside-buttons"

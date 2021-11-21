@@ -1,27 +1,25 @@
 import OrderContext from "context/OrderContext"
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import { theme } from "theme"
-import PanelContext from "context/PanelContext"
 import ActionButtons from "components/molecules/ActionButtons"
 import Form from "./Form"
 
 export default function PanelWindow() {
-  const { handleAdd, setItemBeingSelected, titleEditBoxRef, isAddFormVisible, isEditFormVisible } =
-    useContext(OrderContext)
+  const { isAddFormVisible, isEditFormVisible } = useContext(OrderContext)
 
-  const handleAddButton = async () => {
-    const itemCreated = {
-      id: 0,
-      title: "",
-      imageSource: "",
-      price: 0,
-    }
+  // const handleAddButton = async () => {
+  //   const itemCreated = {
+  //     id: 0,
+  //     title: "",
+  //     imageSource: "",
+  //     price: 0,
+  //   }
 
-    handleAdd(itemCreated)
-    setItemBeingSelected(itemCreated)
-    titleEditBoxRef.current.focus()
-  }
+  //   handleAdd(itemCreated)
+  //   setItemBeingSelected(itemCreated)
+  //   titleEditBoxRef.current.focus()
+  // }
 
   return (
     <PanelWindowStyled>
