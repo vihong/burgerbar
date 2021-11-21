@@ -24,6 +24,9 @@ export default function Orders(props: OrderProps) {
     price: 0,
   })
 
+  const [isAddFormVisible, setIsAddFormVisible] = useState(false)
+  const [isEditFormVisible, setIsEditFormVisible] = useState(false)
+
   const titleEditBoxRef = useRef()
 
   const handleAdd = (itemCreated: MenuItem) => {
@@ -57,6 +60,10 @@ export default function Orders(props: OrderProps) {
     itemBeingSelected,
     setItemBeingSelected,
     titleEditBoxRef,
+    isEditFormVisible,
+    setIsEditFormVisible,
+    isAddFormVisible,
+    setIsAddFormVisible,
   }
 
   return (

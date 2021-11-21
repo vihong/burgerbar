@@ -1,13 +1,13 @@
-import PanelContext from "context/PanelContext"
 import React, { useContext } from "react"
 import styled from "styled-components"
 import { BsPlusLg } from "react-icons/bs"
 import { MdModeEditOutline } from "react-icons/md"
 import { theme } from "theme"
+import OrderContext from "context/OrderContext"
 
 export default function ActionButtons() {
   const { isAddFormVisible, setIsAddFormVisible, isEditFormVisible, setIsEditFormVisible } =
-    useContext(PanelContext)
+    useContext(OrderContext)
 
   let classNameAdd = "inside-buttons"
   let classNameEdit = "inside-buttons"

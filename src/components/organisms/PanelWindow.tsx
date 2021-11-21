@@ -2,23 +2,12 @@ import OrderContext from "context/OrderContext"
 import React, { useContext, useState } from "react"
 import styled from "styled-components"
 import { theme } from "theme"
-import ButtonCallToAction from "components/atoms/ButtonCallToAction"
 import PanelContext from "context/PanelContext"
 import ActionButtons from "components/molecules/ActionButtons"
 import Form from "./Form"
 
 export default function PanelWindow() {
-  const [isAddFormVisible, setIsAddFormVisible] = useState(false)
-  const [isEditFormVisible, setIsEditFormVisible] = useState(false)
-
-  const panelContextValue = {
-    isAddFormVisible,
-    setIsAddFormVisible,
-    isEditFormVisible,
-    setIsEditFormVisible,
-  }
-
-  const { handleAdd, itemBeingSelected, setItemBeingSelected, titleEditBoxRef } =
+  const { handleAdd, setItemBeingSelected, titleEditBoxRef, isAddFormVisible, isEditFormVisible } =
     useContext(OrderContext)
 
   const handleAddButton = async () => {
@@ -36,12 +25,10 @@ export default function PanelWindow() {
 
   return (
     <PanelWindowStyled>
-      <PanelContext.Provider value={panelContextValue}>
-        <ActionButtons />
-        <div className="vertical-separator"></div>
-        {isAddFormVisible && <Form formTitle="Ajouter un produit" />}
-        {isEditFormVisible && <Form formTitle="Modifier un produit" />}
-      </PanelContext.Provider>
+      <ActionButtons />
+      <div className="vertical-separator"></div>
+      {isAddFormVisible && <Form formTitle="Ajouter un produit" />}
+      {isEditFormVisible && <Form formTitle="Modifier un produit" />}
     </PanelWindowStyled>
   )
   {

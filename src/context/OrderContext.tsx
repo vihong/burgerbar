@@ -13,6 +13,10 @@ interface OrderContextValue {
   itemBeingSelected: MenuItem
   setItemBeingSelected: React.Dispatch<React.SetStateAction<MenuItem>>
   titleEditBoxRef: React.MutableRefObject<any>
+  isAddFormVisible: boolean
+  setIsAddFormVisible: React.Dispatch<React.SetStateAction<boolean>>
+  isEditFormVisible: boolean
+  setIsEditFormVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default createContext<OrderContextValue>({
@@ -26,4 +30,8 @@ export default createContext<OrderContextValue>({
   itemBeingSelected: createNewItem(),
   setItemBeingSelected: () => {},
   titleEditBoxRef: { current: undefined },
+  isAddFormVisible: false,
+  setIsAddFormVisible: () => {},
+  isEditFormVisible: false,
+  setIsEditFormVisible: () => {},
 })
