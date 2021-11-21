@@ -87,6 +87,7 @@ const FormStyled = styled.form`
     margin: 0;
     margin-bottom: 20px;
     color: ${theme.colors.primary};
+    line-height: 1;
     /* border: 1px solid red; */
   }
 

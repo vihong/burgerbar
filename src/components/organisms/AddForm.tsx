@@ -45,7 +45,17 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
   // créer un composant <Input/>
   return (
     <FormStyled action="submit" onSubmit={handleSubmit}>
-      {formTitle && <h2>{formTitle}</h2>}
+      {formTitle && (
+        <div className="form-title">
+          <h2>{formTitle}</h2>
+          {isSubmitted && (
+            <div className="submit-message">
+              <FiCheck className="icon" />
+              <span className="message">Ajouté au menu !</span>
+            </div>
+          )}
+        </div>
+      )}
       <div className="inputs-container">
         <div className="image-edit">
           {newProduct.imageSource && <img src={newProduct.imageSource} alt={newProduct.title} />}
@@ -86,12 +96,6 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
           {buttonLabel && (
             <div className="submitButton">
               <button>{buttonLabel}</button>
-              {isSubmitted && (
-                <div className="submit-message">
-                  <FiCheck className="icon" />
-                  <span className="message">Produit ajouté !</span>
-                </div>
-              )}
             </div>
           )}
         </div>
@@ -111,11 +115,37 @@ const FormStyled = styled.form`
   height: 100%;
   margin-left: 30px;
 
-  h2 {
-    margin: 0;
-    margin-bottom: 20px;
-    color: ${theme.colors.primary};
+  .form-title {
     /* border: 1px solid red; */
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    line-height: 1;
+
+    h2 {
+      /* border: 1px solid blue; */
+      margin: 0;
+      color: ${theme.colors.primary};
+    }
+    .submit-message {
+      display: flex;
+      align-items: center;
+      .icon {
+        color: ${theme.colors.sucess};
+        margin-left: 1em;
+        width: 1em;
+        height: 1em;
+        border: 1px solid ${theme.colors.sucess};
+        border-radius: 50%;
+        vertical-align: middle;
+      }
+      .message {
+        margin-left: 5px;
+        font-size: ${theme.fonts.P0};
+        color: ${theme.colors.sucess};
+        font-weight: ${theme.weights.medium};
+      }
+    }
   }
 
   .inputs-container {
@@ -155,7 +185,6 @@ const FormStyled = styled.form`
   .submitButton {
     /* border: 1px solid red; */
     display: inline-flex;
-    align-items: center;
 
     button {
       background: #e4e5e9;
@@ -168,23 +197,6 @@ const FormStyled = styled.form`
         cursor: pointer;
         background: ${theme.colors.primary};
         color: ${theme.colors.background_white};
-      }
-    }
-
-    .submit-message {
-      .icon {
-        color: ${theme.colors.sucess};
-        margin-left: 10px;
-        width: 1em;
-        height: 1em;
-        border: 1px solid ${theme.colors.sucess};
-        border-radius: 50%;
-        vertical-align: middle;
-      }
-      .message {
-        margin-left: 5px;
-        font-size: ${theme.fonts.P0};
-        color: ${theme.colors.sucess};
       }
     }
   }
