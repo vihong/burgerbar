@@ -9,18 +9,29 @@ export default function ActionButtons() {
   const { isAddFormVisible, setIsAddFormVisible, isEditFormVisible, setIsEditFormVisible } =
     useContext(PanelContext)
 
-  console.log("isAddFormVisible: ", isAddFormVisible)
-  console.log("isEditFormVisible: ", isEditFormVisible)
+  let classNameAdd = "inside-buttons"
+  let classNameEdit = "inside-buttons"
+
+  classNameAdd += isAddFormVisible ? " active" : ""
+  classNameEdit += isEditFormVisible ? " active" : ""
+
+  const handleAddButton = () => {
+    setIsEditFormVisible(false)
+    setIsAddFormVisible(!isAddFormVisible)
+  }
+
+  const handlEditButton = () => {
+    setIsAddFormVisible(false)
+    setIsEditFormVisible(!isEditFormVisible)
+  }
+
   return (
     <ActionButtonsStyled>
-      <div className="inside-buttons">
-        <BsPlusLg onClick={() => setIsAddFormVisible(!isAddFormVisible)} className="icon-button" />
+      <div className={classNameAdd} onClick={handleAddButton}>
+        <BsPlusLg className="icon-button" />
       </div>
-      <div className="inside-buttons">
-        <MdModeEditOutline
-          onClick={() => setIsEditFormVisible(!isEditFormVisible)}
-          className="icon-button"
-        />
+      <div className={classNameEdit} onClick={handlEditButton}>
+        <MdModeEditOutline className="icon-button" />
       </div>
     </ActionButtonsStyled>
   )
@@ -41,7 +52,7 @@ const ActionButtonsStyled = styled.div`
     /* border: 1px solid #6f737e; */
     border-radius: 50%;
     background: #e4e5e9;
-    /* background: ${theme.colors.primary}; */
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,6 +63,12 @@ const ActionButtonsStyled = styled.div`
       position: absolute;
       color: #6f737e;
       /* color: ${theme.colors.background_white}; */
+    }
+  }
+  .inside-buttons.active {
+    background: ${theme.colors.primary};
+    .icon-button {
+      color: ${theme.colors.background_white};
     }
   }
 `
