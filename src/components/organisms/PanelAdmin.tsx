@@ -40,7 +40,7 @@ const PanelAdminStyled = styled.div`
   background-color: ${theme.colors.background_white};
   box-shadow: 8px 8px 8px 8px rgb(0 0 0 / 20%);
   min-height: 20vh;
-  padding: 20px 30px;
+  padding: 20px 30px 20px 60px;
   display: flex;
   align-items: flex-start;
 

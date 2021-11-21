@@ -64,6 +64,9 @@ export default function Orders(props: OrderProps) {
         <Navbar />
         <Menu />
         {isModeAdmin && <PanelAdmin />}
+        <button onClick={() => setIsModeAdmin(!isModeAdmin)} className="secret-button">
+          X
+        </button>
       </OrderContext.Provider>
     </OrderStyled>
   )
@@ -73,4 +76,13 @@ const OrderStyled = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+
+  .secret-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+  }
 `
