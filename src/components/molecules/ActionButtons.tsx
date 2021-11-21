@@ -76,4 +76,12 @@ const ActionButtonsStyled = styled.div`
       color: ${theme.colors.background_white};
     }
   }
+
+  .inside-buttons:hover {
+    cursor: pointer;
+    background: ${theme.colors.primary};
+    .icon-button {
+      color: ${theme.colors.background_white};
+    }
+  }
 `
