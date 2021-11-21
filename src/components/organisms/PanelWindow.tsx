@@ -31,12 +31,6 @@ export default function PanelWindow() {
       {isEditFormVisible && <Form formTitle="Modifier un produit" />}
     </PanelWindowStyled>
   )
-  {
-    /* {isVisible && (
-          <Form formTitle={"Modifier un produit sur le menu"} />
-        </div>
-      )} */
-  }
 }
 
 const PanelWindowStyled = styled.div`
@@ -50,7 +44,7 @@ const PanelWindowStyled = styled.div`
 
   .vertical-separator {
     min-height: 10em;
-    margin-left: 100px;
+    margin-left: 70px;
     margin-right: 20px;
     border: 1px solid lightgray;
   }
