@@ -1,36 +1,54 @@
 import OrderContext from "context/OrderContext"
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import styled from "styled-components"
 import { theme } from "theme"
+import { FiCheck } from "react-icons/fi"
 
 interface FormProps {
   formTitle?: string
   buttonLabel?: string
 }
 
-export default function Form({ formTitle, buttonLabel }: FormProps) {
-  const { itemBeingSelected, setItemBeingSelected, handleEdit, titleEditBoxRef } =
-    useContext(OrderContext)
+const EMPTY_PRODUCT = {
+  id: 0,
+  title: "",
+  imageSource: "",
+  price: 0,
+}
+
+export default function AddForm({ formTitle, buttonLabel }: FormProps) {
+  const { handleAdd, titleEditBoxRef } = useContext(OrderContext)
+
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const handleSubmit = (event: React.SyntheticEvent) => {
+    event.preventDefault()
+    console.log("handleSubmit")
+    handleAdd(newProduct)
+    setNewProduct(EMPTY_PRODUCT)
+    setIsSubmitted(true)
+    setTimeout(() => setIsSubmitted(false), 1500)
+  }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const singleValueBeingChangedNow = event.target.value
-    const itemUpdated = {
-      ...itemBeingSelected,
+    console.log("singleValueBeingChangedNow: ", singleValueBeingChangedNow)
+    const newProductUpdated = {
+      ...newProduct,
       [event.target.name]: singleValueBeingChangedNow,
     }
-    setItemBeingSelected(itemUpdated)
-    handleEdit(itemUpdated)
+    setNewProduct(newProductUpdated)
   }
 
   // créer un composant <Input/>
   return (
-    <FormStyled>
+    <FormStyled action="submit" onSubmit={handleSubmit}>
       {formTitle && <h2>{formTitle}</h2>}
       <div className="inputs-container">
         <div className="image-edit">
-          {itemBeingSelected.imageSource && (
-            <img src={itemBeingSelected.imageSource} alt={itemBeingSelected.title} />
-          )}
+          {newProduct.imageSource && <img src={newProduct.imageSource} alt={newProduct.title} />}
         </div>
         <div className="inputs">
           <label>
@@ -38,7 +56,7 @@ export default function Form({ formTitle, buttonLabel }: FormProps) {
             <input
               id="title"
               name="title"
-              value={itemBeingSelected.title}
+              value={newProduct.title}
               type="text"
               placeholder="Cliquer sur un produit pour l'éditer"
               onChange={handleChange}
@@ -49,7 +67,7 @@ export default function Form({ formTitle, buttonLabel }: FormProps) {
             Image
             <input
               name="imageSource"
-              value={itemBeingSelected.imageSource}
+              value={newProduct.imageSource}
               type="text"
               placeholder="Ajouter le lien URL d'une image"
               onChange={handleChange}
@@ -59,13 +77,23 @@ export default function Form({ formTitle, buttonLabel }: FormProps) {
             Prix
             <input
               name="price"
-              value={itemBeingSelected.price}
+              value={newProduct.price}
               type="text"
               placeholder="Prix"
               onChange={handleChange}
             />
           </label>
-          {buttonLabel && <button>{buttonLabel}</button>}
+          {buttonLabel && (
+            <div className="submitButton">
+              <button>{buttonLabel}</button>
+              {isSubmitted && (
+                <div className="submit-message">
+                  <FiCheck className="icon" />
+                  <span className="message">Produit ajouté !</span>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </FormStyled>
@@ -120,6 +148,43 @@ const FormStyled = styled.form`
           flex: 1;
           margin-left: 30px;
         }
+      }
+    }
+  }
+
+  .submitButton {
+    /* border: 1px solid red; */
+    display: inline-flex;
+    align-items: center;
+
+    button {
+      background: #e4e5e9;
+      color: #6f737e;
+      border-radius: ${theme.borderRadius.round};
+      border: none;
+      padding: 2px 8px;
+      display: flex;
+      :hover {
+        cursor: pointer;
+        background: ${theme.colors.primary};
+        color: ${theme.colors.background_white};
+      }
+    }
+
+    .submit-message {
+      .icon {
+        color: ${theme.colors.sucess};
+        margin-left: 10px;
+        width: 1em;
+        height: 1em;
+        border: 1px solid ${theme.colors.sucess};
+        border-radius: 50%;
+        vertical-align: middle;
+      }
+      .message {
+        margin-left: 5px;
+        font-size: ${theme.fonts.P0};
+        color: ${theme.colors.sucess};
       }
     }
   }
