@@ -16,9 +16,9 @@ export default function PanelTab({ isCollapsed, setIsCollapsed }: PanelTabProps)
 }
 
 const PanelTabStyled = styled.div`
-  /* border: 1px solid blue; */
+  border: 1px solid ${theme.colors.white};
   position: absolute;
-  top: -34px;
+  top: -35px;
   padding: 2px 10px;
   background: ${theme.colors.primary};
   color: ${theme.colors.white};
