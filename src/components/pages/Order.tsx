@@ -2,10 +2,11 @@ import React, { useRef, useState } from "react"
 import OrderContext from "context/OrderContext"
 import Navbar from "components/molecules/Navbar"
 import Menu from "components/organisms/Menu"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import PanelAdmin from "components/organisms/PanelAdmin"
 import { MenuItem } from "typescript/MenuItem"
 import { burgersInMenu } from "fakeData/burgers"
+import { theme } from "theme"
 
 interface OrderProps {
   path: string
@@ -64,9 +65,6 @@ export default function Orders(props: OrderProps) {
         <Navbar />
         <Menu />
         {isModeAdmin && <PanelAdmin />}
-        <button onClick={() => setIsModeAdmin(!isModeAdmin)} className="secret-button">
-          X
-        </button>
       </OrderContext.Provider>
     </OrderStyled>
   )
@@ -76,13 +74,4 @@ const OrderStyled = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-
-  .secret-button {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
-  }
 `

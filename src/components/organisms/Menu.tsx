@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import Card from "components/molecules/Card"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import OrderContext from "context/OrderContext"
 import { theme } from "theme"
 

@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import { FaUserCircle } from "react-icons/fa"
 import { FiLogOut } from "react-icons/fi"
 import IconLabel from "components/atoms/IconLabel"
