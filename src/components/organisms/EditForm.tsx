@@ -8,7 +8,7 @@ interface FormProps {
   buttonLabel?: string
 }
 
-export default function Form({ formTitle, buttonLabel }: FormProps) {
+export default function EditForm({ formTitle, buttonLabel }: FormProps) {
   const { itemBeingSelected, setItemBeingSelected, handleEdit, titleEditBoxRef } =
     useContext(OrderContext)
 

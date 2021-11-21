@@ -3,7 +3,7 @@ import React, { useContext } from "react"
 import styled from "styled-components"
 import { theme } from "theme"
 import ActionButtons from "components/molecules/ActionButtons"
-import Form from "./Form"
+import EditForm from "./EditForm"
 import AddForm from "./AddForm"
 
 export default function PanelWindow() {
@@ -16,7 +16,7 @@ export default function PanelWindow() {
       {isAddFormVisible && (
         <AddForm formTitle="Ajouter un produit" buttonLabel="Ajouter un produit" />
       )}
-      {isEditFormVisible && <Form formTitle="Modifier un produit" />}
+      {isEditFormVisible && <EditForm formTitle="Modifier un produit" />}
     </PanelWindowStyled>
   )
 }
