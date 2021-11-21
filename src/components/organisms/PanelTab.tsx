@@ -31,6 +31,14 @@ const PanelTabStyled = styled.div`
   border-bottom-right-radius: 0;
   border-bottom: ${theme.colors.background_white};
 
+  :hover {
+    cursor: pointer;
+    background: ${theme.colors.white};
+    color: ${theme.colors.primary};
+    border: 1px solid ${theme.colors.primary};
+    border-bottom: none;
+  }
+
   button {
     border: none;
     margin-left: 10px;
