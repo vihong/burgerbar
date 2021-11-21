@@ -38,6 +38,7 @@ export default function PanelWindow() {
     <PanelWindowStyled>
       <PanelContext.Provider value={panelContextValue}>
         <ActionButtons />
+        <div className="vertical-separator"></div>
         {isAddFormVisible && <Form formTitle="Ajouter un produit" />}
         {isEditFormVisible && <Form formTitle="Modifier un produit" />}
       </PanelContext.Provider>
@@ -56,7 +57,14 @@ const PanelWindowStyled = styled.div`
   background-color: white;
   box-shadow: 8px 8px 8px 8px rgb(0 0 0 / 20%);
   min-height: 10em;
-  padding: 20px 30px 20px 60px;
+  padding: 25px 30px 20px 60px;
   display: flex;
   align-items: flex-start;
+
+  .vertical-separator {
+    min-height: 10em;
+    margin-left: 100px;
+    margin-right: 20px;
+    border: 1px solid lightgray;
+  }
 `

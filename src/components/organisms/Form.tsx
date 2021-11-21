@@ -82,8 +82,10 @@ const FormStyled = styled.form`
   margin-left: 30px;
 
   h2 {
-    margin: 20 0;
-    color: ${theme.colors.black};
+    margin: 0;
+    margin-bottom: 20px;
+    color: ${theme.colors.primary};
+    /* border: 1px solid red; */
   }
 
   .inputs-container {
