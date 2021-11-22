@@ -29,7 +29,7 @@ function NavBarRightSide() {
   const toggleButtonAdmin = () => {
     !isModeAdmin &&
       toast.success("Mode Admin activé!", {
-        position: "bottom-center",
+        position: "top-center",
         duration: 3000,
         style: {
           borderRadius: "10px",
