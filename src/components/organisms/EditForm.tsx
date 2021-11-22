@@ -13,7 +13,9 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
   const { itemBeingSelected, setItemBeingSelected, handleEdit, titleEditBoxRef } =
     useContext(OrderContext)
 
-  const [isDoneEditing, setIsDoneEditing] = useState(true)
+  const [isDoneEditing, setIsDoneEditing] = useState(false)
+
+  const [valueOnFocus, setValueOnFocus] = useState<string | number>()
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const singleValueBeingChangedNow = event.target.value
@@ -23,6 +25,17 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
     }
     setItemBeingSelected(itemUpdated)
     handleEdit(itemUpdated)
+  }
+
+  const handleOnFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+    setValueOnFocus(event.currentTarget.value)
+  }
+
+  const handleOnBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    const valueOnBlur = event.currentTarget.value
+    if (valueOnFocus === valueOnBlur) return
+    setIsDoneEditing(true)
+    setTimeout(() => setIsDoneEditing(false), 1000)
   }
 
   // créer un composant <Input/>
@@ -56,6 +69,8 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
               placeholder="Cliquer sur un produit pour l'éditer"
               onChange={handleChange}
               ref={titleEditBoxRef}
+              onBlur={handleOnBlur}
+              onFocus={handleOnFocus}
             />
           </label>
           <label>
@@ -66,6 +81,8 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
               type="text"
               placeholder="Ajouter le lien URL d'une image"
               onChange={handleChange}
+              onBlur={handleOnBlur}
+              onFocus={handleOnFocus}
             />
           </label>
           <label>
@@ -76,6 +93,8 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
               type="text"
               placeholder="Prix"
               onChange={handleChange}
+              onBlur={handleOnBlur}
+              onFocus={handleOnFocus}
             />
           </label>
           {buttonLabel && <button>{buttonLabel}</button>}

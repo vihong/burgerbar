@@ -20,7 +20,7 @@ export default function Orders(props: OrderProps) {
     id: 0,
     title: "",
     imageSource: "",
-    price: 0,
+    price: undefined,
   })
 
   const [isCollapsed, setIsCollapsed] = useState(false)

@@ -9,11 +9,11 @@ interface FormProps {
   buttonLabel?: string
 }
 
-const EMPTY_PRODUCT = {
+export const EMPTY_PRODUCT = {
   id: 0,
   title: "",
   imageSource: "",
-  price: 0,
+  price: undefined,
 }
 
 export default function AddForm({ formTitle, buttonLabel }: FormProps) {
