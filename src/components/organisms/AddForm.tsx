@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { theme } from "theme"
 import { FiCheck } from "react-icons/fi"
 import { EMPTY_PRODUCT } from "components/pages/Order"
+import toast from "react-hot-toast"
 
 interface FormProps {
   formTitle?: string
@@ -28,8 +29,9 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
     }
     handleAdd(newProductToAdd)
     setNewProduct(EMPTY_PRODUCT)
-    setIsSubmitted(true)
-    setTimeout(() => setIsSubmitted(false), 1500)
+    toast.success("Ajouté au menu avec succès!")
+    // setIsSubmitted(true)
+    // setTimeout(() => setIsSubmitted(false), 1500)
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
