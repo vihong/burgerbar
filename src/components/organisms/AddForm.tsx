@@ -185,8 +185,8 @@ const FormStyled = styled.form`
     display: inline-flex;
 
     button {
-      background: ${theme.colors.button_background};
-      color: ${theme.colors.button_label};
+      background: ${theme.colors.greyLight};
+      color: ${theme.colors.greyDark};
       border-radius: ${theme.borderRadius.round};
       border: none;
       padding: 2px 8px;

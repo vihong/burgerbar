@@ -49,9 +49,9 @@ const ActionButtonsStyled = styled.div`
   .inside-buttons {
     width: 30px;
     height: 30px;
-    /* border: 1px solid ${theme.colors.button_label}; */
+    /* border: 1px solid ${theme.colors.greyDark}; */
     border-radius: ${theme.borderRadius.round};
-    background: ${theme.colors.button_background};
+    background: ${theme.colors.greyLight};
 
     display: flex;
     justify-content: center;
@@ -61,7 +61,7 @@ const ActionButtonsStyled = styled.div`
       height: 1em;
       vertical-align: middle;
       position: absolute;
-      color: ${theme.colors.button_label};
+      color: ${theme.colors.greyDark};
       /* color: ${theme.colors.background_white}; */
     }
   }
