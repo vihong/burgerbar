@@ -3,17 +3,11 @@ import React, { useContext, useState } from "react"
 import styled from "styled-components"
 import { theme } from "theme"
 import { FiCheck } from "react-icons/fi"
+import { EMPTY_PRODUCT } from "components/pages/Order"
 
 interface FormProps {
   formTitle?: string
   buttonLabel?: string
-}
-
-export const EMPTY_PRODUCT = {
-  id: 0,
-  title: "",
-  imageSource: "",
-  price: undefined,
 }
 
 export default function AddForm({ formTitle, buttonLabel }: FormProps) {
