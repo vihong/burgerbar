@@ -7,6 +7,8 @@ import { Link } from "@reach/router"
 import { theme } from "theme/index"
 import OrderContext from "context/OrderContext"
 import Button from "components/atoms/Button"
+import toast from "react-hot-toast"
+import { FaUserSecret } from "react-icons/fa"
 
 export default function Navbar() {
   return (
@@ -25,6 +27,17 @@ function NavBarRightSide() {
   const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext)
 
   const toggleButtonAdmin = () => {
+    !isModeAdmin &&
+      toast.success("Mode Admin activé!", {
+        position: "bottom-center",
+        duration: 3000,
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+        icon: <FaUserSecret />,
+      })
     setIsModeAdmin(!isModeAdmin)
   }
 

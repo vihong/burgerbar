@@ -1,5 +1,6 @@
 const colors = {
   black: "#212225",
+  incognito: "#333",
   white: "#fff", //ghostwhite
   background_white: "#f5f5f7",
   primary: "#ff9a23",

@@ -19,7 +19,7 @@ export const EMPTY_PRODUCT = {
 }
 
 export default function Orders(props: OrderProps) {
-  const [isModeAdmin, setIsModeAdmin] = useState(true)
+  const [isModeAdmin, setIsModeAdmin] = useState(false)
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>(burgersInMenu)
 
@@ -27,7 +27,7 @@ export default function Orders(props: OrderProps) {
 
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isAddFormVisible, setIsAddFormVisible] = useState(false)
-  const [isEditFormVisible, setIsEditFormVisible] = useState(true)
+  const [isEditFormVisible, setIsEditFormVisible] = useState(false)
 
   const titleEditBoxRef = useRef()
 
