@@ -15,7 +15,7 @@ export const EMPTY_PRODUCT = {
   id: undefined,
   title: "",
   imageSource: "",
-  price: undefined,
+  price: 0,
 }
 
 export default function Orders(props: OrderProps) {
