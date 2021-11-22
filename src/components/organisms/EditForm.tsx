@@ -35,7 +35,7 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
     const valueOnBlur = event.currentTarget.value
     if (valueOnFocus === valueOnBlur) return
     setIsDoneEditing(true)
-    setTimeout(() => setIsDoneEditing(false), 1000)
+    setTimeout(() => setIsDoneEditing(false), 1500)
   }
 
   // créer un composant <Input/>

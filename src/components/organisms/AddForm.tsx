@@ -129,18 +129,18 @@ const FormStyled = styled.form`
       display: flex;
       align-items: center;
       .icon {
-        color: ${theme.colors.sucess};
+        color: ${theme.colors.success};
         margin-left: 1em;
         width: 1em;
         height: 1em;
-        border: 1px solid ${theme.colors.sucess};
+        border: 1px solid ${theme.colors.success};
         border-radius: 50%;
         vertical-align: middle;
       }
       .message {
         margin-left: 5px;
         font-size: ${theme.fonts.P0};
-        color: ${theme.colors.sucess};
+        color: ${theme.colors.success};
         font-weight: ${theme.weights.medium};
       }
     }
@@ -185,8 +185,8 @@ const FormStyled = styled.form`
     display: inline-flex;
 
     button {
-      background: #e4e5e9;
-      color: #6f737e;
+      background: ${theme.colors.button_background};
+      color: ${theme.colors.button_label};
       border-radius: ${theme.borderRadius.round};
       border: none;
       padding: 2px 8px;
