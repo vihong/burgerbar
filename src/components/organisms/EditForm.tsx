@@ -1,15 +1,21 @@
 import OrderContext from "context/OrderContext"
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import styled from "styled-components"
 import { theme } from "theme"
+import { BsCloudCheck } from "react-icons/bs"
 
 interface FormProps {
   formTitle?: string
+  buttonLabel?: string
 }
 
-export default function Form({ formTitle }: FormProps) {
+export default function EditForm({ formTitle, buttonLabel }: FormProps) {
   const { itemBeingSelected, setItemBeingSelected, handleEdit, titleEditBoxRef } =
     useContext(OrderContext)
+
+  const [isDoneEditing, setIsDoneEditing] = useState(false)
+
+  const [valueOnFocus, setValueOnFocus] = useState<string | number>()
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const singleValueBeingChangedNow = event.target.value
@@ -21,10 +27,31 @@ export default function Form({ formTitle }: FormProps) {
     handleEdit(itemUpdated)
   }
 
+  const handleOnFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+    setValueOnFocus(event.currentTarget.value)
+  }
+
+  const handleOnBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    const valueOnBlur = event.currentTarget.value
+    if (valueOnFocus === valueOnBlur) return
+    setIsDoneEditing(true)
+    setTimeout(() => setIsDoneEditing(false), 1500)
+  }
+
   // créer un composant <Input/>
   return (
     <FormStyled>
-      {formTitle && <h2>{formTitle}</h2>}
+      {formTitle && (
+        <div className="form-title">
+          <h2>{formTitle}</h2>
+          {isDoneEditing && (
+            <div className="submit-message">
+              <BsCloudCheck className="icon" />
+              <span className="message">Enregistré</span>
+            </div>
+          )}
+        </div>
+      )}
       <div className="inputs-container">
         <div className="image-edit">
           {itemBeingSelected.imageSource && (
@@ -42,6 +69,8 @@ export default function Form({ formTitle }: FormProps) {
               placeholder="Cliquer sur un produit pour l'éditer"
               onChange={handleChange}
               ref={titleEditBoxRef}
+              onBlur={handleOnBlur}
+              onFocus={handleOnFocus}
             />
           </label>
           <label>
@@ -52,6 +81,8 @@ export default function Form({ formTitle }: FormProps) {
               type="text"
               placeholder="Ajouter le lien URL d'une image"
               onChange={handleChange}
+              onBlur={handleOnBlur}
+              onFocus={handleOnFocus}
             />
           </label>
           <label>
@@ -62,8 +93,11 @@ export default function Form({ formTitle }: FormProps) {
               type="text"
               placeholder="Prix"
               onChange={handleChange}
+              onBlur={handleOnBlur}
+              onFocus={handleOnFocus}
             />
           </label>
+          {buttonLabel && <button>{buttonLabel}</button>}
         </div>
       </div>
     </FormStyled>
@@ -81,11 +115,34 @@ const FormStyled = styled.form`
   height: 100%;
   margin-left: 30px;
 
-  h2 {
-    margin: 0;
-    margin-bottom: 20px;
-    color: ${theme.colors.primary};
+  .form-title {
     /* border: 1px solid red; */
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    line-height: 1;
+
+    h2 {
+      /* border: 1px solid blue; */
+      margin: 0;
+      color: ${theme.colors.primary};
+    }
+    .submit-message {
+      display: flex;
+      align-items: center;
+      .icon {
+        color: ${theme.colors.blue};
+        margin-left: 1em;
+        width: 1.2em;
+        height: 1.2em;
+      }
+      .message {
+        margin-left: 0.5em;
+        font-size: ${theme.fonts.P0};
+        color: ${theme.colors.blue};
+        font-weight: ${theme.weights.medium};
+      }
+    }
   }
 
   .inputs-container {

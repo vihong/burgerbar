@@ -1,12 +1,16 @@
 const colors = {
   black: "#212225",
+  incognito: "#333",
   white: "#fff", //ghostwhite
   background_white: "#f5f5f7",
   primary: "#ff9a23",
   green: "green",
-  sucess: "#60bd4f",
+  success: "#60bd4f",
   red: "red",
   redSecondary: "#c4151c",
+  blue: "#51a7e1",
+  button_background: "#e4e5e9",
+  button_label: "#6f737e",
 }
 
 const fonts = {

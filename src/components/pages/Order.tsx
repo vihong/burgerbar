@@ -11,17 +11,19 @@ interface OrderProps {
   path: string
 }
 
+export const EMPTY_PRODUCT = {
+  id: undefined,
+  title: "",
+  imageSource: "",
+  price: undefined,
+}
+
 export default function Orders(props: OrderProps) {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>(burgersInMenu)
 
-  const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>({
-    id: 0,
-    title: "",
-    imageSource: "",
-    price: 0,
-  })
+  const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
 
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isAddFormVisible, setIsAddFormVisible] = useState(false)
