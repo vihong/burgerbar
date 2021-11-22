@@ -68,7 +68,7 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
               name="title"
               value={newProduct.title}
               type="text"
-              placeholder="Cliquer sur un produit pour l'éditer"
+              placeholder="Donnez nom délicieux, ex: Super Burger"
               onChange={handleChange}
               ref={titleEditBoxRef}
             />
@@ -87,7 +87,7 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
             Prix
             <input
               name="price"
-              value={newProduct.price}
+              value={newProduct.price ? newProduct.price : ""}
               type="text"
               placeholder="Prix"
               onChange={handleChange}
