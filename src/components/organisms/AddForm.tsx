@@ -21,8 +21,6 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    console.log("newProduct.price: ", newProduct.price)
-    // newProduct.price = parseFloat(newProduct.price).toFixed(2)
     const newProductToAdd = {
       ...newProduct,
       id: new Date().getTime(),
