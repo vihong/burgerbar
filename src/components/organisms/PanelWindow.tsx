@@ -23,7 +23,7 @@ export default function PanelWindow() {
 
 const PanelWindowStyled = styled.div`
   /* border-top: 1px solid ${theme.colors.primary}; */
-  background-color: white;
+  background-color: ${theme.colors.white};
   box-shadow: 8px 8px 8px 8px rgb(0 0 0 / 20%);
   min-height: 11em;
   padding: 25px 30px 20px 60px;

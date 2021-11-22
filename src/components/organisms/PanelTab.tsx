@@ -1,4 +1,5 @@
 import React from "react"
+import { FiChevronUp, FiChevronDown } from "react-icons/fi"
 import styled from "styled-components"
 import { theme } from "theme"
 
@@ -10,7 +11,8 @@ interface PanelTabProps {
 export default function PanelTab({ isCollapsed, setIsCollapsed }: PanelTabProps) {
   return (
     <PanelTabStyled onClick={() => setIsCollapsed(!isCollapsed)}>
-      <span>{isCollapsed ? "Ouvrir" : "Réduire"} le panel admin</span>
+      {isCollapsed ? <FiChevronUp className="icon" /> : <FiChevronDown className="icon" />}
+      <span>{isCollapsed ? "Ouvrir" : "Réduire"}</span>
     </PanelTabStyled>
   )
 }
@@ -18,9 +20,8 @@ export default function PanelTab({ isCollapsed, setIsCollapsed }: PanelTabProps)
 const PanelTabStyled = styled.div`
   border: 1px solid ${theme.colors.white};
   position: absolute;
-  top: -35px;
-  padding: 2px 10px;
-  background: ${theme.colors.primary};
+  top: -31px;
+  background: ${theme.colors.incognito};
   color: ${theme.colors.white};
   display: inline-flex;
   align-items: center;
@@ -30,12 +31,14 @@ const PanelTabStyled = styled.div`
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-bottom: ${theme.colors.background_white};
+  min-width: 30px;
+  padding-left: 5px;
 
   :hover {
     cursor: pointer;
     background: ${theme.colors.white};
-    color: ${theme.colors.primary};
-    border: 1px solid ${theme.colors.primary};
+    color: ${theme.colors.incognito};
+    border: 1px solid ${theme.colors.greyLight};
     border-bottom: none;
   }
 
@@ -48,6 +51,11 @@ const PanelTabStyled = styled.div`
   }
 
   span {
-    min-width: 120px;
+    margin: 0 12px 0 5px;
+  }
+
+  .icon {
+    min-width: 1.5em;
+    min-height: 1.5em;
   }
 `

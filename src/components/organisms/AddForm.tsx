@@ -2,8 +2,9 @@ import OrderContext from "context/OrderContext"
 import React, { useContext, useState } from "react"
 import styled from "styled-components"
 import { theme } from "theme"
-import { FiCheck } from "react-icons/fi"
+// import { FiCheck } from "react-icons/fi"
 import { EMPTY_PRODUCT } from "components/pages/Order"
+import toast from "react-hot-toast"
 
 interface FormProps {
   formTitle?: string
@@ -15,19 +16,20 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  // const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = (event: React.SyntheticEvent) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    console.log("handleSubmit")
+
     const newProductToAdd = {
       ...newProduct,
       id: new Date().getTime(),
     }
     handleAdd(newProductToAdd)
     setNewProduct(EMPTY_PRODUCT)
-    setIsSubmitted(true)
-    setTimeout(() => setIsSubmitted(false), 1500)
+    toast.success("Ajouté au menu avec succès!")
+    // setIsSubmitted(true)
+    // setTimeout(() => setIsSubmitted(false), 1500)
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,12 +48,12 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
       {formTitle && (
         <div className="form-title">
           <h2>{formTitle}</h2>
-          {isSubmitted && (
+          {/* {isSubmitted && (
             <div className="submit-message">
               <FiCheck className="icon" />
               <span className="message">Ajouté au menu !</span>
             </div>
-          )}
+          )} */}
         </div>
       )}
       <div className="inputs-container">
@@ -66,7 +68,7 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
               name="title"
               value={newProduct.title}
               type="text"
-              placeholder="Cliquer sur un produit pour l'éditer"
+              placeholder="Donnez nom délicieux, ex: Super Burger"
               onChange={handleChange}
               ref={titleEditBoxRef}
             />
@@ -85,7 +87,7 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
             Prix
             <input
               name="price"
-              value={newProduct.price}
+              value={newProduct.price ? newProduct.price : ""}
               type="text"
               placeholder="Prix"
               onChange={handleChange}
@@ -185,8 +187,8 @@ const FormStyled = styled.form`
     display: inline-flex;
 
     button {
-      background: ${theme.colors.button_background};
-      color: ${theme.colors.button_label};
+      background: ${theme.colors.greyLight};
+      color: ${theme.colors.greyDark};
       border-radius: ${theme.borderRadius.round};
       border: none;
       padding: 2px 8px;
