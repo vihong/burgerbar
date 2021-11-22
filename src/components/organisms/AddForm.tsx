@@ -20,7 +20,11 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault()
     console.log("handleSubmit")
-    handleAdd(newProduct)
+    const newProductToAdd = {
+      ...newProduct,
+      id: new Date().getTime(),
+    }
+    handleAdd(newProductToAdd)
     setNewProduct(EMPTY_PRODUCT)
     setIsSubmitted(true)
     setTimeout(() => setIsSubmitted(false), 1500)
