@@ -16,7 +16,7 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  // const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -48,12 +48,12 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
       {formTitle && (
         <div className="form-title">
           <h2>{formTitle}</h2>
-          {isSubmitted && (
+          {/* {isSubmitted && (
             <div className="submit-message">
               <FiCheck className="icon" />
               <span className="message">Ajouté au menu !</span>
             </div>
-          )}
+          )} */}
         </div>
       )}
       <div className="inputs-container">
