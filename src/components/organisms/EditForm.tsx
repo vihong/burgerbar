@@ -66,7 +66,7 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
               name="title"
               value={itemBeingSelected.title}
               type="text"
-              placeholder="Cliquer sur un produit pour l'éditer"
+              placeholder="Donnez nom délicieux, ex: Super Burger"
               onChange={handleChange}
               ref={titleEditBoxRef}
               onBlur={handleOnBlur}
@@ -89,7 +89,7 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
             Prix
             <input
               name="price"
-              value={itemBeingSelected.price}
+              value={itemBeingSelected.price ? itemBeingSelected.price : ""}
               type="text"
               placeholder="Prix"
               onChange={handleChange}

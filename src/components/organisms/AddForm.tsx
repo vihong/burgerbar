@@ -2,7 +2,7 @@ import OrderContext from "context/OrderContext"
 import React, { useContext, useState } from "react"
 import styled from "styled-components"
 import { theme } from "theme"
-import { FiCheck } from "react-icons/fi"
+// import { FiCheck } from "react-icons/fi"
 import { EMPTY_PRODUCT } from "components/pages/Order"
 import toast from "react-hot-toast"
 
