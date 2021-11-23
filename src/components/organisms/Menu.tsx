@@ -3,6 +3,8 @@ import Card from "components/molecules/Card"
 import styled from "styled-components/macro"
 import OrderContext from "context/OrderContext"
 import { theme } from "theme"
+import { formatPrice } from "utils/maths"
+import AddPlusButtons from "components/atoms/AddPlusButtons"
 
 export default function Menu() {
   const {
@@ -45,6 +47,9 @@ export default function Menu() {
           }
           onCardClick={() => handleCardSelected(burger.id)}
           hasDeleteButton={isModeAdmin}
+          isHoverable={isModeAdmin}
+          bottomLeftDescription={formatPrice(burger.price)}
+          bottomRightDescription={<AddPlusButtons />}
         />
       ))}
     </MenuStyled>

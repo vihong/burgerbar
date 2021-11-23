@@ -1,10 +1,6 @@
-import React, { useContext } from "react"
-import AddPlusButtons from "components/atoms/AddPlusButtons"
 import styled from "styled-components/macro"
 import { theme } from "theme/index"
-import { formatPrice } from "utils/maths"
 import Button from "components/atoms/Button"
-import OrderContext from "context/OrderContext"
 
 const IMAGE_BY_DEFAULT = "images/coming-soon.png"
 
@@ -13,28 +9,36 @@ interface CardProps {
   title?: string
   price?: number | undefined
   [x: string]: any
-  onDeleteButton: any
-  onCardClick: any
-  hasDeleteButton: boolean | undefined
+  onDeleteButton?: any
+  onCardClick?: any
+  hasDeleteButton?: boolean | undefined
+  isHoverable?: boolean
+  bottomLeftDescription?: string
+  bottomRightDescription?: JSX.Element
 }
 
 export default function Card(props: CardProps) {
-  const { imageSource, title, price, onDeleteButton, onCardClick, hasDeleteButton } = props
-
-  const { isModeAdmin } = useContext(OrderContext)
+  const {
+    imageSource,
+    title,
+    bottomLeftDescription,
+    bottomRightDescription,
+    onDeleteButton,
+    onCardClick,
+    hasDeleteButton,
+    isHoverable,
+  } = props
 
   return (
-    <CardStyled onClick={onCardClick} className={isModeAdmin ? "is-hoverable" : ""}>
+    <CardStyled onClick={onCardClick} className={isHoverable ? "is-hoverable" : ""}>
       {hasDeleteButton && <Button label={"X"} className="delete-button" onClick={onDeleteButton} />}
       <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
 
       <div className="card-text">
         <span className="card-title">{title}</span>
         <div className="card-description">
-          <span className="left-description">{formatPrice(price)}</span>
-          <span className="right-description">
-            <AddPlusButtons />
-          </span>
+          <span className="left-description">{bottomLeftDescription}</span>
+          <span className="right-description">{bottomRightDescription}</span>
         </div>
       </div>
     </CardStyled>
