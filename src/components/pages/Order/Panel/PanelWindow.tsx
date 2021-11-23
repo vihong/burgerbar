@@ -3,8 +3,8 @@ import React, { useContext } from "react"
 import styled from "styled-components"
 import { theme } from "theme"
 import ActionButtons from "components/molecules/ActionButtons"
-import EditForm from "./EditForm"
-import AddForm from "./AddForm"
+import EditForm from "components/organisms/EditForm"
+import AddForm from "components/organisms/AddForm"
 
 export default function PanelWindow() {
   const { isAddFormVisible, isEditFormVisible } = useContext(OrderContext)
