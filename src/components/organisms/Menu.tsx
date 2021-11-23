@@ -5,7 +5,28 @@ import OrderContext from "context/OrderContext"
 import { theme } from "theme"
 
 export default function Menu() {
-  const { menuItems, handleDelete, setItemBeingSelected } = useContext(OrderContext)
+  const {
+    menuItems,
+    handleDelete,
+    setItemBeingSelected,
+    isModeAdmin,
+    setIsCollapsed,
+    setIsAddFormVisible,
+    setIsEditFormVisible,
+    titleEditBoxRef,
+  } = useContext(OrderContext)
+
+  //@ts-ignore
+  const handleCardSelected = async (idSelected: number | undefined): void => {
+    if (!isModeAdmin) return
+    const itemBeingSelected = menuItems?.find((item) => item.id === idSelected)
+    //@ts-ignore
+    setItemBeingSelected(itemBeingSelected)
+    await setIsCollapsed(false)
+    await setIsAddFormVisible(false)
+    await setIsEditFormVisible(true)
+    titleEditBoxRef.current.focus()
+  }
 
   const handleDeleteButton = (event: React.MouseEvent<HTMLElement>, id: number | undefined) => {
     event.stopPropagation()
@@ -22,6 +43,8 @@ export default function Menu() {
           onDeleteButton={(event: React.MouseEvent<HTMLElement>) =>
             handleDeleteButton(event, burger.id)
           }
+          onCardClick={() => handleCardSelected(burger.id)}
+          hasDeleteButton={isModeAdmin}
         />
       ))}
     </MenuStyled>

@@ -6,47 +6,26 @@ import { formatPrice } from "utils/maths"
 import Button from "components/atoms/Button"
 import OrderContext from "context/OrderContext"
 
+const IMAGE_BY_DEFAULT = "images/coming-soon.png"
+
 interface CardProps {
   imageSource?: string
   title?: string
   price?: number | undefined
   [x: string]: any
   onDeleteButton: any
+  onCardClick: any
+  hasDeleteButton: boolean | undefined
 }
 
-const IMAGE_BY_DEFAULT = "images/coming-soon.png"
-
 export default function Card(props: CardProps) {
-  const { id, imageSource, title, price, onDeleteButton } = props
+  const { imageSource, title, price, onDeleteButton, onCardClick, hasDeleteButton } = props
 
-  const {
-    menuItems,
-    isModeAdmin,
-    setItemBeingSelected,
-    titleEditBoxRef,
-    setIsEditFormVisible,
-    setIsAddFormVisible,
-    setIsCollapsed,
-  } = useContext(OrderContext)
-
-  //@ts-ignore
-  const handleCardSelected = async (idSelected: number): void => {
-    if (!isModeAdmin) return
-    const itemBeingSelected = menuItems?.find((item) => item.id === idSelected)
-    //@ts-ignore
-    setItemBeingSelected(itemBeingSelected)
-    await setIsCollapsed(false)
-    await setIsAddFormVisible(false)
-    await setIsEditFormVisible(true)
-    titleEditBoxRef.current.focus()
-  }
+  const { isModeAdmin } = useContext(OrderContext)
 
   return (
-    <CardStyled
-      onClick={() => handleCardSelected(id)}
-      className={isModeAdmin ? "is-hoverable" : ""}
-    >
-      {isModeAdmin && <Button label={"X"} className="delete-button" onClick={onDeleteButton} />}
+    <CardStyled onClick={onCardClick} className={isModeAdmin ? "is-hoverable" : ""}>
+      {hasDeleteButton && <Button label={"X"} className="delete-button" onClick={onDeleteButton} />}
       <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
 
       <div className="card-text">
