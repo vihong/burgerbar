@@ -1,3 +1,4 @@
+import React from "react"
 import { FiChevronUp, FiChevronDown } from "react-icons/fi"
 import styled from "styled-components"
 import { theme } from "theme"
