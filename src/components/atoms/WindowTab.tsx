@@ -4,15 +4,15 @@ import styled from "styled-components"
 import { theme } from "theme"
 
 interface PanelTabProps {
-  isCollapsed: boolean
-  setIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>
+  isClosed?: boolean
+  onClick?: any
 }
 
-export default function PanelTab({ isCollapsed, setIsCollapsed }: PanelTabProps) {
+export default function WindowTab({ isClosed, onClick }: PanelTabProps) {
   return (
-    <PanelTabStyled onClick={() => setIsCollapsed(!isCollapsed)}>
-      {isCollapsed ? <FiChevronUp className="icon" /> : <FiChevronDown className="icon" />}
-      <span>{isCollapsed ? "Ouvrir" : "Réduire"}</span>
+    <PanelTabStyled onClick={onClick}>
+      {isClosed ? <FiChevronUp className="icon" /> : <FiChevronDown className="icon" />}
+      <span>{isClosed ? "Ouvrir" : "Réduire"}</span>
     </PanelTabStyled>
   )
 }

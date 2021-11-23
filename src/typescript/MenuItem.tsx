@@ -1,5 +1,5 @@
 export interface MenuItem {
-  id?: number
+  id?: number | undefined
   imageSource?: string
   title?: string
   price?: number

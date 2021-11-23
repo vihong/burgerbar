@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react"
 import OrderContext from "context/OrderContext"
 import Navbar from "components/molecules/Navbar"
-import Menu from "components/organisms/Menu"
+import Menu from "components/pages/Order/Menu"
 import styled from "styled-components/macro"
-import PanelAdmin from "components/organisms/PanelAdmin"
+import PanelAdmin from "./PanelAdmin/PanelAdmin"
 import { MenuItem } from "typescript/MenuItem"
 import { burgersInMenu } from "fakeData/burgers"
 
@@ -18,8 +18,8 @@ export const EMPTY_PRODUCT = {
   price: undefined,
 }
 
-export default function Orders(props: OrderProps) {
-  const [isModeAdmin, setIsModeAdmin] = useState(false)
+export default function Order(props: OrderProps) {
+  const [isModeAdmin, setIsModeAdmin] = useState(true)
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>(burgersInMenu)
 
@@ -38,7 +38,7 @@ export default function Orders(props: OrderProps) {
     setMenuItems(menuItemsCopy)
   }
 
-  const handleDelete = (idToDelete: number): void => {
+  const handleDelete = (idToDelete: number | undefined): void => {
     const menuItemsCopy = [...menuItems]
     const menuItemsUpdated = menuItemsCopy.filter((menuItem) => menuItem.id !== idToDelete)
     setMenuItems(menuItemsUpdated)

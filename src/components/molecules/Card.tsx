@@ -1,67 +1,45 @@
-import React, { useContext } from "react"
-import AddPlusButtons from "components/atoms/AddPlusButtons"
+import React from "react"
 import styled from "styled-components/macro"
 import { theme } from "theme/index"
-import { formatPrice } from "utils/maths"
 import Button from "components/atoms/Button"
-import OrderContext from "context/OrderContext"
+
+const IMAGE_BY_DEFAULT = "images/coming-soon.png"
 
 interface CardProps {
   imageSource?: string
   title?: string
   price?: number | undefined
   [x: string]: any
+  onDeleteButton?: any
+  onCardClick?: any
+  hasDeleteButton?: boolean | undefined
+  isHoverable?: boolean
+  bottomLeftDescription?: string
+  bottomRightDescription?: JSX.Element
 }
 
-const IMAGE_BY_DEFAULT = "images/coming-soon.png"
-
 export default function Card(props: CardProps) {
-  const { id, imageSource, title, price } = props
-
   const {
-    menuItems,
-    isModeAdmin,
-    handleDelete,
-    setItemBeingSelected,
-    titleEditBoxRef,
-    setIsEditFormVisible,
-    setIsAddFormVisible,
-    setIsCollapsed,
-  } = useContext(OrderContext)
-
-  const handleDeleteButton = (event: React.MouseEvent<HTMLElement>) => {
-    event.stopPropagation()
-    handleDelete(id)
-    setItemBeingSelected({ id: 0, title: "", imageSource: "", price: 0 })
-  }
-
-  //@ts-ignore
-  const handleCardSelected = async (idSelected: number): void => {
-    if (!isModeAdmin) return
-    const itemBeingSelected = menuItems?.find((item) => item.id === idSelected)
-    //@ts-ignore
-    setItemBeingSelected(itemBeingSelected)
-    await setIsCollapsed(false)
-    await setIsAddFormVisible(false)
-    await setIsEditFormVisible(true)
-    titleEditBoxRef.current.focus()
-  }
+    imageSource,
+    title,
+    bottomLeftDescription,
+    bottomRightDescription,
+    onDeleteButton,
+    onCardClick,
+    hasDeleteButton,
+    isHoverable,
+  } = props
 
   return (
-    <CardStyled
-      onClick={() => handleCardSelected(id)}
-      className={isModeAdmin ? "is-hoverable" : ""}
-    >
-      {isModeAdmin && <Button label={"X"} className="delete-button" onClick={handleDeleteButton} />}
+    <CardStyled onClick={onCardClick} className={isHoverable ? "is-hoverable" : ""}>
+      {hasDeleteButton && <Button label={"X"} className="delete-button" onClick={onDeleteButton} />}
       <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
 
       <div className="card-text">
         <span className="card-title">{title}</span>
         <div className="card-description">
-          <span className="left-description">{formatPrice(price)}</span>
-          <span className="right-description">
-            <AddPlusButtons />
-          </span>
+          <span className="left-description">{bottomLeftDescription}</span>
+          <span className="right-description">{bottomRightDescription}</span>
         </div>
       </div>
     </CardStyled>
