@@ -1,5 +1,5 @@
 import { Router } from "@reach/router"
-import Order from "./components/pages/Order"
+import Order from "./components/pages/order/Order"
 import Login from "./components/pages/Login"
 
 export default function App() {

@@ -18,7 +18,7 @@ export const EMPTY_PRODUCT = {
   price: undefined,
 }
 
-export default function Orders(props: OrderProps) {
+export default function Order(props: OrderProps) {
   const [isModeAdmin, setIsModeAdmin] = useState(true)
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>(burgersInMenu)
