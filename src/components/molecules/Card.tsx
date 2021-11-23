@@ -11,29 +11,23 @@ interface CardProps {
   title?: string
   price?: number | undefined
   [x: string]: any
+  onDeleteButton: any
 }
 
 const IMAGE_BY_DEFAULT = "images/coming-soon.png"
 
 export default function Card(props: CardProps) {
-  const { id, imageSource, title, price } = props
+  const { id, imageSource, title, price, onDeleteButton } = props
 
   const {
     menuItems,
     isModeAdmin,
-    handleDelete,
     setItemBeingSelected,
     titleEditBoxRef,
     setIsEditFormVisible,
     setIsAddFormVisible,
     setIsCollapsed,
   } = useContext(OrderContext)
-
-  const handleDeleteButton = (event: React.MouseEvent<HTMLElement>) => {
-    event.stopPropagation()
-    handleDelete(id)
-    setItemBeingSelected({ id: 0, title: "", imageSource: "", price: 0 })
-  }
 
   //@ts-ignore
   const handleCardSelected = async (idSelected: number): void => {
@@ -52,7 +46,7 @@ export default function Card(props: CardProps) {
       onClick={() => handleCardSelected(id)}
       className={isModeAdmin ? "is-hoverable" : ""}
     >
-      {isModeAdmin && <Button label={"X"} className="delete-button" onClick={handleDeleteButton} />}
+      {isModeAdmin && <Button label={"X"} className="delete-button" onClick={onDeleteButton} />}
       <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
 
       <div className="card-text">

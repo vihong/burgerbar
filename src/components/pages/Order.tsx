@@ -19,7 +19,7 @@ export const EMPTY_PRODUCT = {
 }
 
 export default function Orders(props: OrderProps) {
-  const [isModeAdmin, setIsModeAdmin] = useState(false)
+  const [isModeAdmin, setIsModeAdmin] = useState(true)
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>(burgersInMenu)
 
@@ -38,7 +38,7 @@ export default function Orders(props: OrderProps) {
     setMenuItems(menuItemsCopy)
   }
 
-  const handleDelete = (idToDelete: number): void => {
+  const handleDelete = (idToDelete: number | undefined): void => {
     const menuItemsCopy = [...menuItems]
     const menuItemsUpdated = menuItemsCopy.filter((menuItem) => menuItem.id !== idToDelete)
     setMenuItems(menuItemsUpdated)

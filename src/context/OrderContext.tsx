@@ -8,7 +8,7 @@ interface OrderContextValue {
   menuItems?: MenuItem[]
   setMenuItems?: any
   handleAdd: (itemCreated: MenuItem) => void
-  handleDelete: (id: number) => void
+  handleDelete: (id: number | undefined) => void
   handleEdit: (itemToEdit: MenuItem) => void
   itemBeingSelected: MenuItem
   setItemBeingSelected: React.Dispatch<React.SetStateAction<MenuItem>>

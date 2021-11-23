@@ -5,12 +5,24 @@ import OrderContext from "context/OrderContext"
 import { theme } from "theme"
 
 export default function Menu() {
-  const { menuItems } = useContext(OrderContext)
+  const { menuItems, handleDelete, setItemBeingSelected } = useContext(OrderContext)
+
+  const handleDeleteButton = (event: React.MouseEvent<HTMLElement>, id: number | undefined) => {
+    event.stopPropagation()
+    handleDelete(id)
+    setItemBeingSelected({ id: 0, title: "", imageSource: "", price: 0 })
+  }
 
   return (
     <MenuStyled>
       {menuItems?.map((burger) => (
-        <Card key={burger.id} {...burger} />
+        <Card
+          key={burger.id}
+          {...burger}
+          onDeleteButton={(event: React.MouseEvent<HTMLElement>) =>
+            handleDeleteButton(event, burger.id)
+          }
+        />
       ))}
     </MenuStyled>
   )
