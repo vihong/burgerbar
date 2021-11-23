@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react"
 import OrderContext from "context/OrderContext"
 import Navbar from "components/molecules/Navbar"
-import Menu from "components/pages/order/Menu"
+import Menu from "components/pages/Order/Menu"
 import styled from "styled-components/macro"
 import PanelAdmin from "./PanelAdmin/PanelAdmin"
 import { MenuItem } from "typescript/MenuItem"
