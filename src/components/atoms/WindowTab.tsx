@@ -7,7 +7,7 @@ interface PanelTabProps {
   onClick?: any
 }
 
-export default function PanelTab({ isClosed, onClick }: PanelTabProps) {
+export default function WindowTab({ isClosed, onClick }: PanelTabProps) {
   return (
     <PanelTabStyled onClick={onClick}>
       {isClosed ? <FiChevronUp className="icon" /> : <FiChevronDown className="icon" />}
