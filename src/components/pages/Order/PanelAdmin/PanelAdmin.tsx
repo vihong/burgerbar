@@ -2,7 +2,7 @@ import OrderContext from "context/OrderContext"
 import { useContext } from "react"
 import styled from "styled-components/macro"
 import WindowTab from "components/atoms/WindowTab"
-import PanelWindow from "components/pages/order/Panel/PanelWindow"
+import PanelWindow from "components/pages/order/PanelAdmin/PanelWindow"
 
 export default function PanelAdmin() {
   const { isCollapsed, setIsCollapsed } = useContext(OrderContext)

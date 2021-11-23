@@ -3,7 +3,7 @@ import OrderContext from "context/OrderContext"
 import Navbar from "components/molecules/Navbar"
 import Menu from "components/pages/order/Menu"
 import styled from "styled-components/macro"
-import PanelAdmin from "components/organisms/PanelAdmin"
+import PanelAdmin from "./PanelAdmin/PanelAdmin"
 import { MenuItem } from "typescript/MenuItem"
 import { burgersInMenu } from "fakeData/burgers"
 
