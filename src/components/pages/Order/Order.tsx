@@ -6,6 +6,8 @@ import styled from "styled-components/macro"
 import PanelAdmin from "./PanelAdmin/PanelAdmin"
 import { MenuItem } from "typescript/MenuItem"
 import { burgersInMenu } from "fakeData/burgers"
+import { theme } from "theme"
+import Main from "./Main"
 
 interface OrderProps {
   path: string
@@ -74,8 +76,9 @@ export default function Order(props: OrderProps) {
     <OrderStyled>
       <OrderContext.Provider value={orderContextValue}>
         <Navbar />
-        <Menu />
-        {isModeAdmin && <PanelAdmin />}
+        <Main />
+        {/* <Menu /> */}
+        {/* {isModeAdmin && <PanelAdmin />} */}
       </OrderContext.Provider>
     </OrderStyled>
   )
