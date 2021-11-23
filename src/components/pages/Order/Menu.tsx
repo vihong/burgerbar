@@ -57,16 +57,16 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.div`
-  flex: 1;
   display: flex;
+  flex: 1;
   flex-wrap: wrap;
   background-color: ${theme.colors.background_white};
   justify-content: flex-start;
   align-items: flex-start;
-  /* padding: 30px; */
+  padding: 30px;
   overflow-y: scroll;
   > div {
-    /* margin: 20px 50px; */
+    margin: 20px auto;
   }
 
   .is-hoverable {

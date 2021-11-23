@@ -34,10 +34,15 @@ const MainStyled = styled.div`
     height: 92vh;
     display: flex;
 
+    // menu
     > div:first-child {
       border: 3px solid red;
       overflow-y: scroll;
+      display: flex;
+      justify-content: space-evenly;
     }
+
+    // panel-admin
     > div:nth-child(2) {
       border: 3px solid blue;
     }
