@@ -21,7 +21,7 @@ export const EMPTY_PRODUCT = {
 }
 
 export default function Order(props: OrderProps) {
-  const [isModeAdmin, setIsModeAdmin] = useState(true)
+  const [isModeAdmin, setIsModeAdmin] = useState(false)
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>(burgersInMenu)
 
@@ -77,8 +77,6 @@ export default function Order(props: OrderProps) {
       <OrderContext.Provider value={orderContextValue}>
         <Navbar />
         <Main />
-        {/* <Menu /> */}
-        {/* {isModeAdmin && <PanelAdmin />} */}
       </OrderContext.Provider>
     </OrderStyled>
   )

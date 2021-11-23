@@ -63,10 +63,10 @@ const MenuStyled = styled.div`
   background-color: ${theme.colors.background_white};
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 30px;
+  /* padding: 30px; */
   overflow-y: scroll;
   > div {
-    margin: 20px 50px;
+    /* margin: 20px 50px; */
   }
 
   .is-hoverable {

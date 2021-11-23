@@ -1,13 +1,17 @@
-import React from "react"
+import OrderContext from "context/OrderContext"
+import React, { useContext } from "react"
 import styled from "styled-components/macro"
+import Menu from "./Menu"
+import PanelAdmin from "./PanelAdmin/PanelAdmin"
 
 export default function Main() {
+  const { isModeAdmin } = useContext(OrderContext)
   return (
     <MainStyled>
       <div className="sidebar">SideBar</div>
       <div className="menu-container">
-        <div className="menu">Menu</div>
-        <div className="panel-admin">Panel Admin</div>
+        <Menu />
+        {isModeAdmin && <PanelAdmin />}
       </div>
     </MainStyled>
   )
@@ -26,16 +30,16 @@ const MainStyled = styled.div`
   .menu-container {
     background: red;
     grid-column: 2/6;
-    display: grid;
-    grid-template-rows: 75% 25%;
+    position: relative;
+    height: 92vh;
+    display: flex;
 
-    .menu {
-      background: blue;
-      /* grid-row: 1/ 5; */
+    > div:first-child {
+      border: 3px solid red;
+      overflow-y: scroll;
     }
-    .panel-admin {
-      background: lightgrey;
-      /* grid-row: 5/6; */
+    > div:nth-child(2) {
+      border: 3px solid blue;
     }
   }
 `
