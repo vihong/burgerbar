@@ -1,6 +1,7 @@
 import OrderContext from "context/OrderContext"
 import React, { useContext } from "react"
 import styled from "styled-components/macro"
+import Basket from "./Basket"
 import Menu from "./Menu"
 import PanelAdmin from "./PanelAdmin/PanelAdmin"
 
@@ -8,7 +9,7 @@ export default function Main() {
   const { isModeAdmin } = useContext(OrderContext)
   return (
     <MainStyled>
-      <div className="sidebar">SideBar</div>
+      <Basket />
       <div className="menu-container">
         <Menu />
         {isModeAdmin && <PanelAdmin />}
