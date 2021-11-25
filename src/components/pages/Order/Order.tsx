@@ -5,7 +5,7 @@ import styled from "styled-components/macro"
 import { MenuItem } from "typescript/MenuItem"
 import { fakeMenu } from "fakeData/fakeProducts"
 import Main from "./Main"
-import { BasketItem } from "typescript/BasktItem"
+import { BasketItem } from "typescript/BasketItem"
 
 interface OrderProps {
   path: string
@@ -25,7 +25,14 @@ export default function Order(props: OrderProps) {
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
 
-  const [basket, setBasket] = useState<BasketItem[]>([])
+  const [basket, setBasket] = useState<BasketItem[]>([
+    {
+      id: 1,
+      title: "Burger Meal",
+      imageSource: "images/burger1.png",
+      quantity: 1,
+    },
+  ])
 
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isAddFormVisible, setIsAddFormVisible] = useState(false)
@@ -53,14 +60,32 @@ export default function Order(props: OrderProps) {
     setMenuItems(menuItemsCopy)
   }
 
-  const addToBasket = (burgerTitle: string | undefined) => {
-    console.log("burgerTitle: ", burgerTitle)
-    //1 copy
-    // const basketCopy = [...basket]
-    //2
-    // basketCopy.burgerTitle =  b
+  const handleAddToBasket = (productAdded: MenuItem) => {
+    console.log("productAdded: ", productAdded)
 
-    //3
+    //1. Copy state before any potential work on it
+    const basketCopy = [...basket]
+
+    const indexOfExistingProductInBasket = basketCopy.findIndex(
+      (basketItem) => basketItem.id === productAdded.id
+    )
+
+    if (indexOfExistingProductInBasket == -1) {
+      // create new basketItem
+      const newBasketItem: BasketItem = {
+        id: productAdded.id,
+        title: productAdded.title,
+        imageSource: productAdded.imageSource,
+        quantity: 1,
+      }
+      // add new basketItem to basketCopy
+      setBasket([...basketCopy, newBasketItem])
+      // setState
+    } else {
+      basketCopy[indexOfExistingProductInBasket].quantity += 1
+      console.log("basketCopy after update: ", basketCopy[indexOfExistingProductInBasket])
+      setBasket(basketCopy)
+    }
   }
 
   const orderContextValue = {
@@ -80,7 +105,7 @@ export default function Order(props: OrderProps) {
     setIsAddFormVisible,
     isCollapsed,
     setIsCollapsed,
-    addToBasket,
+    handleAddToBasket,
     basket,
     setBasket,
   }

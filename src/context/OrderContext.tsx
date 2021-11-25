@@ -1,5 +1,5 @@
 import { createContext } from "react"
-import { BasketItem } from "typescript/BasktItem"
+import { BasketItem } from "typescript/BasketItem"
 import { MenuItem } from "typescript/MenuItem"
 import { createNewItem } from "utils/businessLogic"
 
@@ -20,7 +20,7 @@ interface OrderContextValue {
   setIsEditFormVisible: React.Dispatch<React.SetStateAction<boolean>>
   isCollapsed: boolean
   setIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>
-  addToBasket: (burgerTitle: string | undefined) => void
+  handleAddToBasket: (burger: MenuItem) => void
   basket: BasketItem[]
   setBasket: React.Dispatch<React.SetStateAction<BasketItem[]>>
 }
@@ -42,7 +42,7 @@ export default createContext<OrderContextValue>({
   setIsEditFormVisible: () => {},
   isCollapsed: false,
   setIsCollapsed: () => {},
-  addToBasket: () => {},
+  handleAddToBasket: () => {},
   basket: [],
   setBasket: () => {},
 })

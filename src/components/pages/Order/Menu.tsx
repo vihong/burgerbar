@@ -16,7 +16,7 @@ export default function Menu() {
     setIsAddFormVisible,
     setIsEditFormVisible,
     titleEditBoxRef,
-    addToBasket,
+    handleAddToBasket,
   } = useContext(OrderContext)
 
   //@ts-ignore
@@ -37,12 +37,6 @@ export default function Menu() {
     setItemBeingSelected({ id: 0, title: "", imageSource: "", price: 0 })
   }
 
-  const handleAddButton = (burgerTitle: string | undefined) => {
-    console.log("burgerTitle: ", burgerTitle)
-
-    addToBasket(burgerTitle)
-  }
-
   return (
     <MenuStyled>
       {menuItems?.map((burger) => (
@@ -57,7 +51,7 @@ export default function Menu() {
           isHoverable={isModeAdmin}
           bottomLeftDescription={formatPrice(burger.price)}
           bottomRightDescription={
-            <Button label="Ajouter" onClick={() => handleAddButton(burger.title)} />
+            <Button label="Ajouter" onClick={() => handleAddToBasket(burger)} />
           }
         />
       ))}
