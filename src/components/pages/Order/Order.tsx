@@ -62,6 +62,7 @@ export default function Order(props: OrderProps) {
 
   const handleAddToBasket = (productAdded: MenuItem) => {
     console.log("productAdded: ", productAdded)
+    console.log("basket: ", basket)
 
     //1. Copy state before any potential work on it
     const basketCopy = [...basket]
@@ -70,7 +71,9 @@ export default function Order(props: OrderProps) {
       (basketItem) => basketItem.id === productAdded.id
     )
 
-    if (indexOfExistingProductInBasket == -1) {
+    const isInBasket = indexOfExistingProductInBasket !== -1 ? true : false
+
+    if (!isInBasket) {
       // create new basketItem
       const newBasketItem: BasketItem = {
         id: productAdded.id,
