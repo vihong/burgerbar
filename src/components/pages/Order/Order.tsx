@@ -3,9 +3,10 @@ import OrderContext from "context/OrderContext"
 import Navbar from "components/molecules/Navbar"
 import styled from "styled-components/macro"
 import { MenuItem } from "typescript/MenuItem"
-import { fakeMenu } from "fakeData/fakeProducts"
+import { fakeMenu1 } from "fakeData/fakeMenu"
 import Main from "./Main"
 import { useBasket } from "hooks/useBasket"
+import { fakeBasket1 } from "fakeData/fakeBasket"
 
 interface OrderProps {
   path: string
@@ -21,18 +22,11 @@ export const EMPTY_PRODUCT = {
 export default function Order(props: OrderProps) {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
-  const [menuItems, setMenuItems] = useState<MenuItem[]>(fakeMenu)
+  const [menuItems, setMenuItems] = useState<MenuItem[]>(fakeMenu1)
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
 
-  const { basket, handleAddToBasket } = useBasket([
-    {
-      id: 1,
-      title: "Burger Meal",
-      imageSource: "images/burger1.png",
-      quantity: 1,
-    },
-  ])
+  const { basket, handleAddToBasket } = useBasket(fakeBasket1)
 
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isAddFormVisible, setIsAddFormVisible] = useState(false)
