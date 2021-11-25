@@ -7,6 +7,7 @@ import { fakeMenu1 } from "fakeData/fakeMenu"
 import Main from "./Main"
 import { useBasket } from "hooks/useBasket"
 import { fakeBasket1 } from "fakeData/fakeBasket"
+import { useMenu } from "hooks/useMenu"
 
 interface OrderProps {
   path: string
@@ -22,37 +23,15 @@ export const EMPTY_PRODUCT = {
 export default function Order(props: OrderProps) {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
-  const [menuItems, setMenuItems] = useState<MenuItem[]>(fakeMenu1)
-
-  const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
-
+  const { menuItems, setMenuItems, handleAdd, handleEdit, handleDelete } = useMenu(fakeMenu1)
   const { basket, handleAddToBasket } = useBasket(fakeBasket1)
 
+  const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isAddFormVisible, setIsAddFormVisible] = useState(false)
   const [isEditFormVisible, setIsEditFormVisible] = useState(false)
 
   const titleEditBoxRef = useRef()
-
-  const handleAdd = (itemCreated: MenuItem) => {
-    const menuItemsCopy = [...menuItems]
-
-    menuItemsCopy.unshift(itemCreated)
-    setMenuItems(menuItemsCopy)
-  }
-
-  const handleDelete = (idToDelete: number | undefined): void => {
-    const menuItemsCopy = [...menuItems]
-    const menuItemsUpdated = menuItemsCopy.filter((menuItem) => menuItem.id !== idToDelete)
-    setMenuItems(menuItemsUpdated)
-  }
-
-  const handleEdit = (itemUpdated: MenuItem): void => {
-    const menuItemsCopy = [...menuItems]
-    const idOfItemUpdated: any = menuItems.findIndex((item) => item.id === itemUpdated.id)
-    menuItemsCopy[idOfItemUpdated] = itemUpdated
-    setMenuItems(menuItemsCopy)
-  }
 
   const orderContextValue = {
     isModeAdmin,
