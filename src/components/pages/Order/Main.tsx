@@ -1,6 +1,7 @@
 import OrderContext from "context/OrderContext"
 import React, { useContext } from "react"
 import styled from "styled-components/macro"
+import { theme } from "theme"
 import Basket from "./Basket"
 import Menu from "./Menu"
 import PanelAdmin from "./PanelAdmin/PanelAdmin"
@@ -19,25 +20,23 @@ export default function Main() {
 }
 
 const MainStyled = styled.div`
-  background: pink;
+  /* background: pink; */
   flex: 1;
   display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-columns: 25% 1fr;
 
   .sidebar {
-    background: green;
-    grid-column: 1/2;
+    /* background: green; */
   }
   .menu-container {
-    background: red;
-    grid-column: 2/6;
+    /* background: red; */
     position: relative;
     height: 92vh;
     display: flex;
 
     // menu
     > div:first-child {
-      border: 3px solid red;
+      border-left: 1px solid ${theme.colors.greyLight};
       overflow-y: scroll;
       display: flex;
       justify-content: space-evenly;
@@ -45,7 +44,7 @@ const MainStyled = styled.div`
 
     // panel-admin
     > div:nth-child(2) {
-      border: 3px solid blue;
+      /* border: 3px solid blue; */
     }
   }
 `
