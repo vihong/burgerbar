@@ -1,3 +1,4 @@
+import CardSecondary from "components/molecules/CardSecondary"
 import OrderContext from "context/OrderContext"
 import { useContext } from "react"
 import styled from "styled-components/macro"
@@ -6,10 +7,17 @@ import { theme } from "theme"
 export default function Basket() {
   const { basket } = useContext(OrderContext)
 
+  console.log("basket: ", basket)
   return (
     <BasketStyled>
       <Header />
-      <div className="products">{basket.length === 0 && <span>Basket is Empty</span>}</div>
+      <div className="products">
+        {basket.length === 0 ? (
+          <span>Basket is Empty</span>
+        ) : (
+          basket.map((basketItem) => <CardSecondary key={basketItem.id} {...basketItem} />)
+        )}
+      </div>
     </BasketStyled>
   )
 }
