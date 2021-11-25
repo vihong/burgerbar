@@ -16,7 +16,7 @@ export default function PanelWindow() {
       {isAddFormVisible && (
         <AddForm formTitle="Ajouter un produit" buttonLabel="Ajouter un produit" />
       )}
-      {isEditFormVisible && <EditForm formTitle="Modifier un produit" />}
+      {isEditFormVisible && <EditForm formTitle="Modifier un produit en temps réel" />}
     </PanelWindowStyled>
   )
 }

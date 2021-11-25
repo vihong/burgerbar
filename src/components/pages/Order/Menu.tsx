@@ -5,6 +5,7 @@ import OrderContext from "context/OrderContext"
 import { theme } from "theme"
 import { formatPrice } from "utils/maths"
 import Button from "components/atoms/Button"
+import { MenuItem } from "typescript/MenuItem"
 
 export default function Menu() {
   const {
@@ -37,6 +38,11 @@ export default function Menu() {
     setItemBeingSelected({ id: 0, title: "", imageSource: "", price: 0 })
   }
 
+  const onAddButton = (event: React.MouseEvent<HTMLElement>, burger: MenuItem) => {
+    event.stopPropagation()
+    handleAddToBasket(burger)
+  }
+
   return (
     <MenuStyled>
       {menuItems?.map((burger) => (
@@ -51,7 +57,10 @@ export default function Menu() {
           isHoverable={isModeAdmin}
           bottomLeftDescription={formatPrice(burger.price)}
           bottomRightDescription={
-            <Button label="Ajouter" onClick={() => handleAddToBasket(burger)} />
+            <Button
+              label="Ajouter"
+              onClick={(event: React.MouseEvent<HTMLElement>) => onAddButton(event, burger)}
+            />
           }
         />
       ))}
