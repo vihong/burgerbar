@@ -5,7 +5,7 @@ import styled from "styled-components/macro"
 import { MenuItem } from "typescript/MenuItem"
 import { fakeMenu } from "fakeData/fakeProducts"
 import Main from "./Main"
-import { BasketItem } from "typescript/BasketItem"
+import { useBasket } from "hooks/useBasket"
 
 interface OrderProps {
   path: string
@@ -25,7 +25,7 @@ export default function Order(props: OrderProps) {
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
 
-  const [basket, setBasket] = useState<BasketItem[]>([
+  const { basket, setBasket, handleAddToBasket } = useBasket([
     {
       id: 1,
       title: "Burger Meal",
@@ -58,33 +58,6 @@ export default function Order(props: OrderProps) {
     const idOfItemUpdated: any = menuItems.findIndex((item) => item.id === itemUpdated.id)
     menuItemsCopy[idOfItemUpdated] = itemUpdated
     setMenuItems(menuItemsCopy)
-  }
-
-  const handleAddToBasket = (productAdded: MenuItem) => {
-    //1. Copy state before any potential work on it
-    const basketCopy = [...basket]
-
-    const indexOfExistingProductInBasket = basketCopy.findIndex(
-      (basketItem) => basketItem.id === productAdded.id
-    )
-
-    const isInBasket = indexOfExistingProductInBasket !== -1 ? true : false
-
-    if (!isInBasket) {
-      // create new basketItem
-      const newBasketItem: BasketItem = {
-        id: productAdded.id,
-        title: productAdded.title,
-        imageSource: productAdded.imageSource,
-        quantity: 1,
-      }
-      // add new basketItem to basketCopy
-      setBasket([...basketCopy, newBasketItem])
-      // setState
-    } else {
-      basketCopy[indexOfExistingProductInBasket].quantity += 1
-      setBasket(basketCopy)
-    }
   }
 
   const orderContextValue = {
