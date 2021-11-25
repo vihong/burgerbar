@@ -1,6 +1,4 @@
-import CardSecondary from "components/molecules/CardSecondary"
 import OrderContext from "context/OrderContext"
-import { fakeBasket } from "fakeData/fakeProducts"
 import { useContext } from "react"
 import styled from "styled-components/macro"
 import { theme } from "theme"

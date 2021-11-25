@@ -56,7 +56,7 @@ export default function Order(props: OrderProps) {
   const addToBasket = (burgerTitle: string | undefined) => {
     console.log("burgerTitle: ", burgerTitle)
     //1 copy
-    const basketCopy = [...basket]
+    // const basketCopy = [...basket]
     //2
     // basketCopy.burgerTitle =  b
 
