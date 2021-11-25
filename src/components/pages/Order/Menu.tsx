@@ -1,10 +1,10 @@
 import React, { useContext } from "react"
-import Card from "components/molecules/Card"
+import CardPrimary from "components/molecules/CardPrimary"
 import styled from "styled-components/macro"
 import OrderContext from "context/OrderContext"
 import { theme } from "theme"
 import { formatPrice } from "utils/maths"
-import AddPlusButtons from "components/atoms/AddPlusButtons"
+import Button from "components/atoms/Button"
 
 export default function Menu() {
   const {
@@ -16,6 +16,7 @@ export default function Menu() {
     setIsAddFormVisible,
     setIsEditFormVisible,
     titleEditBoxRef,
+    addToBasket,
   } = useContext(OrderContext)
 
   //@ts-ignore
@@ -36,10 +37,16 @@ export default function Menu() {
     setItemBeingSelected({ id: 0, title: "", imageSource: "", price: 0 })
   }
 
+  const handleAddButton = (burgerTitle: string | undefined) => {
+    console.log("burgerTitle: ", burgerTitle)
+
+    addToBasket(burgerTitle)
+  }
+
   return (
     <MenuStyled>
       {menuItems?.map((burger) => (
-        <Card
+        <CardPrimary
           key={burger.id}
           {...burger}
           onDeleteButton={(event: React.MouseEvent<HTMLElement>) =>
@@ -49,7 +56,9 @@ export default function Menu() {
           hasDeleteButton={isModeAdmin}
           isHoverable={isModeAdmin}
           bottomLeftDescription={formatPrice(burger.price)}
-          bottomRightDescription={<AddPlusButtons />}
+          bottomRightDescription={
+            <Button label="Ajouter" onClick={() => handleAddButton(burger.title)} />
+          }
         />
       ))}
     </MenuStyled>
@@ -65,6 +74,8 @@ const MenuStyled = styled.div`
   align-items: flex-start;
   padding: 30px;
   overflow-y: scroll;
+  box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%) inset;
+
   > div {
     margin: 20px auto;
   }

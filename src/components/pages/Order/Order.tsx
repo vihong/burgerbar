@@ -1,13 +1,11 @@
 import React, { useRef, useState } from "react"
 import OrderContext from "context/OrderContext"
 import Navbar from "components/molecules/Navbar"
-import Menu from "components/pages/Order/Menu"
 import styled from "styled-components/macro"
-import PanelAdmin from "./PanelAdmin/PanelAdmin"
 import { MenuItem } from "typescript/MenuItem"
-import { burgersInMenu } from "fakeData/burgers"
-import { theme } from "theme"
+import { fakeMenu } from "fakeData/fakeProducts"
 import Main from "./Main"
+import { BasketItem } from "typescript/BasktItem"
 
 interface OrderProps {
   path: string
@@ -23,9 +21,11 @@ export const EMPTY_PRODUCT = {
 export default function Order(props: OrderProps) {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
-  const [menuItems, setMenuItems] = useState<MenuItem[]>(burgersInMenu)
+  const [menuItems, setMenuItems] = useState<MenuItem[]>(fakeMenu)
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
+
+  const [basket, setBasket] = useState<BasketItem[]>([])
 
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isAddFormVisible, setIsAddFormVisible] = useState(false)
@@ -53,6 +53,16 @@ export default function Order(props: OrderProps) {
     setMenuItems(menuItemsCopy)
   }
 
+  const addToBasket = (burgerTitle: string | undefined) => {
+    console.log("burgerTitle: ", burgerTitle)
+    //1 copy
+    const basketCopy = [...basket]
+    //2
+    // basketCopy.burgerTitle =  b
+
+    //3
+  }
+
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -70,6 +80,9 @@ export default function Order(props: OrderProps) {
     setIsAddFormVisible,
     isCollapsed,
     setIsCollapsed,
+    addToBasket,
+    basket,
+    setBasket,
   }
 
   return (
@@ -86,4 +99,7 @@ const OrderStyled = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 1400px;
+  margin: auto;
+  box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
 `

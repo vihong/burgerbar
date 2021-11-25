@@ -1,27 +1,28 @@
 import CardSecondary from "components/molecules/CardSecondary"
+import OrderContext from "context/OrderContext"
 import { fakeBasket } from "fakeData/fakeProducts"
+import { useContext } from "react"
 import styled from "styled-components/macro"
 import { theme } from "theme"
 
-interface BasketItem {
-  imageSource?: string
-  title?: string
-  quantity: number
-}
-
 export default function Basket() {
+  const { basket } = useContext(OrderContext)
+
   return (
     <BasketStyled>
-      <div className="header">
-        <span>Votre commande :</span>
-        <span>Total</span>
-      </div>
-      <div className="products">
-        {fakeBasket.map((product) => {
-          return <CardSecondary {...product} />
-        })}
-      </div>
+      <Header />
+      <div className="products">{basket.length === 0 && <span>Basket is Empty</span>}</div>
     </BasketStyled>
+  )
+}
+
+// TODO: move to atoms
+function Header() {
+  return (
+    <div className="header">
+      <span>Votre commande :</span>
+      <span>Total</span>
+    </div>
   )
 }
 

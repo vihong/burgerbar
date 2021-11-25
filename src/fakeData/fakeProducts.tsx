@@ -33,19 +33,19 @@ export const fakeBasket = [
     quantity: 4,
   },
   {
-    id: 5,
+    id: 6,
     imageSource: "images/burger3.png",
     title: "Vegan Burger",
     quantity: 4,
   },
   {
-    id: 5,
+    id: 7,
     imageSource: "images/burger3.png",
     title: "Vegan Burger",
     quantity: 4,
   },
   {
-    id: 5,
+    id: 8,
     imageSource: "images/burger3.png",
     title: "Vegan Burger",
     quantity: 4,
