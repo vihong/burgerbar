@@ -61,9 +61,6 @@ export default function Order(props: OrderProps) {
   }
 
   const handleAddToBasket = (productAdded: MenuItem) => {
-    console.log("productAdded: ", productAdded)
-    console.log("basket: ", basket)
-
     //1. Copy state before any potential work on it
     const basketCopy = [...basket]
 
@@ -86,7 +83,6 @@ export default function Order(props: OrderProps) {
       // setState
     } else {
       basketCopy[indexOfExistingProductInBasket].quantity += 1
-      console.log("basketCopy after update: ", basketCopy[indexOfExistingProductInBasket])
       setBasket(basketCopy)
     }
   }
