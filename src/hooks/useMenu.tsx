@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { MenuItem } from "typescript/MenuItem"
 
 export const useMenu = (menuInitialValues: MenuItem[]) => {
@@ -23,5 +23,5 @@ export const useMenu = (menuInitialValues: MenuItem[]) => {
     menuItemsCopy[idOfItemUpdated] = itemUpdated
     setMenuItems(menuItemsCopy)
   }
-  return { menuItems, setMenuItems, handleAdd, handleEdit, handleDelete }
+  return { menuItems, handleAdd, handleEdit, handleDelete }
 }

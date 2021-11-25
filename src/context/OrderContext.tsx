@@ -7,7 +7,6 @@ interface OrderContextValue {
   isModeAdmin?: boolean
   setIsModeAdmin: React.Dispatch<React.SetStateAction<boolean>>
   menuItems?: MenuItem[]
-  setMenuItems?: any
   handleAdd: (itemCreated: MenuItem) => void
   handleDelete: (id: number | undefined) => void
   handleEdit: (itemToEdit: MenuItem) => void
@@ -28,7 +27,6 @@ export default createContext<OrderContextValue>({
   isModeAdmin: false,
   setIsModeAdmin: () => {},
   menuItems: [],
-  setMenuItems: () => {},
   handleAdd: () => {},
   handleDelete: () => {},
   handleEdit: () => {},

@@ -23,7 +23,7 @@ export const EMPTY_PRODUCT = {
 export default function Order(props: OrderProps) {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
-  const { menuItems, setMenuItems, handleAdd, handleEdit, handleDelete } = useMenu(fakeMenu1)
+  const { menuItems, handleAdd, handleEdit, handleDelete } = useMenu(fakeMenu1)
   const { basket, handleAddToBasket } = useBasket(fakeBasket1)
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
@@ -37,7 +37,6 @@ export default function Order(props: OrderProps) {
     isModeAdmin,
     setIsModeAdmin,
     menuItems,
-    setMenuItems,
     handleAdd,
     handleDelete,
     handleEdit,
