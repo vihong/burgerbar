@@ -3,12 +3,11 @@ import styled from "styled-components/macro"
 import { theme } from "theme/index"
 import Button from "components/atoms/Button"
 
-const IMAGE_BY_DEFAULT = "images/coming-soon.png"
+export const IMAGE_BY_DEFAULT = "images/coming-soon.png"
 
-interface CardProps {
+interface CardPrimaryProps {
   imageSource?: string
   title?: string
-  price?: number | undefined
   [x: string]: any
   onDeleteButton?: any
   onCardClick?: any
@@ -18,7 +17,7 @@ interface CardProps {
   bottomRightDescription?: JSX.Element
 }
 
-export default function Card(props: CardProps) {
+export default function CardPrimary(props: CardPrimaryProps) {
   const {
     imageSource,
     title,

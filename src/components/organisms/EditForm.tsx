@@ -148,13 +148,12 @@ const FormStyled = styled.form`
   .inputs-container {
     display: flex;
     .image-edit {
-      height: 100px;
-      width: 100px;
       img {
-        height: 100%;
-        width: 100%;
+        height: 100px;
+        width: 100px;
         object-fit: contain;
         object-position: center;
+        border: 1px solid red;
       }
     }
 
