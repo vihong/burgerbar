@@ -32,5 +32,5 @@ export const useBasket = (basketInitialValues: BasketItem[]) => {
     }
   }
 
-  return { basket, setBasket, handleAddToBasket }
+  return { basket, handleAddToBasket }
 }

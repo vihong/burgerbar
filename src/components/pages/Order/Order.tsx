@@ -25,7 +25,7 @@ export default function Order(props: OrderProps) {
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
 
-  const { basket, setBasket, handleAddToBasket } = useBasket([
+  const { basket, handleAddToBasket } = useBasket([
     {
       id: 1,
       title: "Burger Meal",
@@ -79,7 +79,6 @@ export default function Order(props: OrderProps) {
     setIsCollapsed,
     handleAddToBasket,
     basket,
-    setBasket,
   }
 
   return (
