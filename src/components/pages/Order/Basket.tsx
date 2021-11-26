@@ -5,7 +5,7 @@ import styled from "styled-components/macro"
 import { theme } from "theme"
 
 export default function Basket() {
-  const { basket, menuItems } = useContext(OrderContext)
+  const { menuItems } = useContext(OrderContext)
 
   //const isBasketEmpty = _.has(menuItems)
   // console.log("basket: ", basket)
@@ -13,8 +13,8 @@ export default function Basket() {
     <BasketStyled>
       <Header />
       <div className="products">
-        {basket.length === 0 ? (
-          <span>Basket is Empty</span>
+        <span>Basket is Empty</span>
+        {/* {basket.length === 0 ? (
         ) : (
           basket.map((basketItem) => {
             const burgerFromMenuToDisplayInBasket = menuItems?.find((burger) => {
@@ -30,7 +30,7 @@ export default function Basket() {
               />
             )
           })
-        )}
+        )} */}
       </div>
     </BasketStyled>
   )

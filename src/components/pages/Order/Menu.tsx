@@ -17,7 +17,7 @@ export default function Menu() {
     setIsAddFormVisible,
     setIsEditFormVisible,
     titleEditBoxRef,
-    handleAddToBasket,
+    // handleAddToBasket,
     handleIncrementQuantity,
   } = useContext(OrderContext)
 

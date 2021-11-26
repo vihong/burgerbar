@@ -19,8 +19,8 @@ interface OrderContextValue {
   setIsEditFormVisible: React.Dispatch<React.SetStateAction<boolean>>
   isCollapsed: boolean
   setIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>
-  handleAddToBasket: (burger: MenuItem) => void
-  basket: BasketItem[]
+  // handleAddToBasket: (burger: MenuItem) => void
+  // basket: BasketItem[]
   handleIncrementQuantity: (productAdded: MenuItem) => void
 }
 
@@ -40,7 +40,7 @@ export default createContext<OrderContextValue>({
   setIsEditFormVisible: () => {},
   isCollapsed: false,
   setIsCollapsed: () => {},
-  handleAddToBasket: () => {},
-  basket: [],
+  // handleAddToBasket: () => {},
+  // basket: [],
   handleIncrementQuantity: () => {},
 })
