@@ -1,5 +1,6 @@
 import CardSecondary from "components/molecules/CardSecondary"
 import OrderContext from "context/OrderContext"
+import _ from "lodash"
 import { useContext } from "react"
 import styled from "styled-components/macro"
 import { theme } from "theme"
@@ -7,30 +8,18 @@ import { theme } from "theme"
 export default function Basket() {
   const { menuItems } = useContext(OrderContext)
 
-  //const isBasketEmpty = _.has(menuItems)
-  // console.log("basket: ", basket)
+  const basket = _.filter(menuItems, (item) => item.quantity !== 0)
+  const isBasketEmpty = _.isEmpty(basket)
+
   return (
     <BasketStyled>
       <Header />
       <div className="products">
-        <span>Basket is Empty</span>
-        {/* {basket.length === 0 ? (
+        {isBasketEmpty ? (
+          <span>Basket is Empty</span>
         ) : (
-          basket.map((basketItem) => {
-            const burgerFromMenuToDisplayInBasket = menuItems?.find((burger) => {
-              return burger.id === basketItem.id
-            })
-            // console.log("burgerFromMenuToDisplayInBasket: ", burgerFromMenuToDisplayInBasket)
-
-            return (
-              <CardSecondary
-                key={basketItem.id}
-                {...burgerFromMenuToDisplayInBasket}
-                quantity={basketItem.quantity}
-              />
-            )
-          })
-        )} */}
+          basket.map((basketItem) => <CardSecondary key={basketItem.id} {...basketItem} />)
+        )}
       </div>
     </BasketStyled>
   )
