@@ -18,12 +18,15 @@ export const EMPTY_PRODUCT = {
   title: "",
   imageSource: "",
   price: undefined,
+  added: false,
+  quantity: undefined,
 }
 
 export default function Order(props: OrderProps) {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
-  const { menuItems, handleAdd, handleEdit, handleDelete } = useMenu(fakeMenu1)
+  const { menuItems, handleAdd, handleEdit, handleDelete, handleIncrementQuantity } =
+    useMenu(fakeMenu1)
   const { basket, handleAddToBasket } = useBasket(fakeBasket1)
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
@@ -51,6 +54,7 @@ export default function Order(props: OrderProps) {
     setIsCollapsed,
     handleAddToBasket,
     basket,
+    handleIncrementQuantity,
   }
 
   return (

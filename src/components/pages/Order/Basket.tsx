@@ -7,7 +7,7 @@ import { theme } from "theme"
 export default function Basket() {
   const { basket, menuItems } = useContext(OrderContext)
 
-  console.log("basket: ", basket)
+  // console.log("basket: ", basket)
   return (
     <BasketStyled>
       <Header />
@@ -19,7 +19,7 @@ export default function Basket() {
             const burgerFromMenuToDisplayInBasket = menuItems?.find((burger) => {
               return burger.id === basketItem.id
             })
-            console.log("burgerFromMenuToDisplayInBasket: ", burgerFromMenuToDisplayInBasket)
+            // console.log("burgerFromMenuToDisplayInBasket: ", burgerFromMenuToDisplayInBasket)
 
             return (
               <CardSecondary

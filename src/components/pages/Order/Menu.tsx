@@ -18,6 +18,7 @@ export default function Menu() {
     setIsEditFormVisible,
     titleEditBoxRef,
     handleAddToBasket,
+    handleIncrementQuantity,
   } = useContext(OrderContext)
 
   //@ts-ignore
@@ -40,7 +41,7 @@ export default function Menu() {
 
   const onAddButton = (event: React.MouseEvent<HTMLElement>, burger: MenuItem) => {
     event.stopPropagation()
-    handleAddToBasket(burger)
+    handleIncrementQuantity(burger)
   }
 
   return (

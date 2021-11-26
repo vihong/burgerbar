@@ -21,6 +21,7 @@ interface OrderContextValue {
   setIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>
   handleAddToBasket: (burger: MenuItem) => void
   basket: BasketItem[]
+  handleIncrementQuantity: (productAdded: MenuItem) => void
 }
 
 export default createContext<OrderContextValue>({
@@ -41,4 +42,5 @@ export default createContext<OrderContextValue>({
   setIsCollapsed: () => {},
   handleAddToBasket: () => {},
   basket: [],
+  handleIncrementQuantity: () => {},
 })
