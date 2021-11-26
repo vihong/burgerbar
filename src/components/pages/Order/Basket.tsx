@@ -7,6 +7,7 @@ import { theme } from "theme"
 export default function Basket() {
   const { basket, menuItems } = useContext(OrderContext)
 
+  //const isBasketEmpty = _.has(menuItems)
   // console.log("basket: ", basket)
   return (
     <BasketStyled>

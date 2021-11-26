@@ -5,5 +5,5 @@ export interface MenuItem {
   imageSource?: string
   title?: string
   price?: number
-  quantity?: number
+  quantity: number
 }
