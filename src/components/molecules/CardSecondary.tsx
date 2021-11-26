@@ -42,7 +42,7 @@ const CardSecondaryStyled = styled.div`
     height: 60%;
     width: 100%;
     object-fit: contain;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     display: flex;
     /* background: blue; */
   }
