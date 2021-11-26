@@ -1,5 +1,4 @@
 import { createContext } from "react"
-import { BasketItem } from "typescript/BasketItem"
 import { MenuItem } from "typescript/MenuItem"
 import { createNewItem } from "utils/businessLogic"
 
