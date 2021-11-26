@@ -3,9 +3,11 @@ import OrderContext from "context/OrderContext"
 import Navbar from "components/molecules/Navbar"
 import styled from "styled-components/macro"
 import { MenuItem } from "typescript/MenuItem"
-import { fakeMenu } from "fakeData/fakeProducts"
+import { fakeMenu1 } from "fakeData/fakeMenu"
 import Main from "./Main"
-import { BasketItem } from "typescript/BasktItem"
+// import { useBasket } from "hooks/useBasket"
+// import { fakeBasket1 } from "fakeData/fakeBasket"
+import { useMenu } from "hooks/useMenu"
 
 interface OrderProps {
   path: string
@@ -16,58 +18,28 @@ export const EMPTY_PRODUCT = {
   title: "",
   imageSource: "",
   price: undefined,
+  added: false,
+  quantity: 0,
 }
 
 export default function Order(props: OrderProps) {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
-  const [menuItems, setMenuItems] = useState<MenuItem[]>(fakeMenu)
+  const { menuItems, handleAdd, handleEdit, handleDelete, handleIncrementQuantity } =
+    useMenu(fakeMenu1)
+  // const { basket, handleAddToBasket } = useBasket(fakeBasket1)
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
-
-  const [basket, setBasket] = useState<BasketItem[]>([])
-
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isAddFormVisible, setIsAddFormVisible] = useState(false)
   const [isEditFormVisible, setIsEditFormVisible] = useState(false)
 
   const titleEditBoxRef = useRef()
 
-  const handleAdd = (itemCreated: MenuItem) => {
-    const menuItemsCopy = [...menuItems]
-
-    menuItemsCopy.unshift(itemCreated)
-    setMenuItems(menuItemsCopy)
-  }
-
-  const handleDelete = (idToDelete: number | undefined): void => {
-    const menuItemsCopy = [...menuItems]
-    const menuItemsUpdated = menuItemsCopy.filter((menuItem) => menuItem.id !== idToDelete)
-    setMenuItems(menuItemsUpdated)
-  }
-
-  const handleEdit = (itemUpdated: MenuItem): void => {
-    const menuItemsCopy = [...menuItems]
-    const idOfItemUpdated: any = menuItems.findIndex((item) => item.id === itemUpdated.id)
-    menuItemsCopy[idOfItemUpdated] = itemUpdated
-    setMenuItems(menuItemsCopy)
-  }
-
-  const addToBasket = (burgerTitle: string | undefined) => {
-    console.log("burgerTitle: ", burgerTitle)
-    //1 copy
-    // const basketCopy = [...basket]
-    //2
-    // basketCopy.burgerTitle =  b
-
-    //3
-  }
-
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
     menuItems,
-    setMenuItems,
     handleAdd,
     handleDelete,
     handleEdit,
@@ -80,9 +52,9 @@ export default function Order(props: OrderProps) {
     setIsAddFormVisible,
     isCollapsed,
     setIsCollapsed,
-    addToBasket,
-    basket,
-    setBasket,
+    // handleAddToBasket,
+    // basket,
+    handleIncrementQuantity,
   }
 
   return (

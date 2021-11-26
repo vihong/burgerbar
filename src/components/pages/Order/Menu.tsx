@@ -5,6 +5,7 @@ import OrderContext from "context/OrderContext"
 import { theme } from "theme"
 import { formatPrice } from "utils/maths"
 import Button from "components/atoms/Button"
+import { MenuItem } from "typescript/MenuItem"
 
 export default function Menu() {
   const {
@@ -16,7 +17,8 @@ export default function Menu() {
     setIsAddFormVisible,
     setIsEditFormVisible,
     titleEditBoxRef,
-    addToBasket,
+    // handleAddToBasket,
+    handleIncrementQuantity,
   } = useContext(OrderContext)
 
   //@ts-ignore
@@ -34,13 +36,12 @@ export default function Menu() {
   const handleDeleteButton = (event: React.MouseEvent<HTMLElement>, id: number | undefined) => {
     event.stopPropagation()
     handleDelete(id)
-    setItemBeingSelected({ id: 0, title: "", imageSource: "", price: 0 })
+    setItemBeingSelected({ id: 0, title: "", imageSource: "", price: 0, quantity: 0 })
   }
 
-  const handleAddButton = (burgerTitle: string | undefined) => {
-    console.log("burgerTitle: ", burgerTitle)
-
-    addToBasket(burgerTitle)
+  const onAddButton = (event: React.MouseEvent<HTMLElement>, burger: MenuItem) => {
+    event.stopPropagation()
+    handleIncrementQuantity(burger)
   }
 
   return (
@@ -57,7 +58,10 @@ export default function Menu() {
           isHoverable={isModeAdmin}
           bottomLeftDescription={formatPrice(burger.price)}
           bottomRightDescription={
-            <Button label="Ajouter" onClick={() => handleAddButton(burger.title)} />
+            <Button
+              label="Ajouter"
+              onClick={(event: React.MouseEvent<HTMLElement>) => onAddButton(event, burger)}
+            />
           }
         />
       ))}

@@ -1,6 +1,9 @@
+import { ID } from "./AtomicType"
+
 export interface MenuItem {
-  id?: number | undefined
+  id?: ID
   imageSource?: string
   title?: string
   price?: number
+  quantity: number
 }

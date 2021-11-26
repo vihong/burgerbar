@@ -1,15 +1,26 @@
+import CardSecondary from "components/molecules/CardSecondary"
 import OrderContext from "context/OrderContext"
+import _ from "lodash"
 import { useContext } from "react"
 import styled from "styled-components/macro"
 import { theme } from "theme"
 
 export default function Basket() {
-  const { basket } = useContext(OrderContext)
+  const { menuItems } = useContext(OrderContext)
+
+  const basket = _.filter(menuItems, (item) => item.quantity !== 0)
+  const isBasketEmpty = _.isEmpty(basket)
 
   return (
     <BasketStyled>
       <Header />
-      <div className="products">{basket.length === 0 && <span>Basket is Empty</span>}</div>
+      <div className="products">
+        {isBasketEmpty ? (
+          <span>Basket is Empty</span>
+        ) : (
+          basket.map((basketItem) => <CardSecondary key={basketItem.id} {...basketItem} />)
+        )}
+      </div>
     </BasketStyled>
   )
 }
@@ -65,6 +76,11 @@ const BasketStyled = styled.div`
     /* border: 1px solid red; */
     > div {
       margin: 10px 1em;
+      :hover {
+        /* transform: scale(1.05); */
+        /* transition: ease-in-out 0.4s; */
+        /* box-shadow: 0 0 8px 0 rgb(255 154 35 / 100%); */
+      }
     }
   }
 `

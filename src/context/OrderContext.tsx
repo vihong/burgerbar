@@ -1,5 +1,4 @@
 import { createContext } from "react"
-import { BasketItem } from "typescript/BasktItem"
 import { MenuItem } from "typescript/MenuItem"
 import { createNewItem } from "utils/businessLogic"
 
@@ -7,7 +6,6 @@ interface OrderContextValue {
   isModeAdmin?: boolean
   setIsModeAdmin: React.Dispatch<React.SetStateAction<boolean>>
   menuItems?: MenuItem[]
-  setMenuItems?: any
   handleAdd: (itemCreated: MenuItem) => void
   handleDelete: (id: number | undefined) => void
   handleEdit: (itemToEdit: MenuItem) => void
@@ -20,16 +18,15 @@ interface OrderContextValue {
   setIsEditFormVisible: React.Dispatch<React.SetStateAction<boolean>>
   isCollapsed: boolean
   setIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>
-  addToBasket: (burgerTitle: string | undefined) => void
-  basket: BasketItem[]
-  setBasket: React.Dispatch<React.SetStateAction<BasketItem[]>>
+  // handleAddToBasket: (burger: MenuItem) => void
+  // basket: BasketItem[]
+  handleIncrementQuantity: (productAdded: MenuItem) => void
 }
 
 export default createContext<OrderContextValue>({
   isModeAdmin: false,
   setIsModeAdmin: () => {},
   menuItems: [],
-  setMenuItems: () => {},
   handleAdd: () => {},
   handleDelete: () => {},
   handleEdit: () => {},
@@ -42,7 +39,7 @@ export default createContext<OrderContextValue>({
   setIsEditFormVisible: () => {},
   isCollapsed: false,
   setIsCollapsed: () => {},
-  addToBasket: () => {},
-  basket: [],
-  setBasket: () => {},
+  // handleAddToBasket: () => {},
+  // basket: [],
+  handleIncrementQuantity: () => {},
 })

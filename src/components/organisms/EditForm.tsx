@@ -153,7 +153,7 @@ const FormStyled = styled.form`
         width: 100px;
         object-fit: contain;
         object-position: center;
-        border: 1px solid red;
+        /* border: 1px solid red; */
       }
     }
 
