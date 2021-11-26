@@ -26,39 +26,23 @@ export const useMenu = (menuInitialValues: MenuItem[]) => {
   }
 
   const handleIncrementQuantity = (productAdded: MenuItem) => {
-    console.log("productAdded: ", productAdded)
-    console.log("menuItems: ", menuItems)
-
     //1.copy of state
     const menuItemsCopy = [...menuItems]
 
-    // trouver l'index de l'élément dans l'array pour le modifier dans la copy du state
-    const indexInMenuToUpdate = menuItemsCopy.findIndex((item) => item.id === productAdded.id)
-
-    //2. manip
-    // créer un nouveau produit avec une quantité incrémentée de 1
-
-    const isInBasket = _.has(productAdded, "quantity")
-    console.log("isInBasket: ", isInBasket)
-    if (!isInBasket) {
-      const productIncrementedByone = {
-        ...productAdded,
-        quantity: 1,
-      }
-
-      console.log("productIncrementedByone: ", productIncrementedByone)
-      menuItemsCopy[indexInMenuToUpdate] = productIncrementedByone
-
-      console.log("menuItemsCopy après update: ", menuItemsCopy)
-      setMenuItems(menuItemsCopy)
-    } else {
-      const productIncrementedByone = {
-        ...productAdded,
-        quantity: productAdded?.quantity + 1,
-      }
-      menuItemsCopy[indexInMenuToUpdate] = productIncrementedByone
-      setMenuItems(menuItemsCopy)
+    //2. manip en 3 étapes a b et c
+    //a. find index in Menu
+    const indexInMenu = menuItemsCopy.findIndex((item) => item.id === productAdded.id)
+    //b. create newProduct with quantity incremented by 1
+    const productInMenuIncrementedByone = {
+      ...productAdded,
+      quantity: productAdded?.quantity + 1 || 1,
     }
+    //c. replace element in Menu at index with newProduct
+    menuItemsCopy[indexInMenu] = productInMenuIncrementedByone
+
+    //3. setState
+    setMenuItems(menuItemsCopy)
   }
+
   return { menuItems, handleAdd, handleEdit, handleDelete, handleIncrementQuantity }
 }
