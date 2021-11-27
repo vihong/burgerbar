@@ -6,9 +6,8 @@ import styled from "styled-components/macro"
 import { theme } from "theme"
 
 export default function Basket() {
-  const { menuItems } = useContext(OrderContext)
+  const { menuItems, basket } = useContext(OrderContext)
 
-  const basket = _.filter(menuItems, (item) => item.quantity !== 0)
   const isBasketEmpty = _.isEmpty(basket)
 
   return (
