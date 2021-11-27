@@ -21,7 +21,7 @@ const PanelTabStyled = styled.div`
   border: 1px solid ${theme.colors.white};
   position: absolute;
   top: -31px;
-  background: ${theme.colors.incognito};
+  background: ${theme.colors.primary};
   color: ${theme.colors.white};
   display: inline-flex;
   align-items: center;
@@ -37,7 +37,7 @@ const PanelTabStyled = styled.div`
   :hover {
     cursor: pointer;
     background: ${theme.colors.white};
-    color: ${theme.colors.incognito};
+    color: ${theme.colors.primary};
     border: 1px solid ${theme.colors.greyLight};
     border-bottom: none;
   }
