@@ -42,8 +42,11 @@ export default function Basket() {
 function Header() {
   return (
     <div className="header">
-      <span>Votre commande :</span>
-      <span>Total</span>
+      <span className="votre-commande">Votre commande</span>
+      <div className="total">
+        <span>Total : </span>
+        <span>10.80€</span>
+      </div>
     </div>
   )
 }
@@ -57,8 +60,8 @@ const BasketStyled = styled.div`
     top: 0;
 
     min-height: 100px;
-    background: ${theme.colors.white};
-    color: white;
+    background: ${theme.colors.background_black};
+
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -66,18 +69,26 @@ const BasketStyled = styled.div`
     align-items: flex-start;
     padding: 0 1em;
     box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
+    color: ${theme.colors.white};
+    line-height: 1.5;
 
-    > span {
+    .votre-commande {
       /* border: 1px solid blue; */
-      color: ${theme.colors.black};
+      font-size: ${theme.fonts.P3};
+      font-weight: ${theme.weights.bold};
+      /* border: 1px solid red; */
+    }
 
-      :first-child {
-        font-size: ${theme.fonts.P3};
-        font-weight: ${theme.weights.bold};
-      }
-      :nth-child(2) {
-        font-size: ${theme.fonts.P2};
-        font-weight: ${theme.weights.medium};
+    .total {
+      display: flex;
+      justify-content: space-between;
+      /* border: 1px solid red; */
+      width: 100%;
+      font-size: ${theme.fonts.P2};
+      font-weight: ${theme.weights.medium};
+      color: ${theme.colors.primary};
+      > span:last-child {
+        font-weight: ${theme.weights.regular};
       }
     }
   }

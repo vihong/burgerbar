@@ -57,7 +57,7 @@ const CardSecondaryStyled = styled.div`
     > span {
       :first-child {
         font-weight: ${theme.weights.medium};
-        border: 1px solid blue;
+        /* border: 1px solid blue; */
         width: 50%;
         //FIXME: the overflow is hidden but will keep pushing if user types too many characters
         overflow-x: hidden;
@@ -65,7 +65,7 @@ const CardSecondaryStyled = styled.div`
       :nth-child(2) {
         color: ${theme.colors.primary};
         font-weight: ${theme.weights.medium};
-        border: 1px solid red;
+        /* border: 1px solid red; */
       }
     }
   }
