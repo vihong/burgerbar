@@ -13,7 +13,10 @@ export default function Basket() {
 
   return (
     <BasketStyled>
-      <Header />
+      <div className="header">
+        <span className="votre-commande">Votre commande</span>
+      </div>
+
       <div className="products">
         {isBasketEmpty ? (
           <span>Basket is Empty</span>
@@ -34,6 +37,7 @@ export default function Basket() {
           })
         )}
       </div>
+      <Header />
     </BasketStyled>
   )
 }
@@ -42,7 +46,7 @@ export default function Basket() {
 function Header() {
   return (
     <div className="header">
-      <span className="votre-commande">Votre commande</span>
+      {/* <span className="votre-commande">Votre commande</span> */}
       <div className="total">
         <span>Total : </span>
         <span>10.80€</span>
@@ -66,7 +70,7 @@ const BasketStyled = styled.div`
     justify-content: flex-start;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     padding: 0 1em;
     box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
     color: ${theme.colors.white};
@@ -96,7 +100,7 @@ const BasketStyled = styled.div`
   .products {
     display: flex;
     flex-direction: column;
-    height: calc(92vh - 100px);
+    height: calc(92vh - 200px);
     overflow-y: scroll;
     > div {
       margin: 10px 1em;
