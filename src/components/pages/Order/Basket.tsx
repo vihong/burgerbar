@@ -18,7 +18,20 @@ export default function Basket() {
         {isBasketEmpty ? (
           <span>Basket is Empty</span>
         ) : (
-          basket.map((basketItem) => <CardSecondary key={basketItem.id} {...basketItem} />)
+          basket.map((basketItem) => {
+            const burgerFromMenuToDisplayInBasket = menuItems?.find(
+              (burger) => burger.id === basketItem.id
+            )
+            console.log("basketItem: ", basketItem)
+            return (
+              <CardSecondary
+                key={basketItem.id}
+                {...burgerFromMenuToDisplayInBasket}
+                // {...basketItem}
+                quantity={basketItem.quantity}
+              />
+            )
+          })
         )}
       </div>
     </BasketStyled>
