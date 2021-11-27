@@ -5,8 +5,8 @@ import styled from "styled-components/macro"
 import { MenuItem } from "typescript/MenuItem"
 import { fakeMenu1 } from "fakeData/fakeMenu"
 import Main from "./Main"
-// import { useBasket } from "hooks/useBasket"
-// import { fakeBasket1 } from "fakeData/fakeBasket"
+import { useBasket } from "hooks/useBasket"
+import { fakeBasket1, fakeBasket2 } from "fakeData/fakeBasket"
 import { useMenu } from "hooks/useMenu"
 
 interface OrderProps {
@@ -25,9 +25,8 @@ export const EMPTY_PRODUCT = {
 export default function Order(props: OrderProps) {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
-  const { menuItems, handleAdd, handleEdit, handleDelete, handleIncrementQuantity } =
-    useMenu(fakeMenu1)
-  // const { basket, handleAddToBasket } = useBasket(fakeBasket1)
+  const { menuItems, handleAdd, handleEdit, handleDelete } = useMenu(fakeMenu1)
+  const { basket, handleAddToBasket } = useBasket(fakeBasket2)
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
   const [isCollapsed, setIsCollapsed] = useState(false)

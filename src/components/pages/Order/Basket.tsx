@@ -50,8 +50,8 @@ function Header() {
 
 const BasketStyled = styled.div`
   background: ${theme.colors.background_white};
-  height: 92vh;
-  overflow-y: scroll;
+  flex: 1;
+
   .header {
     position: sticky;
     top: 0;
@@ -84,15 +84,16 @@ const BasketStyled = styled.div`
 
   .products {
     display: flex;
-    flex: 1;
     flex-direction: column;
-    /* border: 1px solid red; */
+    height: calc(92vh - 100px);
+    overflow-y: scroll;
     > div {
       margin: 10px 1em;
-      :hover {
-        /* transform: scale(1.05); */
-        /* transition: ease-in-out 0.4s; */
-        /* box-shadow: 0 0 8px 0 rgb(255 154 35 / 100%); */
+      :first-child {
+        margin-top: 1em;
+      }
+      :last-child {
+        margin-bottom: 1em;
       }
     }
   }

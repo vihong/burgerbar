@@ -31,7 +31,7 @@ const CardSecondaryStyled = styled.div`
   display: grid;
   grid-template-columns: 30% 1fr;
   grid-template-rows: 1;
-  height: 70px;
+  min-height: 70px;
   padding: 0.5em 0.5em;
   align-items: center;
   border-radius: ${theme.borderRadius.round};
@@ -45,6 +45,7 @@ const CardSecondaryStyled = styled.div`
     /* border: 1px solid blue; */
     display: flex;
     /* background: blue; */
+    overflow-y: hidden;
   }
   .text-info {
     /* border: 1px solid green; */
