@@ -50,4 +50,28 @@ export const fakeBasket2 = [
     title: "Vegan Burger",
     quantity: 4,
   },
+  {
+    id: 9,
+    imageSource: "images/burger3.png",
+    title: "Vegan Burger",
+    quantity: 4,
+  },
+  {
+    id: 10,
+    imageSource: "images/burger3.png",
+    title: "Vegan Burger",
+    quantity: 4,
+  },
+  {
+    id: 11,
+    imageSource: "images/burger3.png",
+    title: "Vegan Burger",
+    quantity: 4,
+  },
+  {
+    id: 12,
+    imageSource: "images/burger3.png",
+    title: "Vegan Burger",
+    quantity: 4,
+  },
 ]

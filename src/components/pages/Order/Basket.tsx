@@ -6,21 +6,36 @@ import styled from "styled-components/macro"
 import { theme } from "theme"
 
 export default function Basket() {
-  const { menuItems } = useContext(OrderContext)
+  const { menuItems, basket } = useContext(OrderContext)
 
-  const basket = _.filter(menuItems, (item) => item.quantity !== 0)
   const isBasketEmpty = _.isEmpty(basket)
 
   return (
     <BasketStyled>
-      <Header />
+      <div className="header">
+        <span className="votre-commande">Votre commande</span>
+      </div>
+
       <div className="products">
         {isBasketEmpty ? (
           <span>Basket is Empty</span>
         ) : (
-          basket.map((basketItem) => <CardSecondary key={basketItem.id} {...basketItem} />)
+          basket.map((basketItem) => {
+            const burgerFromMenuToDisplayInBasket = menuItems?.find(
+              (burger) => burger.id === basketItem.id
+            )
+            return (
+              <CardSecondary
+                key={basketItem.id}
+                {...burgerFromMenuToDisplayInBasket}
+                // {...basketItem}
+                quantity={basketItem.quantity}
+              />
+            )
+          })
         )}
       </div>
+      <Header />
     </BasketStyled>
   )
 }
@@ -29,57 +44,69 @@ export default function Basket() {
 function Header() {
   return (
     <div className="header">
-      <span>Votre commande :</span>
-      <span>Total</span>
+      {/* <span className="votre-commande">Votre commande</span> */}
+      <div className="total">
+        <span>Total : </span>
+        <span>10.80€</span>
+      </div>
     </div>
   )
 }
 
 const BasketStyled = styled.div`
   background: ${theme.colors.background_white};
-  height: 92vh;
-  overflow-y: scroll;
+  flex: 1;
+
   .header {
     position: sticky;
     top: 0;
 
     min-height: 100px;
-    background: ${theme.colors.white};
-    color: white;
+    background: ${theme.colors.background_black};
+
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     padding: 0 1em;
     box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
+    color: ${theme.colors.white};
+    line-height: 1.5;
 
-    > span {
+    .votre-commande {
       /* border: 1px solid blue; */
-      color: ${theme.colors.black};
+      font-size: ${theme.fonts.P3};
+      font-weight: ${theme.weights.bold};
+      /* border: 1px solid red; */
+    }
 
-      :first-child {
-        font-size: ${theme.fonts.P3};
-        font-weight: ${theme.weights.bold};
-      }
-      :nth-child(2) {
-        font-size: ${theme.fonts.P2};
-        font-weight: ${theme.weights.medium};
+    .total {
+      display: flex;
+      justify-content: space-between;
+      /* border: 1px solid red; */
+      width: 100%;
+      font-size: ${theme.fonts.P2};
+      font-weight: ${theme.weights.medium};
+      color: ${theme.colors.primary};
+      > span:last-child {
+        font-weight: ${theme.weights.regular};
       }
     }
   }
 
   .products {
     display: flex;
-    flex: 1;
     flex-direction: column;
-    /* border: 1px solid red; */
+    height: calc(92vh - 200px);
+    overflow-y: scroll;
     > div {
       margin: 10px 1em;
-      :hover {
-        /* transform: scale(1.05); */
-        /* transition: ease-in-out 0.4s; */
-        /* box-shadow: 0 0 8px 0 rgb(255 154 35 / 100%); */
+      :first-child {
+        margin-top: 1em;
+      }
+      :last-child {
+        margin-bottom: 1em;
       }
     }
   }

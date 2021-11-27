@@ -31,7 +31,7 @@ const CardSecondaryStyled = styled.div`
   display: grid;
   grid-template-columns: 30% 1fr;
   grid-template-rows: 1;
-  height: 70px;
+  min-height: 70px;
   padding: 0.5em 0.5em;
   align-items: center;
   border-radius: ${theme.borderRadius.round};
@@ -45,6 +45,7 @@ const CardSecondaryStyled = styled.div`
     /* border: 1px solid blue; */
     display: flex;
     /* background: blue; */
+    overflow-y: hidden;
   }
   .text-info {
     /* border: 1px solid green; */
@@ -53,15 +54,19 @@ const CardSecondaryStyled = styled.div`
     justify-content: space-between;
     padding: 0.5em 0.7em;
     font-size: ${theme.fonts.P0};
-
-    .left-info {
-      font-weight: ${theme.weights.medium};
-    }
-
-    .right-info {
-      color: ${theme.colors.primary};
-      font-weight: ${theme.weights.medium};
-      /* border: 1px solid red; */
+    > span {
+      :first-child {
+        font-weight: ${theme.weights.medium};
+        /* border: 1px solid blue; */
+        width: 50%;
+        //@FIXME: the overflow is hidden but will keep pushing if user types too many characters
+        overflow-x: hidden;
+      }
+      :nth-child(2) {
+        color: ${theme.colors.primary};
+        font-weight: ${theme.weights.medium};
+        /* border: 1px solid red; */
+      }
     }
   }
 `
