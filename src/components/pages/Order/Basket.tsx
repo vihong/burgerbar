@@ -24,7 +24,6 @@ export default function Basket() {
             const burgerFromMenuToDisplayInBasket = menuItems?.find(
               (burger) => burger.id === basketItem.id
             )
-            console.log("basketItem: ", basketItem)
             return (
               <CardSecondary
                 key={basketItem.id}

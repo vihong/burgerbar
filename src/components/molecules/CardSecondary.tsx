@@ -59,7 +59,7 @@ const CardSecondaryStyled = styled.div`
         font-weight: ${theme.weights.medium};
         /* border: 1px solid blue; */
         width: 50%;
-        //FIXME: the overflow is hidden but will keep pushing if user types too many characters
+        //@FIXME: the overflow is hidden but will keep pushing if user types too many characters
         overflow-x: hidden;
       }
       :nth-child(2) {
