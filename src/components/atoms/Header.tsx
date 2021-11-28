@@ -1,15 +1,9 @@
+import React from "react"
 import styled from "styled-components"
 import { theme } from "theme"
 
-export default function Header() {
-  return (
-    <HeaderSyled>
-      <div className="total">
-        <span>Total : </span>
-        <span>10.80€</span>
-      </div>
-    </HeaderSyled>
-  )
+export default function Header({ HeaderContent }: { HeaderContent: any }) {
+  return <HeaderSyled>{HeaderContent}</HeaderSyled>
 }
 
 const HeaderSyled = styled.div`

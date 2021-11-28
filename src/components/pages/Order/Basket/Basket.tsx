@@ -4,19 +4,18 @@ import { useContext } from "react"
 import styled from "styled-components/macro"
 import { theme } from "theme"
 import BasketItems from "./BasketItems"
-import Header from "./Header"
+import Header from "../../../atoms/Header"
+import Title from "./Title"
+import Total from "./Total"
 
 export default function Basket() {
   const { menuItems, basket } = useContext(OrderContext)
 
   return (
     <BasketStyled>
-      <div className="header">
-        <span className="votre-commande">Votre commande</span>
-      </div>
-
+      <Header HeaderContent={<Title className="votre-commande" />} />
       <BasketItems basket={basket} menuItems={menuItems} />
-      <Header />
+      <Header HeaderContent={<Total className="total" />} />
     </BasketStyled>
   )
 }
