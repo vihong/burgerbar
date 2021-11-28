@@ -17,7 +17,7 @@ export const EMPTY_PRODUCT = {
   id: undefined,
   title: "",
   imageSource: "",
-  price: undefined,
+  price: 0,
   added: false,
   quantity: 0,
 }
