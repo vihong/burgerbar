@@ -8,11 +8,11 @@ export function createBasketItems(basket: BasketItem[], menuItems: MenuItem[]) {
       price: 0,
       quantity: 0,
     }
-    const menuItemInBasket = menuItems?.find((menuItem) => menuItem.id === basketItem.id)
+    const menuItemInBasket = menuItems.find((menuItem) => menuItem.id === basketItem.id)
 
     basketItemFinal = {
       ...menuItemInBasket,
-      price: basketItem.price,
+      price: menuItemInBasket?.price || 0,
       quantity: basketItem.quantity,
     }
     return basketItemFinal
