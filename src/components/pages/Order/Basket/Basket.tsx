@@ -8,6 +8,7 @@ import Header from "components/atoms/Header"
 import Title from "./Title"
 import Total from "./Total"
 import { createBasketItems } from "./createBasketItems"
+import { replaceFrenchCommaWithDot } from "utils/maths"
 
 export default function Basket() {
   const { menuItems, basket } = useContext(OrderContext)
@@ -15,7 +16,7 @@ export default function Basket() {
   const basketWithMenuItems = createBasketItems(basket, menuItems)
 
   const total = basketWithMenuItems.reduce((totalCommande, item) => {
-    totalCommande += item.price * item.quantity
+    totalCommande += replaceFrenchCommaWithDot(item.price) * item.quantity
     return totalCommande
   }, 0)
 
