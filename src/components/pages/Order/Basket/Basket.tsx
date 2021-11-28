@@ -1,5 +1,4 @@
 import OrderContext from "context/OrderContext"
-import _ from "lodash"
 import { useContext } from "react"
 import styled from "styled-components/macro"
 import { theme } from "theme"

@@ -6,7 +6,6 @@ import { MenuItem } from "typescript/MenuItem"
 import { fakeMenu1 } from "fakeData/fakeMenu"
 import Main from "./Main"
 import { useBasket } from "hooks/useBasket"
-import { fakeBasket1 } from "fakeData/fakeBasket"
 import { useMenu } from "hooks/useMenu"
 
 interface OrderProps {
