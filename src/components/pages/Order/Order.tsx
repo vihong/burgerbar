@@ -6,7 +6,6 @@ import { MenuItem } from "typescript/MenuItem"
 import { fakeMenu1 } from "fakeData/fakeMenu"
 import Main from "./Main"
 import { useBasket } from "hooks/useBasket"
-import { fakeBasket1 } from "fakeData/fakeBasket"
 import { useMenu } from "hooks/useMenu"
 
 interface OrderProps {
@@ -17,7 +16,7 @@ export const EMPTY_PRODUCT = {
   id: undefined,
   title: "",
   imageSource: "",
-  price: undefined,
+  price: 0,
   added: false,
   quantity: 0,
 }
@@ -26,7 +25,7 @@ export default function Order(props: OrderProps) {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
   const { menuItems, handleAdd, handleEdit, handleDelete } = useMenu(fakeMenu1)
-  const { basket, handleAddToBasket } = useBasket(fakeBasket1)
+  const { basket, handleAddToBasket } = useBasket([])
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
   const [isCollapsed, setIsCollapsed] = useState(false)

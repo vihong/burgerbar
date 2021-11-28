@@ -21,6 +21,7 @@ export const useBasket = (basketInitialValues: BasketItem[]) => {
         id: productAdded.id,
         // title: productAdded.title,
         // imageSource: productAdded.imageSource,
+        price: productAdded.price,
         quantity: 1,
       }
       // add new basketItem to basketCopy

@@ -6,7 +6,7 @@ import { createNewItem } from "utils/businessLogic"
 interface OrderContextValue {
   isModeAdmin?: boolean
   setIsModeAdmin: React.Dispatch<React.SetStateAction<boolean>>
-  menuItems?: MenuItem[]
+  menuItems: MenuItem[]
   handleAdd: (itemCreated: MenuItem) => void
   handleDelete: (id: number | undefined) => void
   handleEdit: (itemToEdit: MenuItem) => void
