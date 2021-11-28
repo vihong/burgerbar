@@ -14,20 +14,16 @@ export default function Basket() {
 
   const basketWithMenuItems = createBasketItems(basket, menuItems)
 
-  console.log("basketWithMenuItems: ", basketWithMenuItems)
   const total = basketWithMenuItems.reduce((totalCommande, item) => {
-    console.log("item: ", item)
     totalCommande += item.price * item.quantity
     return totalCommande
   }, 0)
-
-  console.log("total: ", total)
 
   return (
     <BasketStyled>
       <Header HeaderContent={<Title className="votre-commande" />} />
       <BasketItems basket={basketWithMenuItems} />
-      <Header HeaderContent={<Total className="total" />} />
+      <Header HeaderContent={<Total className="total" total={total} />} />
     </BasketStyled>
   )
 }
