@@ -5,6 +5,7 @@ import { theme } from "theme"
 // import { FiCheck } from "react-icons/fi"
 import { EMPTY_PRODUCT } from "components/pages/Order/Order"
 import toast from "react-hot-toast"
+import { MenuItem } from "typescript/MenuItem"
 
 interface FormProps {
   formTitle?: string
@@ -14,7 +15,9 @@ interface FormProps {
 export default function AddForm({ formTitle, buttonLabel }: FormProps) {
   const { handleAdd, titleEditBoxRef } = useContext(OrderContext)
 
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  // @TODO: make generic typing to have generic organism <Form />
+  // because here : dynamic typing is here betweem useState<TYPE> and EMPTY_PRODUCT's TYPE
+  const [newProduct, setNewProduct] = useState<MenuItem>(EMPTY_PRODUCT)
 
   // const [isSubmitted, setIsSubmitted] = useState(false)
 
