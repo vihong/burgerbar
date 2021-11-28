@@ -15,11 +15,12 @@ export default function Basket() {
   const basketWithMenuItems = createBasketItems(basket, menuItems)
 
   console.log("basketWithMenuItems: ", basketWithMenuItems)
-  // const total = basket.reduce((totalCommande, item) => {
-  //   return item.price * item.quantity
-  // }, 0)
+  const total = basket.reduce((totalCommande, item) => {
+    totalCommande += item.price * item.quantity
+    return totalCommande
+  }, 0)
 
-  // console.log("total: ", total)
+  console.log("total: ", total)
 
   return (
     <BasketStyled>
