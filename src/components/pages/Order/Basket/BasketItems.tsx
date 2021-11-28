@@ -1,6 +1,5 @@
 import CardSecondary from "components/molecules/CardSecondary"
 import _ from "lodash"
-import React from "react"
 import { BasketItem } from "typescript/BasketItem"
 import { MenuItem } from "typescript/MenuItem"
 
