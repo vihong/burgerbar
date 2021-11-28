@@ -1,14 +1,12 @@
 import CardSecondary from "components/molecules/CardSecondary"
 import _ from "lodash"
 import { BasketItem } from "typescript/BasketItem"
-import { MenuItem } from "typescript/MenuItem"
 
 interface BasketItemsProps {
   basket: BasketItem[]
-  menuItems?: MenuItem[]
 }
 
-export default function BasketItems({ basket, menuItems }: BasketItemsProps) {
+export default function BasketItems({ basket }: BasketItemsProps) {
   const isBasketEmpty = _.isEmpty(basket)
 
   return (
@@ -16,19 +14,7 @@ export default function BasketItems({ basket, menuItems }: BasketItemsProps) {
       {isBasketEmpty ? (
         <span>Basket is Empty</span>
       ) : (
-        basket.map((basketItem) => {
-          const burgerFromMenuToDisplayInBasket = menuItems?.find(
-            (burger) => burger.id === basketItem.id
-          )
-          return (
-            <CardSecondary
-              key={basketItem.id}
-              {...burgerFromMenuToDisplayInBasket}
-              // {...basketItem}
-              quantity={basketItem.quantity}
-            />
-          )
-        })
+        basket.map((basketItem) => <CardSecondary key={basketItem.id} {...basketItem} />)
       )}
     </div>
   )

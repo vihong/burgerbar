@@ -1,7 +1,7 @@
 import { ID } from "./AtomicType"
 
 export interface BasketItem {
-  id: ID
+  id?: ID
   title?: string
   imageSource?: string
   quantity: number

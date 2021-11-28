@@ -4,17 +4,27 @@ import { useContext } from "react"
 import styled from "styled-components/macro"
 import { theme } from "theme"
 import BasketItems from "./BasketItems"
-import Header from "../../../atoms/Header"
+import Header from "components/atoms/Header"
 import Title from "./Title"
 import Total from "./Total"
+import { createBasketItems } from "./createBasketItems"
 
 export default function Basket() {
   const { menuItems, basket } = useContext(OrderContext)
 
+  const basketWithMenuItems = createBasketItems(basket, menuItems)
+
+  console.log("basketWithMenuItems: ", basketWithMenuItems)
+  // const total = basket.reduce((totalCommande, item) => {
+  //   return item.price * item.quantity
+  // }, 0)
+
+  // console.log("total: ", total)
+
   return (
     <BasketStyled>
       <Header HeaderContent={<Title className="votre-commande" />} />
-      <BasketItems basket={basket} menuItems={menuItems} />
+      <BasketItems basket={basketWithMenuItems} />
       <Header HeaderContent={<Total className="total" />} />
     </BasketStyled>
   )
