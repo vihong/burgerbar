@@ -4,11 +4,11 @@ import _ from "lodash"
 import { useContext } from "react"
 import styled from "styled-components/macro"
 import { theme } from "theme"
+import { BasketItem } from "typescript/BasketItem"
+import { MenuItem } from "typescript/MenuItem"
 
 export default function Basket() {
   const { menuItems, basket } = useContext(OrderContext)
-
-  const isBasketEmpty = _.isEmpty(basket)
 
   return (
     <BasketStyled>
@@ -16,25 +16,7 @@ export default function Basket() {
         <span className="votre-commande">Votre commande</span>
       </div>
 
-      <div className="products">
-        {isBasketEmpty ? (
-          <span>Basket is Empty</span>
-        ) : (
-          basket.map((basketItem) => {
-            const burgerFromMenuToDisplayInBasket = menuItems?.find(
-              (burger) => burger.id === basketItem.id
-            )
-            return (
-              <CardSecondary
-                key={basketItem.id}
-                {...burgerFromMenuToDisplayInBasket}
-                // {...basketItem}
-                quantity={basketItem.quantity}
-              />
-            )
-          })
-        )}
-      </div>
+      <BasketItems basket={basket} menuItems={menuItems} />
       <Header />
     </BasketStyled>
   )
@@ -49,6 +31,37 @@ function Header() {
         <span>Total : </span>
         <span>10.80€</span>
       </div>
+    </div>
+  )
+}
+
+interface BasketItemsProps {
+  basket: BasketItem[]
+  menuItems?: MenuItem[]
+}
+
+function BasketItems({ basket, menuItems }: BasketItemsProps) {
+  const isBasketEmpty = _.isEmpty(basket)
+
+  return (
+    <div className="products">
+      {isBasketEmpty ? (
+        <span>Basket is Empty</span>
+      ) : (
+        basket.map((basketItem) => {
+          const burgerFromMenuToDisplayInBasket = menuItems?.find(
+            (burger) => burger.id === basketItem.id
+          )
+          return (
+            <CardSecondary
+              key={basketItem.id}
+              {...burgerFromMenuToDisplayInBasket}
+              // {...basketItem}
+              quantity={basketItem.quantity}
+            />
+          )
+        })
+      )}
     </div>
   )
 }
