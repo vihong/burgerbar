@@ -47,5 +47,18 @@ const BasketStyled = styled.div`
         margin-bottom: 1em;
       }
     }
+
+    .empty-basket {
+      display: flex;
+      /* border: 1px solid red; */
+      padding: 10px;
+      text-align: center;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      align-self: center;
+      width: 60%;
+      line-height: 2;
+    }
   }
 `

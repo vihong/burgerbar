@@ -12,7 +12,7 @@ export default function BasketItems({ basket }: BasketItemsProps) {
   return (
     <div className="products">
       {isBasketEmpty ? (
-        <span>Basket is Empty</span>
+        <span className="empty-basket">Votre commande est vide pour le moment.</span>
       ) : (
         basket.map((basketItem) => <CardSecondary key={basketItem.id} {...basketItem} />)
       )}
