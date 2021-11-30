@@ -11,25 +11,28 @@ interface CardSecondaryProps {
   onDeleteButton?: any
   hasDeleteButton?: boolean | undefined
   isHoverable?: boolean
+  onDelete?: any
   [x: string]: any
 }
 
-export default function CardSecondary({ title, imageSource, quantity }: CardSecondaryProps) {
+export default function CardSecondary({
+  title,
+  imageSource,
+  quantity,
+  onDelete,
+}: CardSecondaryProps) {
   const [isCardHovered, setIsCardHovered] = useState(false)
 
-  const onHover = () => {
-    console.log("onHover")
-    setIsCardHovered(true)
-  }
-
-  const onMouseLeave = () => {
-    console.log("onMouseLeave")
-    setIsCardHovered(!isCardHovered)
-  }
-
   return (
-    <CardSecondaryStyled onMouseEnter={onHover} onMouseLeave={onMouseLeave}>
-      {isCardHovered && <button className="delete-button">Supprimer</button>}
+    <CardSecondaryStyled
+      onMouseEnter={() => setIsCardHovered(true)}
+      onMouseLeave={() => setIsCardHovered(!isCardHovered)}
+    >
+      {isCardHovered && (
+        <button className="delete-button" onClick={onDelete}>
+          Supprimer
+        </button>
+      )}
       <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} className="thumbnail" />
       <div className="text-info">
         <span className="left-info">{title}</span>

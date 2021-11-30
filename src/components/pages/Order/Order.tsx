@@ -25,7 +25,7 @@ export default function Order(props: OrderProps) {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
   const { menuItems, handleAdd, handleEdit, handleDelete } = useMenu(fakeMenu1)
-  const { basket, handleAddToBasket } = useBasket([])
+  const { basket, handleAddToBasket, handleDeleteFromBasket } = useBasket([])
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
   const [isCollapsed, setIsCollapsed] = useState(false)
@@ -52,6 +52,7 @@ export default function Order(props: OrderProps) {
     setIsCollapsed,
     handleAddToBasket,
     basket,
+    handleDeleteFromBasket,
   }
 
   return (

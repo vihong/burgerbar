@@ -1,4 +1,5 @@
 import { createContext } from "react"
+import { ID } from "typescript/AtomicType"
 import { BasketItem } from "typescript/BasketItem"
 import { MenuItem } from "typescript/MenuItem"
 import { createNewItem } from "utils/businessLogic"
@@ -21,6 +22,7 @@ interface OrderContextValue {
   setIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>
   handleAddToBasket: (burger: MenuItem) => void
   basket: BasketItem[]
+  handleDeleteFromBasket: (id: ID) => void
 }
 
 export default createContext<OrderContextValue>({
@@ -41,4 +43,5 @@ export default createContext<OrderContextValue>({
   setIsCollapsed: () => {},
   handleAddToBasket: () => {},
   basket: [],
+  handleDeleteFromBasket: () => {},
 })
