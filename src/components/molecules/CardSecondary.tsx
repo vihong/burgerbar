@@ -15,23 +15,21 @@ interface CardSecondaryProps {
 }
 
 export default function CardSecondary({ title, imageSource, quantity }: CardSecondaryProps) {
-  const [isHovered, setIsHovered] = useState(false)
+  const [isCardHovered, setIsCardHovered] = useState(false)
 
   const onHover = () => {
     console.log("onHover")
-    setIsHovered(true)
+    setIsCardHovered(true)
   }
 
   const onMouseLeave = () => {
     console.log("onMouseLeave")
-    setIsHovered(!isHovered)
+    setIsCardHovered(!isCardHovered)
   }
 
-  let className = "on-hover"
-
   return (
-    <CardSecondaryStyled onMouseEnter={onHover} onMouseLeave={onMouseLeave} className={className}>
-      {isHovered && <button className="delete-button">Supprimer</button>}
+    <CardSecondaryStyled onMouseEnter={onHover} onMouseLeave={onMouseLeave}>
+      {isCardHovered && <button className="delete-button">Supprimer</button>}
       <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} className="thumbnail" />
       <div className="text-info">
         <span className="left-info">{title}</span>
@@ -100,5 +98,9 @@ const CardSecondaryStyled = styled.div`
     align-items: center;
     background: ${theme.colors.redSecondary};
     color: ${theme.colors.white};
+
+    :hover {
+      text-decoration: underline;
+    }
   }
 `
