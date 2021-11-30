@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { theme } from "theme"
 import { IMAGE_BY_DEFAULT } from "./CardPrimary"
@@ -11,12 +11,28 @@ interface CardSecondaryProps {
   onDeleteButton?: any
   hasDeleteButton?: boolean | undefined
   isHoverable?: boolean
+  onDelete?: any
   [x: string]: any
 }
 
-export default function CardSecondary({ title, imageSource, quantity }: CardSecondaryProps) {
+export default function CardSecondary({
+  title,
+  imageSource,
+  quantity,
+  onDelete,
+}: CardSecondaryProps) {
+  const [isCardHovered, setIsCardHovered] = useState(false)
+
   return (
-    <CardSecondaryStyled>
+    <CardSecondaryStyled
+      onMouseEnter={() => setIsCardHovered(true)}
+      onMouseLeave={() => setIsCardHovered(!isCardHovered)}
+    >
+      {isCardHovered && (
+        <button className="delete-button" onClick={onDelete}>
+          Supprimer
+        </button>
+      )}
       <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} className="thumbnail" />
       <div className="text-info">
         <span className="left-info">{title}</span>
@@ -37,6 +53,7 @@ const CardSecondaryStyled = styled.div`
   border-radius: ${theme.borderRadius.round};
   background: ${theme.colors.white};
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
+  position: relative;
 
   .thumbnail {
     height: 60%;
@@ -47,6 +64,7 @@ const CardSecondaryStyled = styled.div`
     /* background: blue; */
     overflow-y: hidden;
   }
+
   .text-info {
     /* border: 1px solid green; */
     display: flex;
@@ -67,6 +85,25 @@ const CardSecondaryStyled = styled.div`
         font-weight: ${theme.weights.medium};
         /* border: 1px solid red; */
       }
+    }
+  }
+
+  .delete-button {
+    border: 1px solid red;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-top-right-radius: ${theme.borderRadius.round};
+    border-bottom-right-radius: ${theme.borderRadius.round};
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    background: ${theme.colors.redSecondary};
+    color: ${theme.colors.white};
+
+    :hover {
+      text-decoration: underline;
     }
   }
 `

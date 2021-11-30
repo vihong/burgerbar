@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { ID } from "typescript/AtomicType"
 import { BasketItem } from "typescript/BasketItem"
 import { MenuItem } from "typescript/MenuItem"
 
@@ -33,5 +34,11 @@ export const useBasket = (basketInitialValues: BasketItem[]) => {
     }
   }
 
-  return { basket, handleAddToBasket }
+  const handleDeleteFromBasket = (idToDelete: ID) => {
+    const basketCopy = [...basket]
+    const basketCopyUpdated = basketCopy.filter((basketItem) => basketItem.id !== idToDelete)
+    setBasket(basketCopyUpdated)
+  }
+
+  return { basket, handleAddToBasket, handleDeleteFromBasket }
 }

@@ -18,6 +18,7 @@ export default function Menu() {
     setIsEditFormVisible,
     titleEditBoxRef,
     handleAddToBasket,
+    handleDeleteFromBasket,
   } = useContext(OrderContext)
 
   //@ts-ignore
@@ -35,6 +36,7 @@ export default function Menu() {
   const handleDeleteButton = (event: React.MouseEvent<HTMLElement>, id: number | undefined) => {
     event.stopPropagation()
     handleDelete(id)
+    handleDeleteFromBasket(id)
     setItemBeingSelected({ id: 0, title: "", imageSource: "", price: 0, quantity: 0 })
   }
 
