@@ -31,13 +31,20 @@ export const fakeMenu2 = [
   }, // excellent for debugging CardPrimary image
   {
     id: 8,
+    imageSource: "images/frites2.png",
+    title: "New York Fries",
+    price: 6.2,
+    quantity: 0,
+  }, // excellent for debugging CardPrimary image
+  {
+    id: 9,
     imageSource: "images/wedges1.png",
     title: "Potatoes",
     price: 6.2,
     quantity: 0,
   }, // excellent for debugging CardPrimary image
   {
-    id: 9,
+    id: 10,
     imageSource: "images/ice-cream.png",
     title: "Glaces artisanales",
     price: 6.2,
