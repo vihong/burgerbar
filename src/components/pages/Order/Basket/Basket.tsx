@@ -37,6 +37,8 @@ const BasketStyled = styled.div`
     flex-direction: column;
     height: calc(92vh - 200px);
     overflow-y: scroll;
+
+    // each card
     > div {
       margin: 10px 1em;
       :first-child {

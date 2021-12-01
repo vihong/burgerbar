@@ -33,7 +33,9 @@ export default function CardSecondary({
           Supprimer
         </button>
       )}
-      <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} className="thumbnail" />
+      <div className="image">
+        <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
+      </div>
       <div className="text-info">
         <span className="left-info">{title}</span>
         <span className="right-info">x {quantity}</span>
@@ -47,7 +49,7 @@ const CardSecondaryStyled = styled.div`
   display: grid;
   grid-template-columns: 30% 1fr;
   grid-template-rows: 1;
-  min-height: 70px;
+  height: 70px;
   padding: 0.5em 0.5em;
   align-items: center;
   border-radius: ${theme.borderRadius.round};
@@ -55,14 +57,14 @@ const CardSecondaryStyled = styled.div`
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
   position: relative;
 
-  .thumbnail {
-    height: 60%;
-    width: 100%;
-    object-fit: contain;
-    /* border: 1px solid blue; */
-    display: flex;
-    /* background: blue; */
-    overflow-y: hidden;
+  .image {
+    height: 60px;
+    img {
+      /* border: 1px solid red; */
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
   }
 
   .text-info {

@@ -7,6 +7,7 @@ import { fakeMenu2 } from "fakeData/fakeMenu"
 import Main from "./Main"
 import { useBasket } from "hooks/useBasket"
 import { useMenu } from "hooks/useMenu"
+import { fakeBasket2 } from "fakeData/fakeBasket"
 
 interface OrderProps {
   path: string
@@ -25,7 +26,7 @@ export default function Order(props: OrderProps) {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
   const { menuItems, handleAdd, handleEdit, handleDelete } = useMenu(fakeMenu2)
-  const { basket, handleAddToBasket, handleDeleteFromBasket } = useBasket([])
+  const { basket, handleAddToBasket, handleDeleteFromBasket } = useBasket(fakeBasket2)
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
   const [isCollapsed, setIsCollapsed] = useState(false)
