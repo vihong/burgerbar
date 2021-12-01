@@ -52,14 +52,12 @@ const CardStyled = styled.div`
   width: 200px;
   height: 300px;
   border-radius: 5px;
-  padding: 20px 20px 10px; // padding top to avoid click conflict with delete button
+  padding: 20px; // 20px padding-top to avoid click conflict with delete button
+  padding-bottom: 10px;
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
   display: grid;
   grid-template-rows: 65% 1fr;
-  grid-gap: 10px;
-  /* flex-direction: column; */
-  /* justify-content: center; */
-  /* align-items: center; */
+  grid-gap: 5px;
   position: relative;
   background-color: ${theme.colors.white};
   margin: auto;
@@ -72,9 +70,10 @@ const CardStyled = styled.div`
   }
 
   .image {
-    border: 2px solid green;
-    padding: 0.5em;
-    margin-top: 10px;
+    /* border: 2px solid green; */
+    /* padding: 0.5em; */
+    margin-top: 30px;
+    margin-bottom: 20px;
     img {
       width: 100%;
       height: 100%;
@@ -83,13 +82,19 @@ const CardStyled = styled.div`
   }
 
   .card-text {
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
     /* display: flex; */
     /* flex-direction: column; */
     /* justify-content: flex-end; */
     /* align-items: center; */
+    display: grid;
+    grid-template-rows: 40% 60%;
+
     .card-title {
       /* border: 1px solid red; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
       font-size: ${theme.fonts.P3};
       font-weight: ${theme.weights.medium};
       color: ${theme.colors.black};
@@ -98,16 +103,26 @@ const CardStyled = styled.div`
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     .card-description {
       position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      /* margin-bottom: 30px; */
 
       .left-description {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
         font-weight: ${theme.weights.semiBold};
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
       .right-description {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
         font-size: ${theme.fonts.P1};
       }
     }
