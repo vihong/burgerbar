@@ -79,7 +79,6 @@ const MenuStyled = styled.div`
   grid-column-gap: 0px;
   padding: 50px 50px 150px;
   overflow-y: scroll;
-  /* align-items: center; */
   background-color: ${theme.colors.background_white};
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%) inset;
 

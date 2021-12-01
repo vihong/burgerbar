@@ -32,7 +32,6 @@ const MainStyled = styled.div`
     position: relative;
     height: 92vh;
     display: flex;
-    background: ${theme.colors.background_white};
     box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%) inset;
 
     // menu

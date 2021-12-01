@@ -5,6 +5,12 @@ export const fakeMenu1 = [
   { id: 4, imageSource: "images/burger5.png", title: "Cheese Burger", price: 5.2, quantity: 0 },
   { id: 5, imageSource: "images/drink1.png", title: "Coke 25cl", price: 6.2, quantity: 0 },
   { id: 6, imageSource: "images/drink3.png", title: "Pepsi 25cl", price: 6.2, quantity: 0 }, // excellent for debugging CardPrimary image
-  { id: 7, imageSource: "images/frites.png", title: "Pepsi 25cl", price: 6.2, quantity: 0 }, // excellent for debugging CardPrimary image
-  { id: 8, imageSource: "images/ice-cream.png", title: "Pepsi 25cl", price: 6.2, quantity: 0 }, // excellent for debugging CardPrimary image
+  { id: 7, imageSource: "images/frites.png", title: "Frites paprika", price: 6.2, quantity: 0 }, // excellent for debugging CardPrimary image
+  {
+    id: 8,
+    imageSource: "images/ice-cream.png",
+    title: "Glaces artisanales",
+    price: 6.2,
+    quantity: 0,
+  }, // excellent for debugging CardPrimary image
 ]

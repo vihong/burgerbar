@@ -48,7 +48,7 @@ export default function CardPrimary(props: CardPrimaryProps) {
 const CardStyled = styled.div`
   /* border: 1px solid red; */
   width: 200px;
-  min-height: 300px;
+  height: 300px;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
@@ -68,8 +68,12 @@ const CardStyled = styled.div`
 
   img {
     border: 2px solid green;
-    width: 100%;
+    width: 90%;
+    height: 50%;
     object-fit: contain;
+    position: relative;
+    bottom: 20px;
+    /* margin-bottom: 20px; */
   }
   .card-text {
     /* border: 1px soli d yellow; */
@@ -81,7 +85,7 @@ const CardStyled = styled.div`
     align-items: center;
     .card-title {
       position: relative;
-      top: 20px;
+      top: 10px;
       /* border: 1px solid red; */
       font-size: ${theme.fonts.P3};
       font-weight: ${theme.weights.medium};
