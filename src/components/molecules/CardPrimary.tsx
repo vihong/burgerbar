@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components/macro"
 import { theme } from "theme/index"
-import Button from "components/atoms/Button"
+// import { MdDeleteForever, MdOutlineDeleteForever } from "react-icons/md"
+import { TiDelete } from "react-icons/ti"
 
 export const IMAGE_BY_DEFAULT = "images/coming-soon.png"
 
@@ -31,7 +32,7 @@ export default function CardPrimary(props: CardPrimaryProps) {
 
   return (
     <CardStyled onClick={onCardClick} className={isHoverable ? "is-hoverable" : ""}>
-      {hasDeleteButton && <Button label={"X"} className="delete-button" onClick={onDeleteButton} />}
+      {hasDeleteButton && <TiDelete className="delete-button" onClick={onDeleteButton} />}
       <div className="image">
         <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
       </div>
@@ -57,7 +58,7 @@ const CardStyled = styled.div`
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
   display: grid;
   grid-template-rows: 65% 1fr;
-  grid-gap: 5px;
+  grid-gap: 0px;
   position: relative;
   background-color: ${theme.colors.white};
 
@@ -66,6 +67,17 @@ const CardStyled = styled.div`
     top: 15px;
     right: 15px;
     cursor: pointer;
+    /* border: 1px solid red; */
+    width: 30px;
+    height: 30px;
+    color: ${theme.colors.greyLight};
+    :hover {
+      color: ${theme.colors.red};
+      /* background-color: red; */
+    }
+    :active {
+      color: ${theme.colors.greyLight};
+    }
   }
 
   .image {
@@ -82,13 +94,13 @@ const CardStyled = styled.div`
   .card-text {
     /* border: 1px solid yellow; */
     display: grid;
-    grid-template-rows: 40% 60%;
+    grid-template-rows: 30% 70%;
     padding: 0.3em;
 
     .card-title {
       /* border: 1px solid red; */
       margin: auto 0;
-      font-size: ${theme.fonts.P3};
+      font-size: ${theme.fonts.P2};
       font-weight: ${theme.weights.medium};
       color: ${theme.colors.black};
       text-align: center;
@@ -107,7 +119,7 @@ const CardStyled = styled.div`
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        font-weight: ${theme.weights.semiBold};
+        font-weight: ${theme.weights.medium};
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
