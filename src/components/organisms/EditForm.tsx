@@ -54,8 +54,10 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
       )}
       <div className="inputs-container">
         <div className="image-edit">
-          {itemBeingSelected.imageSource && (
+          {itemBeingSelected.imageSource ? (
             <img src={itemBeingSelected.imageSource} alt={itemBeingSelected.title} />
+          ) : (
+            <div className="empty-image">Cliquer sur un produit</div>
           )}
         </div>
         <div className="inputs">
@@ -154,6 +156,17 @@ const FormStyled = styled.form`
         object-fit: contain;
         object-position: center;
         /* border: 1px solid red; */
+      }
+      .empty-image {
+        height: 100px;
+        width: 100px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        border: 1px solid ${theme.colors.greyLight};
+        line-height: 1.5;
+        color: ${theme.colors.greyDark};
+        border-radius: ${theme.borderRadius.round};
       }
     }
 

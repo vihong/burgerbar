@@ -61,7 +61,11 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
       )}
       <div className="inputs-container">
         <div className="image-edit">
-          {newProduct.imageSource && <img src={newProduct.imageSource} alt={newProduct.title} />}
+          {newProduct.imageSource ? (
+            <img src={newProduct.imageSource} alt={newProduct.title} />
+          ) : (
+            <div className="empty-image">Aucune image</div>
+          )}
         </div>
         <div className="inputs">
           <label>
@@ -154,13 +158,22 @@ const FormStyled = styled.form`
   .inputs-container {
     display: flex;
     .image-edit {
-      height: 100px;
-      width: 100px;
       img {
-        height: 100%;
-        width: 100%;
+        height: 100px;
+        width: 100px;
         object-fit: contain;
         object-position: center;
+      }
+      .empty-image {
+        height: 100px;
+        width: 100px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        border: 1px solid ${theme.colors.greyLight};
+        line-height: 1.5;
+        color: ${theme.colors.greyDark};
+        border-radius: ${theme.borderRadius.round};
       }
     }
 
