@@ -71,7 +71,6 @@ const CardStyled = styled.div`
 
   .image {
     /* border: 2px solid green; */
-    /* padding: 0.5em; */
     margin-top: 30px;
     margin-bottom: 20px;
     img {
@@ -83,24 +82,20 @@ const CardStyled = styled.div`
 
   .card-text {
     /* border: 1px solid yellow; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: flex-end; */
-    /* align-items: center; */
     display: grid;
     grid-template-rows: 40% 60%;
+    padding: 0.3em;
 
     .card-title {
       /* border: 1px solid red; */
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      margin: auto 0;
       font-size: ${theme.fonts.P3};
       font-weight: ${theme.weights.medium};
       color: ${theme.colors.black};
       text-align: center;
       white-space: nowrap;
       overflow: hidden;
+      width: 100%;
       text-overflow: ellipsis;
     }
 
@@ -108,7 +103,6 @@ const CardStyled = styled.div`
       position: relative;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      /* margin-bottom: 30px; */
 
       .left-description {
         display: flex;
