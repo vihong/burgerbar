@@ -11,7 +11,7 @@ export default function Main() {
   return (
     <MainStyled>
       <Basket />
-      <div className="menu-container">
+      <div className="menu-and-panel-container">
         <Menu />
         {isModeAdmin && <PanelAdmin />}
       </div>
@@ -28,18 +28,19 @@ const MainStyled = styled.div`
   .sidebar {
     /* background: green; */
   }
-  .menu-container {
-    /* background: red; */
+  .menu-and-panel-container {
     position: relative;
     height: 92vh;
     display: flex;
+    background: ${theme.colors.background_white};
+    box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%) inset;
 
     // menu
     > div:first-child {
-      border-left: 1px solid ${theme.colors.greyLight};
-      overflow-y: scroll;
-      display: flex;
-      justify-content: space-evenly;
+      /* border-left: 1px solid ${theme.colors.greyLight}; */
+      /* overflow-y: scroll; */
+      /* display: grid; */
+      /* justify-content: space-evenly; */
     }
 
     // panel-admin

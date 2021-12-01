@@ -58,6 +58,7 @@ const CardStyled = styled.div`
   align-items: center;
   position: relative;
   background-color: ${theme.colors.white};
+  margin: auto;
 
   .delete-button {
     position: absolute;
@@ -66,7 +67,7 @@ const CardStyled = styled.div`
   }
 
   img {
-    /* border: 2px solid green; */
+    border: 2px solid green;
     width: 100%;
     object-fit: contain;
   }
