@@ -56,8 +56,8 @@ const BasketStyled = styled.div`
       justify-content: center;
       align-items: center;
       align-self: center;
-      width: 60%;
       line-height: 2;
+      font-size: ${theme.fonts.P2};
     }
   }
 `
