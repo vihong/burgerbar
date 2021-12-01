@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { theme } from "theme"
 import { IMAGE_BY_DEFAULT } from "./CardPrimary"
+import { MdDeleteForever } from "react-icons/md"
 
 interface CardSecondaryProps {
   imageSource?: string
@@ -23,9 +24,9 @@ export default function CardSecondary({
 }: CardSecondaryProps) {
   return (
     <CardSecondaryStyled>
-      <button className="delete-button" onClick={onDelete}>
-        Supprimer
-      </button>
+      <div className="delete-button" onClick={onDelete}>
+        <MdDeleteForever className="icon" />
+      </div>
       <div className="image">
         <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
       </div>
@@ -93,21 +94,34 @@ const CardSecondaryStyled = styled.div`
   :hover {
     .delete-button {
       border: 1px solid red;
+      border: none;
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
+      min-width: 3em;
       border-top-right-radius: ${theme.borderRadius.round};
       border-bottom-right-radius: ${theme.borderRadius.round};
       padding: 10px;
       display: flex;
       align-items: center;
-      background: ${theme.colors.redSecondary};
+      justify-content: center;
+      background: ${theme.colors.red};
       color: ${theme.colors.white};
+      cursor: pointer;
+
+      .icon {
+        width: 25px;
+        height: 25px;
+      }
 
       //behaviour on delete-button hover
       :hover {
         text-decoration: underline;
+
+        .icon {
+          color: ${theme.colors.black};
+        }
       }
     }
   }
