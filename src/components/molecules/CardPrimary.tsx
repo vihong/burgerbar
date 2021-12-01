@@ -60,7 +60,6 @@ const CardStyled = styled.div`
   grid-gap: 5px;
   position: relative;
   background-color: ${theme.colors.white};
-  margin: auto;
 
   .delete-button {
     position: absolute;
