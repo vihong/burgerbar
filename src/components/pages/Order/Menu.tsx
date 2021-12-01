@@ -93,5 +93,25 @@ const MenuStyled = styled.div`
   }
   .add-to-basket-button {
     cursor: pointer;
+    background: ${theme.colors.primary};
+    color: ${theme.colors.white};
+    border-radius: ${theme.borderRadius.round};
+    height: 35px;
+    border: none;
+    padding: 0 1.5em;
+    font-weight: ${theme.weights.semiBold};
+    :hover {
+      background: ${theme.colors.white};
+      color: ${theme.colors.primary};
+      border: 1px solid ${theme.colors.primary};
+    }
+    :active {
+      background: ${theme.colors.primary};
+      color: ${theme.colors.white};
+    }
+  }
+
+  .left-description {
+    color: ${theme.colors.primary};
   }
 `

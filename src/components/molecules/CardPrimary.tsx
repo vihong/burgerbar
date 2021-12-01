@@ -57,7 +57,7 @@ const CardStyled = styled.div`
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
   display: grid;
   grid-template-rows: 65% 1fr;
-  grid-gap: 5px;
+  grid-gap: 0px;
   position: relative;
   background-color: ${theme.colors.white};
 
@@ -107,7 +107,7 @@ const CardStyled = styled.div`
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        font-weight: ${theme.weights.semiBold};
+        font-weight: ${theme.weights.medium};
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
