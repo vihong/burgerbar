@@ -1,7 +1,6 @@
 import OrderContext from "context/OrderContext"
 import React, { useContext } from "react"
 import styled from "styled-components/macro"
-import { theme } from "theme"
 import Basket from "./Basket/Basket"
 import Menu from "./Menu"
 import PanelAdmin from "./PanelAdmin/PanelAdmin"
@@ -36,10 +35,7 @@ const MainStyled = styled.div`
 
     // menu
     > div:first-child {
-      /* border-left: 1px solid ${theme.colors.greyLight}; */
-      /* overflow-y: scroll; */
-      /* display: grid; */
-      /* justify-content: space-evenly; */
+      /* border: 3px solid red; */
     }
 
     // panel-admin
