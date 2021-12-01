@@ -69,23 +69,24 @@ const CardSecondaryStyled = styled.div`
 
   .text-info {
     /* border: 1px solid green; */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5em 0.7em;
+    display: grid;
+    grid-template-columns: 70% 1fr;
+    /* padding: 0.5em 0.7em; */
     font-size: ${theme.fonts.P0};
     > span {
       :first-child {
-        font-weight: ${theme.weights.medium};
         /* border: 1px solid blue; */
-        width: 50%;
-        //@FIXME: the overflow is hidden but will keep pushing if user types too many characters
-        overflow-x: hidden;
+        font-weight: ${theme.weights.medium};
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-left: 0.8em;
       }
       :nth-child(2) {
+        /* border: 1px solid red; */
         color: ${theme.colors.primary};
         font-weight: ${theme.weights.medium};
-        /* border: 1px solid red; */
+        text-align: center;
       }
     }
   }
