@@ -26,6 +26,7 @@ export default function CardSecondary({
     <CardSecondaryStyled>
       <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
+        <span>Supprimer</span>
       </div>
       <div className="image">
         <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
@@ -90,7 +91,7 @@ const CardSecondaryStyled = styled.div`
     display: none;
   }
 
-  // behaviour on card hover
+  // when hover on card
   :hover {
     .delete-button {
       border: 1px solid red;
@@ -104,6 +105,7 @@ const CardSecondaryStyled = styled.div`
       border-bottom-right-radius: ${theme.borderRadius.round};
       padding: 10px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       background: ${theme.colors.red};
@@ -114,14 +116,14 @@ const CardSecondaryStyled = styled.div`
         width: 25px;
         height: 25px;
       }
+      span {
+        font-size: ${theme.fonts.XS};
+        margin: 3px 0;
+      }
 
-      //behaviour on delete-button hover
+      // when hover on button
       :hover {
-        text-decoration: underline;
-
-        .icon {
-          color: ${theme.colors.black};
-        }
+        color: ${theme.colors.black};
       }
     }
   }
