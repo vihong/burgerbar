@@ -1,7 +1,6 @@
 import OrderContext from "context/OrderContext"
 import React, { useContext } from "react"
 import styled from "styled-components/macro"
-import { theme } from "theme"
 import Basket from "./Basket/Basket"
 import Menu from "./Menu"
 import PanelAdmin from "./PanelAdmin/PanelAdmin"
@@ -11,7 +10,7 @@ export default function Main() {
   return (
     <MainStyled>
       <Basket />
-      <div className="menu-container">
+      <div className="menu-and-panel-container">
         <Menu />
         {isModeAdmin && <PanelAdmin />}
       </div>
@@ -28,18 +27,15 @@ const MainStyled = styled.div`
   .sidebar {
     /* background: green; */
   }
-  .menu-container {
-    /* background: red; */
+  .menu-and-panel-container {
     position: relative;
     height: 92vh;
     display: flex;
+    box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%) inset;
 
     // menu
     > div:first-child {
-      border-left: 1px solid ${theme.colors.greyLight};
-      overflow-y: scroll;
-      display: flex;
-      justify-content: space-evenly;
+      /* border: 3px solid red; */
     }
 
     // panel-admin

@@ -62,6 +62,7 @@ export default function Menu() {
             <Button
               label="Ajouter"
               onClick={(event: React.MouseEvent<HTMLElement>) => onAddButton(event, burger)}
+              className="add-to-basket-button"
             />
           }
         />
@@ -71,25 +72,26 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.div`
-  display: flex;
   flex: 1;
-  flex-wrap: wrap;
-  background-color: ${theme.colors.background_white};
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 60px;
+  grid-column-gap: 0px;
+  padding: 50px 50px 150px;
   overflow-y: scroll;
+  background-color: ${theme.colors.background_white};
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%) inset;
-
-  > div {
-    margin: 20px auto;
-  }
+  justify-items: center; // hallelujah! this centers the grid itself
 
   .is-hoverable {
     :hover {
       transform: scale(1.05);
       transition: ease-in-out 0.4s;
       box-shadow: 0 0 8px 0 rgb(255 154 35 / 100%);
+      cursor: pointer;
     }
+  }
+  .add-to-basket-button {
+    cursor: pointer;
   }
 `

@@ -16,7 +16,7 @@ export default function BasketItems({ basket }: BasketItemsProps) {
   return (
     <div className="products">
       {isBasketEmpty ? (
-        <span className="empty-basket">Votre commande est vide pour le moment.</span>
+        <span className="empty-basket">Votre commande est vide.</span>
       ) : (
         basket.map((basketItem) => (
           <CardSecondary
