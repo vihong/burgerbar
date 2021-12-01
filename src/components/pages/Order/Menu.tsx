@@ -87,6 +87,7 @@ const MenuStyled = styled.div`
       transform: scale(1.05);
       transition: ease-in-out 0.4s;
       box-shadow: 0 0 8px 0 rgb(255 154 35 / 100%);
+      cursor: pointer;
     }
   }
   .add-to-basket-button {
