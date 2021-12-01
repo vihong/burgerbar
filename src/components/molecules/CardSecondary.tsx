@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import { theme } from "theme"
 import { IMAGE_BY_DEFAULT } from "./CardPrimary"
@@ -21,19 +21,14 @@ export default function CardSecondary({
   quantity,
   onDelete,
 }: CardSecondaryProps) {
-  const [isCardHovered, setIsCardHovered] = useState(false)
-
   return (
-    <CardSecondaryStyled
-      onMouseEnter={() => setIsCardHovered(true)}
-      onMouseLeave={() => setIsCardHovered(!isCardHovered)}
-    >
-      {isCardHovered && (
-        <button className="delete-button" onClick={onDelete}>
-          Supprimer
-        </button>
-      )}
-      <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} className="thumbnail" />
+    <CardSecondaryStyled>
+      <button className="delete-button" onClick={onDelete}>
+        Supprimer
+      </button>
+      <div className="image">
+        <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
+      </div>
       <div className="text-info">
         <span className="left-info">{title}</span>
         <span className="right-info">x {quantity}</span>
@@ -55,55 +50,65 @@ const CardSecondaryStyled = styled.div`
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
   position: relative;
 
-  .thumbnail {
-    height: 60%;
-    width: 100%;
-    object-fit: contain;
-    /* border: 1px solid blue; */
-    display: flex;
-    /* background: blue; */
-    overflow-y: hidden;
+  .image {
+    height: 60px;
+    img {
+      /* border: 1px solid red; */
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
   }
 
   .text-info {
     /* border: 1px solid green; */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5em 0.7em;
+    display: grid;
+    grid-template-columns: 70% 1fr;
+    /* padding: 0.5em 0.7em; */
     font-size: ${theme.fonts.P0};
     > span {
       :first-child {
-        font-weight: ${theme.weights.medium};
         /* border: 1px solid blue; */
-        width: 50%;
-        //@FIXME: the overflow is hidden but will keep pushing if user types too many characters
-        overflow-x: hidden;
+        font-weight: ${theme.weights.medium};
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-left: 0.8em;
       }
       :nth-child(2) {
+        /* border: 1px solid red; */
         color: ${theme.colors.primary};
         font-weight: ${theme.weights.medium};
-        /* border: 1px solid red; */
+        text-align: center;
       }
     }
   }
 
+  // card default behaviour
   .delete-button {
-    border: 1px solid red;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    border-top-right-radius: ${theme.borderRadius.round};
-    border-bottom-right-radius: ${theme.borderRadius.round};
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    background: ${theme.colors.redSecondary};
-    color: ${theme.colors.white};
+    display: none;
+  }
 
-    :hover {
-      text-decoration: underline;
+  // behaviour on card hover
+  :hover {
+    .delete-button {
+      border: 1px solid red;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      border-top-right-radius: ${theme.borderRadius.round};
+      border-bottom-right-radius: ${theme.borderRadius.round};
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      background: ${theme.colors.redSecondary};
+      color: ${theme.colors.white};
+
+      //behaviour on delete-button hover
+      :hover {
+        text-decoration: underline;
+      }
     }
   }
 `
