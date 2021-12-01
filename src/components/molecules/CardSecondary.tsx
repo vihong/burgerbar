@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import { theme } from "theme"
 import { IMAGE_BY_DEFAULT } from "./CardPrimary"
@@ -21,18 +21,11 @@ export default function CardSecondary({
   quantity,
   onDelete,
 }: CardSecondaryProps) {
-  const [isCardHovered, setIsCardHovered] = useState(false)
-
   return (
-    <CardSecondaryStyled
-      onMouseEnter={() => setIsCardHovered(true)}
-      onMouseLeave={() => setIsCardHovered(!isCardHovered)}
-    >
-      {isCardHovered && (
-        <button className="delete-button" onClick={onDelete}>
-          Supprimer
-        </button>
-      )}
+    <CardSecondaryStyled>
+      <button className="delete-button" onClick={onDelete}>
+        Supprimer
+      </button>
       <div className="image">
         <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
       </div>
@@ -91,22 +84,31 @@ const CardSecondaryStyled = styled.div`
     }
   }
 
+  // card default behaviour
   .delete-button {
-    border: 1px solid red;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    border-top-right-radius: ${theme.borderRadius.round};
-    border-bottom-right-radius: ${theme.borderRadius.round};
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    background: ${theme.colors.redSecondary};
-    color: ${theme.colors.white};
+    display: none;
+  }
 
-    :hover {
-      text-decoration: underline;
+  // behaviour on card hover
+  :hover {
+    .delete-button {
+      border: 1px solid red;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      border-top-right-radius: ${theme.borderRadius.round};
+      border-bottom-right-radius: ${theme.borderRadius.round};
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      background: ${theme.colors.redSecondary};
+      color: ${theme.colors.white};
+
+      //behaviour on delete-button hover
+      :hover {
+        text-decoration: underline;
+      }
     }
   }
 `
