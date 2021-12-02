@@ -15,13 +15,13 @@ export default function PanelWindow() {
       {isAddFormVisible && (
         <>
           <div className="vertical-separator"></div>
-          <AddForm formTitle="Ajouter un produit" buttonLabel="Ajouter un produit" />
+          <AddForm buttonLabel="Ajouter un produit" />
         </>
       )}
       {isEditFormVisible && (
         <>
           <div className="vertical-separator"></div>
-          <EditForm formTitle="Modifier un produit en temps réel" />
+          <EditForm />
         </>
       )}
     </PanelWindowStyled>

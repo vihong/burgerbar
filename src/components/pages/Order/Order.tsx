@@ -22,14 +22,14 @@ export const EMPTY_PRODUCT = {
 }
 
 export default function Order(props: OrderProps) {
-  const [isModeAdmin, setIsModeAdmin] = useState(false)
+  const [isModeAdmin, setIsModeAdmin] = useState(true)
 
   const { menuItems, handleAdd, handleEdit, handleDelete } = useMenu(fakeMenu2)
   const { basket, handleAddToBasket, handleDeleteFromBasket } = useBasket([])
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [isAddFormVisible, setIsAddFormVisible] = useState(false)
+  const [isAddFormVisible, setIsAddFormVisible] = useState(true)
   const [isEditFormVisible, setIsEditFormVisible] = useState(false)
 
   const titleEditBoxRef = useRef()
