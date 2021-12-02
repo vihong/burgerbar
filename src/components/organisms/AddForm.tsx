@@ -68,7 +68,6 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
 
       <div className="text-inputs">
         <TextInput
-          IconComponent={<FaHamburger className="icon" />}
           id="title"
           name="title"
           value={newProduct.title}
@@ -76,24 +75,25 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
           placeholder="Produit (ex: Super Burger)"
           onChange={handleChange}
           ref={titleEditBoxRef}
+          IconComponent={<FaHamburger className="icon" />}
         />
 
         <TextInput
-          IconComponent={<BsFillCameraFill className="icon" />}
           name="imageSource"
           value={newProduct.imageSource}
           type="text"
-          placeholder="Lien URL d'une image sur internet (ex: https://...***.png)"
+          placeholder="Lien URL d'une image sur internet (ex: https://photo-frites.png)"
           onChange={handleChange}
+          IconComponent={<BsFillCameraFill className="icon" />}
         />
 
         <TextInput
-          IconComponent={<MdOutlineEuro className="icon" />}
           name="price"
           value={newProduct.price ? newProduct.price : ""}
           type="text"
           placeholder="Prix"
           onChange={handleChange}
+          IconComponent={<MdOutlineEuro className="icon" />}
         />
       </div>
 
