@@ -18,16 +18,14 @@ export default function WindowTab({ isClosed, onClick }: PanelTabProps) {
 }
 
 const PanelTabStyled = styled.div`
-  border: 1px solid ${theme.colors.white};
+  border: 1px solid ${theme.colors.incognito};
   position: absolute;
   top: -36px;
-  background: ${theme.colors.primary};
+  background: ${theme.colors.incognito};
   color: ${theme.colors.white};
   display: inline-flex;
   align-items: center;
-  left: 50%;
-  transform: translateX(-50%);
-  /* margin-left: 60px; */
+  margin-left: 60px;
   min-height: 35px;
   border-radius: ${theme.borderRadius.round};
   border-bottom-left-radius: 0;
@@ -40,7 +38,7 @@ const PanelTabStyled = styled.div`
   :hover {
     cursor: pointer;
     background: ${theme.colors.white};
-    color: ${theme.colors.primary};
+    color: ${theme.colors.incognito};
     border: 1px solid ${theme.colors.greyLight};
     border-bottom: none;
   }
