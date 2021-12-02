@@ -1,5 +1,4 @@
 import React from "react"
-import { IconType } from "react-icons/lib"
 import styled from "styled-components"
 import { theme } from "theme"
 
@@ -8,14 +7,14 @@ interface TextInputProps {
   [x: string]: any
 }
 
-export default function TextInput({ IconComponent, ...rest }: TextInputProps) {
+const TextInput = React.forwardRef(({ IconComponent, ...rest }: TextInputProps, ref: any) => {
   return (
     <TextInputStyled>
       {IconComponent && IconComponent}
-      <input type="text" {...rest} />
+      <input type="text" {...rest} ref={ref} />
     </TextInputStyled>
   )
-}
+})
 
 const TextInputStyled = styled.div`
   /* border: 1px solid yellow; */
@@ -28,8 +27,8 @@ const TextInputStyled = styled.div`
 
   .icon {
     font-size: ${theme.fonts.P1};
-    margin-right: ${theme.gridUnit * 1.5}px;
-    color: ${theme.colors.greyDark};
+    margin-right: ${theme.gridUnit * 1.6}px;
+    color: ${theme.colors.greySemiDark};
   }
 
   input {
@@ -49,3 +48,4 @@ const TextInputStyled = styled.div`
     }
   }
 `
+export default TextInput
