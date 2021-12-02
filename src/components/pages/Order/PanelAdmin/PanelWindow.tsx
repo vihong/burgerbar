@@ -15,7 +15,7 @@ export default function PanelWindow() {
       {isAddFormVisible && (
         <>
           <div className="vertical-separator"></div>
-          <AddForm buttonLabel="Ajouter un produit" />
+          <AddForm buttonLabel="Ajouter au menu" />
         </>
       )}
       {isEditFormVisible && (

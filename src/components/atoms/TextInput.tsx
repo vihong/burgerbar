@@ -28,7 +28,7 @@ const TextInputStyled = styled.div`
 
   .icon {
     font-size: ${theme.fonts.P1};
-    margin-right: ${theme.gridUnit * 1.5}px;
+    margin-right: ${theme.gridUnit * 1.6}px;
     color: ${theme.colors.greyDark};
   }
 

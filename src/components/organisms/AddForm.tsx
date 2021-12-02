@@ -2,9 +2,9 @@ import OrderContext from "context/OrderContext"
 import React, { useContext, useState } from "react"
 import styled from "styled-components"
 import { theme } from "theme"
-// import { FiCheck } from "react-icons/fi"
+import { FiCheck } from "react-icons/fi"
 import { EMPTY_PRODUCT } from "components/pages/Order/Order"
-import toast from "react-hot-toast"
+// import toast from "react-hot-toast"
 import { MenuItem } from "typescript/MenuItem"
 import TextInput from "components/atoms/TextInput"
 import { FaHamburger } from "react-icons/fa"
@@ -23,7 +23,7 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
   // because here : dynamic typing is here betweem useState<TYPE> and EMPTY_PRODUCT's TYPE
   const [newProduct, setNewProduct] = useState<MenuItem>(EMPTY_PRODUCT)
 
-  // const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -34,9 +34,9 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
     }
     handleAdd(newProductToAdd)
     setNewProduct(EMPTY_PRODUCT)
-    toast.success("Ajouté au menu avec succès!")
-    // setIsSubmitted(true)
-    // setTimeout(() => setIsSubmitted(false), 1500)
+    // toast.success("Ajouté au menu avec succès!")
+    setIsSubmitted(true)
+    setTimeout(() => setIsSubmitted(false), 2000)
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -96,9 +96,16 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
           onChange={handleChange}
         />
       </div>
+
       {buttonLabel && (
         <div className="submitButton">
           <button>{buttonLabel}</button>
+          {isSubmitted && (
+            <div className="submit-message">
+              <FiCheck className="icon" />
+              <span className="message">Ajouté avec succès !</span>
+            </div>
+          )}
         </div>
       )}
     </FormStyled>
@@ -110,14 +117,14 @@ const FormStyled = styled.form`
   display: grid;
   grid-template-columns: 20% 1fr;
   grid-template-rows: 70% 1fr;
-  grid-gap: 10px;
+  grid-gap: 8px;
   grid-column-gap: 20px;
 
-  width: 100%;
+  width: 70%;
+  height: 100%;
   justify-content: flex-start;
   align-self: flex-start;
   /* padding: 0px 20px 5px; */
-  height: 100%;
   margin-left: 30px;
 
   .image-preview {
@@ -158,7 +165,8 @@ const FormStyled = styled.form`
   .submitButton {
     /* border: 1px solid red; */
     grid-area: 2 / 2/ 3 / 3;
-
+    display: flex;
+    align-items: center;
     button {
       cursor: pointer;
       background: ${theme.colors.greyLight};
@@ -169,12 +177,31 @@ const FormStyled = styled.form`
       padding: 0 1.5em;
       font-weight: ${theme.weights.semiBold};
       :hover {
-        background: ${theme.colors.primary};
+        background: ${theme.colors.success};
         color: ${theme.colors.background_white};
       }
       :active {
-        background: ${theme.colors.greyLight};
-        color: ${theme.colors.greyDark};
+        background: ${theme.colors.background_white};
+        color: ${theme.colors.success};
+        border: 1px solid ${theme.colors.success};
+      }
+    }
+
+    .submit-message {
+      /* border: 1px solid blue; */
+      .icon {
+        color: ${theme.colors.success};
+        margin-left: 10px;
+        width: 1em;
+        height: 1em;
+        border: 1px solid ${theme.colors.success};
+        border-radius: 50%;
+        vertical-align: middle;
+      }
+      .message {
+        margin-left: 5px;
+        font-size: ${theme.fonts.P0};
+        color: ${theme.colors.success};
       }
     }
   }
