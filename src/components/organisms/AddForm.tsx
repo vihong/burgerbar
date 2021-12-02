@@ -2,10 +2,14 @@ import OrderContext from "context/OrderContext"
 import React, { useContext, useState } from "react"
 import styled from "styled-components"
 import { theme } from "theme"
-// import { FiCheck } from "react-icons/fi"
+import { FiCheck } from "react-icons/fi"
 import { EMPTY_PRODUCT } from "components/pages/Order/Order"
-import toast from "react-hot-toast"
+// import toast from "react-hot-toast"
 import { MenuItem } from "typescript/MenuItem"
+import TextInput from "components/atoms/TextInput"
+import { FaHamburger } from "react-icons/fa"
+import { BsFillCameraFill } from "react-icons/bs"
+import { MdOutlineEuro } from "react-icons/md"
 
 interface FormProps {
   formTitle?: string
@@ -19,7 +23,7 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
   // because here : dynamic typing is here betweem useState<TYPE> and EMPTY_PRODUCT's TYPE
   const [newProduct, setNewProduct] = useState<MenuItem>(EMPTY_PRODUCT)
 
-  // const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -30,9 +34,9 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
     }
     handleAdd(newProductToAdd)
     setNewProduct(EMPTY_PRODUCT)
-    toast.success("Ajouté au menu avec succès!")
-    // setIsSubmitted(true)
-    // setTimeout(() => setIsSubmitted(false), 1500)
+    // toast.success("Ajouté au menu avec succès!")
+    setIsSubmitted(true)
+    setTimeout(() => setIsSubmitted(false), 2000)
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,95 +55,143 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
       {formTitle && (
         <div className="form-title">
           <h2>{formTitle}</h2>
-          {/* {isSubmitted && (
-            <div className="submit-message">
-              <FiCheck className="icon" />
-              <span className="message">Ajouté au menu !</span>
-            </div>
-          )} */}
         </div>
       )}
-      <div className="inputs-container">
-        <div className="image-edit">
-          {newProduct.imageSource ? (
-            <img src={newProduct.imageSource} alt={newProduct.title} />
-          ) : (
-            <div className="empty-image">Aucune image</div>
-          )}
-        </div>
-        <div className="inputs">
-          <label>
-            Produit
-            <input
-              id="title"
-              name="title"
-              value={newProduct.title}
-              type="text"
-              placeholder="Donnez nom délicieux, ex: Super Burger"
-              onChange={handleChange}
-              ref={titleEditBoxRef}
-            />
-          </label>
-          <label>
-            Image
-            <input
-              name="imageSource"
-              value={newProduct.imageSource}
-              type="text"
-              placeholder="Ajouter le lien URL d'une image"
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Prix
-            <input
-              name="price"
-              value={newProduct.price ? newProduct.price : ""}
-              type="text"
-              placeholder="Prix"
-              onChange={handleChange}
-            />
-          </label>
-          {buttonLabel && (
-            <div className="submitButton">
-              <button>{buttonLabel}</button>
+
+      <div className="image-preview">
+        {newProduct.imageSource ? (
+          <img src={newProduct.imageSource} alt={newProduct.title} />
+        ) : (
+          <div className="empty-image">Aucune image</div>
+        )}
+      </div>
+
+      <div className="text-inputs">
+        <TextInput
+          id="title"
+          name="title"
+          value={newProduct.title}
+          type="text"
+          placeholder="Produit (ex: Super Burger)"
+          onChange={handleChange}
+          ref={titleEditBoxRef}
+          IconComponent={<FaHamburger className="icon" />}
+        />
+
+        <TextInput
+          name="imageSource"
+          value={newProduct.imageSource}
+          type="text"
+          placeholder="Lien URL d'une image sur internet (ex: https://photo-frites.png)"
+          onChange={handleChange}
+          IconComponent={<BsFillCameraFill className="icon" />}
+        />
+
+        <TextInput
+          name="price"
+          value={newProduct.price ? newProduct.price : ""}
+          type="text"
+          placeholder="Prix"
+          onChange={handleChange}
+          IconComponent={<MdOutlineEuro className="icon" />}
+        />
+      </div>
+
+      {buttonLabel && (
+        <div className="submitButton">
+          <button>{buttonLabel}</button>
+          {isSubmitted && (
+            <div className="submit-message">
+              <FiCheck className="icon" />
+              <span className="message">Ajouté avec succès !</span>
             </div>
           )}
         </div>
-      </div>
+      )}
     </FormStyled>
   )
 }
 
 const FormStyled = styled.form`
   /* border: 1px solid blue; */
-  display: flex;
-  flex-direction: column;
-  width: 50%;
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  grid-template-rows: 70% 1fr;
+  grid-gap: 8px;
+  grid-column-gap: 20px;
+
+  width: 70%;
+  height: 100%;
   justify-content: flex-start;
   align-self: flex-start;
-  padding: 0px 20px 5px;
-  height: 100%;
+  /* padding: 0px 20px 5px; */
   margin-left: 30px;
 
-  .form-title {
-    /* border: 1px solid red; */
+  .image-preview {
+    grid-area: 1 / 1 / 2/ 2;
+    /* background: red; */
     display: flex;
-    align-items: flex-end;
-    margin-bottom: 20px;
-    line-height: 1;
+    justify-content: center;
+    align-items: center;
 
-    h2 {
-      /* border: 1px solid blue; */
-      margin: 0;
-      color: ${theme.colors.primary};
+    img {
+      height: 100px;
+      width: 100px;
+      object-fit: contain;
+      object-position: center;
     }
-    .submit-message {
+    .empty-image {
+      /* background-color: green; */
+      height: 100%;
+      width: 100%;
       display: flex;
+      justify-content: center;
       align-items: center;
+      border: 1px solid ${theme.colors.greyLight};
+      line-height: 1.5;
+      color: ${theme.colors.greyDark};
+      border-radius: ${theme.borderRadius.round};
+    }
+  }
+
+  .text-inputs {
+    grid-area: 1 / 2 / 2 / 3;
+    /* background: lightblue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .submitButton {
+    /* border: 1px solid red; */
+    grid-area: 2 / 2/ 3 / 3;
+    display: flex;
+    align-items: center;
+    button {
+      cursor: pointer;
+      background: ${theme.colors.greyLight};
+      color: ${theme.colors.greyDark};
+      border-radius: ${theme.borderRadius.round};
+      height: 35px;
+      border: none;
+      padding: 0 1.5em;
+      font-weight: ${theme.weights.semiBold};
+      :hover {
+        background: ${theme.colors.success};
+        color: ${theme.colors.background_white};
+      }
+      :active {
+        background: ${theme.colors.background_white};
+        color: ${theme.colors.success};
+        border: 1px solid ${theme.colors.success};
+      }
+    }
+
+    .submit-message {
+      /* border: 1px solid blue; */
       .icon {
         color: ${theme.colors.success};
-        margin-left: 1em;
+        margin-left: 10px;
         width: 1em;
         height: 1em;
         border: 1px solid ${theme.colors.success};
@@ -150,69 +202,6 @@ const FormStyled = styled.form`
         margin-left: 5px;
         font-size: ${theme.fonts.P0};
         color: ${theme.colors.success};
-        font-weight: ${theme.weights.medium};
-      }
-    }
-  }
-
-  .inputs-container {
-    display: flex;
-    .image-edit {
-      img {
-        height: 100px;
-        width: 100px;
-        object-fit: contain;
-        object-position: center;
-      }
-      .empty-image {
-        height: 100px;
-        width: 100px;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        border: 1px solid ${theme.colors.greyLight};
-        line-height: 1.5;
-        color: ${theme.colors.greyDark};
-        border-radius: ${theme.borderRadius.round};
-      }
-    }
-
-    .inputs {
-      flex: 1;
-
-      margin-left: 50px;
-      label {
-        display: flex;
-        margin-right: 30px;
-        margin-top: 8px;
-        margin-bottom: 8px;
-        justify-content: space-between;
-        font-size: ${theme.fonts.P0};
-        font-weight: ${theme.weights.medium};
-        input {
-          width: 300px;
-          flex: 1;
-          margin-left: 30px;
-        }
-      }
-    }
-  }
-
-  .submitButton {
-    /* border: 1px solid red; */
-    display: inline-flex;
-
-    button {
-      background: ${theme.colors.greyLight};
-      color: ${theme.colors.greyDark};
-      border-radius: ${theme.borderRadius.round};
-      border: none;
-      padding: 2px 8px;
-      display: flex;
-      :hover {
-        cursor: pointer;
-        background: ${theme.colors.primary};
-        color: ${theme.colors.background_white};
       }
     }
   }
