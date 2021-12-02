@@ -11,6 +11,7 @@ const colors = {
   redSecondary: "#c4151c",
   blue: "#51a7e1",
   greyLight: "#e4e5e9",
+  greyMedium: "#a7a8ad",
   greyDark: "#6f737e",
 }
 
