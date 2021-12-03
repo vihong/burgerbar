@@ -17,8 +17,8 @@ export default function PanelAdminTabs() {
     setIsEditFormVisible,
   } = useContext(OrderContext)
 
-  let classNameAdd = "form-tab"
-  let classNameEdit = "form-tab"
+  let classNameAdd = "tab form-tab"
+  let classNameEdit = "tab form-tab"
 
   const handleAddButton = () => {
     if (isCollapsed) setIsCollapsed(!isCollapsed)
@@ -42,7 +42,7 @@ export default function PanelAdminTabs() {
           isCollapsed ? <FiChevronUp className="icon" /> : <FiChevronDown className="icon" />
         }
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className="collapse-tab"
+        className="tab collapse-tab"
       />
       <WindowTab
         label="Ajouter un produit"
@@ -68,20 +68,33 @@ const PanelAdminTabsStyled = styled.div`
   border: 1px solid transparent;
   display: flex;
 
+  /* .tab {
+    :hover {
+      border-bottom: 1px solid ${theme.colors.greyLight};
+    }
+  } */
+
   .collapse-tab {
-    background-color: ${theme.colors.incognito};
-    color: ${theme.colors.white};
+    background-color: ${theme.colors.white};
+    color: ${theme.colors.greySemiDark};
     border: 1px solid ${theme.colors.greyLight};
     border-bottom: none;
 
     :hover {
-      background: ${theme.colors.white};
-      color: ${theme.colors.incognito};
+      /* background: ${theme.colors.incognito}; */
+      /* color: ${theme.colors.white}; */
+      /* text-decoration: underline; */
       border-bottom: 1px solid ${theme.colors.white};
     }
     .icon {
       min-width: 1.5em;
       min-height: 1.5em;
+    }
+
+    &:active {
+      background: ${theme.colors.incognito};
+      color: ${theme.colors.white};
+      border: 1px solid ${theme.colors.incognito};
     }
   }
 
@@ -96,8 +109,8 @@ const PanelAdminTabsStyled = styled.div`
     :hover {
       /* background: ${theme.colors.white}; */
       /* color: ${theme.colors.primary}; */
+      border-bottom: 1px solid ${theme.colors.white};
       text-decoration: underline;
-      border-bottom: 1px solid ${theme.colors.greyLight};
     }
     span {
       font-weight: ${theme.weights.medium};
@@ -110,9 +123,9 @@ const PanelAdminTabsStyled = styled.div`
     }
 
     &.active {
-      background: ${theme.colors.white};
-      border-bottom: 1px solid ${theme.colors.white};
-      color: ${theme.colors.primary};
+      background: ${theme.colors.incognito};
+      border: 1px solid ${theme.colors.incognito};
+      color: ${theme.colors.white};
       font-weight: ${theme.weights.bold};
     }
 
@@ -122,8 +135,10 @@ const PanelAdminTabsStyled = styled.div`
     /* } */
 
     &:active {
-      /* background: ${theme.colors.white}; */
-      /* color: ${theme.colors.primary}; */
+      background: ${theme.colors.white};
+      color: ${theme.colors.greySemiDark};
+      border: 1px solid ${theme.colors.greyLight};
+      border-bottom: 1px solid ${theme.colors.white};
       text-decoration: none;
     }
   }
