@@ -26,6 +26,7 @@ const MainStyled = styled.div`
 
   .sidebar {
     /* background: green; */
+    box-shadow: 0 0px 4px 0 rgb(0 0 0 / 20%) inset;
   }
   .menu-and-panel-container {
     position: relative;
