@@ -82,7 +82,7 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
           name="imageSource"
           value={newProduct.imageSource}
           type="text"
-          placeholder="Lien URL d'une image sur internet (ex: https://photo-frites.png)"
+          placeholder="Lien URL d'une image (ex: https://photo-frites.png)"
           onChange={handleChange}
           IconComponent={<BsFillCameraFill className="icon" />}
         />

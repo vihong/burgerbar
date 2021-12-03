@@ -63,7 +63,7 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
           name="title"
           value={itemBeingSelected.title}
           type="text"
-          placeholder="Donnez nom délicieux, ex: Super Burger"
+          placeholder="Produit (ex: Super Burger)"
           onChange={handleChange}
           ref={titleEditBoxRef}
           onBlur={handleOnBlur}
@@ -75,7 +75,7 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
           name="imageSource"
           value={itemBeingSelected.imageSource}
           type="text"
-          placeholder="Ajouter le lien URL d'une image"
+          placeholder="Lien URL d'une image (ex: https://photo-frites.png)"
           onChange={handleChange}
           onBlur={handleOnBlur}
           onFocus={handleOnFocus}
