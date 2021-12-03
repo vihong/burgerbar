@@ -25,11 +25,4 @@ const PanelWindowStyled = styled.div`
   display: flex;
   align-items: flex-start;
   border-top: 1px solid ${theme.colors.greyLight};
-
-  .vertical-separator {
-    min-height: 11em;
-    margin-left: 70px;
-    margin-right: 20px;
-    border: 1px solid lightgray;
-  }
 `
