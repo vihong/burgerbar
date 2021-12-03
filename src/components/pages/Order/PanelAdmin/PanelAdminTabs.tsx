@@ -6,8 +6,8 @@ import { MdModeEditOutline } from "react-icons/md"
 import OrderContext from "context/OrderContext"
 import styled from "styled-components"
 import { theme } from "theme"
-import { GiClick } from "react-icons/gi"
-import toast from "react-hot-toast"
+// import { GiClick } from "react-icons/gi"
+// import toast from "react-hot-toast"
 
 export default function PanelAdminTabs() {
   const {
@@ -25,18 +25,18 @@ export default function PanelAdminTabs() {
   }
 
   const handlEditButton = () => {
-    if (!isEditFormVisible)
-      toast.success("Cliquer sur un produit pour le modifier", {
-        position: "bottom-center",
-        icon: <GiClick color={theme.colors.blue} />,
-        duration: 3000,
-        style: {
-          color: theme.colors.blue,
-          borderWidth: 1,
-          borderColor: theme.colors.blue,
-          borderStyle: "solid",
-        },
-      })
+    // if (!isEditFormVisible)
+    //   toast.success("Cliquer sur un produit pour le modifier", {
+    //     position: "bottom-center",
+    //     icon: <GiClick color={theme.colors.blue} />,
+    //     duration: 3000,
+    //     style: {
+    //       color: theme.colors.blue,
+    //       borderWidth: 1,
+    //       borderColor: theme.colors.blue,
+    //       borderStyle: "solid",
+    //     },
+    //   })
     setIsAddFormVisible(false)
     setIsEditFormVisible(!isEditFormVisible)
   }

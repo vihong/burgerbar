@@ -121,7 +121,8 @@ const FormStyled = styled.form`
   grid-column-gap: 20px;
 
   width: 70%;
-  height: 100%;
+  height: 11em;
+  margin: auto 0;
   justify-content: flex-start;
   align-self: flex-start;
 
