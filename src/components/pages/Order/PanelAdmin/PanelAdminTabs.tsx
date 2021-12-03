@@ -6,39 +6,21 @@ import { MdModeEditOutline } from "react-icons/md"
 import OrderContext from "context/OrderContext"
 import styled from "styled-components"
 import { theme } from "theme"
-// import { GiClick } from "react-icons/gi"
-// import toast from "react-hot-toast"
 
 export default function PanelAdminTabs() {
-  const {
-    isCollapsed,
-    setIsCollapsed,
-    isAddFormVisible,
-    setIsAddFormVisible,
-    isEditFormVisible,
-    setIsEditFormVisible,
-  } = useContext(OrderContext)
+  const { isCollapsed, setIsCollapsed, setIsAddFormVisible, setIsEditFormVisible } =
+    useContext(OrderContext)
 
   const handleAddButton = () => {
+    if (isCollapsed) setIsCollapsed(!isCollapsed)
     setIsEditFormVisible(false)
-    setIsAddFormVisible(!isAddFormVisible)
+    setIsAddFormVisible(true)
   }
 
   const handlEditButton = () => {
-    // if (!isEditFormVisible)
-    //   toast.success("Cliquer sur un produit pour le modifier", {
-    //     position: "bottom-center",
-    //     icon: <GiClick color={theme.colors.blue} />,
-    //     duration: 3000,
-    //     style: {
-    //       color: theme.colors.blue,
-    //       borderWidth: 1,
-    //       borderColor: theme.colors.blue,
-    //       borderStyle: "solid",
-    //     },
-    //   })
+    if (isCollapsed) setIsCollapsed(!isCollapsed)
     setIsAddFormVisible(false)
-    setIsEditFormVisible(!isEditFormVisible)
+    setIsEditFormVisible(true)
   }
 
   return (
