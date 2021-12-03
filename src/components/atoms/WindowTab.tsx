@@ -30,4 +30,5 @@ const PanelTabStyled = styled.div`
   border-bottom: ${theme.colors.background_white};
   padding: 0 16px;
   cursor: pointer;
+  font-size: ${theme.fonts.P0};
 `

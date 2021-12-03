@@ -71,7 +71,6 @@ const PanelAdminTabsStyled = styled.div`
     .icon {
       min-width: 1.5em;
       min-height: 1.5em;
-      /* margin-right: 0.5em; */
     }
   }
 
@@ -81,14 +80,14 @@ const PanelAdminTabsStyled = styled.div`
     border-left: 1px solid ${theme.colors.greyLight};
     border-bottom: 1px solid ${theme.colors.greyLight};
     color: ${theme.colors.white};
-    margin-left: 1px;
+    /* margin-left: 1px; */
     :hover {
       background: ${theme.colors.white};
       color: ${theme.colors.primary};
       border-bottom: 1px solid ${theme.colors.white};
     }
     span {
-      font-weight: bold;
+      font-weight: ${theme.weights.medium};
     }
 
     .icon {
