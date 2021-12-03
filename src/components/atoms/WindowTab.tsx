@@ -19,8 +19,9 @@ export default function WindowTab({ label, IconComponent, onClick, className }: 
 }
 
 const PanelTabStyled = styled.div`
-  /* border: 1px solid ${theme.colors.incognito}; */
-  color: ${theme.colors.white};
+  border: 1px solid ${theme.colors.incognito};
+  background-color: ${theme.colors.background_white};
+  color: ${theme.colors.black};
   display: inline-flex;
   align-items: center;
   height: 35px;
@@ -30,4 +31,5 @@ const PanelTabStyled = styled.div`
   border-bottom: ${theme.colors.background_white};
   padding: 0 16px;
   cursor: pointer;
+  font-size: ${theme.fonts.P0};
 `

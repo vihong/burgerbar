@@ -41,6 +41,12 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
     setTimeout(() => setIsDoneEditing(false), 2000)
   }
 
+  // @FIXME: Add proper tpypes for KeyboardEvent
+  // (see more : https://stackoverflow.com/questions/46462841/typescript-react-whats-the-correct-type-of-the-parameter-for-onkeypress)
+  const handleKeyPress = (event: any) => {
+    if (event.key === "Enter") handleOnBlur(event)
+  }
+
   // créer un composant <Input/>
   return (
     <FormStyled>
@@ -69,6 +75,7 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
           onBlur={handleOnBlur}
           onFocus={handleOnFocus}
           IconComponent={<FaHamburger className="icon" />}
+          onKeyPress={handleKeyPress}
         />
 
         <TextInput
@@ -80,6 +87,7 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
           onBlur={handleOnBlur}
           onFocus={handleOnFocus}
           IconComponent={<BsFillCameraFill className="icon" />}
+          onKeyPress={handleKeyPress}
         />
 
         <TextInput
@@ -91,6 +99,7 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
           onBlur={handleOnBlur}
           onFocus={handleOnFocus}
           IconComponent={<MdOutlineEuro className="icon" />}
+          onKeyPress={handleKeyPress}
         />
       </div>
 
@@ -98,7 +107,7 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
       {isDoneEditing && (
         <div className="submit-message">
           <BsCloudCheck className="icon" />
-          <span className="message">Modifications enregistrés !</span>
+          <span className="message">Modifications enregistrées !</span>
         </div>
       )}
     </FormStyled>

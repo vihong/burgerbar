@@ -8,8 +8,17 @@ import styled from "styled-components"
 import { theme } from "theme"
 
 export default function PanelAdminTabs() {
-  const { isCollapsed, setIsCollapsed, setIsAddFormVisible, setIsEditFormVisible } =
-    useContext(OrderContext)
+  const {
+    isCollapsed,
+    setIsCollapsed,
+    isAddFormVisible,
+    setIsAddFormVisible,
+    isEditFormVisible,
+    setIsEditFormVisible,
+  } = useContext(OrderContext)
+
+  let classNameAdd = "tab form-tab"
+  let classNameEdit = "tab form-tab"
 
   const handleAddButton = () => {
     if (isCollapsed) setIsCollapsed(!isCollapsed)
@@ -23,27 +32,29 @@ export default function PanelAdminTabs() {
     setIsEditFormVisible(true)
   }
 
+  classNameAdd += isAddFormVisible ? " active" : ""
+  classNameEdit += isEditFormVisible ? " active" : ""
+
   return (
     <PanelAdminTabsStyled>
       <WindowTab
-        // label={isCollapsed ? "Ouvrir" : "Réduire"}
         IconComponent={
           isCollapsed ? <FiChevronUp className="icon" /> : <FiChevronDown className="icon" />
         }
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className="collapse-tab"
+        className="tab collapse-tab"
       />
       <WindowTab
         label="Ajouter un produit"
         IconComponent={<BsPlusLg className="icon" />}
         onClick={handleAddButton}
-        className="forms-tab"
+        className={classNameAdd}
       />
       <WindowTab
         label="Modifier un produit"
         IconComponent={<MdModeEditOutline className="icon" />}
         onClick={handlEditButton}
-        className="forms-tab"
+        className={classNameEdit}
       />
     </PanelAdminTabsStyled>
   )
@@ -57,44 +68,78 @@ const PanelAdminTabsStyled = styled.div`
   border: 1px solid transparent;
   display: flex;
 
+  /* .tab {
+    :hover {
+      border-bottom: 1px solid ${theme.colors.greyLight};
+    }
+  } */
+
   .collapse-tab {
-    background-color: ${theme.colors.incognito};
-    color: ${theme.colors.white};
+    background-color: ${theme.colors.white};
+    color: ${theme.colors.greySemiDark};
     border: 1px solid ${theme.colors.greyLight};
     border-bottom: none;
 
     :hover {
-      background: ${theme.colors.white};
-      color: ${theme.colors.incognito};
+      /* background: ${theme.colors.incognito}; */
+      /* color: ${theme.colors.white}; */
+      /* text-decoration: underline; */
       border-bottom: 1px solid ${theme.colors.white};
     }
     .icon {
       min-width: 1.5em;
       min-height: 1.5em;
-      /* margin-right: 0.5em; */
+    }
+
+    &:active {
+      background: ${theme.colors.incognito};
+      color: ${theme.colors.white};
+      border: 1px solid ${theme.colors.incognito};
     }
   }
 
-  .forms-tab {
-    background-color: ${theme.colors.primary};
+  .form-tab {
+    box-shadow: 0 -2px 8px -2px rgb(0 0 0 / 10%);
+    background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.greyLight};
     border-left: 1px solid ${theme.colors.greyLight};
     border-bottom: 1px solid ${theme.colors.greyLight};
-    color: ${theme.colors.white};
-    margin-left: 1px;
+    color: ${theme.colors.greySemiDark};
+    margin-left: 3px;
     :hover {
-      background: ${theme.colors.white};
-      color: ${theme.colors.primary};
+      /* background: ${theme.colors.white}; */
+      /* color: ${theme.colors.primary}; */
       border-bottom: 1px solid ${theme.colors.white};
+      text-decoration: underline;
     }
     span {
-      font-weight: bold;
+      font-weight: ${theme.weights.medium};
     }
 
     .icon {
       min-width: 1em;
       min-height: 1em;
       margin-right: 0.5em;
+    }
+
+    &.active {
+      background: ${theme.colors.incognito};
+      border: 1px solid ${theme.colors.incognito};
+      color: ${theme.colors.white};
+      font-weight: ${theme.weights.bold};
+    }
+
+    /* &:hover { */
+    /* background: ${theme.colors.primary}; */
+    /* color: ${theme.colors.white}; */
+    /* } */
+
+    &:active {
+      background: ${theme.colors.white};
+      color: ${theme.colors.greySemiDark};
+      border: 1px solid ${theme.colors.greyLight};
+      border-bottom: 1px solid ${theme.colors.white};
+      text-decoration: none;
     }
   }
 `
