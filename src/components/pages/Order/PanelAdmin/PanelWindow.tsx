@@ -36,6 +36,7 @@ const PanelWindowStyled = styled.div`
   padding: 25px 30px 20px 60px;
   display: flex;
   align-items: flex-start;
+  border-top: 1px solid ${theme.colors.greyLight};
 
   .vertical-separator {
     min-height: 11em;
