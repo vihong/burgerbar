@@ -41,6 +41,8 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
     setTimeout(() => setIsDoneEditing(false), 2000)
   }
 
+  // @FIXME: Add proper tpypes for KeyboardEvent
+  // (see more : https://stackoverflow.com/questions/46462841/typescript-react-whats-the-correct-type-of-the-parameter-for-onkeypress)
   const handleKeyPress = (event: any) => {
     if (event.key === "Enter") handleOnBlur(event)
   }
