@@ -11,19 +11,8 @@ export default function PanelWindow() {
 
   return (
     <PanelWindowStyled>
-      <ActionButtons />
-      {isAddFormVisible && (
-        <>
-          <div className="vertical-separator"></div>
-          <AddForm buttonLabel="Ajouter au menu" />
-        </>
-      )}
-      {isEditFormVisible && (
-        <>
-          <div className="vertical-separator"></div>
-          <EditForm />
-        </>
-      )}
+      {isAddFormVisible && <AddForm buttonLabel="Ajouter au menu" />}
+      {isEditFormVisible && <EditForm />}
     </PanelWindowStyled>
   )
 }

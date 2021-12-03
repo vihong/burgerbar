@@ -124,8 +124,6 @@ const FormStyled = styled.form`
   height: 100%;
   justify-content: flex-start;
   align-self: flex-start;
-  /* padding: 0px 20px 5px; */
-  margin-left: 30px;
 
   .image-preview {
     grid-area: 1 / 1 / 2/ 2;
