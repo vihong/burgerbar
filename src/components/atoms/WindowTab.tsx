@@ -1,56 +1,33 @@
 import React from "react"
-import { FiChevronUp, FiChevronDown } from "react-icons/fi"
 import styled from "styled-components"
 import { theme } from "theme"
 
 interface PanelTabProps {
-  isClosed?: boolean
+  label?: string
+  IconComponent?: JSX.Element
   onClick?: any
+  className?: string
 }
 
-export default function WindowTab({ isClosed, onClick }: PanelTabProps) {
+export default function WindowTab({ label, IconComponent, onClick, className }: PanelTabProps) {
   return (
-    <PanelTabStyled onClick={onClick}>
-      {isClosed ? <FiChevronUp className="icon" /> : <FiChevronDown className="icon" />}
-      <span>{isClosed ? "Ouvrir" : "Réduire"}</span>
+    <PanelTabStyled onClick={onClick} className={className}>
+      {IconComponent}
+      <span>{label}</span>
     </PanelTabStyled>
   )
 }
 
 const PanelTabStyled = styled.div`
-  border: 1px solid ${theme.colors.white};
-  position: absolute;
-  top: -36px;
-  background: ${theme.colors.primary};
+  /* border: 1px solid ${theme.colors.incognito}; */
   color: ${theme.colors.white};
   display: inline-flex;
   align-items: center;
-  left: 50%;
-  transform: translateX(-50%);
-  /* margin-left: 60px; */
-  min-height: 35px;
+  height: 35px;
   border-radius: ${theme.borderRadius.round};
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-bottom: ${theme.colors.background_white};
-  min-width: 100px;
-  padding-left: 0.5em;
-  padding-right: 0.4em;
-
-  :hover {
-    cursor: pointer;
-    background: ${theme.colors.white};
-    color: ${theme.colors.primary};
-    border: 1px solid ${theme.colors.greyLight};
-    border-bottom: none;
-  }
-
-  span {
-    margin: auto;
-  }
-
-  .icon {
-    min-width: 1.5em;
-    min-height: 1.5em;
-  }
+  padding: 0 16px;
+  cursor: pointer;
 `

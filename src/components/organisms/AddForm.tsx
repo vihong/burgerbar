@@ -82,7 +82,7 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
           name="imageSource"
           value={newProduct.imageSource}
           type="text"
-          placeholder="Lien URL d'une image sur internet (ex: https://photo-frites.png)"
+          placeholder="Lien URL d'une image (ex: https://photo-frites.png)"
           onChange={handleChange}
           IconComponent={<BsFillCameraFill className="icon" />}
         />
@@ -121,11 +121,10 @@ const FormStyled = styled.form`
   grid-column-gap: 20px;
 
   width: 70%;
-  height: 100%;
+  height: 11em;
+  margin: auto 0;
   justify-content: flex-start;
   align-self: flex-start;
-  /* padding: 0px 20px 5px; */
-  margin-left: 30px;
 
   .image-preview {
     grid-area: 1 / 1 / 2/ 2;

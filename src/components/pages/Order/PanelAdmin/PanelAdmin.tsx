@@ -1,15 +1,15 @@
 import OrderContext from "context/OrderContext"
 import { useContext } from "react"
 import styled from "styled-components/macro"
-import WindowTab from "components/atoms/WindowTab"
 import PanelWindow from "components/pages/Order/PanelAdmin/PanelWindow"
+import PanelAdminTabs from "./PanelAdminTabs"
 
 export default function PanelAdmin() {
-  const { isCollapsed, setIsCollapsed } = useContext(OrderContext)
+  const { isCollapsed } = useContext(OrderContext)
 
   return (
     <PanelAdminStyled className="panel">
-      <WindowTab isClosed={isCollapsed} onClick={() => setIsCollapsed(!isCollapsed)} />
+      <PanelAdminTabs />
       {!isCollapsed && <PanelWindow />}
     </PanelAdminStyled>
   )
