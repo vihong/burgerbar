@@ -10,6 +10,10 @@ import TextInput from "components/atoms/TextInput"
 import { FaHamburger } from "react-icons/fa"
 import { BsFillCameraFill } from "react-icons/bs"
 import { MdOutlineEuro } from "react-icons/md"
+import { FiPackage } from "react-icons/fi"
+import { IoMegaphoneOutline } from "react-icons/io5"
+import { GoMegaphone } from "react-icons/go"
+import SelectInput from "components/atoms/SelectInput"
 
 interface FormProps {
   formTitle?: string
@@ -98,21 +102,19 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
             onChange={handleChange}
             IconComponent={<MdOutlineEuro className="icon" />}
           />
-          <TextInput
-            name="price"
-            value={newProduct.price ? newProduct.price : ""}
-            type="text"
-            placeholder="Prix"
-            onChange={handleChange}
-            IconComponent={<MdOutlineEuro className="icon" />}
+          <SelectInput
+            options={[
+              { id: 1, label: "En stock", value: true },
+              { id: 2, label: "En rupture", value: false },
+            ]}
+            IconComponent={<FiPackage className="icon" />}
           />
-          <TextInput
-            name="price"
-            value={newProduct.price ? newProduct.price : ""}
-            type="text"
-            placeholder="Prix"
-            onChange={handleChange}
-            IconComponent={<MdOutlineEuro className="icon" />}
+          <SelectInput
+            options={[
+              { id: 1, label: "Sans pub", value: true },
+              { id: 2, label: "Avec pub", value: false },
+            ]}
+            IconComponent={<GoMegaphone className="icon" />}
           />
         </div>
       </div>
@@ -195,8 +197,20 @@ const FormStyled = styled.form`
       /* border: 1px solid green; */
       grid-area: 3 / 1 / 4 / 4;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 1fr 1fr;
       grid-column-gap: 8px;
+
+      > div:nth-child(1) {
+        grid-column: 1 / 2;
+      }
+
+      > div:nth-child(2) {
+        grid-column: 2 / 3;
+      }
+
+      > div:nth-child(3) {
+        grid-column: 3 / 4;
+      }
     }
   }
 
