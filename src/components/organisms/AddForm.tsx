@@ -87,14 +87,32 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
           IconComponent={<BsFillCameraFill className="icon" />}
         />
 
-        <TextInput
-          name="price"
-          value={newProduct.price ? newProduct.price : ""}
-          type="text"
-          placeholder="Prix"
-          onChange={handleChange}
-          IconComponent={<MdOutlineEuro className="icon" />}
-        />
+        <div className="last-form-row">
+          <TextInput
+            name="price"
+            value={newProduct.price ? newProduct.price : ""}
+            type="text"
+            placeholder="Prix"
+            onChange={handleChange}
+            IconComponent={<MdOutlineEuro className="icon" />}
+          />
+          <TextInput
+            name="price"
+            value={newProduct.price ? newProduct.price : ""}
+            type="text"
+            placeholder="Prix"
+            onChange={handleChange}
+            IconComponent={<MdOutlineEuro className="icon" />}
+          />
+          <TextInput
+            name="price"
+            value={newProduct.price ? newProduct.price : ""}
+            type="text"
+            placeholder="Prix"
+            onChange={handleChange}
+            IconComponent={<MdOutlineEuro className="icon" />}
+          />
+        </div>
       </div>
 
       {buttonLabel && (
@@ -156,9 +174,19 @@ const FormStyled = styled.form`
   .text-inputs {
     grid-area: 1 / 2 / 2 / 3;
     /* background: lightblue; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: space-between; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
+    .last-form-row {
+      /* border: 1px solid red; */
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-column-gap: 8px;
+    }
   }
 
   .submitButton {
