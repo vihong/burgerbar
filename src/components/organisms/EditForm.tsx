@@ -59,7 +59,7 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
         {itemBeingSelected.imageSource ? (
           <img src={itemBeingSelected.imageSource} alt={itemBeingSelected.title} />
         ) : (
-          <div className="empty-image">Cliquer sur un produit</div>
+          <div className="empty-image">Aucune image</div>
         )}
       </div>
 
@@ -103,13 +103,18 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
         />
       </div>
 
-      {buttonLabel && <button>{buttonLabel}</button>}
-      {isDoneEditing && (
-        <div className="submit-message">
-          <BsCloudCheck className="icon" />
-          <span className="message">Modifications enregistrées !</span>
-        </div>
-      )}
+      <div className="hint">
+        {isDoneEditing ? (
+          <div className="submit-message">
+            <BsCloudCheck className="icon" />
+            <span className="message">Modifications enregistrées !</span>
+          </div>
+        ) : (
+          <span className="hint-message">
+            Cliquez sur un produit pour le modifier <span className="real-time">en temps réel</span>
+          </span>
+        )}
+      </div>
     </FormStyled>
   )
 }
@@ -131,7 +136,6 @@ const FormStyled = styled.form`
   .image-preview {
     grid-area: 1 / 1 / 2/ 2;
     /* background-color: red; */
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,11 +151,12 @@ const FormStyled = styled.form`
       height: 100%;
       width: 100%;
       display: flex;
+      justify-content: center;
       align-items: center;
       text-align: center;
       border: 1px solid ${theme.colors.greyLight};
       line-height: 1.5;
-      color: ${theme.colors.greyDark};
+      color: ${theme.colors.greySemiDark};
       border-radius: ${theme.borderRadius.round};
     }
   }
@@ -164,22 +169,33 @@ const FormStyled = styled.form`
     justify-content: space-between;
   }
 
-  .submit-message {
-    grid-area: 2 / 2/ 3 / 3;
+  .hint {
+    grid-area: 2 / 2 / 3 / 3;
     display: flex;
     align-items: center;
-
-    .icon {
-      color: ${theme.colors.blue};
-      margin-left: 1em;
-      width: 1.2em;
-      height: 1.2em;
-    }
-    .message {
-      margin-left: 0.5em;
+    .hint-message {
       font-size: ${theme.fonts.P0};
-      color: ${theme.colors.blue};
-      font-weight: ${theme.weights.medium};
+      flex: 1;
+      color: ${theme.colors.primary};
+      font-weight: ${theme.weights.regular};
+      .real-time {
+        text-decoration: underline;
+      }
+    }
+    .submit-message {
+      display: flex;
+      .icon {
+        color: ${theme.colors.blue};
+        margin-left: 1em;
+        width: 1.2em;
+        height: 1.2em;
+      }
+      .message {
+        margin-left: 0.5em;
+        font-size: ${theme.fonts.P0};
+        color: ${theme.colors.blue};
+        font-weight: ${theme.weights.medium};
+      }
     }
   }
 `
