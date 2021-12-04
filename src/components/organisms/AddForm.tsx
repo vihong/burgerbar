@@ -76,6 +76,7 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
           onChange={handleChange}
           ref={titleEditBoxRef}
           IconComponent={<FaHamburger className="icon" />}
+          className="first-row"
         />
 
         <TextInput
@@ -85,9 +86,10 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
           placeholder="Lien URL d'une image (ex: https://photo-frites.png)"
           onChange={handleChange}
           IconComponent={<BsFillCameraFill className="icon" />}
+          className="second-row"
         />
 
-        <div className="last-form-row">
+        <div className="third-row">
           <TextInput
             name="price"
             value={newProduct.price ? newProduct.price : ""}
@@ -174,17 +176,26 @@ const FormStyled = styled.form`
   .text-inputs {
     grid-area: 1 / 2 / 2 / 3;
     /* background: lightblue; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: space-between; */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    grid-row-gap: 8px;
 
-    .last-form-row {
+    .first-row {
       /* border: 1px solid red; */
+      grid-area: 1 / 1 / 2 / 4;
+    }
+
+    .second-row {
+      /* border: 1px solid blue; */
+      grid-area: 2 / 1 / 2 / 4;
+    }
+
+    .third-row {
+      /* border: 1px solid green; */
+      grid-area: 3 / 1 / 4 / 4;
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       grid-column-gap: 8px;
     }
   }

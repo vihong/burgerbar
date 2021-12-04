@@ -4,17 +4,20 @@ import { theme } from "theme"
 
 interface TextInputProps {
   IconComponent?: JSX.Element
+  className?: string
   [x: string]: any
 }
 
-const TextInput = React.forwardRef(({ IconComponent, ...rest }: TextInputProps, ref: any) => {
-  return (
-    <TextInputStyled>
-      {IconComponent && IconComponent}
-      <input type="text" {...rest} ref={ref} />
-    </TextInputStyled>
-  )
-})
+const TextInput = React.forwardRef(
+  ({ IconComponent, className, ...rest }: TextInputProps, ref: any) => {
+    return (
+      <TextInputStyled className={className}>
+        {IconComponent && IconComponent}
+        <input type="text" {...rest} ref={ref} />
+      </TextInputStyled>
+    )
+  }
+)
 
 const TextInputStyled = styled.div`
   /* border: 1px solid yellow; */
