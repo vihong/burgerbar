@@ -148,7 +148,7 @@ const FormStyled = styled.form`
       align-items: center;
       border: 1px solid ${theme.colors.greyLight};
       line-height: 1.5;
-      color: ${theme.colors.greyDark};
+      color: ${theme.colors.greySemiDark};
       border-radius: ${theme.borderRadius.round};
     }
   }
