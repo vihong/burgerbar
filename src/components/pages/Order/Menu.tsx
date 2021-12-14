@@ -37,7 +37,14 @@ export default function Menu() {
     event.stopPropagation()
     handleDelete(id)
     handleDeleteFromBasket(id)
-    setItemBeingSelected({ id: 0, title: "", imageSource: "", price: 0, quantity: 0 })
+    setItemBeingSelected({
+      id: 0,
+      title: "",
+      imageSource: "",
+      price: 0,
+      quantity: 0,
+      isAvailable: true,
+    })
   }
 
   const onAddButton = (event: React.MouseEvent<HTMLElement>, burger: MenuItem) => {

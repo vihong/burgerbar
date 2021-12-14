@@ -25,10 +25,14 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const singleValueBeingChangedNow = event.target.value
+    console.log("event.target.name: ", event.target.name)
+    console.log("singleValueBeingChangedNow: ", singleValueBeingChangedNow)
     const itemUpdated = {
       ...itemBeingSelected,
       [event.target.name]: singleValueBeingChangedNow,
     }
+
+    console.log("itemUpdated: ", itemUpdated)
     setItemBeingSelected(itemUpdated)
     handleEdit(itemUpdated)
   }
@@ -44,7 +48,7 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
     setTimeout(() => setIsDoneEditing(false), 2000)
   }
 
-  // @FIXME: Add proper tpypes for KeyboardEvent
+  // @FIXME: Add proper types for KeyboardEvent
   // (see more : https://stackoverflow.com/questions/46462841/typescript-react-whats-the-correct-type-of-the-parameter-for-onkeypress)
   const handleKeyPress = (event: any) => {
     if (event.key === "Enter") handleOnBlur(event)
@@ -113,6 +117,8 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
               { id: 2, label: "En rupture", value: false },
             ]}
             IconComponent={<FiPackage className="icon" />}
+            onChange={handleChange}
+            name="isAvailable"
           />
           <SelectInput
             options={[

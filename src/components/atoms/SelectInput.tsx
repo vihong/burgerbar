@@ -7,20 +7,25 @@ interface SelectOption {
   id: ID
   label: string
   value: any
+  [x: string]: any
 }
 
 interface SelectInputProps {
   options: SelectOption[]
   IconComponent?: JSX.Element
+  onChange?: any // @TODO: remove "?"
+  name?: string
 }
 
-export default function SelectInput({ options, IconComponent }: SelectInputProps) {
+export default function SelectInput({ name, options, IconComponent, onChange }: SelectInputProps) {
   return (
     <SelectInputStyled>
       {IconComponent && IconComponent}
-      <select>
+      <select onChange={onChange} name={name}>
         {options.map((option) => (
-          <option value={option.value}>{option.label}</option>
+          <option key={option.label} value={option.value}>
+            {option.label}
+          </option>
         ))}
       </select>
     </SelectInputStyled>

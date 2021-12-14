@@ -105,7 +105,7 @@ const PanelAdminTabsStyled = styled.div`
     border-left: 1px solid ${theme.colors.greyLight};
     border-bottom: 1px solid ${theme.colors.greyLight};
     color: ${theme.colors.greySemiDark};
-    margin-left: 3px;
+    margin-left: 1px;
     :hover {
       border-bottom: 1px solid ${theme.colors.white};
       text-decoration: underline;
