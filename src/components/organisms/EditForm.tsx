@@ -6,6 +6,9 @@ import { BsCloudCheck, BsFillCameraFill } from "react-icons/bs"
 import TextInput from "components/atoms/TextInput"
 import { FaHamburger } from "react-icons/fa"
 import { MdOutlineEuro } from "react-icons/md"
+import SelectInput from "components/atoms/SelectInput"
+import { FiPackage } from "react-icons/fi"
+import { GoMegaphone } from "react-icons/go"
 
 interface FormProps {
   formTitle?: string
@@ -76,6 +79,7 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
           onFocus={handleOnFocus}
           IconComponent={<FaHamburger className="icon" />}
           onKeyPress={handleKeyPress}
+          className="first-row"
         />
 
         <TextInput
@@ -88,19 +92,36 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
           onFocus={handleOnFocus}
           IconComponent={<BsFillCameraFill className="icon" />}
           onKeyPress={handleKeyPress}
+          className="second-row"
         />
 
-        <TextInput
-          name="price"
-          value={itemBeingSelected.price ? itemBeingSelected.price : ""}
-          type="text"
-          placeholder="Prix"
-          onChange={handleChange}
-          onBlur={handleOnBlur}
-          onFocus={handleOnFocus}
-          IconComponent={<MdOutlineEuro className="icon" />}
-          onKeyPress={handleKeyPress}
-        />
+        <div className="third-row">
+          <TextInput
+            name="price"
+            value={itemBeingSelected.price ? itemBeingSelected.price : ""}
+            type="text"
+            placeholder="Prix"
+            onChange={handleChange}
+            onBlur={handleOnBlur}
+            onFocus={handleOnFocus}
+            IconComponent={<MdOutlineEuro className="icon" />}
+            onKeyPress={handleKeyPress}
+          />
+          <SelectInput
+            options={[
+              { id: 1, label: "En stock", value: true },
+              { id: 2, label: "En rupture", value: false },
+            ]}
+            IconComponent={<FiPackage className="icon" />}
+          />
+          <SelectInput
+            options={[
+              { id: 1, label: "Sans pub", value: true },
+              { id: 2, label: "Avec pub", value: false },
+            ]}
+            IconComponent={<GoMegaphone className="icon" />}
+          />
+        </div>
       </div>
 
       <div className="hint">
@@ -164,9 +185,29 @@ const FormStyled = styled.form`
   .text-inputs {
     grid-area: 1 / 2 / 2 / 3;
     /* background-color: lightblue; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-row-gap: 8px;
+
+    .first-row {
+      /* border: 1px solid red; */
+      grid-area: 1 / 1 / 2 / 4;
+    }
+
+    .second-row {
+      /* border: 1px solid blue; */
+      grid-area: 2 / 1 / 2 / 4;
+    }
+
+    .third-row {
+      /* border: 1px solid green; */
+      grid-area: 3 / 1 / 4 / 4;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 8px;
+    }
+  }
   }
 
   .hint {
