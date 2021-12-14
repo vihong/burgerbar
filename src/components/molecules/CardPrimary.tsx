@@ -34,7 +34,8 @@ export default function CardPrimary(props: CardPrimaryProps) {
     <CardStyled onClick={onCardClick} className={isHoverable ? "is-hoverable" : ""}>
       {hasDeleteButton && <TiDelete className="delete-button" onClick={onDeleteButton} />}
       <div className="image">
-        <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
+        <img className="no-stock" src={"images/no-stock.png"} />
+        <img className="product" src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
       </div>
 
       <div className="card-text">
@@ -84,10 +85,17 @@ const CardStyled = styled.div`
     /* border: 2px solid green; */
     margin-top: 30px;
     margin-bottom: 20px;
+    /* position: relative; */
     img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+    }
+
+    .no-stock {
+      position: absolute;
+      top: 0;
+      left: 0;
     }
   }
 
