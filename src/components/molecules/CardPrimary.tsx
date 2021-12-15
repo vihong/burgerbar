@@ -5,6 +5,7 @@ import { theme } from "theme/index"
 import { TiDelete } from "react-icons/ti"
 
 export const IMAGE_BY_DEFAULT = "images/coming-soon.png"
+export const IMAGE_OVERLAP = "images/no-stock.png"
 
 interface CardPrimaryProps {
   imageSource?: string
@@ -16,7 +17,7 @@ interface CardPrimaryProps {
   isHoverable?: boolean
   bottomLeftDescription?: string
   bottomRightDescription?: JSX.Element
-  isAvailable?: boolean
+  isOverlapImageVisible?: boolean
 }
 
 export default function CardPrimary(props: CardPrimaryProps) {
@@ -29,18 +30,15 @@ export default function CardPrimary(props: CardPrimaryProps) {
     onCardClick,
     hasDeleteButton,
     isHoverable,
-    isAvailable,
+    isOverlapImageVisible,
   } = props
 
-  // console.log("title: ", title)
-  // console.log("isAvailable: ", isAvailable)
   return (
     <CardStyled onClick={onCardClick} className={isHoverable ? "is-hoverable" : ""}>
       {hasDeleteButton && <TiDelete className="delete-button" onClick={onDeleteButton} />}
       <div className="image">
-        {/* @ts-ignore @FIXME */}
-        {isAvailable === "false" && (
-          <img className="no-stock" src={"images/no-stock.png"} alt="no-stock" />
+        {isOverlapImageVisible && (
+          <img className="overlap-image" src={IMAGE_OVERLAP} alt="overlap" />
         )}
         <img className="product" src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
       </div>
@@ -99,7 +97,7 @@ const CardStyled = styled.div`
       object-fit: contain;
     }
 
-    .no-stock {
+    .overlap-image {
       position: absolute;
       top: 0;
       left: 0;

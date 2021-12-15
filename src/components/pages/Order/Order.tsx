@@ -7,6 +7,7 @@ import { fakeMenu1 } from "fakeData/fakeMenu"
 import Main from "./Main"
 import { useBasket } from "hooks/useBasket"
 import { useMenu } from "hooks/useMenu"
+import { isProductAvailable } from "enums"
 
 interface OrderProps {
   path: string
@@ -19,7 +20,7 @@ export const EMPTY_PRODUCT = {
   price: 0,
   added: false,
   quantity: 0,
-  isAvailable: true,
+  isAvailable: isProductAvailable.YES,
 }
 
 export default function Order(props: OrderProps) {

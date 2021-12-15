@@ -6,5 +6,5 @@ export interface MenuItem {
   title?: string
   price: number
   quantity: number
-  isAvailable: boolean
+  isAvailable: string
 }

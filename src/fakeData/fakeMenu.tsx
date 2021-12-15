@@ -1,3 +1,5 @@
+import { isProductAvailable } from "enums"
+
 export const fakeMenu1 = [
   {
     id: 1,
@@ -5,7 +7,7 @@ export const fakeMenu1 = [
     title: "Burger 1",
     price: 5.2,
     quantity: 1,
-    isAvailable: true,
+    isAvailable: isProductAvailable.YES,
   },
   {
     id: 2,
@@ -13,7 +15,7 @@ export const fakeMenu1 = [
     title: "Burger 2",
     price: 7.5,
     quantity: 0,
-    isAvailable: true,
+    isAvailable: isProductAvailable.YES,
   },
 ]
 
@@ -24,7 +26,7 @@ export const fakeMenu2 = [
     title: "Burger Meal",
     price: 5.2,
     quantity: 1,
-    isAvailable: true,
+    isAvailable: isProductAvailable.YES,
   },
   {
     id: 2,
@@ -32,7 +34,7 @@ export const fakeMenu2 = [
     title: "Vegan Burger",
     price: 5.7,
     quantity: 0,
-    isAvailable: true,
+    isAvailable: isProductAvailable.YES,
   },
   {
     id: 3,
@@ -40,7 +42,7 @@ export const fakeMenu2 = [
     title: "Chicken Burger",
     price: 5.2,
     quantity: 0,
-    isAvailable: true,
+    isAvailable: isProductAvailable.YES,
   },
   {
     id: 4,
@@ -48,7 +50,7 @@ export const fakeMenu2 = [
     title: "Coke 25cl",
     price: 5.2,
     quantity: 0,
-    isAvailable: true,
+    isAvailable: isProductAvailable.YES,
   },
   {
     id: 5,
@@ -56,7 +58,7 @@ export const fakeMenu2 = [
     title: "Pepsi 25cl",
     price: 6.2,
     quantity: 0,
-    isAvailable: true,
+    isAvailable: isProductAvailable.YES,
   },
   {
     id: 6,
@@ -64,7 +66,7 @@ export const fakeMenu2 = [
     title: "Iced Tea 25cl",
     price: 6.2,
     quantity: 0,
-    isAvailable: true,
+    isAvailable: isProductAvailable.YES,
   },
   {
     id: 7,
@@ -72,7 +74,7 @@ export const fakeMenu2 = [
     title: "Frites Paprika",
     price: 6.2,
     quantity: 0,
-    isAvailable: true,
+    isAvailable: isProductAvailable.YES,
   }, // excellent for debugging CardPrimary image
   {
     id: 8,
@@ -80,7 +82,7 @@ export const fakeMenu2 = [
     title: "New York Fries",
     price: 6.2,
     quantity: 0,
-    isAvailable: true,
+    isAvailable: isProductAvailable.YES,
   }, // excellent for debugging CardPrimary image
   {
     id: 9,
@@ -88,7 +90,7 @@ export const fakeMenu2 = [
     title: "Potatoes",
     price: 6.2,
     quantity: 0,
-    isAvailable: true,
+    isAvailable: isProductAvailable.YES,
   }, // excellent for debugging CardPrimary image
   {
     id: 10,
@@ -96,6 +98,6 @@ export const fakeMenu2 = [
     title: "Glaces artisanales",
     price: 6.2,
     quantity: 0,
-    isAvailable: true,
+    isAvailable: isProductAvailable.YES,
   }, // excellent for debugging CardPrimary image
 ]

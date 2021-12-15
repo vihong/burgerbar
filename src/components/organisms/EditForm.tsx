@@ -9,6 +9,7 @@ import { MdOutlineEuro } from "react-icons/md"
 import SelectInput from "components/atoms/SelectInput"
 import { FiPackage } from "react-icons/fi"
 import { GoMegaphone } from "react-icons/go"
+import { isProductAvailable } from "enums"
 
 interface FormProps {
   formTitle?: string
@@ -25,9 +26,9 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const singleValueBeingChangedNow = event.target.value
-    console.log("event.target.name: ", event.target.name)
-    console.log("singleValueBeingChangedNow: ", singleValueBeingChangedNow)
-    console.log("typeof singleValueBeingChangedNow: ", typeof singleValueBeingChangedNow)
+    // // console.log("event.target.name: ", event.target.name)
+    // console.log("singleValueBeingChangedNow: ", singleValueBeingChangedNow)
+    // console.log("typeof singleValueBeingChangedNow: ", typeof singleValueBeingChangedNow)
     const itemUpdated = {
       ...itemBeingSelected,
       [event.target.name]: singleValueBeingChangedNow,
@@ -114,8 +115,8 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
           />
           <SelectInput
             options={[
-              { id: 1, label: "En stock", value: true },
-              { id: 2, label: "En rupture", value: false },
+              { id: 1, label: "En stock", value: isProductAvailable.YES },
+              { id: 2, label: "En rupture", value: isProductAvailable.NO },
             ]}
             IconComponent={<FiPackage className="icon" />}
             onChange={handleChange}

@@ -6,6 +6,8 @@ import { theme } from "theme"
 import { formatPrice } from "utils/maths"
 import Button from "components/atoms/Button"
 import { MenuItem } from "typescript/MenuItem"
+import { isProductAvailable } from "enums"
+import { convertStringToBoolean } from "utils/string"
 
 export default function Menu() {
   const {
@@ -43,7 +45,7 @@ export default function Menu() {
       imageSource: "",
       price: 0,
       quantity: 0,
-      isAvailable: true,
+      isAvailable: isProductAvailable.YES,
     })
   }
 
@@ -58,6 +60,7 @@ export default function Menu() {
         <CardPrimary
           key={burger.id}
           {...burger}
+          isOverlapImageVisible={!convertStringToBoolean(burger.isAvailable)}
           onDeleteButton={(event: React.MouseEvent<HTMLElement>) =>
             handleDeleteButton(event, burger.id)
           }
