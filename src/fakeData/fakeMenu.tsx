@@ -2,11 +2,19 @@ export const fakeMenu1 = [
   {
     id: 1,
     imageSource: "images/burger1.png",
-    title: "Burger Meal des ténèbres qui tuent",
+    title: "Burger 1",
     price: 5.2,
     quantity: 1,
+    isAvailable: true,
   },
-  { id: 2, imageSource: "images/burger2.png", title: "Burger House", price: 7.5, quantity: 0 },
+  {
+    id: 2,
+    imageSource: "images/burger2.png",
+    title: "Burger 2",
+    price: 7.5,
+    quantity: 0,
+    isAvailable: true,
+  },
 ]
 
 export const fakeMenu2 = [

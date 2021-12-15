@@ -16,6 +16,7 @@ interface CardPrimaryProps {
   isHoverable?: boolean
   bottomLeftDescription?: string
   bottomRightDescription?: JSX.Element
+  isAvailable?: boolean
 }
 
 export default function CardPrimary(props: CardPrimaryProps) {
@@ -28,13 +29,19 @@ export default function CardPrimary(props: CardPrimaryProps) {
     onCardClick,
     hasDeleteButton,
     isHoverable,
+    isAvailable,
   } = props
 
+  // console.log("title: ", title)
+  // console.log("isAvailable: ", isAvailable)
   return (
     <CardStyled onClick={onCardClick} className={isHoverable ? "is-hoverable" : ""}>
       {hasDeleteButton && <TiDelete className="delete-button" onClick={onDeleteButton} />}
       <div className="image">
-        <img className="no-stock" src={"images/no-stock.png"} />
+        {/* @ts-ignore @FIXME */}
+        {isAvailable === "false" && (
+          <img className="no-stock" src={"images/no-stock.png"} alt="no-stock" />
+        )}
         <img className="product" src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
       </div>
 

@@ -52,7 +52,6 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
     setNewProduct(newProductUpdated)
   }
 
-  // créer un composant <Input/>
   return (
     <FormStyled action="submit" onSubmit={handleSubmit}>
       {formTitle && (

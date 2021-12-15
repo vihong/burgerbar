@@ -3,7 +3,7 @@ import OrderContext from "context/OrderContext"
 import Navbar from "components/molecules/Navbar"
 import styled from "styled-components/macro"
 import { MenuItem } from "typescript/MenuItem"
-import { fakeMenu2 } from "fakeData/fakeMenu"
+import { fakeMenu1 } from "fakeData/fakeMenu"
 import Main from "./Main"
 import { useBasket } from "hooks/useBasket"
 import { useMenu } from "hooks/useMenu"
@@ -25,7 +25,7 @@ export const EMPTY_PRODUCT = {
 export default function Order(props: OrderProps) {
   const [isModeAdmin, setIsModeAdmin] = useState(true)
 
-  const { menuItems, handleAdd, handleEdit, handleDelete } = useMenu(fakeMenu2)
+  const { menuItems, handleAdd, handleEdit, handleDelete } = useMenu(fakeMenu1)
   const { basket, handleAddToBasket, handleDeleteFromBasket } = useBasket([])
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
