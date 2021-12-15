@@ -23,7 +23,7 @@ export default function Menu() {
     handleDeleteFromBasket,
   } = useContext(OrderContext)
 
-  //@ts-ignore
+  //@ts-ignore due to async
   const handleCardSelected = async (idSelected: number | undefined): void => {
     if (!isModeAdmin) return
     const itemBeingSelected = menuItems?.find((item) => item.id === idSelected)
@@ -56,27 +56,35 @@ export default function Menu() {
 
   return (
     <MenuStyled>
-      {menuItems?.map((burger) => (
-        <CardPrimary
-          key={burger.id}
-          {...burger}
-          isOverlapImageVisible={!convertStringToBoolean(burger.isAvailable)}
-          onDeleteButton={(event: React.MouseEvent<HTMLElement>) =>
-            handleDeleteButton(event, burger.id)
-          }
-          onCardClick={() => handleCardSelected(burger.id)}
-          hasDeleteButton={isModeAdmin}
-          isHoverable={isModeAdmin}
-          bottomLeftDescription={formatPrice(burger.price)}
-          bottomRightDescription={
-            <Button
-              label="Ajouter"
-              onClick={(event: React.MouseEvent<HTMLElement>) => onAddButton(event, burger)}
-              className="add-to-basket-button"
-            />
-          }
-        />
-      ))}
+      {menuItems?.map((burger) => {
+        let isBurgerUnavailable = !convertStringToBoolean(burger.isAvailable)
+        let addButtonClass = isBurgerUnavailable
+          ? "add-to-basket-button is-disabled"
+          : "add-to-basket-button"
+
+        return (
+          <CardPrimary
+            key={burger.id}
+            {...burger}
+            isOverlapImageVisible={isBurgerUnavailable}
+            onDeleteButton={(event: React.MouseEvent<HTMLElement>) =>
+              handleDeleteButton(event, burger.id)
+            }
+            onCardClick={() => handleCardSelected(burger.id)}
+            hasDeleteButton={isModeAdmin}
+            isHoverable={isModeAdmin}
+            bottomLeftDescription={formatPrice(burger.price)}
+            bottomRightDescription={
+              <Button
+                label="Ajouter"
+                onClick={(event: React.MouseEvent<HTMLElement>) => onAddButton(event, burger)}
+                className={addButtonClass}
+                disabled={isBurgerUnavailable}
+              />
+            }
+          />
+        )
+      })}
     </MenuStyled>
   )
 }
@@ -118,6 +126,11 @@ const MenuStyled = styled.div`
     :active {
       background: ${theme.colors.primary};
       color: ${theme.colors.white};
+    }
+
+    &.is-disabled {
+      opacity: 50%;
+      cursor: not-allowed;
     }
   }
 
