@@ -6,6 +6,10 @@ import { BsCloudCheck, BsFillCameraFill } from "react-icons/bs"
 import TextInput from "components/atoms/TextInput"
 import { FaHamburger } from "react-icons/fa"
 import { MdOutlineEuro } from "react-icons/md"
+import SelectInput from "components/atoms/SelectInput"
+import { FiPackage } from "react-icons/fi"
+import { GoMegaphone } from "react-icons/go"
+import { isProductAvailable } from "enums"
 
 interface FormProps {
   formTitle?: string
@@ -22,10 +26,15 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const singleValueBeingChangedNow = event.target.value
+    // // console.log("event.target.name: ", event.target.name)
+    // console.log("singleValueBeingChangedNow: ", singleValueBeingChangedNow)
+    // console.log("typeof singleValueBeingChangedNow: ", typeof singleValueBeingChangedNow)
     const itemUpdated = {
       ...itemBeingSelected,
       [event.target.name]: singleValueBeingChangedNow,
     }
+
+    console.log("itemUpdated: ", itemUpdated)
     setItemBeingSelected(itemUpdated)
     handleEdit(itemUpdated)
   }
@@ -41,7 +50,7 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
     setTimeout(() => setIsDoneEditing(false), 2000)
   }
 
-  // @FIXME: Add proper tpypes for KeyboardEvent
+  // @FIXME: Add proper types for KeyboardEvent
   // (see more : https://stackoverflow.com/questions/46462841/typescript-react-whats-the-correct-type-of-the-parameter-for-onkeypress)
   const handleKeyPress = (event: any) => {
     if (event.key === "Enter") handleOnBlur(event)
@@ -59,7 +68,7 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
         {itemBeingSelected.imageSource ? (
           <img src={itemBeingSelected.imageSource} alt={itemBeingSelected.title} />
         ) : (
-          <div className="empty-image">Cliquer sur un produit</div>
+          <div className="empty-image">Aucune image</div>
         )}
       </div>
 
@@ -76,6 +85,7 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
           onFocus={handleOnFocus}
           IconComponent={<FaHamburger className="icon" />}
           onKeyPress={handleKeyPress}
+          className="first-row"
         />
 
         <TextInput
@@ -88,28 +98,55 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
           onFocus={handleOnFocus}
           IconComponent={<BsFillCameraFill className="icon" />}
           onKeyPress={handleKeyPress}
+          className="second-row"
         />
 
-        <TextInput
-          name="price"
-          value={itemBeingSelected.price ? itemBeingSelected.price : ""}
-          type="text"
-          placeholder="Prix"
-          onChange={handleChange}
-          onBlur={handleOnBlur}
-          onFocus={handleOnFocus}
-          IconComponent={<MdOutlineEuro className="icon" />}
-          onKeyPress={handleKeyPress}
-        />
+        <div className="third-row">
+          <TextInput
+            name="price"
+            value={itemBeingSelected.price ? itemBeingSelected.price : ""}
+            type="text"
+            placeholder="Prix"
+            onChange={handleChange}
+            onBlur={handleOnBlur}
+            onFocus={handleOnFocus}
+            IconComponent={<MdOutlineEuro className="icon" />}
+            onKeyPress={handleKeyPress}
+          />
+          <SelectInput
+            options={[
+              { id: 1, label: "En stock", value: isProductAvailable.YES },
+              { id: 2, label: "En rupture", value: isProductAvailable.NO },
+            ]}
+            IconComponent={<FiPackage className="icon" />}
+            onChange={handleChange}
+            name="isAvailable"
+            value={itemBeingSelected.isAvailable}
+          />
+          <SelectInput
+            options={[
+              { id: 1, label: "Sans pub", value: true },
+              { id: 2, label: "Avec pub", value: false },
+            ]}
+            IconComponent={<GoMegaphone className="icon" />}
+            value={undefined}
+            name="isAdvertised"
+          />
+        </div>
       </div>
 
-      {buttonLabel && <button>{buttonLabel}</button>}
-      {isDoneEditing && (
-        <div className="submit-message">
-          <BsCloudCheck className="icon" />
-          <span className="message">Modifications enregistrées !</span>
-        </div>
-      )}
+      <div className="hint">
+        {isDoneEditing ? (
+          <div className="submit-message">
+            <BsCloudCheck className="icon" />
+            <span className="message">Modifications enregistrées !</span>
+          </div>
+        ) : (
+          <span className="hint-message">
+            Cliquez sur un produit pour le modifier <span className="real-time">en temps réel</span>
+          </span>
+        )}
+      </div>
     </FormStyled>
   )
 }
@@ -131,7 +168,6 @@ const FormStyled = styled.form`
   .image-preview {
     grid-area: 1 / 1 / 2/ 2;
     /* background-color: red; */
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,11 +183,12 @@ const FormStyled = styled.form`
       height: 100%;
       width: 100%;
       display: flex;
+      justify-content: center;
       align-items: center;
       text-align: center;
       border: 1px solid ${theme.colors.greyLight};
       line-height: 1.5;
-      color: ${theme.colors.greyDark};
+      color: ${theme.colors.greySemiDark};
       border-radius: ${theme.borderRadius.round};
     }
   }
@@ -159,27 +196,58 @@ const FormStyled = styled.form`
   .text-inputs {
     grid-area: 1 / 2 / 2 / 3;
     /* background-color: lightblue; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-row-gap: 8px;
+
+    .first-row {
+      /* border: 1px solid red; */
+      grid-area: 1 / 1 / 2 / 4;
+    }
+
+    .second-row {
+      /* border: 1px solid blue; */
+      grid-area: 2 / 1 / 2 / 4;
+    }
+
+    .third-row {
+      /* border: 1px solid green; */
+      grid-area: 3 / 1 / 4 / 4;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 8px;
+    }
+  }
   }
 
-  .submit-message {
-    grid-area: 2 / 2/ 3 / 3;
+  .hint {
+    grid-area: 2 / 2 / 3 / 3;
     display: flex;
     align-items: center;
-
-    .icon {
-      color: ${theme.colors.blue};
-      margin-left: 1em;
-      width: 1.2em;
-      height: 1.2em;
-    }
-    .message {
-      margin-left: 0.5em;
+    .hint-message {
       font-size: ${theme.fonts.P0};
-      color: ${theme.colors.blue};
-      font-weight: ${theme.weights.medium};
+      flex: 1;
+      color: ${theme.colors.primary};
+      font-weight: ${theme.weights.regular};
+      .real-time {
+        text-decoration: underline;
+      }
+    }
+    .submit-message {
+      display: flex;
+      .icon {
+        color: ${theme.colors.blue};
+        margin-left: 1em;
+        width: 1.2em;
+        height: 1.2em;
+      }
+      .message {
+        margin-left: 0.5em;
+        font-size: ${theme.fonts.P0};
+        color: ${theme.colors.blue};
+        font-weight: ${theme.weights.medium};
+      }
     }
   }
 `

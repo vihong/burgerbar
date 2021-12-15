@@ -1,12 +1,22 @@
+import { isProductAvailable } from "enums"
+
 export const fakeMenu1 = [
   {
     id: 1,
     imageSource: "images/burger1.png",
-    title: "Burger Meal des ténèbres qui tuent",
+    title: "Burger 1",
     price: 5.2,
     quantity: 1,
+    isAvailable: isProductAvailable.YES,
   },
-  { id: 2, imageSource: "images/burger2.png", title: "Burger House", price: 7.5, quantity: 0 },
+  {
+    id: 2,
+    imageSource: "images/burger2.png",
+    title: "Burger 2",
+    price: 7.5,
+    quantity: 0,
+    isAvailable: isProductAvailable.YES,
+  },
 ]
 
 export const fakeMenu2 = [
@@ -16,18 +26,55 @@ export const fakeMenu2 = [
     title: "Burger Meal",
     price: 5.2,
     quantity: 1,
+    isAvailable: isProductAvailable.YES,
   },
-  { id: 2, imageSource: "images/burger6.png", title: "Vegan Burger", price: 5.7, quantity: 0 },
-  { id: 3, imageSource: "images/burger3.png", title: "Chicken Burger", price: 5.2, quantity: 0 },
-  { id: 4, imageSource: "images/drink1.png", title: "Coke 25cl", price: 5.2, quantity: 0 },
-  { id: 5, imageSource: "images/drink2.png", title: "Pepsi 25cl", price: 6.2, quantity: 0 },
-  { id: 6, imageSource: "images/drink3.png", title: "Iced Tea 25cl", price: 6.2, quantity: 0 },
+  {
+    id: 2,
+    imageSource: "images/burger6.png",
+    title: "Vegan Burger",
+    price: 5.7,
+    quantity: 0,
+    isAvailable: isProductAvailable.YES,
+  },
+  {
+    id: 3,
+    imageSource: "images/burger3.png",
+    title: "Chicken Burger",
+    price: 5.2,
+    quantity: 0,
+    isAvailable: isProductAvailable.YES,
+  },
+  {
+    id: 4,
+    imageSource: "images/drink1.png",
+    title: "Coke 25cl",
+    price: 5.2,
+    quantity: 0,
+    isAvailable: isProductAvailable.YES,
+  },
+  {
+    id: 5,
+    imageSource: "images/drink2.png",
+    title: "Pepsi 25cl",
+    price: 6.2,
+    quantity: 0,
+    isAvailable: isProductAvailable.YES,
+  },
+  {
+    id: 6,
+    imageSource: "images/drink3.png",
+    title: "Iced Tea 25cl",
+    price: 6.2,
+    quantity: 0,
+    isAvailable: isProductAvailable.YES,
+  },
   {
     id: 7,
     imageSource: "images/frites1.png",
     title: "Frites Paprika",
     price: 6.2,
     quantity: 0,
+    isAvailable: isProductAvailable.YES,
   }, // excellent for debugging CardPrimary image
   {
     id: 8,
@@ -35,6 +82,7 @@ export const fakeMenu2 = [
     title: "New York Fries",
     price: 6.2,
     quantity: 0,
+    isAvailable: isProductAvailable.YES,
   }, // excellent for debugging CardPrimary image
   {
     id: 9,
@@ -42,6 +90,7 @@ export const fakeMenu2 = [
     title: "Potatoes",
     price: 6.2,
     quantity: 0,
+    isAvailable: isProductAvailable.YES,
   }, // excellent for debugging CardPrimary image
   {
     id: 10,
@@ -49,5 +98,6 @@ export const fakeMenu2 = [
     title: "Glaces artisanales",
     price: 6.2,
     quantity: 0,
+    isAvailable: isProductAvailable.YES,
   }, // excellent for debugging CardPrimary image
 ]

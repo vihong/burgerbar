@@ -10,6 +10,10 @@ import TextInput from "components/atoms/TextInput"
 import { FaHamburger } from "react-icons/fa"
 import { BsFillCameraFill } from "react-icons/bs"
 import { MdOutlineEuro } from "react-icons/md"
+import { FiPackage } from "react-icons/fi"
+import { GoMegaphone } from "react-icons/go"
+import SelectInput from "components/atoms/SelectInput"
+import { isProductAvailable } from "enums"
 
 interface FormProps {
   formTitle?: string
@@ -32,8 +36,10 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
       ...newProduct,
       id: new Date().getTime(),
     }
+
+    console.log("newProductToAdd: ", newProductToAdd)
     handleAdd(newProductToAdd)
-    setNewProduct(EMPTY_PRODUCT)
+    setNewProduct(EMPTY_PRODUCT) // to reset form
     // toast.success("Ajouté au menu avec succès!")
     setIsSubmitted(true)
     setTimeout(() => setIsSubmitted(false), 2000)
@@ -49,7 +55,6 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
     setNewProduct(newProductUpdated)
   }
 
-  // créer un composant <Input/>
   return (
     <FormStyled action="submit" onSubmit={handleSubmit}>
       {formTitle && (
@@ -76,6 +81,7 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
           onChange={handleChange}
           ref={titleEditBoxRef}
           IconComponent={<FaHamburger className="icon" />}
+          className="first-row"
         />
 
         <TextInput
@@ -85,16 +91,36 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
           placeholder="Lien URL d'une image (ex: https://photo-frites.png)"
           onChange={handleChange}
           IconComponent={<BsFillCameraFill className="icon" />}
+          className="second-row"
         />
 
-        <TextInput
-          name="price"
-          value={newProduct.price ? newProduct.price : ""}
-          type="text"
-          placeholder="Prix"
-          onChange={handleChange}
-          IconComponent={<MdOutlineEuro className="icon" />}
-        />
+        <div className="third-row">
+          <TextInput
+            name="price"
+            value={newProduct.price ? newProduct.price : ""}
+            type="text"
+            placeholder="Prix"
+            onChange={handleChange}
+            IconComponent={<MdOutlineEuro className="icon" />}
+          />
+          <SelectInput
+            options={[
+              { id: 1, label: "En stock", value: isProductAvailable.YES },
+              { id: 2, label: "En rupture", value: isProductAvailable.NO },
+            ]}
+            IconComponent={<FiPackage className="icon" />}
+            onChange={handleChange}
+            name="isAvailable"
+            value={newProduct.isAvailable}
+          />
+          <SelectInput
+            options={[
+              { id: 1, label: "Sans pub", value: true },
+              { id: 2, label: "Avec pub", value: false },
+            ]}
+            IconComponent={<GoMegaphone className="icon" />}
+          />
+        </div>
       </div>
 
       {buttonLabel && (
@@ -148,7 +174,7 @@ const FormStyled = styled.form`
       align-items: center;
       border: 1px solid ${theme.colors.greyLight};
       line-height: 1.5;
-      color: ${theme.colors.greyDark};
+      color: ${theme.colors.greySemiDark};
       border-radius: ${theme.borderRadius.round};
     }
   }
@@ -156,9 +182,40 @@ const FormStyled = styled.form`
   .text-inputs {
     grid-area: 1 / 2 / 2 / 3;
     /* background: lightblue; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-row-gap: 8px;
+
+    .first-row {
+      /* border: 1px solid red; */
+      grid-area: 1 / 1 / 2 / 4;
+    }
+
+    .second-row {
+      /* border: 1px solid blue; */
+      grid-area: 2 / 1 / 2 / 4;
+    }
+
+    .third-row {
+      /* border: 1px solid green; */
+      grid-area: 3 / 1 / 4 / 4;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-column-gap: 8px;
+
+      > div:nth-child(1) {
+        grid-column: 1 / 2;
+      }
+
+      > div:nth-child(2) {
+        grid-column: 2 / 3;
+      }
+
+      > div:nth-child(3) {
+        grid-column: 3 / 4;
+      }
+    }
   }
 
   .submitButton {

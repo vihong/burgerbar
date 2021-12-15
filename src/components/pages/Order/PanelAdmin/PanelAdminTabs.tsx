@@ -17,6 +17,7 @@ export default function PanelAdminTabs() {
     setIsEditFormVisible,
   } = useContext(OrderContext)
 
+  let classNameCollapse = "collapse-tab"
   let classNameAdd = "tab form-tab"
   let classNameEdit = "tab form-tab"
 
@@ -32,6 +33,7 @@ export default function PanelAdminTabs() {
     setIsEditFormVisible(true)
   }
 
+  classNameCollapse += isCollapsed ? " active" : ""
   classNameAdd += isAddFormVisible ? " active" : ""
   classNameEdit += isEditFormVisible ? " active" : ""
 
@@ -42,7 +44,7 @@ export default function PanelAdminTabs() {
           isCollapsed ? <FiChevronUp className="icon" /> : <FiChevronDown className="icon" />
         }
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className="tab collapse-tab"
+        className={classNameCollapse}
       />
       <WindowTab
         label="Ajouter un produit"
@@ -68,22 +70,14 @@ const PanelAdminTabsStyled = styled.div`
   border: 1px solid transparent;
   display: flex;
 
-  /* .tab {
-    :hover {
-      border-bottom: 1px solid ${theme.colors.greyLight};
-    }
-  } */
-
   .collapse-tab {
     background-color: ${theme.colors.white};
     color: ${theme.colors.greySemiDark};
     border: 1px solid ${theme.colors.greyLight};
     border-bottom: none;
+    box-shadow: 0 -2px 8px -2px rgb(0 0 0 / 10%);
 
     :hover {
-      /* background: ${theme.colors.incognito}; */
-      /* color: ${theme.colors.white}; */
-      /* text-decoration: underline; */
       border-bottom: 1px solid ${theme.colors.white};
     }
     .icon {
@@ -92,6 +86,12 @@ const PanelAdminTabsStyled = styled.div`
     }
 
     &:active {
+      background: ${theme.colors.incognito};
+      color: ${theme.colors.white};
+      border: 1px solid ${theme.colors.incognito};
+    }
+
+    &.active {
       background: ${theme.colors.incognito};
       color: ${theme.colors.white};
       border: 1px solid ${theme.colors.incognito};
@@ -105,10 +105,8 @@ const PanelAdminTabsStyled = styled.div`
     border-left: 1px solid ${theme.colors.greyLight};
     border-bottom: 1px solid ${theme.colors.greyLight};
     color: ${theme.colors.greySemiDark};
-    margin-left: 3px;
+    margin-left: 1px;
     :hover {
-      /* background: ${theme.colors.white}; */
-      /* color: ${theme.colors.primary}; */
       border-bottom: 1px solid ${theme.colors.white};
       text-decoration: underline;
     }
@@ -128,11 +126,6 @@ const PanelAdminTabsStyled = styled.div`
       color: ${theme.colors.white};
       font-weight: ${theme.weights.bold};
     }
-
-    /* &:hover { */
-    /* background: ${theme.colors.primary}; */
-    /* color: ${theme.colors.white}; */
-    /* } */
 
     &:active {
       background: ${theme.colors.white};
