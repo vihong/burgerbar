@@ -13,6 +13,7 @@ import { MdOutlineEuro } from "react-icons/md"
 import { FiPackage } from "react-icons/fi"
 import { GoMegaphone } from "react-icons/go"
 import SelectInput from "components/atoms/SelectInput"
+import { isProductAvailable } from "enums"
 
 interface FormProps {
   formTitle?: string
@@ -35,8 +36,10 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
       ...newProduct,
       id: new Date().getTime(),
     }
+
+    console.log("newProductToAdd: ", newProductToAdd)
     handleAdd(newProductToAdd)
-    setNewProduct(EMPTY_PRODUCT)
+    setNewProduct(EMPTY_PRODUCT) // to reset form
     // toast.success("Ajouté au menu avec succès!")
     setIsSubmitted(true)
     setTimeout(() => setIsSubmitted(false), 2000)
@@ -102,10 +105,13 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
           />
           <SelectInput
             options={[
-              { id: 1, label: "En stock", value: true },
-              { id: 2, label: "En rupture", value: false },
+              { id: 1, label: "En stock", value: isProductAvailable.YES },
+              { id: 2, label: "En rupture", value: isProductAvailable.NO },
             ]}
             IconComponent={<FiPackage className="icon" />}
+            onChange={handleChange}
+            name="isAvailable"
+            value={newProduct.isAvailable}
           />
           <SelectInput
             options={[
