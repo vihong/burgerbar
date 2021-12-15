@@ -37,7 +37,6 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
       id: new Date().getTime(),
     }
 
-    console.log("newProductToAdd: ", newProductToAdd)
     handleAdd(newProductToAdd)
     setNewProduct(EMPTY_PRODUCT) // to reset form
     // toast.success("Ajouté au menu avec succès!")

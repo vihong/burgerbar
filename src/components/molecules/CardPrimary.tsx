@@ -77,6 +77,7 @@ const CardStyled = styled.div`
     width: 30px;
     height: 30px;
     color: ${theme.colors.greyLight};
+    z-index: 1;
     :hover {
       color: ${theme.colors.red};
       /* background-color: red; */
