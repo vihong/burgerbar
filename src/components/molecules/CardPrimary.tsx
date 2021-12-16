@@ -38,7 +38,10 @@ export default function CardPrimary(props: CardPrimaryProps) {
       {hasDeleteButton && <TiDelete className="delete-button" onClick={onDeleteButton} />}
       <div className="image">
         {isOverlapImageVisible && (
-          <img className="overlap-image" src={IMAGE_OVERLAP} alt="overlap" />
+          <div className="overlap">
+            <div className="transparent-layer"></div>
+            <img className="overlap-image" src={IMAGE_OVERLAP} alt="overlap" />
+          </div>
         )}
         <img className="product" src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
       </div>
@@ -77,7 +80,7 @@ const CardStyled = styled.div`
     width: 30px;
     height: 30px;
     color: ${theme.colors.greyLight};
-    z-index: 1;
+    z-index: 2;
     :hover {
       color: ${theme.colors.red};
       /* background-color: red; */
@@ -98,10 +101,25 @@ const CardStyled = styled.div`
       object-fit: contain;
     }
 
-    .overlap-image {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .overlap {
+      .overlap-image {
+        /* border: 1px solid red; */
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+
+      .transparent-layer {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 70%;
+        background: snow;
+        z-index: 1;
+      }
     }
   }
 

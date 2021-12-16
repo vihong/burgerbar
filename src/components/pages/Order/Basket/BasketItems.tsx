@@ -3,6 +3,7 @@ import OrderContext from "context/OrderContext"
 import _ from "lodash"
 import { useContext } from "react"
 import { BasketItem } from "typescript/BasketItem"
+import { convertStringToBoolean } from "utils/string"
 
 interface BasketItemsProps {
   basket: BasketItem[]
@@ -18,13 +19,18 @@ export default function BasketItems({ basket }: BasketItemsProps) {
       {isBasketEmpty ? (
         <span className="empty-basket">Votre commande est vide.</span>
       ) : (
-        basket.map((basketItem) => (
-          <CardSecondary
-            key={basketItem.id}
-            {...basketItem}
-            onDelete={() => handleDeleteFromBasket(basketItem.id)}
-          />
-        ))
+        basket.map((basketItem) => {
+          const isAvailable = convertStringToBoolean(basketItem.isAvailable)
+          return (
+            <CardSecondary
+              key={basketItem.id}
+              {...basketItem}
+              leftInfo={isAvailable ? basketItem.title : "Non disponible"}
+              rightinfo={isAvailable ? `x ${basketItem.quantity}` : ""}
+              onDelete={() => handleDeleteFromBasket(basketItem.id)}
+            />
+          )
+        })
       )}
     </div>
   )
