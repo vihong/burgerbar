@@ -57,16 +57,16 @@ export default function Menu() {
   return (
     <MenuStyled>
       {menuItems?.map((burger) => {
-        let isBurgerUnavailable = !convertStringToBoolean(burger.isAvailable)
-        let addButtonClass = isBurgerUnavailable
-          ? "add-to-basket-button is-disabled"
-          : "add-to-basket-button"
+        let isBurgerAvailable = convertStringToBoolean(burger.isAvailable)
+        let addButtonClass = isBurgerAvailable
+          ? "add-to-basket-button"
+          : "add-to-basket-button is-disabled"
 
         return (
           <CardPrimary
             key={burger.id}
             {...burger}
-            isOverlapImageVisible={isBurgerUnavailable}
+            isOverlapImageVisible={!isBurgerAvailable}
             onDeleteButton={(event: React.MouseEvent<HTMLElement>) =>
               handleDeleteButton(event, burger.id)
             }
@@ -79,7 +79,7 @@ export default function Menu() {
                 label="Ajouter"
                 onClick={(event: React.MouseEvent<HTMLElement>) => onAddButton(event, burger)}
                 className={addButtonClass}
-                disabled={isBurgerUnavailable}
+                disabled={!isBurgerAvailable}
               />
             }
           />
