@@ -8,6 +8,7 @@ import Title from "./Title"
 import Total from "./Total"
 import { createBasketItems } from "./createBasketItems"
 import { replaceFrenchCommaWithDot } from "utils/maths"
+import { convertStringToBoolean } from "utils/string"
 
 export default function Basket() {
   const { menuItems, basket } = useContext(OrderContext)
@@ -15,15 +16,19 @@ export default function Basket() {
   const basketWithMenuItems = createBasketItems(basket, menuItems)
 
   const total = basketWithMenuItems.reduce((totalCommande, item) => {
-    totalCommande += replaceFrenchCommaWithDot(item.price) * item.quantity
+    const isAvailable = convertStringToBoolean(item.isAvailable)
+    if (isAvailable) totalCommande += replaceFrenchCommaWithDot(item.price) * item.quantity
     return totalCommande
   }, 0)
 
   return (
     <BasketStyled>
-      <Header HeaderContent={<Title className="votre-commande" />} />
-      <BasketItems basket={basketWithMenuItems} />
+      <Header
+        className="header-votre-commande"
+        HeaderContent={<Title className="votre-commande" />}
+      />
       <Header HeaderContent={<Total className="total" total={total} />} />
+      <BasketItems basket={basketWithMenuItems} />
     </BasketStyled>
   )
 }
@@ -31,6 +36,12 @@ export default function Basket() {
 const BasketStyled = styled.div`
   background: ${theme.colors.background_white};
   flex: 1;
+
+  .header-votre-commande {
+    /* border: 1px solid red; */
+    min-height: 50px;
+    padding-top: 20px;
+  }
 
   .products {
     display: flex;

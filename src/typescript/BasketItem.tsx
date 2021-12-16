@@ -6,4 +6,5 @@ export interface BasketItem {
   imageSource?: string
   price: number
   quantity: number
+  isAvailable: string
 }

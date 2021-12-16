@@ -6,30 +6,31 @@ import { MenuItem } from "typescript/MenuItem"
 export const useBasket = (basketInitialValues: BasketItem[]) => {
   const [basket, setBasket] = useState<BasketItem[]>(basketInitialValues)
 
-  const handleAddToBasket = (productAdded: MenuItem) => {
+  const handleAddToBasket = (productInMenu: MenuItem) => {
     //1. Copy state before any potential work on it
     const basketCopy = [...basket]
 
-    const indexOfExistingProductInBasket = basketCopy.findIndex(
-      (basketItem) => basketItem.id === productAdded.id
+    const indexOfProductInBasket = basketCopy.findIndex(
+      (basketItem) => basketItem.id === productInMenu.id
     )
 
-    const isInBasket = indexOfExistingProductInBasket !== -1 ? true : false
+    const isProductAlreadyInBasket = indexOfProductInBasket !== -1
 
-    if (!isInBasket) {
+    if (!isProductAlreadyInBasket) {
       // create new basketItem
       const newBasketItem: BasketItem = {
-        id: productAdded.id,
-        // title: productAdded.title,
-        // imageSource: productAdded.imageSource,
-        price: productAdded.price,
+        id: productInMenu.id,
+        // title: productInMenu.title,
+        // imageSource: productInMenu.imageSource,
+        price: productInMenu.price,
         quantity: 1,
+        isAvailable: "true",
       }
       // add new basketItem to basketCopy
       setBasket([...basketCopy, newBasketItem])
       // setState
     } else {
-      basketCopy[indexOfExistingProductInBasket].quantity += 1
+      basketCopy[indexOfProductInBasket].quantity += 1
       setBasket(basketCopy)
     }
   }

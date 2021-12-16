@@ -12,7 +12,7 @@ export function formatPrice(priceToFormat: number | string | undefined): string 
   return formattedPrice
 }
 
-export function replaceFrenchCommaWithDot(price: string | number) {
+export function replaceFrenchCommaWithDot(price: string | number): number {
   if (typeof price === "string") price = parseFloat(price.replace(",", "."))
   return price
 }

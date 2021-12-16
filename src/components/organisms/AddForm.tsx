@@ -38,6 +38,7 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
     }
 
     handleAdd(newProductToAdd)
+    // @TODO: ID may not need to be undefined if you always give it a new Date
     setNewProduct(EMPTY_PRODUCT) // to reset form
     // toast.success("Ajouté au menu avec succès!")
     setIsSubmitted(true)

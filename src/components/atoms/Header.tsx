@@ -2,8 +2,13 @@ import React from "react"
 import styled from "styled-components"
 import { theme } from "theme"
 
-export default function Header({ HeaderContent }: { HeaderContent: any }) {
-  return <HeaderSyled>{HeaderContent}</HeaderSyled>
+interface HeaderProps {
+  HeaderContent: any
+  className?: string
+}
+
+export default function Header({ HeaderContent, className }: HeaderProps) {
+  return <HeaderSyled className={className}>{HeaderContent}</HeaderSyled>
 }
 
 const HeaderSyled = styled.div`
@@ -19,7 +24,7 @@ const HeaderSyled = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 1em;
-  box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
+  /* box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%); */
   color: ${theme.colors.white};
   line-height: 1.5;
 
