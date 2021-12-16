@@ -131,6 +131,7 @@ const MenuStyled = styled.div`
     &.is-disabled {
       opacity: 50%;
       cursor: not-allowed;
+      z-index: 2;
     }
   }
 
