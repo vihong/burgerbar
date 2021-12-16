@@ -26,15 +26,10 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const singleValueBeingChangedNow = event.target.value
-    // // console.log("event.target.name: ", event.target.name)
-    // console.log("singleValueBeingChangedNow: ", singleValueBeingChangedNow)
-    // console.log("typeof singleValueBeingChangedNow: ", typeof singleValueBeingChangedNow)
     const itemUpdated = {
       ...itemBeingSelected,
       [event.target.name]: singleValueBeingChangedNow,
     }
-
-    console.log("itemUpdated: ", itemUpdated)
     setItemBeingSelected(itemUpdated)
     handleEdit(itemUpdated)
   }
@@ -56,7 +51,6 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
     if (event.key === "Enter") handleOnBlur(event)
   }
 
-  // créer un composant <Input/>
   return (
     <FormStyled>
       {formTitle && (
