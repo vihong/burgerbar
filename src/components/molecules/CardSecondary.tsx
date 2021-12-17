@@ -3,24 +3,26 @@ import styled from "styled-components"
 import { theme } from "theme"
 import { IMAGE_BY_DEFAULT } from "./CardPrimary"
 import { MdDeleteForever } from "react-icons/md"
+import { formatPrice } from "utils/maths"
 
 interface CardSecondaryProps {
   imageSource?: string
-  leftInfo?: string
+  title?: string
+  price?: string
   rightinfo?: string | number
   onCardClick?: any
   onDeleteButton?: any
   hasDeleteButton?: boolean | undefined
   isHoverable?: boolean
   onDelete?: any
-  [x: string]: any
 }
 
 export default function CardSecondary({
   imageSource,
-  leftInfo,
+  title,
   rightinfo,
   onDelete,
+  price,
 }: CardSecondaryProps) {
   return (
     <CardSecondaryStyled>
@@ -28,11 +30,14 @@ export default function CardSecondary({
         <MdDeleteForever className="icon" />
       </div>
       <div className="image">
-        <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={leftInfo} />
+        <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
       </div>
       <div className="text-info">
-        <span className="left-info">{leftInfo}</span>
-        <span className="right-info">{rightinfo}</span>
+        <div className="left-info">
+          <span className="title">{title}</span>
+          {<span className="price">{price}</span>}
+        </div>
+        <div className="right-info">{rightinfo}</div>
       </div>
     </CardSecondaryStyled>
   )
@@ -44,7 +49,8 @@ const CardSecondaryStyled = styled.div`
   grid-template-columns: 30% 1fr;
   grid-template-rows: 1;
   min-height: 70px;
-  padding: 0.5em 0.5em;
+  padding: 0.5em 1em;
+  padding-right: 0.5em;
   align-items: center;
   border-radius: ${theme.borderRadius.round};
   background: ${theme.colors.white};
@@ -65,23 +71,29 @@ const CardSecondaryStyled = styled.div`
     /* border: 1px solid green; */
     display: grid;
     grid-template-columns: 70% 1fr;
+    align-items: center;
     /* padding: 0.5em 0.7em; */
     font-size: ${theme.fonts.P0};
-    > span {
-      :first-child {
-        /* border: 1px solid blue; */
-        font-weight: ${theme.weights.medium};
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        margin-left: 0.8em;
-      }
-      :nth-child(2) {
-        /* border: 1px solid red; */
+    .left-info {
+      /* border: 1px solid blue; */
+      font-weight: ${theme.weights.medium};
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      margin-left: 0.9em;
+      display: grid;
+      line-height: 1.6;
+      .price {
         color: ${theme.colors.primary};
+        font-size: 0.9em;
         font-weight: ${theme.weights.medium};
-        text-align: center;
       }
+    }
+    .right-info {
+      /* border: 1px solid red; */
+      color: ${theme.colors.primary};
+      font-weight: ${theme.weights.medium};
+      text-align: center;
     }
   }
 

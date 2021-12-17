@@ -46,7 +46,7 @@ const BasketStyled = styled.div`
   .products {
     display: flex;
     flex-direction: column;
-    height: calc(92vh - 200px);
+    height: calc(92vh - 100px - 50px - 20px);
     overflow-y: scroll;
 
     // each card
