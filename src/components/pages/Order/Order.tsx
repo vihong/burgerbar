@@ -21,7 +21,7 @@ export const EMPTY_PRODUCT = {
   added: false,
   quantity: 0,
   isAvailable: isProductAvailable.YES,
-  isAdvertised: isProductAdvertised.YES,
+  isAdvertised: isProductAdvertised.NO,
 }
 
 export default function Order(props: OrderProps) {
