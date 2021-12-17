@@ -6,7 +6,7 @@ import { theme } from "theme"
 import { formatPrice } from "utils/maths"
 import Button from "components/atoms/Button"
 import { MenuItem } from "typescript/MenuItem"
-import { isProductAvailable } from "enums"
+import { isProductAdvertised, isProductAvailable } from "enums"
 import { convertStringToBoolean } from "utils/string"
 
 export default function Menu() {
@@ -46,6 +46,7 @@ export default function Menu() {
       price: 0,
       quantity: 0,
       isAvailable: isProductAvailable.YES,
+      isAdvertised: isProductAdvertised.YES,
     })
   }
 

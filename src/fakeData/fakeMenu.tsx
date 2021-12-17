@@ -1,4 +1,4 @@
-import { isProductAvailable } from "enums"
+import { isProductAdvertised, isProductAvailable } from "enums"
 
 export const fakeMenu1 = [
   {
@@ -8,6 +8,7 @@ export const fakeMenu1 = [
     price: 5.2,
     quantity: 1,
     isAvailable: isProductAvailable.YES,
+    isAdvertised: isProductAdvertised.YES,
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ export const fakeMenu1 = [
     price: 7.5,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
+    isAdvertised: isProductAdvertised.YES,
   },
 ]
 
@@ -27,6 +29,7 @@ export const fakeMenu2 = [
     price: 5.2,
     quantity: 1,
     isAvailable: isProductAvailable.YES,
+    isAdvertised: isProductAdvertised.YES,
   },
   {
     id: 2,
@@ -35,6 +38,7 @@ export const fakeMenu2 = [
     price: 5.7,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
+    isAdvertised: isProductAdvertised.YES,
   },
   {
     id: 3,
@@ -43,6 +47,7 @@ export const fakeMenu2 = [
     price: 5.2,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
+    isAdvertised: isProductAdvertised.YES,
   },
   {
     id: 4,
@@ -51,6 +56,7 @@ export const fakeMenu2 = [
     price: 5.2,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
+    isAdvertised: isProductAdvertised.YES,
   },
   {
     id: 5,
@@ -59,6 +65,7 @@ export const fakeMenu2 = [
     price: 6.2,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
+    isAdvertised: isProductAdvertised.YES,
   },
   {
     id: 6,
@@ -67,6 +74,7 @@ export const fakeMenu2 = [
     price: 6.2,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
+    isAdvertised: isProductAdvertised.YES,
   },
   {
     id: 7,
@@ -75,6 +83,7 @@ export const fakeMenu2 = [
     price: 6.2,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
+    isAdvertised: isProductAdvertised.YES,
   }, // excellent for debugging CardPrimary image
   {
     id: 8,
@@ -83,6 +92,7 @@ export const fakeMenu2 = [
     price: 6.2,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
+    isAdvertised: isProductAdvertised.YES,
   }, // excellent for debugging CardPrimary image
   {
     id: 9,
@@ -91,6 +101,7 @@ export const fakeMenu2 = [
     price: 6.2,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
+    isAdvertised: isProductAdvertised.YES,
   }, // excellent for debugging CardPrimary image
   {
     id: 10,
@@ -99,5 +110,6 @@ export const fakeMenu2 = [
     price: 6.2,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
+    isAdvertised: isProductAdvertised.YES,
   }, // excellent for debugging CardPrimary image
 ]

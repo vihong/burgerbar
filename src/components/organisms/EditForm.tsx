@@ -9,7 +9,7 @@ import { MdOutlineEuro } from "react-icons/md"
 import SelectInput from "components/atoms/SelectInput"
 import { FiPackage } from "react-icons/fi"
 import { GoMegaphone } from "react-icons/go"
-import { isProductAvailable } from "enums"
+import { isProductAdvertised, isProductAvailable } from "enums"
 
 interface FormProps {
   formTitle?: string
@@ -119,12 +119,13 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
           />
           <SelectInput
             options={[
-              { id: 1, label: "Sans pub", value: true },
-              { id: 2, label: "Avec pub", value: false },
+              { id: 1, label: "Sans pub", value: isProductAdvertised.YES },
+              { id: 2, label: "Avec pub", value: isProductAdvertised.NO },
             ]}
             IconComponent={<GoMegaphone className="icon" />}
-            value={undefined}
+            onChange={handleChange}
             name="isAdvertised"
+            value={itemBeingSelected.isAdvertised}
           />
         </div>
       </div>

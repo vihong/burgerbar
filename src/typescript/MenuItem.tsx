@@ -7,4 +7,5 @@ export interface MenuItem {
   price: number
   quantity: number
   isAvailable: string
+  isAdvertised: string
 }
