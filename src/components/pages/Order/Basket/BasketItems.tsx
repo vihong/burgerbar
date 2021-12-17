@@ -1,3 +1,4 @@
+import Sticker from "components/atoms/Sticker"
 import CardSecondary from "components/molecules/CardSecondary"
 import OrderContext from "context/OrderContext"
 import _ from "lodash"
@@ -18,18 +19,22 @@ export default function BasketItems({ basket }: BasketItemsProps) {
   return (
     <div className="products">
       {isBasketEmpty ? (
-        <span className="empty-basket">Votre commande est vide.</span>
+        <span className="empty-basket">Remplissez votre commande avec des produits du menu.</span>
       ) : (
         basket.map((basketItem) => {
           const isAvailable = convertStringToBoolean(basketItem.isAvailable)
+          const isAdvertised = convertStringToBoolean(basketItem.isAdvertised)
           return (
-            <CardSecondary
-              key={basketItem.id}
-              {...basketItem}
-              price={isAvailable ? formatPrice(basketItem.price) : "Non disponible"}
-              rightinfo={isAvailable ? `x ${basketItem.quantity}` : ""}
-              onDelete={() => handleDeleteFromBasket(basketItem.id)}
-            />
+            <div className="basket-card">
+              {isAdvertised && <Sticker className="badge-new" />}
+              <CardSecondary
+                key={basketItem.id}
+                {...basketItem}
+                price={isAvailable ? formatPrice(basketItem.price) : "Non disponible"}
+                rightinfo={isAvailable ? `x ${basketItem.quantity}` : ""}
+                onDelete={() => handleDeleteFromBasket(basketItem.id)}
+              />
+            </div>
           )
         })
       )}

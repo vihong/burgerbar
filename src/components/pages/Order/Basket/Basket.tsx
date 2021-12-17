@@ -38,7 +38,6 @@ const BasketStyled = styled.div`
   flex: 1;
 
   .header-votre-commande {
-    /* border: 1px solid red; */
     min-height: 50px;
     padding-top: 20px;
   }
@@ -52,17 +51,26 @@ const BasketStyled = styled.div`
     // each card
     > div {
       margin: 10px 1em;
+      position: relative;
       :first-child {
         margin-top: 1em;
       }
       :last-child {
         margin-bottom: 1em;
       }
+
+      .badge-new {
+        position: absolute;
+        z-index: 1;
+        bottom: 10%;
+        left: 21%;
+        transform: translateY(-21%);
+        transform: translateX(-5%);
+      }
     }
 
     .empty-basket {
       display: flex;
-      /* border: 1px solid red; */
       padding: 10px;
       text-align: center;
       flex: 1;

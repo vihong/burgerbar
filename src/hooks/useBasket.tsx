@@ -25,6 +25,7 @@ export const useBasket = (basketInitialValues: BasketItem[]) => {
         price: productInMenu.price,
         quantity: 1,
         isAvailable: "true",
+        isAdvertised: "false",
       }
       // add new basketItem to basketCopy
       setBasket([...basketCopy, newBasketItem])

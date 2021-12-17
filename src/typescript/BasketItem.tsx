@@ -7,4 +7,5 @@ export interface BasketItem {
   price: number
   quantity: number
   isAvailable: string
+  isAdvertised: string
 }

@@ -8,6 +8,7 @@ export function createBasketItems(basket: BasketItem[], menuItems: MenuItem[]) {
       price: 0,
       quantity: 0,
       isAvailable: "true",
+      isAdvertised: "false",
     }
     const menuItemInBasket = menuItems.find((menuItem) => menuItem.id === basketItem.id)
 
@@ -16,6 +17,7 @@ export function createBasketItems(basket: BasketItem[], menuItems: MenuItem[]) {
       price: menuItemInBasket?.price || 0,
       quantity: basketItem.quantity,
       isAvailable: menuItemInBasket?.isAvailable || "",
+      isAdvertised: menuItemInBasket?.isAdvertised || "",
     }
     return basketItemFinal
   })

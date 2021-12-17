@@ -17,6 +17,7 @@ const colors = {
 }
 
 const fonts = {
+  XXS: "8px",
   XS: "12px",
   P0: "15px",
   P1: "18px",
