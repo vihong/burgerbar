@@ -8,6 +8,7 @@ import Button from "components/atoms/Button"
 import { MenuItem } from "typescript/MenuItem"
 import { isProductAdvertised, isProductAvailable } from "enums"
 import { convertStringToBoolean } from "utils/string"
+import Ribbon from "components/atoms/Ribbon"
 
 export default function Menu() {
   const {
@@ -55,6 +56,10 @@ export default function Menu() {
     handleAddToBasket(burger)
   }
 
+  let cardClassName = "card"
+
+  cardClassName += isModeAdmin ? " is-hoverable" : ""
+
   return (
     <MenuStyled>
       {menuItems?.map((burger) => {
@@ -62,28 +67,30 @@ export default function Menu() {
         let addButtonClass = isBurgerAvailable
           ? "add-to-basket-button"
           : "add-to-basket-button is-disabled"
-
+        let isBurgerAdvertised = convertStringToBoolean(burger.isAdvertised)
         return (
-          <CardPrimary
-            key={burger.id}
-            {...burger}
-            isOverlapImageVisible={!isBurgerAvailable}
-            onDeleteButton={(event: React.MouseEvent<HTMLElement>) =>
-              handleDeleteButton(event, burger.id)
-            }
-            onCardClick={() => handleCardSelected(burger.id)}
-            hasDeleteButton={isModeAdmin}
-            isHoverable={isModeAdmin}
-            bottomLeftDescription={formatPrice(burger.price)}
-            bottomRightDescription={
-              <Button
-                label="Ajouter"
-                onClick={(event: React.MouseEvent<HTMLElement>) => onAddButton(event, burger)}
-                className={addButtonClass}
-                disabled={!isBurgerAvailable}
-              />
-            }
-          />
+          <div className={cardClassName}>
+            {isBurgerAdvertised && <Ribbon className="ribbon" label="nouveau" />}
+            <CardPrimary
+              key={burger.id}
+              {...burger}
+              isOverlapImageVisible={!isBurgerAvailable}
+              onDeleteButton={(event: React.MouseEvent<HTMLElement>) =>
+                handleDeleteButton(event, burger.id)
+              }
+              onCardClick={() => handleCardSelected(burger.id)}
+              hasDeleteButton={isModeAdmin}
+              bottomLeftDescription={formatPrice(burger.price)}
+              bottomRightDescription={
+                <Button
+                  label="Ajouter"
+                  onClick={(event: React.MouseEvent<HTMLElement>) => onAddButton(event, burger)}
+                  className={addButtonClass}
+                  disabled={!isBurgerAvailable}
+                />
+              }
+            />
+          </div>
         )
       })}
     </MenuStyled>
@@ -101,6 +108,13 @@ const MenuStyled = styled.div`
   background-color: ${theme.colors.background_white};
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%) inset;
   justify-items: center; // hallelujah! this centers the grid itself
+
+  .card {
+    position: relative;
+    .ribbon {
+      z-index: 2;
+    }
+  }
 
   .is-hoverable {
     :hover {

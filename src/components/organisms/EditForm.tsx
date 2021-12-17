@@ -119,8 +119,8 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
           />
           <SelectInput
             options={[
-              { id: 1, label: "Sans pub", value: isProductAdvertised.YES },
-              { id: 2, label: "Avec pub", value: isProductAdvertised.NO },
+              { id: 1, label: "Sans pub", value: isProductAdvertised.NO },
+              { id: 2, label: "Avec pub", value: isProductAdvertised.YES },
             ]}
             IconComponent={<GoMegaphone className="icon" />}
             onChange={handleChange}

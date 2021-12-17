@@ -8,7 +8,7 @@ export const fakeMenu1 = [
     price: 5.2,
     quantity: 1,
     isAvailable: isProductAvailable.YES,
-    isAdvertised: isProductAdvertised.YES,
+    isAdvertised: isProductAdvertised.NO,
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const fakeMenu1 = [
     price: 7.5,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
-    isAdvertised: isProductAdvertised.YES,
+    isAdvertised: isProductAdvertised.NO,
   },
 ]
 
@@ -29,7 +29,7 @@ export const fakeMenu2 = [
     price: 5.2,
     quantity: 1,
     isAvailable: isProductAvailable.YES,
-    isAdvertised: isProductAdvertised.YES,
+    isAdvertised: isProductAdvertised.NO,
   },
   {
     id: 2,
@@ -38,7 +38,7 @@ export const fakeMenu2 = [
     price: 5.7,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
-    isAdvertised: isProductAdvertised.YES,
+    isAdvertised: isProductAdvertised.NO,
   },
   {
     id: 3,
@@ -47,7 +47,7 @@ export const fakeMenu2 = [
     price: 5.2,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
-    isAdvertised: isProductAdvertised.YES,
+    isAdvertised: isProductAdvertised.NO,
   },
   {
     id: 4,
@@ -56,7 +56,7 @@ export const fakeMenu2 = [
     price: 5.2,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
-    isAdvertised: isProductAdvertised.YES,
+    isAdvertised: isProductAdvertised.NO,
   },
   {
     id: 5,
@@ -65,7 +65,7 @@ export const fakeMenu2 = [
     price: 6.2,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
-    isAdvertised: isProductAdvertised.YES,
+    isAdvertised: isProductAdvertised.NO,
   },
   {
     id: 6,
@@ -74,7 +74,7 @@ export const fakeMenu2 = [
     price: 6.2,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
-    isAdvertised: isProductAdvertised.YES,
+    isAdvertised: isProductAdvertised.NO,
   },
   {
     id: 7,
@@ -83,7 +83,7 @@ export const fakeMenu2 = [
     price: 6.2,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
-    isAdvertised: isProductAdvertised.YES,
+    isAdvertised: isProductAdvertised.NO,
   }, // excellent for debugging CardPrimary image
   {
     id: 8,
@@ -92,7 +92,7 @@ export const fakeMenu2 = [
     price: 6.2,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
-    isAdvertised: isProductAdvertised.YES,
+    isAdvertised: isProductAdvertised.NO,
   }, // excellent for debugging CardPrimary image
   {
     id: 9,
@@ -101,7 +101,7 @@ export const fakeMenu2 = [
     price: 6.2,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
-    isAdvertised: isProductAdvertised.YES,
+    isAdvertised: isProductAdvertised.NO,
   }, // excellent for debugging CardPrimary image
   {
     id: 10,
@@ -110,6 +110,6 @@ export const fakeMenu2 = [
     price: 6.2,
     quantity: 0,
     isAvailable: isProductAvailable.YES,
-    isAdvertised: isProductAdvertised.YES,
+    isAdvertised: isProductAdvertised.NO,
   }, // excellent for debugging CardPrimary image
 ]
