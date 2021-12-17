@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { theme } from "theme"
 import { IMAGE_BY_DEFAULT } from "./CardPrimary"
 import { MdDeleteForever } from "react-icons/md"
-import { formatPrice } from "utils/maths"
 
 interface CardSecondaryProps {
   imageSource?: string

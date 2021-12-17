@@ -56,9 +56,7 @@ export default function Menu() {
     handleAddToBasket(burger)
   }
 
-  let cardClassName = "card"
-
-  cardClassName += isModeAdmin ? " is-hoverable" : ""
+  let cardClassName = isModeAdmin ? "card is-hoverable" : "card"
 
   return (
     <MenuStyled>
