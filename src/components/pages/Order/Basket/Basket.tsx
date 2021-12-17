@@ -27,7 +27,7 @@ export default function Basket() {
         className="header-votre-commande"
         HeaderContent={<Title className="votre-commande" />}
       />
-      <Header HeaderContent={<Total className="total" total={total} />} />
+      <Header className="header-total" HeaderContent={<Total className="total" total={total} />} />
       <BasketItems basket={basketWithMenuItems} />
     </BasketStyled>
   )
@@ -40,6 +40,12 @@ const BasketStyled = styled.div`
   .header-votre-commande {
     min-height: 50px;
     padding-top: 20px;
+  }
+
+  .header-total {
+    .total {
+      font-size: ${theme.fonts.P3};
+    }
   }
 
   .products {
