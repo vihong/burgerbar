@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components/macro"
 import { theme } from "theme/index"
-// import { MdDeleteForever, MdOutlineDeleteForever } from "react-icons/md"
 import { TiDelete } from "react-icons/ti"
 
 export const IMAGE_BY_DEFAULT = "images/coming-soon.png"
@@ -14,7 +13,6 @@ interface CardPrimaryProps {
   onDeleteButton?: any
   onCardClick?: any
   hasDeleteButton?: boolean | undefined
-  isHoverable?: boolean
   bottomLeftDescription?: string
   bottomRightDescription?: JSX.Element
   isOverlapImageVisible?: boolean
@@ -29,12 +27,12 @@ export default function CardPrimary(props: CardPrimaryProps) {
     onDeleteButton,
     onCardClick,
     hasDeleteButton,
-    isHoverable,
     isOverlapImageVisible,
   } = props
 
+  //@TODO: raise deleteButton and isOverLapImage (specific)
   return (
-    <CardStyled onClick={onCardClick} className={isHoverable ? "is-hoverable" : ""}>
+    <CardStyled onClick={onCardClick}>
       {hasDeleteButton && <TiDelete className="delete-button" onClick={onDeleteButton} />}
       <div className="image">
         {isOverlapImageVisible && (
@@ -71,6 +69,9 @@ const CardStyled = styled.div`
   position: relative;
   background-color: ${theme.colors.white};
 
+  .ribbon {
+    position: absolute;
+  }
   .delete-button {
     position: absolute;
     top: 15px;
@@ -105,9 +106,14 @@ const CardStyled = styled.div`
       .overlap-image {
         /* border: 1px solid red; */
         position: absolute;
+        /* top: 50%;
+        left: 20%;
+        transform: translateY(-50%);
+        width: 60%;
+        height: 60%; */
+        z-index: 1;
         top: 0;
         left: 0;
-        z-index: 1;
       }
 
       .transparent-layer {

@@ -7,7 +7,7 @@ import { fakeMenu2 } from "fakeData/fakeMenu"
 import Main from "./Main"
 import { useBasket } from "hooks/useBasket"
 import { useMenu } from "hooks/useMenu"
-import { isProductAvailable } from "enums"
+import { isProductAdvertised, isProductAvailable } from "enums"
 
 interface OrderProps {
   path: string
@@ -21,10 +21,11 @@ export const EMPTY_PRODUCT = {
   added: false,
   quantity: 0,
   isAvailable: isProductAvailable.YES,
+  isAdvertised: isProductAdvertised.NO,
 }
 
 export default function Order(props: OrderProps) {
-  const [isModeAdmin, setIsModeAdmin] = useState(true)
+  const [isModeAdmin, setIsModeAdmin] = useState(false)
 
   const { menuItems, handleAdd, handleEdit, handleDelete } = useMenu(fakeMenu2)
   const { basket, handleAddToBasket, handleDeleteFromBasket } = useBasket([])

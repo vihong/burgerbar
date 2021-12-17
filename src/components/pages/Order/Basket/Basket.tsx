@@ -27,7 +27,7 @@ export default function Basket() {
         className="header-votre-commande"
         HeaderContent={<Title className="votre-commande" />}
       />
-      <Header HeaderContent={<Total className="total" total={total} />} />
+      <Header className="header-total" HeaderContent={<Total className="total" total={total} />} />
       <BasketItems basket={basketWithMenuItems} />
     </BasketStyled>
   )
@@ -38,31 +38,45 @@ const BasketStyled = styled.div`
   flex: 1;
 
   .header-votre-commande {
-    /* border: 1px solid red; */
     min-height: 50px;
     padding-top: 20px;
+  }
+
+  .header-total {
+    .total {
+      font-size: ${theme.fonts.P3};
+    }
   }
 
   .products {
     display: flex;
     flex-direction: column;
-    height: calc(92vh - 200px);
+    height: calc(92vh - 100px - 50px - 20px);
     overflow-y: scroll;
 
     // each card
     > div {
       margin: 10px 1em;
+      position: relative;
       :first-child {
         margin-top: 1em;
       }
       :last-child {
         margin-bottom: 1em;
       }
+
+      .badge-new {
+        position: absolute;
+        z-index: 1;
+        bottom: 10%;
+        left: 21%;
+        transform: translateY(-21%);
+        transform: translateX(-5%);
+      }
     }
 
     .empty-basket {
       display: flex;
-      /* border: 1px solid red; */
       padding: 10px;
       text-align: center;
       flex: 1;
