@@ -80,6 +80,19 @@ const BasketStyled = styled.div`
       }
     }
 
+    /* appear : useful to transition between basket empty and not empty but you have to add the "appear={true} props on JSX*/
+    .basket-animation-appear {
+      opacity: 0.01;
+      transform: translate(120px, 0);
+    }
+
+    .basket-animation-appear-active {
+      opacity: 1;
+      transform: translate(0, 0);
+      transition: all 300ms ease-out;
+    }
+
+    /* enter */
     .basket-animation-enter {
       opacity: 0.01;
       transform: translate(120px, 0);
@@ -88,17 +101,18 @@ const BasketStyled = styled.div`
     .basket-animation-enter-active {
       opacity: 1;
       transform: translate(0, 0);
-      transition: all 3000ms ease-in-out;
+      transition: all 300ms ease-out;
     }
 
+    /* exit */
     .basket-animation-exit {
       transform: translate(0, 0);
     }
 
     .basket-animation-exit-active {
       opacity: 0.01;
-      transform: translate(-120px, 0);
-      transition: all 300ms ease-in-out;
+      transform: translate(-200px, 0);
+      transition: all 300ms ease-out;
     }
 
     .empty-basket {
