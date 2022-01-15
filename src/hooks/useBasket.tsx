@@ -28,7 +28,7 @@ export const useBasket = (basketInitialValues: BasketItem[]) => {
         isAdvertised: "false",
       }
       // add new basketItem to basketCopy
-      setBasket([newBasketItem, ...basketCopy])
+      setBasket([...basketCopy, newBasketItem])
       // setState
     } else {
       basketCopy[indexOfProductInBasket].quantity += 1

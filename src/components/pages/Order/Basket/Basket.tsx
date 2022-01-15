@@ -53,16 +53,21 @@ const BasketStyled = styled.div`
     flex-direction: column;
     height: calc(92vh - 100px - 50px - 20px);
     overflow-y: scroll;
+    /* padding-top: 0.4em; */
+    /* padding-bottom: 0.4em; */
 
-    // each card
-    > div {
+    .basket-card {
+      position: relative;
       margin: 10px 1em;
       position: relative;
+      /* border: 1px solid blue; */
+
       :first-child {
-        margin-top: 1em;
+        /* margin-top: 1em; */
+        /* border: 1px solid red; */
       }
       :last-child {
-        margin-bottom: 1em;
+        /* margin-bottom: 1em; */
       }
 
       .badge-new {
@@ -73,6 +78,25 @@ const BasketStyled = styled.div`
         transform: translateY(-21%);
         transform: translateX(-5%);
       }
+    }
+
+    .basket-animation-enter {
+      transform: translate(120px, 0);
+    }
+
+    .basket-animation-enter-active {
+      transform: translate(0, 0);
+      transition: all 300ms ease-in-out;
+    }
+
+    .basket-animation-exit {
+      transform: translate(0, 0);
+    }
+
+    .basket-animation-exit-active {
+      opacity: 0.01;
+      transform: translate(-120px, 0);
+      transition: all 300ms ease-in-out;
     }
 
     .empty-basket {

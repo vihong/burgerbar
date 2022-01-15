@@ -136,4 +136,13 @@ const CardSecondaryStyled = styled.div`
       }
     }
   }
+
+  .basketAnimate-enter {
+    border: 1px solid red;
+  }
+
+  .basketAnimate-enter-active {
+    border: 1px solid yellow;
+    transition: 3s;
+  }
 `

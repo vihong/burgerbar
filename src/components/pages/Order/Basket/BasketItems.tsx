@@ -3,6 +3,7 @@ import CardSecondary from "components/molecules/CardSecondary"
 import OrderContext from "context/OrderContext"
 import _ from "lodash"
 import { useContext } from "react"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
 import { BasketItem } from "typescript/BasketItem"
 import { formatPrice } from "utils/maths"
 import { convertStringToBoolean } from "utils/string"
@@ -21,22 +22,26 @@ export default function BasketItems({ basket }: BasketItemsProps) {
       {isBasketEmpty ? (
         <span className="empty-basket">Remplissez votre commande avec des produits du menu.</span>
       ) : (
-        basket.map((basketItem) => {
-          const isAvailable = convertStringToBoolean(basketItem.isAvailable)
-          const isAdvertised = convertStringToBoolean(basketItem.isAdvertised)
-          return (
-            <div className="basket-card">
-              {isAdvertised && <Sticker className="badge-new" />}
-              <CardSecondary
-                key={basketItem.id}
-                {...basketItem}
-                price={isAvailable ? formatPrice(basketItem.price) : "Non disponible"}
-                rightinfo={isAvailable ? `x ${basketItem.quantity}` : ""}
-                onDelete={() => handleDeleteFromBasket(basketItem.id)}
-              />
-            </div>
-          )
-        })
+        <TransitionGroup className="products">
+          {basket.map((basketItem) => {
+            const isAvailable = convertStringToBoolean(basketItem.isAvailable)
+            const isAdvertised = convertStringToBoolean(basketItem.isAdvertised)
+            return (
+              <CSSTransition key={basketItem.id} timeout={300} classNames="basket-animation">
+                <div className="basket-card">
+                  {isAdvertised && <Sticker className="badge-new" />}
+                  <CardSecondary
+                    key={basketItem.id}
+                    {...basketItem}
+                    price={isAvailable ? formatPrice(basketItem.price) : "Non disponible"}
+                    rightinfo={isAvailable ? `x ${basketItem.quantity}` : ""}
+                    onDelete={() => handleDeleteFromBasket(basketItem.id)}
+                  />
+                </div>
+              </CSSTransition>
+            )
+          })}
+        </TransitionGroup>
       )}
     </div>
   )
