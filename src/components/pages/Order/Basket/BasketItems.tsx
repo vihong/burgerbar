@@ -27,7 +27,7 @@ export default function BasketItems({ basket }: BasketItemsProps) {
             const isAvailable = convertStringToBoolean(basketItem.isAvailable)
             const isAdvertised = convertStringToBoolean(basketItem.isAdvertised)
             return (
-              <CSSTransition key={basketItem.id} timeout={300} classNames="basket-animation">
+              <CSSTransition key={basketItem.id} timeout={3000} classNames="basket-animation">
                 <div className="basket-card">
                   {isAdvertised && <Sticker className="badge-new" />}
                   <CardSecondary

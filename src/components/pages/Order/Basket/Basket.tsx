@@ -81,12 +81,14 @@ const BasketStyled = styled.div`
     }
 
     .basket-animation-enter {
+      opacity: 0.01;
       transform: translate(120px, 0);
     }
 
     .basket-animation-enter-active {
+      opacity: 1;
       transform: translate(0, 0);
-      transition: all 300ms ease-in-out;
+      transition: all 3000ms ease-in-out;
     }
 
     .basket-animation-exit {
