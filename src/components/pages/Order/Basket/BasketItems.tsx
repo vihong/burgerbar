@@ -41,6 +41,7 @@ export default function BasketItems({ basket }: BasketItemsProps) {
                     price={isAvailable ? formatPrice(basketItem.price) : "Non disponible"}
                     rightinfo={isAvailable ? `x ${basketItem.quantity}` : ""}
                     onDelete={() => handleDeleteFromBasket(basketItem.id)}
+                    hasCasinoEffect={true}
                   />
                 </div>
               </CSSTransition>

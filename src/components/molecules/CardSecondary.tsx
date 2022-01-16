@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { theme } from "theme"
 import { IMAGE_BY_DEFAULT } from "./CardPrimary"
 import { MdDeleteForever } from "react-icons/md"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
 
 interface CardSecondaryProps {
   imageSource?: string
@@ -14,6 +15,7 @@ interface CardSecondaryProps {
   hasDeleteButton?: boolean | undefined
   isHoverable?: boolean
   onDelete?: any
+  hasCasinoEffect?: boolean
 }
 
 export default function CardSecondary({
@@ -22,6 +24,7 @@ export default function CardSecondary({
   rightinfo,
   onDelete,
   price,
+  hasCasinoEffect,
 }: CardSecondaryProps) {
   return (
     <CardSecondaryStyled>
@@ -36,7 +39,19 @@ export default function CardSecondary({
           <span className="title">{title}</span>
           {<span className="price">{price}</span>}
         </div>
-        <div className="right-info">{rightinfo}</div>
+        {hasCasinoEffect ? (
+          <div className="pokemon">
+            <TransitionGroup component="span" className="count">
+              <CSSTransition classNames="count" timeout={300} key={rightinfo}>
+                <div className="pokemon">
+                  <span className="right-info">{rightinfo}</span>
+                </div>
+              </CSSTransition>
+            </TransitionGroup>
+          </div>
+        ) : (
+          <span className="right-info">{rightinfo}</span>
+        )}
       </div>
     </CardSecondaryStyled>
   )
@@ -55,6 +70,37 @@ const CardSecondaryStyled = styled.div`
   background: ${theme.colors.white};
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
   position: relative;
+
+  .pokemon {
+    position: relative;
+    /* border: 1px solid blue; */
+    overflow: hidden;
+  }
+
+  .count-enter {
+    /* background: red; */
+    transform: translateY(100%);
+  }
+
+  .count-enter-active {
+    /* background: yellow; */
+    transition: 300ms;
+    transform: translateY(0);
+  }
+
+  .count-exit {
+    /* background: green; */
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translateY(0);
+    transition: 300ms;
+  }
+
+  .count-exit-active {
+    /* background: red; */
+    transform: translateY(-100%);
+  }
 
   .image {
     height: 60px;
@@ -93,12 +139,14 @@ const CardSecondaryStyled = styled.div`
       color: ${theme.colors.primary};
       font-weight: ${theme.weights.medium};
       text-align: center;
+      margin-left: 10px;
     }
   }
 
   // card default behaviour
   .delete-button {
     display: none;
+    z-index: 1;
   }
 
   // behaviour on card hover
