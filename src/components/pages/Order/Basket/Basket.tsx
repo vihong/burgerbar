@@ -9,6 +9,8 @@ import Total from "./Total"
 import { createBasketItems } from "./createBasketItems"
 import { replaceFrenchCommaWithDot } from "utils/maths"
 import { convertStringToBoolean } from "utils/string"
+import _ from "lodash"
+import EmptyBasket from "./EmptyBasket"
 
 export default function Basket() {
   const { menuItems, basket } = useContext(OrderContext)
@@ -21,6 +23,8 @@ export default function Basket() {
     return totalCommande
   }, 0)
 
+  const isBasketEmpty = _.isEmpty(basketWithMenuItems)
+
   return (
     <BasketStyled>
       <Header
@@ -28,7 +32,7 @@ export default function Basket() {
         HeaderContent={<Title className="votre-commande" />}
       />
       <Header className="header-total" HeaderContent={<Total className="total" total={total} />} />
-      <BasketItems basket={basketWithMenuItems} />
+      {isBasketEmpty ? <EmptyBasket /> : <BasketItems basket={basketWithMenuItems} />}
     </BasketStyled>
   )
 }
@@ -45,46 +49,6 @@ const BasketStyled = styled.div`
   .header-total {
     .total {
       font-size: ${theme.fonts.P3};
-    }
-  }
-
-  .products {
-    display: flex;
-    flex-direction: column;
-    height: calc(92vh - 100px - 50px - 20px);
-    overflow-y: scroll;
-
-    // each card
-    > div {
-      margin: 10px 1em;
-      position: relative;
-      :first-child {
-        margin-top: 1em;
-      }
-      :last-child {
-        margin-bottom: 1em;
-      }
-
-      .badge-new {
-        position: absolute;
-        z-index: 1;
-        bottom: 10%;
-        left: 21%;
-        transform: translateY(-21%);
-        transform: translateX(-5%);
-      }
-    }
-
-    .empty-basket {
-      display: flex;
-      padding: 10px;
-      text-align: center;
-      flex: 1;
-      justify-content: center;
-      align-items: center;
-      align-self: center;
-      line-height: 2;
-      font-size: ${theme.fonts.P2};
     }
   }
 `

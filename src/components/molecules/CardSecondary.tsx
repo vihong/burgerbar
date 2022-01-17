@@ -9,6 +9,7 @@ interface CardSecondaryProps {
   title?: string
   price?: string
   rightinfo?: string | number
+  RightInfo?: JSX.Element // component
   onCardClick?: any
   onDeleteButton?: any
   hasDeleteButton?: boolean | undefined
@@ -20,6 +21,7 @@ export default function CardSecondary({
   imageSource,
   title,
   rightinfo,
+  RightInfo,
   onDelete,
   price,
 }: CardSecondaryProps) {
@@ -36,7 +38,7 @@ export default function CardSecondary({
           <span className="title">{title}</span>
           {<span className="price">{price}</span>}
         </div>
-        <div className="right-info">{rightinfo}</div>
+        {RightInfo ? RightInfo : <span className="right-info">{rightinfo}</span>}
       </div>
     </CardSecondaryStyled>
   )
@@ -89,16 +91,18 @@ const CardSecondaryStyled = styled.div`
       }
     }
     .right-info {
-      /* border: 1px solid red; */
+      /* border: 2px solid red; */
       color: ${theme.colors.primary};
       font-weight: ${theme.weights.medium};
-      text-align: center;
+      /* text-align: center; */
+      margin-right: 20px;
     }
   }
 
   // card default behaviour
   .delete-button {
     display: none;
+    z-index: 1;
   }
 
   // behaviour on card hover
@@ -135,5 +139,14 @@ const CardSecondaryStyled = styled.div`
         }
       }
     }
+  }
+
+  .basketAnimate-enter {
+    border: 1px solid red;
+  }
+
+  .basketAnimate-enter-active {
+    border: 1px solid yellow;
+    transition: 3s;
   }
 `
