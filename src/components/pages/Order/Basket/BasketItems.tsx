@@ -5,6 +5,7 @@ import OrderContext from "context/OrderContext"
 import _ from "lodash"
 import { useContext } from "react"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
+import styled from "styled-components"
 import { BasketItem } from "typescript/BasketItem"
 import { formatPrice } from "utils/maths"
 import { convertStringToBoolean } from "utils/string"
@@ -19,41 +20,37 @@ export default function BasketItems({ basket }: BasketItemsProps) {
   const { handleDeleteFromBasket } = useContext(OrderContext)
 
   return (
-    <div className="products">
-      {isBasketEmpty ? (
-        <span className="empty-basket">Remplissez votre commande avec des produits du menu.</span>
-      ) : (
-        <TransitionGroup className="products">
-          {basket.map((basketItem) => {
-            const isAvailable = convertStringToBoolean(basketItem.isAvailable)
-            const isAdvertised = convertStringToBoolean(basketItem.isAdvertised)
-            return (
-              <CSSTransition
-                appear={true}
+    <TransitionGroup className="products">
+      {basket.map((basketItem) => {
+        const isAvailable = convertStringToBoolean(basketItem.isAvailable)
+        const isAdvertised = convertStringToBoolean(basketItem.isAdvertised)
+        return (
+          <CSSTransition
+            appear={true}
+            key={basketItem.id}
+            timeout={300}
+            classNames="basket-animation"
+          >
+            <div className="basket-card">
+              {isAdvertised && <Sticker className="badge-new" />}
+              <CardSecondary
                 key={basketItem.id}
-                timeout={300}
-                classNames="basket-animation"
-              >
-                <div className="basket-card">
-                  {isAdvertised && <Sticker className="badge-new" />}
-                  <CardSecondary
-                    key={basketItem.id}
-                    {...basketItem}
-                    price={isAvailable ? formatPrice(basketItem.price) : "Non disponible"}
-                    RightInfo={
-                      <CasinoEffect
-                        count={isAvailable ? `x ${basketItem.quantity}` : ""}
-                        className="right-info"
-                      />
-                    }
-                    onDelete={() => handleDeleteFromBasket(basketItem.id)}
+                {...basketItem}
+                price={isAvailable ? formatPrice(basketItem.price) : "Non disponible"}
+                RightInfo={
+                  <CasinoEffect
+                    count={isAvailable ? `x ${basketItem.quantity}` : ""}
+                    className="right-info"
                   />
-                </div>
-              </CSSTransition>
-            )
-          })}
-        </TransitionGroup>
-      )}
-    </div>
+                }
+                onDelete={() => handleDeleteFromBasket(basketItem.id)}
+              />
+            </div>
+          </CSSTransition>
+        )
+      })}
+    </TransitionGroup>
   )
 }
+
+const BasketItemsStyled = styled.div``

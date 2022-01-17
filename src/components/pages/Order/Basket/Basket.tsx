@@ -9,6 +9,8 @@ import Total from "./Total"
 import { createBasketItems } from "./createBasketItems"
 import { replaceFrenchCommaWithDot } from "utils/maths"
 import { convertStringToBoolean } from "utils/string"
+import _ from "lodash"
+import EmptyBasket from "./EmptyBasket"
 
 export default function Basket() {
   const { menuItems, basket } = useContext(OrderContext)
@@ -21,6 +23,8 @@ export default function Basket() {
     return totalCommande
   }, 0)
 
+  const isBasketEmpty = _.isEmpty(basketWithMenuItems)
+
   return (
     <BasketStyled>
       <Header
@@ -28,7 +32,7 @@ export default function Basket() {
         HeaderContent={<Title className="votre-commande" />}
       />
       <Header className="header-total" HeaderContent={<Total className="total" total={total} />} />
-      <BasketItems basket={basketWithMenuItems} />
+      {isBasketEmpty ? <EmptyBasket /> : <BasketItems basket={basketWithMenuItems} />}
     </BasketStyled>
   )
 }
@@ -108,18 +112,6 @@ const BasketStyled = styled.div`
         transform: translate(-200px, 0);
         transition: all 300ms ease-out;
       }
-    }
-
-    .empty-basket {
-      display: flex;
-      padding: 10px;
-      text-align: center;
-      flex: 1;
-      justify-content: center;
-      align-items: center;
-      align-self: center;
-      line-height: 2;
-      font-size: ${theme.fonts.P2};
     }
   }
 `
