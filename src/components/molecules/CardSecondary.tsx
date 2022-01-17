@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { theme } from "theme"
 import { IMAGE_BY_DEFAULT } from "./CardPrimary"
 import { MdDeleteForever } from "react-icons/md"
-import CasinoEffect from "components/atoms/CasinoEffect"
 
 interface CardSecondaryProps {
   imageSource?: string
