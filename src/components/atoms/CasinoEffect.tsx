@@ -21,6 +21,8 @@ const CountUpNumberStyled = styled.div`
   /* border: 2px solid red; */
   position: relative;
   display: flex;
+  /* adding flex-end allows the number to not "shake" if the number of digits changes */
+  justify-content: flex-end;
   overflow: hidden;
 
   .count-enter {
@@ -39,7 +41,7 @@ const CountUpNumberStyled = styled.div`
     &.count-exit-active {
       position: absolute;
       bottom: 0;
-      left: 0;
+      right: 0;
       /* not important whether you add it to .count-exit or .count-exit-active, same result */
       /* background: red; */
       transition: 300ms;

@@ -96,7 +96,7 @@ const CardSecondaryStyled = styled.div`
       color: ${theme.colors.primary};
       font-weight: ${theme.weights.medium};
       /* text-align: center; */
-      margin-left: 10px;
+      margin-right: 20px;
     }
   }
 
