@@ -3,7 +3,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from "styled-components"
 
 interface CasinoEffectProps {
-  count?: string | number
+  count: string | number
   className?: string
 }
 
