@@ -60,6 +60,8 @@ const BasketItemsStyled = styled.div`
   /* padding-bottom: 0.4em; */
 
   .basket-card {
+    /* useful for badge NEW */
+    position: relative;
     margin: 10px 1em;
     /* border: 1px solid blue; */
 
