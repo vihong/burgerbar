@@ -2,11 +2,16 @@ import React from "react"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from "styled-components"
 
-export default function CasinoEffect({ count }: { count?: string | number }) {
+interface CasinoEffectProps {
+  count?: string | number
+  className?: string
+}
+
+export default function CasinoEffect({ count, className }: CasinoEffectProps) {
   return (
     <TransitionGroup component={CountUpNumberStyled} className="casino-container">
       <CSSTransition classNames="count" timeout={300} key={count}>
-        <div className="right-info">{count}</div>
+        <div className={className}>{count}</div>
       </CSSTransition>
     </TransitionGroup>
   )

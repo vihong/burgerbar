@@ -10,21 +10,21 @@ interface CardSecondaryProps {
   title?: string
   price?: string
   rightinfo?: string | number
+  RightInfo?: JSX.Element // component
   onCardClick?: any
   onDeleteButton?: any
   hasDeleteButton?: boolean | undefined
   isHoverable?: boolean
   onDelete?: any
-  hasCasinoEffect?: boolean
 }
 
 export default function CardSecondary({
   imageSource,
   title,
   rightinfo,
+  RightInfo,
   onDelete,
   price,
-  hasCasinoEffect,
 }: CardSecondaryProps) {
   return (
     <CardSecondaryStyled>
@@ -39,11 +39,7 @@ export default function CardSecondary({
           <span className="title">{title}</span>
           {<span className="price">{price}</span>}
         </div>
-        {hasCasinoEffect ? (
-          <CasinoEffect count={rightinfo} />
-        ) : (
-          <span className="right-info">{rightinfo}</span>
-        )}
+        {RightInfo ? RightInfo : <span className="right-info">{rightinfo}</span>}
       </div>
     </CardSecondaryStyled>
   )

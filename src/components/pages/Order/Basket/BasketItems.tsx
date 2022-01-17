@@ -1,3 +1,4 @@
+import CasinoEffect from "components/atoms/CasinoEffect"
 import Sticker from "components/atoms/Sticker"
 import CardSecondary from "components/molecules/CardSecondary"
 import OrderContext from "context/OrderContext"
@@ -39,9 +40,13 @@ export default function BasketItems({ basket }: BasketItemsProps) {
                     key={basketItem.id}
                     {...basketItem}
                     price={isAvailable ? formatPrice(basketItem.price) : "Non disponible"}
-                    rightinfo={isAvailable ? `x ${basketItem.quantity}` : ""}
+                    RightInfo={
+                      <CasinoEffect
+                        count={isAvailable ? `x ${basketItem.quantity}` : ""}
+                        className="right-info"
+                      />
+                    }
                     onDelete={() => handleDeleteFromBasket(basketItem.id)}
-                    hasCasinoEffect={true}
                   />
                 </div>
               </CSSTransition>
