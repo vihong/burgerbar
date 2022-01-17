@@ -9,7 +9,7 @@ interface CasinoEffectProps {
 
 export default function CasinoEffect({ count, className }: CasinoEffectProps) {
   return (
-    <TransitionGroup component={CountUpNumberStyled} className="casino-container">
+    <TransitionGroup component={CountUpNumberStyled}>
       <CSSTransition classNames="count" timeout={300} key={count}>
         <div className={className}>{count}</div>
       </CSSTransition>
@@ -39,6 +39,7 @@ const CountUpNumberStyled = styled.div`
     &.count-exit-active {
       position: absolute;
       bottom: 0;
+      left: 0;
       /* not important whether you add it to .count-exit or .count-exit-active, same result */
       /* background: red; */
       transition: 300ms;

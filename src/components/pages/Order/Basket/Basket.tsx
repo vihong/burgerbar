@@ -45,6 +45,11 @@ const BasketStyled = styled.div`
   .header-total {
     .total {
       font-size: ${theme.fonts.P3};
+      div {
+        /* add width 100px to avoid numbers to "shake" during animation */
+        width: 100px;
+        /* border: 1px solid red; */
+      }
     }
   }
 
