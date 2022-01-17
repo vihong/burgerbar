@@ -61,11 +61,11 @@ const BasketStyled = styled.div`
       /* border: 1px solid blue; */
 
       :first-child {
-        /* margin-top: 1em; */
+        margin-top: 1em;
         /* border: 1px solid red; */
       }
       :last-child {
-        /* margin-bottom: 1em; */
+        margin-bottom: 1em;
       }
 
       .badge-new {
