@@ -57,9 +57,7 @@ const BasketStyled = styled.div`
     /* padding-bottom: 0.4em; */
 
     .basket-card {
-      position: relative;
       margin: 10px 1em;
-      position: relative;
       /* border: 1px solid blue; */
 
       :first-child {
@@ -80,39 +78,36 @@ const BasketStyled = styled.div`
       }
     }
 
-    /* appear : useful to transition between basket empty and not empty but you have to add the "appear={true} props on JSX*/
+    /* appear : useful for the first basket card to transition between "basket empty" and "basket not empty" but you have to add the "appear={true} props on JSX*/
     .basket-animation-appear {
       opacity: 0.01;
       transform: translate(120px, 0);
-    }
-
-    .basket-animation-appear-active {
-      opacity: 1;
-      transform: translate(0, 0);
-      transition: all 300ms ease-out;
+      &.basket-animation-appear-active {
+        opacity: 1;
+        transform: translate(0, 0);
+        transition: all 300ms ease-out;
+      }
     }
 
     /* enter */
     .basket-animation-enter {
       opacity: 0.01;
       transform: translate(120px, 0);
-    }
-
-    .basket-animation-enter-active {
-      opacity: 1;
-      transform: translate(0, 0);
-      transition: all 300ms ease-out;
+      &.basket-animation-enter-active {
+        opacity: 1;
+        transform: translate(0, 0);
+        transition: all 300ms ease-out;
+      }
     }
 
     /* exit */
     .basket-animation-exit {
       transform: translate(0, 0);
-    }
-
-    .basket-animation-exit-active {
-      opacity: 0.01;
-      transform: translate(-200px, 0);
-      transition: all 300ms ease-out;
+      &.basket-animation-exit-active {
+        opacity: 0.01;
+        transform: translate(-200px, 0);
+        transition: all 300ms ease-out;
+      }
     }
 
     .empty-basket {
