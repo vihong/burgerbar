@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { theme } from "theme"
 import { IMAGE_BY_DEFAULT } from "./CardPrimary"
 import { MdDeleteForever } from "react-icons/md"
-import { CSSTransition, TransitionGroup } from "react-transition-group"
+import CasinoEffect from "components/atoms/CasinoEffect"
 
 interface CardSecondaryProps {
   imageSource?: string
@@ -40,11 +40,7 @@ export default function CardSecondary({
           {<span className="price">{price}</span>}
         </div>
         {hasCasinoEffect ? (
-          <TransitionGroup component="div" className="casino-container">
-            <CSSTransition classNames="count" timeout={300} key={rightinfo}>
-              <div className="right-info">{rightinfo}</div>
-            </CSSTransition>
-          </TransitionGroup>
+          <CasinoEffect count={rightinfo} />
         ) : (
           <span className="right-info">{rightinfo}</span>
         )}
@@ -66,37 +62,6 @@ const CardSecondaryStyled = styled.div`
   background: ${theme.colors.white};
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
   position: relative;
-
-  .casino-container {
-    position: relative;
-    /* border: 1px solid blue; */
-    overflow: hidden;
-    display: flex;
-    /* remove it and you'll notice the exiting element does not take the full width. So this is why you need to add "display: flex" */
-  }
-
-  .count-enter {
-    /* background: lightgreen; */
-    transform: translateY(100%);
-    &.count-enter-active {
-      /* background: green; */
-      transition: 300ms;
-      transform: translateY(0);
-    }
-  }
-
-  .count-exit {
-    /* background: pink; */
-    transform: translateY(0);
-    &.count-exit-active {
-      /* not important whether you add it to .count-exit or .count-exit-active, same result */
-      position: absolute;
-      bottom: 0;
-      /* background: red; */
-      transition: 300ms;
-      transform: translateY(-100%);
-    }
-  }
 
   .image {
     height: 60px;
