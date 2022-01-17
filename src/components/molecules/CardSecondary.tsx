@@ -40,15 +40,11 @@ export default function CardSecondary({
           {<span className="price">{price}</span>}
         </div>
         {hasCasinoEffect ? (
-          <div className="pokemon">
-            <TransitionGroup component="span" className="count">
-              <CSSTransition classNames="count" timeout={300} key={rightinfo}>
-                <div className="truc">
-                  <span className="right-info">{rightinfo}</span>
-                </div>
-              </CSSTransition>
-            </TransitionGroup>
-          </div>
+          <TransitionGroup component="div" className="casino-container">
+            <CSSTransition classNames="count" timeout={300} key={rightinfo}>
+              <div className="right-info">{rightinfo}</div>
+            </CSSTransition>
+          </TransitionGroup>
         ) : (
           <span className="right-info">{rightinfo}</span>
         )}
@@ -71,35 +67,33 @@ const CardSecondaryStyled = styled.div`
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
   position: relative;
 
-  .truc {
-    /* border: 1px solid red; */
-  }
-
-  .pokemon {
+  .casino-container {
     position: relative;
     /* border: 1px solid blue; */
     overflow: hidden;
+    display: flex;
+    /* remove it and you'll notice the exiting element does not take the full width. So this is why you need to add "display: flex" */
   }
 
   .count-enter {
-    /* background: red; */
+    /* background: lightgreen; */
     transform: translateY(100%);
     &.count-enter-active {
-      /* background: yellow; */
+      /* background: green; */
       transition: 300ms;
       transform: translateY(0);
     }
   }
 
   .count-exit {
-    /* background: green; */
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    /* background: pink; */
     transform: translateY(0);
-    transition: 300ms;
     &.count-exit-active {
+      /* not important whether you add it to .count-exit or .count-exit-active, same result */
+      position: absolute;
+      bottom: 0;
       /* background: red; */
+      transition: 300ms;
       transform: translateY(-100%);
     }
   }
@@ -137,10 +131,10 @@ const CardSecondaryStyled = styled.div`
       }
     }
     .right-info {
-      /* border: 1px solid red; */
+      /* border: 2px solid red; */
       color: ${theme.colors.primary};
       font-weight: ${theme.weights.medium};
-      text-align: center;
+      /* text-align: center; */
       margin-left: 10px;
     }
   }
