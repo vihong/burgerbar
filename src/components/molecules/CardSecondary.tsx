@@ -43,7 +43,7 @@ export default function CardSecondary({
           <div className="pokemon">
             <TransitionGroup component="span" className="count">
               <CSSTransition classNames="count" timeout={300} key={rightinfo}>
-                <div className="pokemon">
+                <div className="truc">
                   <span className="right-info">{rightinfo}</span>
                 </div>
               </CSSTransition>
@@ -71,6 +71,10 @@ const CardSecondaryStyled = styled.div`
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
   position: relative;
 
+  .truc {
+    /* border: 1px solid red; */
+  }
+
   .pokemon {
     position: relative;
     /* border: 1px solid blue; */
@@ -80,12 +84,11 @@ const CardSecondaryStyled = styled.div`
   .count-enter {
     /* background: red; */
     transform: translateY(100%);
-  }
-
-  .count-enter-active {
-    /* background: yellow; */
-    transition: 300ms;
-    transform: translateY(0);
+    &.count-enter-active {
+      /* background: yellow; */
+      transition: 300ms;
+      transform: translateY(0);
+    }
   }
 
   .count-exit {
@@ -95,11 +98,10 @@ const CardSecondaryStyled = styled.div`
     bottom: 0;
     transform: translateY(0);
     transition: 300ms;
-  }
-
-  .count-exit-active {
-    /* background: red; */
-    transform: translateY(-100%);
+    &.count-exit-active {
+      /* background: red; */
+      transform: translateY(-100%);
+    }
   }
 
   .image {
