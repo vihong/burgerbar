@@ -7,7 +7,8 @@ import { MdDeleteForever } from "react-icons/md"
 interface CardSecondaryProps {
   imageSource?: string
   title?: string
-  price?: string
+  leftInfo?: string
+  LeftInfo?: JSX.Element // component
   rightinfo?: string | number
   RightInfo?: JSX.Element // component
   onCardClick?: any
@@ -22,8 +23,9 @@ export default function CardSecondary({
   title,
   rightinfo,
   RightInfo,
+  LeftInfo,
+  leftInfo,
   onDelete,
-  price,
 }: CardSecondaryProps) {
   return (
     <CardSecondaryStyled>
@@ -36,7 +38,7 @@ export default function CardSecondary({
       <div className="text-info">
         <div className="left-info">
           <span className="title">{title}</span>
-          {<span className="price">{price}</span>}
+          {LeftInfo ? LeftInfo : <span className="price">{leftInfo}</span>}
         </div>
         {RightInfo ? RightInfo : <span className="right-info">{rightinfo}</span>}
       </div>
@@ -88,6 +90,7 @@ const CardSecondaryStyled = styled.div`
         color: ${theme.colors.primary};
         font-size: 0.9em;
         font-weight: ${theme.weights.medium};
+        width: 100%;
       }
     }
     .right-info {
