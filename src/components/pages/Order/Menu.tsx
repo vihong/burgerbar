@@ -68,10 +68,9 @@ export default function Menu() {
           : "add-to-basket-button is-disabled"
         let isBurgerAdvertised = convertStringToBoolean(burger.isAdvertised)
         return (
-          <div className={cardClassName}>
+          <div className={cardClassName} key={burger.id}>
             {isBurgerAdvertised && <RibbonAnimated />}
             <CardPrimary
-              key={burger.id}
               {...burger}
               isOverlapImageVisible={!isBurgerAvailable}
               onDeleteButton={(event: React.MouseEvent<HTMLElement>) =>
