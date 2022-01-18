@@ -9,7 +9,7 @@ import { MenuItem } from "typescript/MenuItem"
 import { isProductAdvertised, isProductAvailable } from "enums"
 import { convertStringToBoolean } from "utils/string"
 import Ribbon from "components/atoms/Ribbon"
-import { CSSTransition } from "react-transition-group"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
 
 export default function Menu() {
   const {
@@ -60,7 +60,7 @@ export default function Menu() {
   let cardClassName = isModeAdmin ? "card is-hoverable" : "card"
 
   return (
-    <MenuStyled>
+    <TransitionGroup component={MenuStyled}>
       {menuItems?.map((burger) => {
         let isBurgerAvailable = convertStringToBoolean(burger.isAvailable)
         let addButtonClass = isBurgerAvailable
@@ -68,30 +68,32 @@ export default function Menu() {
           : "add-to-basket-button is-disabled"
         let isBurgerAdvertised = convertStringToBoolean(burger.isAdvertised)
         return (
-          <div className={cardClassName} key={burger.id}>
-            {isBurgerAdvertised && <RibbonAnimated />}
-            <CardPrimary
-              {...burger}
-              isOverlapImageVisible={!isBurgerAvailable}
-              onDeleteButton={(event: React.MouseEvent<HTMLElement>) =>
-                handleDeleteButton(event, burger.id)
-              }
-              onCardClick={() => handleCardSelected(burger.id)}
-              hasDeleteButton={isModeAdmin}
-              bottomLeftDescription={formatPrice(burger.price)}
-              bottomRightDescription={
-                <Button
-                  label="Ajouter"
-                  onClick={(event: React.MouseEvent<HTMLElement>) => onAddButton(event, burger)}
-                  className={addButtonClass}
-                  disabled={!isBurgerAvailable}
-                />
-              }
-            />
-          </div>
+          <CSSTransition appear={true} key={burger.id} timeout={300} classNames="burger-animation">
+            <div className={cardClassName}>
+              {isBurgerAdvertised && <RibbonAnimated />}
+              <CardPrimary
+                {...burger}
+                isOverlapImageVisible={!isBurgerAvailable}
+                onDeleteButton={(event: React.MouseEvent<HTMLElement>) =>
+                  handleDeleteButton(event, burger.id)
+                }
+                onCardClick={() => handleCardSelected(burger.id)}
+                hasDeleteButton={isModeAdmin}
+                bottomLeftDescription={formatPrice(burger.price)}
+                bottomRightDescription={
+                  <Button
+                    label="Ajouter"
+                    onClick={(event: React.MouseEvent<HTMLElement>) => onAddButton(event, burger)}
+                    className={addButtonClass}
+                    disabled={!isBurgerAvailable}
+                  />
+                }
+              />
+            </div>
+          </CSSTransition>
         )
       })}
-    </MenuStyled>
+    </TransitionGroup>
   )
 }
 
@@ -107,6 +109,7 @@ const MenuStyled = styled.div`
   flex: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
   grid-row-gap: 60px;
   grid-column-gap: 0px;
   padding: 50px 50px 150px;
@@ -114,6 +117,27 @@ const MenuStyled = styled.div`
   background-color: ${theme.colors.background_white};
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%) inset;
   justify-items: center; // hallelujah! this centers the grid itself
+
+  .burger-animation-enter {
+    opacity: 0.01;
+    transform: translateX(-120px);
+    &.burger-animation-enter-active {
+      opacity: 1;
+      transform: translateX(0);
+      transition: all 300ms ease-out;
+    }
+  }
+
+  .burger-animation-exit {
+    opacity: 1;
+    transform: translateY(0);
+    &.burger-animation-exit-active {
+      opacity: 0.01;
+      transform: translateY(-100px);
+      transition: 300ms ease-out;
+      /* top: -20px; */
+    }
+  }
 
   .ribbon-animation-appear {
     position: absolute;
@@ -148,6 +172,7 @@ const MenuStyled = styled.div`
       transform: scale(1.05);
       transition: ease-out 0.4s;
       box-shadow: 0 0 8px 0 rgb(255 154 35 / 100%);
+      border-radius: ${theme.borderRadius.round};
       cursor: pointer;
     }
   }
