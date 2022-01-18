@@ -97,7 +97,7 @@ export default function Menu() {
 
 function RibbonAnimated() {
   return (
-    <CSSTransition in={true} timeout={5000} appear={true} classNames="ribbon-animation">
+    <CSSTransition in={true} timeout={500} appear={true} classNames="ribbon-animation">
       <Ribbon className="ribbon" label="nouveau" />
     </CSSTransition>
   )
@@ -120,7 +120,7 @@ const MenuStyled = styled.div`
     opacity: 0.1;
     transform: scale(1.8);
     &.ribbon-animation-appear-active {
-      transition: ease-out 1000ms;
+      transition: ease-out 500ms;
       opacity: 1;
       transform: scale(1);
     }
