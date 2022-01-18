@@ -20,8 +20,34 @@ export default function Navbar() {
 }
 
 function NavBarLeftSide() {
-  return <h2>Burger Bar</h2>
+  return (
+    <NavBarLeftSideStyled>
+      <img src="burger-icon.png" alt="burger-icon" />
+      <h2>Burger Bar</h2>
+    </NavBarLeftSideStyled>
+  )
 }
+
+const NavBarLeftSideStyled = styled.div`
+  /* border: 1px solid red; */
+  height: 100%;
+  width: 210px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  img {
+    /* border: 1px solid green; */
+    height: 80%;
+    object-fit: contain;
+    object-position: center;
+  }
+  h2 {
+    /* border: 1px solid pink; */
+    width: 100%;
+    text-align: center;
+    color: ${theme.colors.primary};
+  }
+`
 
 function NavBarRightSide() {
   const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext)
@@ -46,8 +72,8 @@ function NavBarRightSide() {
       <Button
         label={isModeAdmin ? "Quitter mode Admin" : "Activer mode Admin"}
         onClick={toggleButtonAdmin}
-        className={!isModeAdmin ? "enter-admin-mode" : "quit-admin-mode"}
-      ></Button>
+        // className={!isModeAdmin ? "enter-admin-mode" : "quit-admin-mode"}
+      />
       <IconLabel IconComponent={<FaUserCircle className="icon" />} label="Arthur" />
       <Link to="login" className="log-out-icon">
         <IconLabel IconComponent={<FiLogOut className="icon" />} label="Log out" />
@@ -57,8 +83,9 @@ function NavBarRightSide() {
 }
 
 const NavbarStyled = styled.nav`
+  /* border: 1px solid blue; */
   color: ${theme.colors.black};
-  background-color: ${theme.colors.primary};
+  background-color: ${theme.colors.white};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -78,13 +105,6 @@ const NavBarRightSideStyled = styled.div`
   justify-content: space-between;
   .log-out-icon:visited {
     text-decoration: none;
-  }
-  button {
-    border-radius: ${theme.borderRadius.round};
-    margin-right: ${theme.gridUnit * 3};
-    white-space: normal;
-    max-width: 100px;
-    cursor: pointer;
   }
 
   .enter-admin-mode {
