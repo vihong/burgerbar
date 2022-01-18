@@ -23,7 +23,7 @@ function NavBarLeftSide() {
   return (
     <NavBarLeftSideStyled>
       <img src="burger-icon.png" alt="burger-icon" />
-      <h2>Burger Bar</h2>
+      <h1>Burger Bar</h1>
     </NavBarLeftSideStyled>
   )
 }
@@ -31,7 +31,7 @@ function NavBarLeftSide() {
 const NavBarLeftSideStyled = styled.div`
   /* border: 1px solid red; */
   height: 100%;
-  width: 210px;
+  min-width: 210px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,11 +41,22 @@ const NavBarLeftSideStyled = styled.div`
     object-fit: contain;
     object-position: center;
   }
-  h2 {
+  h1 {
     /* border: 1px solid pink; */
     width: 100%;
     text-align: center;
     color: ${theme.colors.primary};
+    margin-left: 10px;
+    font-size: ${theme.fonts.P5};
+    /* font-weight: ${theme.weights.heavy}; */
+    font-family: "Black Han Sans", sans-serif;
+    font-family: "Caveat Brush", cursive;
+    font-family: "Coda Caption", sans-serif;
+    font-family: "Dongle", sans-serif;
+    font-family: "Gidugu", sans-serif;
+    /* font-family: "Jua", sans-serif; */
+    /* font-family: "Truculenta", sans-serif; */
+    /* font-family: "Wendy One", sans-serif; */
   }
 `
 
