@@ -33,7 +33,12 @@ export default function BasketItems({ basket }: BasketItemsProps) {
               <CardSecondary
                 key={basketItem.id}
                 {...basketItem}
-                price={isAvailable ? formatPrice(basketItem.price) : "Non disponible"}
+                LeftInfo={
+                  <CasinoEffect
+                    count={isAvailable ? formatPrice(basketItem.price) : "Non disponible"}
+                    className="price"
+                  />
+                }
                 RightInfo={
                   <CasinoEffect
                     count={isAvailable ? `x ${basketItem.quantity}` : ""}

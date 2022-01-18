@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components/macro"
 import { theme } from "theme/index"
 import { TiDelete } from "react-icons/ti"
+import { CSSTransition } from "react-transition-group"
 
 export const IMAGE_BY_DEFAULT = "images/coming-soon.png"
 export const IMAGE_OVERLAP = "images/no-stock.png"
@@ -38,7 +39,9 @@ export default function CardPrimary(props: CardPrimaryProps) {
         {isOverlapImageVisible && (
           <div className="overlap">
             <div className="transparent-layer"></div>
-            <img className="overlap-image" src={IMAGE_OVERLAP} alt="overlap" />
+            <CSSTransition appear={true} timeout={500} in={true} classNames="overlap-image">
+              <img className="overlap-image" src={IMAGE_OVERLAP} alt="overlap" />
+            </CSSTransition>
           </div>
         )}
         <img className="product" src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
@@ -114,6 +117,18 @@ const CardStyled = styled.div`
         z-index: 1;
         top: 0;
         left: 0;
+        /* transition: ease 5000ms; */
+      }
+
+      .overlap-image-appear {
+        opacity: 0.1;
+        transform: translateY(-40%);
+
+        &.overlap-image-appear-active {
+          opacity: 1;
+          transition: 500ms;
+          transform: translateY(0);
+        }
       }
 
       .transparent-layer {
