@@ -3,6 +3,7 @@ import styled from "styled-components/macro"
 import { theme } from "theme/index"
 import { TiDelete } from "react-icons/ti"
 import { CSSTransition } from "react-transition-group"
+import { fadeInFromRight } from "theme/animations"
 
 export const IMAGE_BY_DEFAULT = "images/coming-soon.png"
 export const IMAGE_OVERLAP = "images/no-stock.png"
@@ -85,6 +86,8 @@ const CardStyled = styled.div`
     height: 30px;
     color: ${theme.colors.greyLight};
     z-index: 2;
+    animation: ${fadeInFromRight} 500ms ease-out;
+
     :hover {
       color: ${theme.colors.red};
       /* background-color: red; */
