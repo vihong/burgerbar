@@ -1,53 +1,43 @@
 import React, { useContext } from "react"
-import { Link } from "@reach/router"
-import IconLabel from "components/atoms/IconLabel"
 import OrderContext from "context/OrderContext"
-import toast from "react-hot-toast"
-import { FaUserCircle, FaUserSecret } from "react-icons/fa"
-import { FiLogOut } from "react-icons/fi"
+import { FaShoppingCart, FaUserSecret } from "react-icons/fa"
 import styled from "styled-components"
 import { theme } from "theme"
-import Button from "components/atoms/Button"
+import SwitchButton from "components/atoms/SwitchButton"
+import Profile from "components/molecules/Profile"
 
 export default function NavBarRightSide() {
   const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext)
 
   const toggleButtonAdmin = () => {
-    !isModeAdmin &&
-      toast.success("Mode Admin activé!", {
-        position: "top-center",
-        duration: 3000,
-        style: {
-          borderRadius: "10px",
-          background: "#333",
-          color: "#fff",
-        },
-        icon: <FaUserSecret />,
-      })
     setIsModeAdmin(!isModeAdmin)
   }
 
   return (
     <NavBarRightSideStyled>
-      <Button
-        label={isModeAdmin ? "Quitter mode Admin" : "Activer mode Admin"}
-        onClick={toggleButtonAdmin}
-        // className={!isModeAdmin ? "enter-admin-mode" : "quit-admin-mode"}
+      <SwitchButton
+        isActive={isModeAdmin}
+        toggleSwitchButton={toggleButtonAdmin}
+        LeftIcon={<FaShoppingCart />}
+        RightIcon={<FaUserSecret />}
       />
-      <IconLabel IconComponent={<FaUserCircle className="icon" />} label="Arthur" />
-      <Link to="login" className="log-out-icon">
+      <Profile name={"Arthur"} description={"Se déconnecter"} />
+      {/* <IconLabel IconComponent={<FaUserCircle className="icon" />} label="Arthur" /> */}
+      {/* <Link to="login" className="log-out-icon">
         <IconLabel IconComponent={<FiLogOut className="icon" />} label="Log out" />
-      </Link>
+      </Link> */}
     </NavBarRightSideStyled>
   )
 }
 
 const NavBarRightSideStyled = styled.div`
+  /* background: lightgreen; */
   width: auto;
-  min-width: 250px;
+  min-width: 300px;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   .log-out-icon:visited {
     text-decoration: none;
