@@ -1,9 +1,9 @@
 import OrderContext from "context/OrderContext"
 import React, { useContext } from "react"
 import styled from "styled-components/macro"
-import Basket from "./Main/Basket/Basket"
-import Menu from "./Main/Menu"
-import PanelAdmin from "./Main/PanelAdmin/PanelAdmin"
+import Basket from "./Basket/Basket"
+import Menu from "./Menu"
+import PanelAdmin from "./PanelAdmin/PanelAdmin"
 
 export default function Main() {
   const { isModeAdmin } = useContext(OrderContext)
