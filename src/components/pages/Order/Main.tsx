@@ -1,7 +1,7 @@
 import OrderContext from "context/OrderContext"
 import React, { useContext } from "react"
 import styled from "styled-components/macro"
-import Basket from "./Basket/Basket"
+import Basket from "./Main/Basket/Basket"
 import Menu from "./Menu"
 import PanelAdmin from "./PanelAdmin/PanelAdmin"
 
