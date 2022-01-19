@@ -3,15 +3,20 @@ import { useContext } from "react"
 import styled from "styled-components/macro"
 import PanelWindow from "components/pages/Order/Main/PanelAdmin/PanelWindow"
 import PanelAdminTabs from "./PanelAdminTabs"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
 
 export default function PanelAdmin() {
-  const { isCollapsed } = useContext(OrderContext)
+  const { isCollapsed, isModeAdmin } = useContext(OrderContext)
 
   return (
-    <PanelAdminStyled className="panel">
-      <PanelAdminTabs />
-      {!isCollapsed && <PanelWindow />}
-    </PanelAdminStyled>
+    <TransitionGroup component={PanelAdminStyled}>
+      <CSSTransition timeout={10000} appear={isModeAdmin} classNames="panel">
+        <div>
+          <PanelAdminTabs />
+          {!isCollapsed && <PanelWindow />}
+        </div>
+      </CSSTransition>
+    </TransitionGroup>
   )
 }
 
@@ -21,4 +26,13 @@ const PanelAdminStyled = styled.div`
   left: 0;
   right: 0;
   z-index: 2;
+
+  .panel-appear {
+    opacity: 0.1;
+    &.panel-appear-active {
+      opacity: 1;
+      transition: 10000ms;
+      transition: all 3000ms;
+    }
+  }
 `
