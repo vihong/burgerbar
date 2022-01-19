@@ -8,7 +8,7 @@ export default function PanelAdmin() {
   const { isCollapsed } = useContext(OrderContext)
 
   return (
-    <PanelAdminStyled className="panel">
+    <PanelAdminStyled>
       <PanelAdminTabs />
       {!isCollapsed && <PanelWindow />}
     </PanelAdminStyled>
