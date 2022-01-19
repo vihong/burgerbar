@@ -1,5 +1,6 @@
 import OrderContext from "context/OrderContext"
 import React, { useContext } from "react"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from "styled-components/macro"
 import Basket from "./Basket/Basket"
 import Menu from "./Menu"
@@ -12,7 +13,13 @@ export default function Main() {
       <Basket />
       <div className="menu-and-panel-container">
         <Menu />
-        {isModeAdmin && <PanelAdmin />}
+        {isModeAdmin && (
+          <TransitionGroup>
+            <CSSTransition timeout={500} classNames="panel" appear={isModeAdmin}>
+              <PanelAdmin />
+            </CSSTransition>
+          </TransitionGroup>
+        )}
       </div>
     </MainStyled>
   )
@@ -39,9 +46,14 @@ const MainStyled = styled.div`
       /* border: 3px solid red; */
     }
 
-    // panel-admin
-    > div:nth-child(2) {
-      /* border: 3px solid blue; */
+    .panel-appear {
+      opacity: 0.1;
+      transform: translateY(100%);
+      &.panel-appear-active {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 500ms;
+      }
     }
   }
 `
