@@ -1,4 +1,5 @@
 import React from "react"
+import { BsPersonCircle } from "react-icons/bs"
 import styled from "styled-components"
 import { theme } from "theme"
 
@@ -17,7 +18,7 @@ export default function Profile({ name, description }: ProfileProps) {
         <b>{description}</b>
       </div>
       <div className="picture">
-        <img src="images/male_model.jpeg" alt="" />
+        <BsPersonCircle />
       </div>
     </ProfileStyled>
   )
@@ -53,24 +54,8 @@ const ProfileStyled = styled.div`
     /* border: 1px solid red; */
     height: auto;
     display: flex;
-    position: relative;
-    width: 40px;
-    &:after {
-      content: "";
-      display: block;
-      padding-bottom: 100%; 
-      /* The padding depends on the width, not on the height, so with a padding-bottom of 100% you will get a square */
-    }
-    img {
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0; /* Make the picture taking the size of it's parent */
-      width: 100%; /* This if for the object-fit */
-      height: 100%; /* This if for the object-fit */
-      object-fit: cover; /* Equivalent of the background-size: cover; of a background-image */
-      object-position: center;
-      border-radius: ${theme.borderRadius.circle}; */
-    }
+    height: 100%;
+    font-size: ${theme.fonts.P4};
+    color: ${theme.colors.black};
   }
 `
