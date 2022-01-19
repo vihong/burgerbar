@@ -29,7 +29,7 @@ export default function NavBarRightSide() {
 const NavBarRightSideStyled = styled.div`
   /* background: lightgreen; */
   width: auto;
-  min-width: 300px;
+  min-width: 370px;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
