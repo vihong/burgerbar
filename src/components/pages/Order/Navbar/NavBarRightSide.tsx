@@ -8,6 +8,7 @@ import { FiLogOut } from "react-icons/fi"
 import styled from "styled-components"
 import { theme } from "theme"
 import SwitchButton from "components/atoms/SwitchButton"
+import Profile from "components/molecules/Profile"
 
 export default function NavBarRightSide() {
   const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext)
@@ -24,7 +25,7 @@ export default function NavBarRightSide() {
         LeftIcon={<FaShoppingCart />}
         RightIcon={<FaUserSecret />}
       />
-
+      <Profile name={"Arthur"} description={isModeAdmin ? "Admin" : "Client"} />
       {/* <IconLabel IconComponent={<FaUserCircle className="icon" />} label="Arthur" /> */}
       {/* <Link to="login" className="log-out-icon">
         <IconLabel IconComponent={<FiLogOut className="icon" />} label="Log out" />
@@ -34,11 +35,13 @@ export default function NavBarRightSide() {
 }
 
 const NavBarRightSideStyled = styled.div`
+  /* background: lightgreen; */
   width: auto;
-  min-width: 250px;
+  min-width: 300px;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   .log-out-icon:visited {
     text-decoration: none;

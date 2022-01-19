@@ -41,7 +41,7 @@ const SwitchButtonStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 2rem;
-  width: 6.5rem;
+  min-width: 6.5rem;
   cursor: pointer;
   border-radius: ${theme.borderRadius.round};
   /* padding: 8px 16px; */
