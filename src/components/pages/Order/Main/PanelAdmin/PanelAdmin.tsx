@@ -1,7 +1,7 @@
 import OrderContext from "context/OrderContext"
 import { useContext } from "react"
 import styled from "styled-components/macro"
-import PanelWindow from "components/pages/Order/PanelAdmin/PanelWindow"
+import PanelWindow from "components/pages/Order/Main/PanelAdmin/PanelWindow"
 import PanelAdminTabs from "./PanelAdminTabs"
 
 export default function PanelAdmin() {

@@ -3,7 +3,7 @@ import React, { useContext } from "react"
 import styled from "styled-components/macro"
 import Basket from "./Main/Basket/Basket"
 import Menu from "./Main/Menu"
-import PanelAdmin from "./PanelAdmin/PanelAdmin"
+import PanelAdmin from "./Main/PanelAdmin/PanelAdmin"
 
 export default function Main() {
   const { isModeAdmin } = useContext(OrderContext)
