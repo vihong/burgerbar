@@ -10,6 +10,7 @@ import SelectInput from "components/atoms/SelectInput"
 import { FiPackage } from "react-icons/fi"
 import { GoMegaphone } from "react-icons/go"
 import { isProductAdvertised, isProductAvailable } from "enums"
+import { fadeIn } from "theme/animations"
 
 interface FormProps {
   formTitle?: string
@@ -172,6 +173,8 @@ const FormStyled = styled.form`
       width: 100px;
       object-fit: contain;
       object-position: center;
+      animation: ${fadeIn} 1s;
+
     }
     .empty-image {
       /* background-color: green; */
