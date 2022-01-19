@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react"
 import OrderContext from "context/OrderContext"
-import Navbar from "components/molecules/Navbar"
 import styled from "styled-components/macro"
 import { MenuItem } from "typescript/MenuItem"
 import { fakeMenu2 } from "fakeData/fakeMenu"
@@ -8,6 +7,7 @@ import Main from "./Main"
 import { useBasket } from "hooks/useBasket"
 import { useMenu } from "hooks/useMenu"
 import { isProductAdvertised, isProductAvailable } from "enums"
+import Navbar from "components/molecules/Navbar/Navbar"
 
 interface OrderProps {
   path: string
