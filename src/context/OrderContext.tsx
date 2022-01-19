@@ -5,7 +5,7 @@ import { MenuItem } from "typescript/MenuItem"
 import { createNewItem } from "utils/businessLogic"
 
 interface OrderContextValue {
-  isModeAdmin?: boolean
+  isModeAdmin: boolean
   setIsModeAdmin: React.Dispatch<React.SetStateAction<boolean>>
   menuItems: MenuItem[]
   handleAdd: (itemCreated: MenuItem) => void
