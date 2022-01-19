@@ -7,7 +7,7 @@ import Main from "./Main"
 import { useBasket } from "hooks/useBasket"
 import { useMenu } from "hooks/useMenu"
 import { isProductAdvertised, isProductAvailable } from "enums"
-import Navbar from "components/molecules/Navbar/Navbar"
+import Navbar from "components/pages/Order/Navbar/Navbar"
 
 interface OrderProps {
   path: string
