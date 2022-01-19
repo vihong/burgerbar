@@ -22,10 +22,6 @@ export default function NavBarRightSide() {
         RightIcon={<FaUserSecret />}
       />
       <Profile name={"Arthur"} description={"Se déconnecter"} />
-      {/* <IconLabel IconComponent={<FaUserCircle className="icon" />} label="Arthur" /> */}
-      {/* <Link to="login" className="log-out-icon">
-        <IconLabel IconComponent={<FiLogOut className="icon" />} label="Log out" />
-      </Link> */}
     </NavBarRightSideStyled>
   )
 }
@@ -33,7 +29,7 @@ export default function NavBarRightSide() {
 const NavBarRightSideStyled = styled.div`
   /* background: lightgreen; */
   width: auto;
-  min-width: 300px;
+  min-width: 370px;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;

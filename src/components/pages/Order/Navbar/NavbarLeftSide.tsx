@@ -4,7 +4,7 @@ import { theme } from "theme"
 
 export default function NavBarLeftSide() {
   return (
-    <NavBarLeftSideStyled>
+    <NavBarLeftSideStyled onClick={() => window.location.reload()}>
       <img src="burger-icon.png" alt="burger-icon" />
       <h1>Burger Bar</h1>
     </NavBarLeftSideStyled>
@@ -18,6 +18,7 @@ const NavBarLeftSideStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
   img {
     /* border: 1px solid green; */
     height: 80%;
