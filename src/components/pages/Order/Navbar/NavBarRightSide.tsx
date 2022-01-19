@@ -25,7 +25,7 @@ export default function NavBarRightSide() {
         LeftIcon={<FaShoppingCart />}
         RightIcon={<FaUserSecret />}
       />
-      <Profile name={"Arthur"} description={isModeAdmin ? "Admin" : "Client"} />
+      <Profile name={"Arthur"} description={"Se déconnecter"} />
       {/* <IconLabel IconComponent={<FaUserCircle className="icon" />} label="Arthur" /> */}
       {/* <Link to="login" className="log-out-icon">
         <IconLabel IconComponent={<FiLogOut className="icon" />} label="Log out" />

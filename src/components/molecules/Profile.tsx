@@ -13,9 +13,9 @@ export default function Profile({ name, description }: ProfileProps) {
     <ProfileStyled>
       <div className="info">
         <p>
-          Bonjour <b>{name}</b>
+          Hey, <b>{name}</b>
         </p>
-        <b>{description}</b>
+        <small>{description}</small>
       </div>
       <div className="picture">
         <BsPersonCircle />
@@ -33,20 +33,18 @@ const ProfileStyled = styled.div`
   min-width: 100px;
 
   .info {
-    /* border: 1px solid green; */
     text-align: right;
     margin-right: 10px;
     p {
-      /* background: pink; */
       margin: 0;
       b {
-        color: ${theme.colors.black};
+        color: ${theme.colors.primary};
       }
     }
-    > b {
+    small {
       font-size: ${theme.fonts.XS};
-      /* background: green; */
-      color: ${theme.colors.primary};
+      color: ${theme.colors.greyDark};
+      font-weight: ${theme.weights.medium};
     }
   }
 
