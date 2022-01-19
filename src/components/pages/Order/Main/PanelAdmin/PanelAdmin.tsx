@@ -10,7 +10,7 @@ export default function PanelAdmin() {
 
   return (
     <TransitionGroup component={PanelAdminStyled}>
-      <CSSTransition timeout={10000} appear={isModeAdmin} classNames="panel">
+      <CSSTransition timeout={500} appear={isModeAdmin} classNames="panel">
         <div>
           <PanelAdminTabs />
           {!isCollapsed && <PanelWindow />}
@@ -29,10 +29,11 @@ const PanelAdminStyled = styled.div`
 
   .panel-appear {
     opacity: 0.1;
+    transform: translateY(100%);
     &.panel-appear-active {
       opacity: 1;
-      transition: 10000ms;
-      transition: all 3000ms;
+      transform: translateY(0);
+      transition: all 500ms;
     }
   }
 `
