@@ -62,7 +62,6 @@ const SelectInputStyled = styled.div`
     font-size: ${theme.fonts.P0};
     color: ${theme.colors.black};
     width: 100%;
-    appearance: none;
     outline: 0;
   }
 `
