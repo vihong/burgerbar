@@ -10,7 +10,7 @@ export default function PanelWindow() {
 
   return (
     <PanelWindowStyled>
-      {isAddFormVisible && <AddForm buttonLabel="Ajouter au menu" />}
+      {isAddFormVisible && <AddForm buttonLabel="Ajouter un nouveau produit au menu" />}
       {isEditFormVisible && <EditForm />}
     </PanelWindowStyled>
   )

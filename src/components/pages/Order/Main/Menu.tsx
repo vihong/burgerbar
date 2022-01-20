@@ -181,9 +181,8 @@ const MenuStyled = styled.div`
     background-color: ${theme.colors.white};
     color: ${theme.colors.primary};
     border-radius: ${theme.borderRadius.round};
-    height: 35px;
     border: 1px solid ${theme.colors.primary};
-    padding: 0 1.5em;
+    padding: 0.7em 1.5em;
     font-weight: ${theme.weights.semiBold};
     :hover {
       background-color: ${theme.colors.primary};
