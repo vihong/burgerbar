@@ -21,7 +21,7 @@ export default function NavBarRightSide() {
         LeftIcon={<FaShoppingCart />}
         RightIcon={<FaUserSecret />}
       />
-      <Profile name={"Arthur"} description={"Se déconnecter"} />
+      <Profile name={"Arthur"} description={isModeAdmin ? "Admin" : "Client"} />
     </NavBarRightSideStyled>
   )
 }
@@ -29,7 +29,7 @@ export default function NavBarRightSide() {
 const NavBarRightSideStyled = styled.div`
   /* background: lightgreen; */
   width: auto;
-  min-width: 370px;
+  min-width: 380px;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;

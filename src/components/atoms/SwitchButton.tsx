@@ -67,6 +67,7 @@ const SwitchButtonStyled = styled.div`
     &.activated {
       background: ${theme.colors.primary};
       color: ${theme.colors.white};
+      font-weight: ${theme.weights.bold};
       border-radius: ${theme.borderRadius.round};
       width: 60%;
       transition: all 300ms;
@@ -79,7 +80,7 @@ const SwitchButtonStyled = styled.div`
       border-radius: ${theme.borderRadius.round};
       width: 40%;
       transition: all 300ms;
-      padding: 0 10px;
+      padding: 0 8px;
     }
   }
 `
