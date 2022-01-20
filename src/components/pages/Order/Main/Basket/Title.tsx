@@ -1,5 +1,5 @@
 import React from "react"
 
 export default function Title({ className }: { className?: string }) {
-  return <span className={className}>Votre commande</span>
+  return <span className={className}>Made with ❤️ by John</span>
 }
