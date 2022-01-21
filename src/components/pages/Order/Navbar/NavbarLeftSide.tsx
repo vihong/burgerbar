@@ -6,7 +6,7 @@ export default function NavBarLeftSide() {
   return (
     <NavBarLeftSideStyled onClick={() => window.location.reload()}>
       <img src="burger-icon.png" alt="burger-icon" />
-      <h1>Burger Bar</h1>
+      <h1>Burger Live</h1>
     </NavBarLeftSideStyled>
   )
 }
