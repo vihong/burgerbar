@@ -4,14 +4,16 @@ import styled from "styled-components"
 import { theme } from "theme"
 import EditForm from "components/organisms/EditForm"
 import AddForm from "components/organisms/AddForm"
+import { EMPTY_PRODUCT } from "components/pages/Order/Order"
+import HintMessage from "./HintMessage"
 
 export default function PanelWindow() {
-  const { isAddFormVisible, isEditFormVisible } = useContext(OrderContext)
+  const { isAddFormVisible, isEditFormVisible, itemBeingSelected } = useContext(OrderContext)
 
   return (
     <PanelWindowStyled>
       {isAddFormVisible && <AddForm buttonLabel="Ajouter un nouveau produit au menu" />}
-      {isEditFormVisible && <EditForm />}
+      {isEditFormVisible && (itemBeingSelected == EMPTY_PRODUCT ? <HintMessage /> : <EditForm />)}
     </PanelWindowStyled>
   )
 }
