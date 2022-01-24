@@ -25,8 +25,7 @@ export default function Menu() {
     handleDeleteFromBasket,
   } = useContext(OrderContext)
 
-  //@ts-ignore due to async
-  const handleCardSelected = async (idSelected: number | undefined): void => {
+  const handleCardSelected = async (idSelected: number | undefined) => {
     if (!isModeAdmin) return
     const itemBeingSelected = menuItems?.find((item) => item.id === idSelected)
     //@ts-ignore
