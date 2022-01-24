@@ -22,7 +22,7 @@ export default function NavBarRightSide() {
         LeftIcon={<FaShoppingCart />}
         RightIcon={<FaUserSecret />}
       /> */}
-      <ToggleButton />
+      <ToggleButton isChecked={isModeAdmin} toggleIsChecked={toggleButtonAdmin} />
       <Profile name={"Arthur"} description={isModeAdmin ? "Admin" : "Client"} />
     </NavBarRightSideStyled>
   )

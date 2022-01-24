@@ -2,15 +2,26 @@ import React from "react"
 import styled from "styled-components"
 import { theme } from "theme"
 
-export default function ToggleButton() {
+interface ToggleButtonProps {
+  isChecked: boolean
+  toggleIsChecked: any
+}
+
+export default function ToggleButton({ isChecked, toggleIsChecked }: ToggleButtonProps) {
   return (
     <ToggleButtonStyled>
-      <input type="checkbox" className="toggle" id="rounded" />
+      <input
+        type="checkbox"
+        className="toggle"
+        id="rounded"
+        checked={isChecked}
+        onChange={toggleIsChecked}
+      />
       <label
         htmlFor="rounded"
         className="rounded"
-        data-checked="Mode admin Activé"
-        data-unchecked="Mode admin désactivé"
+        data-checked="Mode admin on"
+        data-unchecked="Mode admin off"
       ></label>
     </ToggleButtonStyled>
   )
