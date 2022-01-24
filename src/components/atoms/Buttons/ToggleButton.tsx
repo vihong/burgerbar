@@ -20,8 +20,8 @@ export default function ToggleButton({ isChecked, toggleIsChecked }: ToggleButto
       <label
         htmlFor="rounded"
         className="rounded"
-        data-checked="Mode admin ON"
-        data-unchecked="Mode admin OFF"
+        data-checked="Mode admin Activé"
+        data-unchecked="Mode admin Désactivé"
       ></label>
     </ToggleButtonStyled>
   )
@@ -42,7 +42,7 @@ const ToggleButtonStyled = styled.div`
       height: 40px;
       width: 200px;
       position: relative;
-      font-size: ${theme.fonts.XS};
+      font-size: ${theme.fonts.XXS};
       border: 2px solid ${theme.colors.black};
       padding: 0;
       margin: 0;
@@ -65,7 +65,7 @@ const ToggleButtonStyled = styled.div`
     // text inside the switch button (for checked and unchecked)
     &.toggle + label:after {
       /* border: 1px solid blue; */
-      width: 140px;
+      width: 150px;
       text-align: center;
       z-index: 2;
       text-transform: uppercase;
@@ -94,7 +94,7 @@ const ToggleButtonStyled = styled.div`
     // text label when not checked
     &.toggle:not(:checked) + label:after {
       content: attr(data-unchecked);
-      right: 0;
+      right: 8px;
       left: auto;
       opacity: 1;
       color: black;
@@ -118,11 +118,12 @@ const ToggleButtonStyled = styled.div`
       left: 4px;
       right: auto;
       opacity: 1;
-      color: ${theme.colors.primary};
+      color: ${theme.colors.black};
     }
 
+    // small circle when checked
     &.toggle:checked + label:before {
-      left: 162px;
+      left: 163px;
       background-color: ${theme.colors.primary};
     }
   }
