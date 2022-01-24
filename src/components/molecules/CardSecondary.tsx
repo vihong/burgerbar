@@ -26,9 +26,10 @@ export default function CardSecondary({
   LeftInfo,
   leftInfo,
   onDelete,
+  onCardClick,
 }: CardSecondaryProps) {
   return (
-    <CardSecondaryStyled>
+    <CardSecondaryStyled onClick={onCardClick}>
       <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>

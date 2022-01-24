@@ -14,7 +14,28 @@ interface BasketItemsProps {
 }
 
 export default function BasketItems({ basket }: BasketItemsProps) {
-  const { handleDeleteFromBasket } = useContext(OrderContext)
+  const {
+    handleDeleteFromBasket,
+    menuItems,
+    isModeAdmin,
+    setItemBeingSelected,
+    setIsCollapsed,
+    setIsAddFormVisible,
+    setIsEditFormVisible,
+    titleEditBoxRef,
+  } = useContext(OrderContext)
+
+  //@ts-ignore due to async
+  const handleCardSelected = async (idSelected: number | undefined): void => {
+    if (!isModeAdmin) return
+    const itemBeingSelected = menuItems?.find((item) => item.id === idSelected)
+    //@ts-ignore
+    setItemBeingSelected(itemBeingSelected)
+    await setIsCollapsed(false)
+    await setIsAddFormVisible(false)
+    await setIsEditFormVisible(true)
+    titleEditBoxRef.current.focus()
+  }
 
   return (
     <TransitionGroup component={BasketItemsStyled}>
@@ -31,6 +52,7 @@ export default function BasketItems({ basket }: BasketItemsProps) {
             <div className="basket-card">
               {isAdvertised && <Sticker className="badge-new" />}
               <CardSecondary
+                onCardClick={() => handleCardSelected(basketItem.id)}
                 key={basketItem.id}
                 {...basketItem}
                 LeftInfo={
