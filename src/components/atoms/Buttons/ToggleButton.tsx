@@ -99,6 +99,7 @@ const ToggleButtonStyled = styled.div`
       left: auto;
       opacity: 1;
       color: ${theme.colors.primary};
+      font-weight: ${theme.weights.bold};
     }
 
     // small circle when not checked
