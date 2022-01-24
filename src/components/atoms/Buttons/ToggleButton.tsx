@@ -20,8 +20,8 @@ export default function ToggleButton({ isChecked, toggleIsChecked }: ToggleButto
       <label
         htmlFor="rounded"
         className="rounded"
-        data-checked="Mode admin on"
-        data-unchecked="Mode admin off"
+        data-checked="Mode admin ON"
+        data-unchecked="Mode admin OFF"
       ></label>
     </ToggleButtonStyled>
   )
@@ -39,26 +39,26 @@ const ToggleButtonStyled = styled.div`
 
     &.toggle + label {
       display: inline-block;
-      height: 60px;
+      height: 40px;
       width: 200px;
       position: relative;
       font-size: ${theme.fonts.XS};
-      border: 4px solid ${theme.colors.black};
+      border: 2px solid ${theme.colors.black};
       padding: 0;
       margin: 0;
       cursor: pointer;
       box-sizing: border-box;
-      transition: all 0.3s ease;
+      transition: all 500ms ease;
     }
 
     // the small round circle
     &.toggle + label:before {
       content: "";
       position: absolute;
-      top: 4px;
-      height: 44px;
-      width: 44px;
-      transition: all 0.3s ease;
+      top: 3px;
+      height: 30px;
+      width: 30px;
+      transition: all 500ms ease;
       z-index: 3;
     }
 
@@ -91,7 +91,7 @@ const ToggleButtonStyled = styled.div`
       /* text-align: right; */
     }
 
-    // text label when checked
+    // text label when not checked
     &.toggle:not(:checked) + label:after {
       content: attr(data-unchecked);
       right: 0;
@@ -102,12 +102,13 @@ const ToggleButtonStyled = styled.div`
 
     // small circle when not checked
     &.toggle:not(:checked) + label:before {
-      left: 4px;
+      left: 3px;
       background-color: ${theme.colors.black};
     }
 
+    // box container when checked
     &.toggle:checked + label {
-      left: left;
+      text-align: left;
       border-color: ${theme.colors.primary};
     }
 
@@ -118,11 +119,10 @@ const ToggleButtonStyled = styled.div`
       right: auto;
       opacity: 1;
       color: ${theme.colors.primary};
-      font-weight: ${theme.weights.bold};
     }
 
     &.toggle:checked + label:before {
-      left: 144px;
+      left: 162px;
       background-color: ${theme.colors.primary};
     }
   }
