@@ -230,21 +230,21 @@ const FormStyled = styled.form`
     align-items: center;
     button {
       cursor: pointer;
-      background: ${theme.colors.success};
-      color: ${theme.colors.white};
+      background: ${theme.colors.white};
+      color: ${theme.colors.success};
       border: 1px solid ${theme.colors.success};
       border-radius: ${theme.borderRadius.round};
       height: 35px;
       padding: 0 1.5em;
       font-weight: ${theme.weights.semiBold};
       :hover {
-        color: ${theme.colors.success};
-        background: ${theme.colors.white};
+        color: ${theme.colors.white};
+        background: ${theme.colors.success};
         border: 1px solid ${theme.colors.success};
       }
       :active {
-        background: ${theme.colors.success};
-        color: ${theme.colors.white};
+        background: ${theme.colors.white};
+        color: ${theme.colors.success};
         border: 1px solid ${theme.colors.success};
       }
     }
