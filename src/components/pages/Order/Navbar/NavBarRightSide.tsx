@@ -15,9 +15,8 @@ export default function NavBarRightSide() {
         position: "top-center",
         duration: 5000,
         style: {
-          // borderRadius: theme.borderRadius.round,
-          borderRadius: "10px",
-          background: "#333",
+          borderRadius: theme.borderRadius.round,
+          background: theme.colors.black,
           color: "#fff",
           position: "relative",
           top: "8vh",

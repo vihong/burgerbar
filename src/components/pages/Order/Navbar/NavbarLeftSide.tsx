@@ -21,26 +21,20 @@ const NavBarLeftSideStyled = styled.div`
   cursor: pointer;
   img {
     /* border: 1px solid green; */
-    height: 80%;
     object-fit: contain;
     object-position: center;
+    height: 8vh;
+    width: 100px; // for Safari and Firefox
   }
   h1 {
     /* border: 1px solid pink; */
+    display: flex;
     width: 100%;
     text-align: center;
     color: ${theme.colors.primary};
     margin-left: 10px;
     font-size: ${theme.fonts.P5};
     text-transform: uppercase;
-    /* font-weight: ${theme.weights.heavy}; */
-    font-family: "Black Han Sans", sans-serif;
-    font-family: "Caveat Brush", cursive;
-    font-family: "Coda Caption", sans-serif;
-    font-family: "Dongle", sans-serif;
     font-family: "Gidugu", sans-serif;
-    /* font-family: "Jua", sans-serif; */
-    /* font-family: "Truculenta", sans-serif; */
-    /* font-family: "Wendy One", sans-serif; */
   }
 `
