@@ -25,7 +25,6 @@ export default function SelectInput({
   IconComponent,
   onChange,
 }: SelectInputProps) {
-  console.log("name, value: ", name, value)
   return (
     <SelectInputStyled>
       {IconComponent && IconComponent}
@@ -62,7 +61,6 @@ const SelectInputStyled = styled.div`
     font-size: ${theme.fonts.P0};
     color: ${theme.colors.black};
     width: 100%;
-    appearance: none;
     outline: 0;
   }
 `

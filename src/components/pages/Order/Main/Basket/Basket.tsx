@@ -27,12 +27,9 @@ export default function Basket() {
 
   return (
     <BasketStyled>
-      <Header
-        className="header-votre-commande"
-        HeaderContent={<Title className="votre-commande" />}
-      />
       <Header className="header-total" HeaderContent={<Total className="total" total={total} />} />
       {isBasketEmpty ? <EmptyBasket /> : <BasketItems basket={basketWithMenuItems} />}
+      <Header className="header-votre-commande" HeaderContent={<Title className="title" />} />
     </BasketStyled>
   )
 }
@@ -43,7 +40,11 @@ const BasketStyled = styled.div`
 
   .header-votre-commande {
     min-height: 50px;
-    padding-top: 20px;
+    padding: 10px 0;
+    .title {
+      font-size: ${theme.fonts.P0};
+      text-align: center;
+    }
   }
 
   .header-total {

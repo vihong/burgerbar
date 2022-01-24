@@ -1,4 +1,3 @@
-import { Link } from "@reach/router"
 import React from "react"
 import { BsPersonCircle } from "react-icons/bs"
 import styled from "styled-components"
@@ -16,9 +15,9 @@ export default function Profile({ name, description }: ProfileProps) {
         <p>
           Hey, <b>{name}</b>
         </p>
-        <Link to="login" className="description">
+        <div className="description">
           <small>{description}</small>
-        </Link>
+        </div>
       </div>
       <div className="picture">
         <BsPersonCircle />
@@ -52,7 +51,7 @@ const ProfileStyled = styled.div`
       small {
         font-size: ${theme.fonts.XS};
         color: ${theme.colors.greyDark};
-        font-weight: ${theme.weights.medium};
+        /* font-weight: ${theme.weights.medium}; */
       }
     }
   }

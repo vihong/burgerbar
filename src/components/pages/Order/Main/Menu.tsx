@@ -25,8 +25,7 @@ export default function Menu() {
     handleDeleteFromBasket,
   } = useContext(OrderContext)
 
-  //@ts-ignore due to async
-  const handleCardSelected = async (idSelected: number | undefined): void => {
+  const handleCardSelected = async (idSelected: number | undefined) => {
     if (!isModeAdmin) return
     const itemBeingSelected = menuItems?.find((item) => item.id === idSelected)
     //@ts-ignore
@@ -178,21 +177,20 @@ const MenuStyled = styled.div`
   }
   .add-to-basket-button {
     cursor: pointer;
-    background: ${theme.colors.primary};
-    color: ${theme.colors.white};
+    background-color: ${theme.colors.white};
+    color: ${theme.colors.primary};
     border-radius: ${theme.borderRadius.round};
-    height: 35px;
-    border: none;
-    padding: 0 1.5em;
+    border: 1px solid ${theme.colors.primary};
+    padding: 0.7em 1.5em;
     font-weight: ${theme.weights.semiBold};
     :hover {
-      background: ${theme.colors.white};
-      color: ${theme.colors.primary};
+      background-color: ${theme.colors.primary};
+      color: ${theme.colors.white};
       border: 1px solid ${theme.colors.primary};
     }
     :active {
-      background: ${theme.colors.primary};
-      color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+      background: ${theme.colors.white};
     }
 
     &.is-disabled {

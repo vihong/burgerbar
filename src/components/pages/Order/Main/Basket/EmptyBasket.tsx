@@ -3,12 +3,13 @@ import styled from "styled-components"
 import { theme } from "theme"
 
 export default function EmptyBasket() {
-  return <EmptyBasketStyled>Remplissez votre commande avec des produits du menu.</EmptyBasketStyled>
+  return <EmptyBasketStyled>Ajoutez des produits.</EmptyBasketStyled>
 }
 
 const EmptyBasketStyled = styled.span`
   display: flex;
-  padding: 10px;
+  height: calc(92vh - 100px - 50px - 20px);
+  /* padding: 10px; */
   text-align: center;
   flex: 1;
   justify-content: center;
