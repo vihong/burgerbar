@@ -13,7 +13,7 @@ export default function PanelWindow() {
   return (
     <PanelWindowStyled>
       {isAddFormVisible && <AddForm buttonLabel="Ajouter un nouveau produit au menu" />}
-      {isEditFormVisible && (itemBeingSelected == EMPTY_PRODUCT ? <HintMessage /> : <EditForm />)}
+      {isEditFormVisible && (itemBeingSelected === EMPTY_PRODUCT ? <HintMessage /> : <EditForm />)}
     </PanelWindowStyled>
   )
 }

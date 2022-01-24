@@ -25,7 +25,6 @@ export default function SelectInput({
   IconComponent,
   onChange,
 }: SelectInputProps) {
-  console.log("name, value: ", name, value)
   return (
     <SelectInputStyled>
       {IconComponent && IconComponent}

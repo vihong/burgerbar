@@ -1,9 +1,7 @@
 import React, { useContext } from "react"
 import OrderContext from "context/OrderContext"
-import { FaShoppingCart, FaUserSecret } from "react-icons/fa"
 import styled from "styled-components"
 import { theme } from "theme"
-import SwitchButton from "components/atoms/SwitchButton"
 import Profile from "components/molecules/Profile"
 import ToggleButton from "components/atoms/Buttons/ToggleButton"
 import toast from "react-hot-toast"
@@ -32,12 +30,6 @@ export default function NavBarRightSide() {
 
   return (
     <NavBarRightSideStyled>
-      {/* <SwitchButton
-        isActive={isModeAdmin}
-        toggleSwitchButton={toggleButtonAdmin}
-        LeftIcon={<FaShoppingCart />}
-        RightIcon={<FaUserSecret />}
-      /> */}
       <ToggleButton isChecked={isModeAdmin} toggleIsChecked={toggleButtonAdmin} />
       <Profile name={"Arthur"} description={isModeAdmin ? "Admin" : "Client"} />
     </NavBarRightSideStyled>
