@@ -20,8 +20,8 @@ export default function ToggleButton({ isChecked, toggleIsChecked }: ToggleButto
       <label
         htmlFor="rounded"
         className="rounded"
-        data-checked="Mode admin Activé"
-        data-unchecked="Mode admin Désactivé"
+        data-checked="Désactiver le Mode admin"
+        data-unchecked="Activer le Mode admin"
       ></label>
     </ToggleButtonStyled>
   )
@@ -31,6 +31,7 @@ const ToggleButtonStyled = styled.div`
   /* border: 1px solid red; */
 
   display: flex;
+  margin-right: 10px;
   input[type="checkbox"] {
     // Hides the square box but keeps the core "toggle functionality"
     &.toggle {
@@ -87,7 +88,7 @@ const ToggleButtonStyled = styled.div`
     }
 
     &.toggle:not(:checked) + label {
-      background-color: transparent;
+      background-color: black;
       /* text-align: right; */
     }
 
@@ -97,13 +98,13 @@ const ToggleButtonStyled = styled.div`
       right: 8px;
       left: auto;
       opacity: 1;
-      color: black;
+      color: ${theme.colors.primary};
     }
 
     // small circle when not checked
     &.toggle:not(:checked) + label:before {
       left: 3px;
-      background-color: ${theme.colors.black};
+      background-color: ${theme.colors.primary};
     }
 
     // box container when checked
@@ -115,7 +116,7 @@ const ToggleButtonStyled = styled.div`
     // label text when checked
     &.toggle:checked + label:after {
       content: attr(data-checked);
-      left: 4px;
+      left: 9px;
       right: auto;
       opacity: 1;
       color: ${theme.colors.black};
@@ -123,7 +124,7 @@ const ToggleButtonStyled = styled.div`
 
     // small circle when checked
     &.toggle:checked + label:before {
-      left: 163px;
+      left: 162px;
       background-color: ${theme.colors.primary};
     }
   }
