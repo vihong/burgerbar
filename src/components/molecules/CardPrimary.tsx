@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components/macro"
 import { theme } from "theme/index"
 import { TiDelete } from "react-icons/ti"
-import { CSSTransition } from "react-transition-group"
 import { fadeInFromRight, fadeInFromTop } from "theme/animations"
 
 export const IMAGE_BY_DEFAULT = "images/coming-soon.png"

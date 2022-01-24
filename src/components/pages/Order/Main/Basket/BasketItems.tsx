@@ -25,6 +25,7 @@ export default function BasketItems({ basket }: BasketItemsProps) {
     titleEditBoxRef,
   } = useContext(OrderContext)
 
+  // @TODO: Refactor this with Menu.tsx
   const handleCardSelected = async (idSelected: number | undefined) => {
     if (!isModeAdmin) return
     const itemBeingSelected = menuItems?.find((item) => item.id === idSelected)
