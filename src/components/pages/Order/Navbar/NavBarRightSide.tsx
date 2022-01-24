@@ -5,6 +5,7 @@ import styled from "styled-components"
 import { theme } from "theme"
 import SwitchButton from "components/atoms/SwitchButton"
 import Profile from "components/molecules/Profile"
+import ToggleButton from "components/atoms/Buttons/ToggleButton"
 
 export default function NavBarRightSide() {
   const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext)
@@ -15,12 +16,13 @@ export default function NavBarRightSide() {
 
   return (
     <NavBarRightSideStyled>
-      <SwitchButton
+      {/* <SwitchButton
         isActive={isModeAdmin}
         toggleSwitchButton={toggleButtonAdmin}
         LeftIcon={<FaShoppingCart />}
         RightIcon={<FaUserSecret />}
-      />
+      /> */}
+      <ToggleButton />
       <Profile name={"Arthur"} description={isModeAdmin ? "Admin" : "Client"} />
     </NavBarRightSideStyled>
   )
