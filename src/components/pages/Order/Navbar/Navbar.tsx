@@ -20,7 +20,7 @@ const NavbarStyled = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 8vh;
+  height: 10vh;
   padding: 0px 20px;
   border-top-left-radius: ${theme.borderRadius.round};
   border-top-right-radius: ${theme.borderRadius.round};

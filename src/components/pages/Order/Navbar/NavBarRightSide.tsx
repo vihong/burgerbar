@@ -19,7 +19,7 @@ export default function NavBarRightSide() {
           background: theme.colors.black,
           color: "#fff",
           position: "relative",
-          top: "8vh",
+          top: "12vh",
           right: "-550px",
           width: "250px",
         },

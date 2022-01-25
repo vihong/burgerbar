@@ -37,7 +37,7 @@ const MainStyled = styled.div`
   }
   .menu-and-panel-container {
     position: relative;
-    height: 87vh;
+    height: calc(95vh - 10vh);
     display: flex;
     box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%) inset;
 

@@ -8,7 +8,7 @@ export default function EmptyBasket() {
 
 const EmptyBasketStyled = styled.span`
   display: flex;
-  height: calc(87vh - 100px - 50px - 20px);
+  height: calc(85vh - 70px - 70px);
   /* padding: 10px; */
   text-align: center;
   flex: 1;

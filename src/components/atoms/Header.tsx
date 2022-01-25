@@ -15,7 +15,7 @@ const HeaderSyled = styled.div`
   position: sticky;
   top: 0;
 
-  min-height: 100px;
+  height: 70px;
   background: ${theme.colors.background_black};
 
   display: flex;
