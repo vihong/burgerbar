@@ -8,6 +8,7 @@ import { useBasket } from "hooks/useBasket"
 import { useMenu } from "hooks/useMenu"
 import { isProductAdvertised, isProductAvailable } from "enums"
 import Navbar from "components/pages/Order/Navbar/Navbar"
+import { theme } from "theme"
 
 interface OrderProps {
   path: string
@@ -61,18 +62,36 @@ export default function Order(props: OrderProps) {
   return (
     <OrderStyled>
       <OrderContext.Provider value={orderContextValue}>
-        <Navbar />
-        <Main />
+        <div className="body">
+          <div className="container">
+            <Navbar />
+            <Main />
+          </div>
+        </div>
       </OrderContext.Provider>
     </OrderStyled>
   )
 }
 
 const OrderStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 1400px;
-  margin: auto;
-  box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
+  /* border: 1px solid red; */
+  background-image: linear-gradient(to bottom, #f7a62e 90%, #ffbe26);
+
+  .body {
+    background-image: url(/images/pattern-burger.png);
+    background-size: 200px 150px;
+    background-color: transparent;
+    background-repeat: repeat;
+    height: 100vh;
+    display: flex;
+    /* background-color: #333; */
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 90vh;
+      width: 1400px;
+      margin: auto;
+      box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
+    }
+  }
 `
