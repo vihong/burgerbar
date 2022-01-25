@@ -23,7 +23,7 @@ const NavBarLeftSideStyled = styled.div`
     /* border: 1px solid green; */
     object-fit: contain;
     object-position: center;
-    height: 8vh;
+    height: 6vh;
     width: 100px; // for Safari and Firefox
   }
   h1 {
@@ -32,7 +32,7 @@ const NavBarLeftSideStyled = styled.div`
     width: 100%;
     text-align: center;
     color: ${theme.colors.primary};
-    margin-left: 10px;
+    margin-left: 0px;
     font-size: ${theme.fonts.P5};
     text-transform: uppercase;
     font-family: "Gidugu", sans-serif;

@@ -116,6 +116,7 @@ const MenuStyled = styled.div`
   background-color: ${theme.colors.background_white};
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%) inset;
   justify-items: center; // hallelujah! this centers the grid itself
+  border-bottom-right-radius: ${theme.borderRadius.round};
 
   .burger-animation-enter {
     opacity: 0.01;

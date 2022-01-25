@@ -75,7 +75,7 @@ export default function Order(props: OrderProps) {
 
 const OrderStyled = styled.div`
   /* border: 1px solid red; */
-  background-image: linear-gradient(to bottom, #f7a62e 90%, #ffbe26);
+  background-image: linear-gradient(to bottom, #ea9e2c 20%, #f7a62e 90%, #ffbe26);
 
   .body {
     background-image: url(/images/pattern-burger.png);
@@ -88,7 +88,7 @@ const OrderStyled = styled.div`
     .container {
       display: flex;
       flex-direction: column;
-      height: 90vh;
+      height: 95vh;
       width: 1400px;
       margin: auto;
       box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
