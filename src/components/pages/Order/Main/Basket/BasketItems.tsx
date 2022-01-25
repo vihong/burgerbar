@@ -80,7 +80,7 @@ export default function BasketItems({ basket }: BasketItemsProps) {
 const BasketItemsStyled = styled.div`
   display: flex;
   flex-direction: column;
-  height: calc(87vh - 100px - 50px - 20px);
+  height: calc(85vh - 70px - 50px - 20px);
   overflow-y: scroll;
   /* padding-top: 0.4em; */
   /* padding-bottom: 0.4em; */
