@@ -37,10 +37,11 @@ export default function Basket() {
 const BasketStyled = styled.div`
   background: ${theme.colors.background_white};
   flex: 1;
+  border-bottom-left-radius: ${theme.borderRadius.round};
+  height: 80vh;
 
   .header-votre-commande {
-    min-height: 50px;
-    padding: 10px 0;
+    border-bottom-left-radius: ${theme.borderRadius.round};
     .title {
       font-size: ${theme.fonts.P0};
       text-align: center;
@@ -50,6 +51,10 @@ const BasketStyled = styled.div`
   .header-total {
     .total {
       font-size: ${theme.fonts.P3};
+      span:first-child {
+        /* border: 1px solid red; */
+        font-weight: ${theme.weights.light};
+      }
     }
   }
 `

@@ -81,7 +81,7 @@ const CardStyled = styled.div`
     /* border: 1px solid red; */
     width: 30px;
     height: 30px;
-    color: ${theme.colors.greyLight};
+    color: ${theme.colors.primary};
     z-index: 2;
     animation: ${fadeInFromRight} 500ms ease-out;
 
@@ -90,7 +90,7 @@ const CardStyled = styled.div`
       /* background-color: red; */
     }
     :active {
-      color: ${theme.colors.greyLight};
+      color: ${theme.colors.primary};
     }
   }
 
