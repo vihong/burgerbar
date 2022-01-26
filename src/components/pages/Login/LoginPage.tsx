@@ -37,9 +37,10 @@ const LoginPageStyled = styled.div`
   &::before {
     /* background-color: red; */
     content: "";
-    background-image: url(/images/bg1.jpg);
+    background: url(/images/bg1.jpg) rgba(0, 0, 0, 0.4);
     background-size: cover;
     background-position: center;
+    background-blend-mode: darken;
     position: absolute;
     top: 0;
     left: 0;
@@ -57,16 +58,16 @@ const LoginPageStyled = styled.div`
       justify-content: center;
       align-items: center;
       img {
-        width: 200px;
+        width: 150px;
       }
     }
     h1 {
-      font-size: ${theme.fonts.P6};
+      font-size: ${theme.fonts.P5};
       margin: 0;
       color: ${theme.colors.white};
       font-family: "Gidugu", sans-serif;
       text-transform: uppercase;
-      line-height: 1em; // to bring h1 close together to logo
+      line-height: 1.3em; // to bring h1 close together to logo
       text-align: center;
     }
   }
