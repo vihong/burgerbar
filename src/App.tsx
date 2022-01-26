@@ -5,8 +5,8 @@ import Login from "components/pages/Login"
 export default function App() {
   return (
     <Router>
-      <Order path="/" />
-      <Login path="/login" />
+      <Login path="/" />
+      <Order path="/order" />
     </Router>
   )
 }
