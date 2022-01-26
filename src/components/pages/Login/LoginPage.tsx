@@ -13,18 +13,11 @@ interface LoginProps {
 export default function Login(props: LoginProps) {
   return (
     <LoginPageStyled>
-      {/* <div className="background-image">
-        <img src="images/bg1.jpg" alt="bg1" />
-      </div> */}
       <div className="logo">
         <img src="images/logo-burger-bicolor.png" alt="burger-icon" />
         <h1>Burger Live</h1>
       </div>
       <LoginForm />
-      {/* <div className="form">
-        <Link to="order">Commandes</Link>
-        <Link to="/">Login</Link>
-      </div> */}
     </LoginPageStyled>
   )
 }
@@ -32,25 +25,31 @@ export default function Login(props: LoginProps) {
 const LoginPageStyled = styled.div`
   border: 1px solid red;
   height: 100vh;
-  /* background-color: ${theme.colors.black}; */
-  background-image: url(/images/bg1.jpg);
-  background-position: center;
-  /* filter: blur(8px); */
-
-  /* background-size: contain; */
+  width: auto;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
+  &::before {
+    content: "";
+    background-image: url(/images/bg1.jpg);
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
   .logo {
-    /* border: 1px solid blue; */
-    /* height: 300px; */
-    /* display: flex; */
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    position: relative;
     img {
       width: 200px;
     }
