@@ -14,7 +14,9 @@ export default function Login(props: LoginProps) {
   return (
     <LoginPageStyled>
       <div className="logo">
-        <img src="images/logo-burger-bicolor.png" alt="burger-icon" />
+        <div className="logo-png">
+          <img src="images/logo-burger-bicolor.png" alt="burger-icon" />
+        </div>
         <h1>Burger Live</h1>
       </div>
       <LoginForm />
@@ -23,7 +25,7 @@ export default function Login(props: LoginProps) {
 }
 
 const LoginPageStyled = styled.div`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   height: 100vh;
   width: auto;
 
@@ -33,6 +35,7 @@ const LoginPageStyled = styled.div`
   align-items: center;
 
   &::before {
+    /* background-color: red; */
     content: "";
     background-image: url(/images/bg1.jpg);
     background-size: cover;
@@ -47,11 +50,15 @@ const LoginPageStyled = styled.div`
 
   .logo {
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    position: relative;
-    img {
-      width: 200px;
+    .logo-png {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 200px;
+      }
     }
     h1 {
       font-size: ${theme.fonts.P6};
@@ -60,6 +67,7 @@ const LoginPageStyled = styled.div`
       font-family: "Gidugu", sans-serif;
       text-transform: uppercase;
       line-height: 1em; // to bring h1 close together to logo
+      text-align: center;
     }
   }
 `
