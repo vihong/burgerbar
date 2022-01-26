@@ -8,7 +8,6 @@ import { useBasket } from "hooks/useBasket"
 import { useMenu } from "hooks/useMenu"
 import { isProductAdvertised, isProductAvailable } from "enums"
 import Navbar from "components/pages/Order/Navbar/Navbar"
-import { theme } from "theme"
 
 interface OrderProps {
   path: string
