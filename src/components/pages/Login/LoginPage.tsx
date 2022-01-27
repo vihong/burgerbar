@@ -1,9 +1,6 @@
-import { Link } from "@reach/router"
 import React from "react"
 import styled from "styled-components"
 import { theme } from "theme"
-import Navbar from "../Order/Navbar/Navbar"
-import NavBarLeftSide from "../Order/Navbar/NavbarLeftSide"
 import LoginForm from "./LoginForm"
 
 interface LoginProps {
@@ -37,7 +34,7 @@ const LoginPageStyled = styled.div`
   &::before {
     /* background-color: red; */
     content: "";
-    background: url(/images/bg1.jpg) rgba(0, 0, 0, 0.4);
+    background: url(/images/bg1.jpg) rgba(0, 0, 0, 0.7);
     background-size: cover;
     background-position: center;
     background-blend-mode: darken;
