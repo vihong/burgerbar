@@ -31,6 +31,7 @@ export default function LoginForm() {
         }
         value={username}
         onChange={handleChange}
+        required
       />
       <button type="submit">Accéder à mon espace</button>
     </LoginFormStyled>
