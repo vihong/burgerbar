@@ -48,7 +48,7 @@ const TextInputStyled = styled.div`
     }
 
     &:focus {
-      outline: 0;
+      /* outline: 0; */
     }
   }
 `
