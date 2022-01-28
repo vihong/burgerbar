@@ -6,6 +6,7 @@ const colors = {
   background_black: "#1e2025",
   // background_black: "#333",
   primary: "#ff9a23",
+  primary_burger: "#ff9f1b",
   green: "green",
   success: "#60bd4f",
   red: "#e25549",

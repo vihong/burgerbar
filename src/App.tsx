@@ -1,12 +1,12 @@
 import { Router } from "@reach/router"
 import Order from "components/pages/Order/Order"
-import Login from "components/pages/Login"
+import LoginPage from "components/pages/Login/LoginPage"
 
 export default function App() {
   return (
     <Router>
-      <Order path="/" />
-      <Login path="/login" />
+      <LoginPage path="/" />
+      <Order path="/order/:name" />
     </Router>
   )
 }

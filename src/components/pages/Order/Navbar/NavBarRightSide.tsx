@@ -7,7 +7,7 @@ import ToggleButton from "components/atoms/Buttons/ToggleButton"
 import toast from "react-hot-toast"
 
 export default function NavBarRightSide() {
-  const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext)
+  const { isModeAdmin, setIsModeAdmin, name } = useContext(OrderContext)
 
   const toggleButtonAdmin = () => {
     !isModeAdmin &&
@@ -30,7 +30,7 @@ export default function NavBarRightSide() {
   return (
     <NavBarRightSideStyled>
       <ToggleButton isChecked={isModeAdmin} toggleIsChecked={toggleButtonAdmin} />
-      <Profile name={"Arthur"} description={isModeAdmin ? "Admin" : "Client"} />
+      <Profile name={name} description={isModeAdmin ? "Admin" : "Client"} />
     </NavBarRightSideStyled>
   )
 }

@@ -5,7 +5,7 @@ import { theme } from "theme"
 export default function NavBarLeftSide() {
   return (
     <NavBarLeftSideStyled onClick={() => window.location.reload()}>
-      <img src="images/logo-burger.png" alt="burger-icon" />
+      <img src="/images/logo-burger.png" alt="burger-icon" />
       <h1>Burger Live</h1>
     </NavBarLeftSideStyled>
   )
