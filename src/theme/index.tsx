@@ -18,6 +18,16 @@ const colors = {
   greyDark: "#6f737e",
 }
 
+const spacing = {
+  xxs: "4px",
+  xs: "8px",
+  sm: "12px",
+  md: "20px",
+  lg: "32px",
+  xl: "52px",
+  xxl: "84px",
+}
+
 const fonts = {
   XXXS: "8px",
   XXS: "10px",
@@ -53,4 +63,5 @@ export const theme = {
   borderRadius,
   shadows,
   weights,
+  spacing,
 }

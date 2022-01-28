@@ -4,8 +4,8 @@ import { theme } from "theme/index"
 import { TiDelete } from "react-icons/ti"
 import { fadeInFromRight, fadeInFromTop } from "theme/animations"
 
-export const IMAGE_BY_DEFAULT = "images/coming-soon.png"
-export const IMAGE_OVERLAP = "images/stock-epuise.png"
+export const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
+export const IMAGE_OVERLAP = "/images/stock-epuise.png"
 
 interface CardPrimaryProps {
   imageSource?: string
