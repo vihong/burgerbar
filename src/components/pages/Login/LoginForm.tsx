@@ -1,12 +1,21 @@
+import { navigate } from "@reach/router"
+import { useState } from "react"
 import TextInput from "components/atoms/TextInput"
 import { BsPersonCircle } from "react-icons/bs"
 import styled from "styled-components"
 import { theme } from "theme"
 
 export default function LoginForm() {
-  const handleSubmit = (event: any) => {
+  const [username, setUsername] = useState("")
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    alert("submitted")
+    event.currentTarget.reset()
+    navigate(`/order/${username}`)
+  }
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(event.target.value)
   }
 
   return (
@@ -20,6 +29,8 @@ export default function LoginForm() {
         IconComponent={
           <BsPersonCircle style={{ marginRight: 20, width: 20, height: 20, color: "grey" }} />
         }
+        value={username}
+        onChange={handleChange}
       />
       <button type="submit">Accéder à mon espace</button>
     </LoginFormStyled>

@@ -23,6 +23,7 @@ interface OrderContextValue {
   handleAddToBasket: (burger: MenuItem) => void
   basket: BasketItem[]
   handleDeleteFromBasket: (id: ID) => void
+  name?: string
 }
 
 export default createContext<OrderContextValue>({
@@ -44,4 +45,5 @@ export default createContext<OrderContextValue>({
   handleAddToBasket: () => {},
   basket: [],
   handleDeleteFromBasket: () => {},
+  name: "",
 })

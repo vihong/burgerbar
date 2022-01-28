@@ -11,6 +11,7 @@ import Navbar from "components/pages/Order/Navbar/Navbar"
 
 interface OrderProps {
   path: string
+  name?: string
 }
 
 export const EMPTY_PRODUCT = {
@@ -25,6 +26,8 @@ export const EMPTY_PRODUCT = {
 }
 
 export default function Order(props: OrderProps) {
+  const { name } = props
+
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
   const { menuItems, handleAdd, handleEdit, handleDelete } = useMenu(fakeMenu2)
@@ -56,6 +59,7 @@ export default function Order(props: OrderProps) {
     handleAddToBasket,
     basket,
     handleDeleteFromBasket,
+    name,
   }
 
   return (

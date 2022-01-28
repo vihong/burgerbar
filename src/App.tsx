@@ -6,7 +6,7 @@ export default function App() {
   return (
     <Router>
       <LoginPage path="/" />
-      <Order path="/order" />
+      <Order path="/order/:name" />
     </Router>
   )
 }
