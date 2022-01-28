@@ -9,10 +9,10 @@ interface NotFoundPageProps {
 export default function NotFoundPage(props: NotFoundPageProps) {
   return (
     <NotFoundPageStyled>
-      <h1 className="error-message">Erreur 404, Pas introuvable</h1>
+      <h1 className="error-message">Erreur 404: page introuvable</h1>
       {/* replace this Link with <PrimaryButton/> wrapped in <Link/> */}
       <Link className="back-to-homepage" to="/">
-        Retourner à l'écran principal
+        Revenir à l'écran principal
       </Link>
     </NotFoundPageStyled>
   )
