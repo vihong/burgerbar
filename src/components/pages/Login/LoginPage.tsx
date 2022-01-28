@@ -28,6 +28,7 @@ const LoginPageStyled = styled.div`
 
   &::before {
     content: "";
+    background: pink;
     background: url(/images/bg1.jpg) rgba(0, 0, 0, 0.7);
     background-size: cover;
     background-position: center;

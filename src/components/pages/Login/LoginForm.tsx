@@ -1,9 +1,9 @@
 import { navigate } from "@reach/router"
 import { useState } from "react"
-import TextInput from "components/atoms/TextInput"
 import { BsPersonCircle } from "react-icons/bs"
 import styled from "styled-components"
 import { theme } from "theme"
+import TextInput from "components/atoms/TextInputLogin"
 
 export default function LoginForm() {
   const [username, setUsername] = useState("")
@@ -26,9 +26,7 @@ export default function LoginForm() {
       {/* Add a TextInputForm.tsx specifically for LoginForm for now and then you'll refactor everything under one component */}
       <TextInput
         placeholder={"Entrez votre prénom"}
-        IconComponent={
-          <BsPersonCircle style={{ marginRight: 20, width: 20, height: 20, color: "grey" }} />
-        }
+        IconComponent={<BsPersonCircle className="icon" />}
         value={username}
         onChange={handleChange}
         required
@@ -64,7 +62,7 @@ const LoginFormStyled = styled.form`
     font-size: ${theme.fonts.P3};
   }
 
-  input,
+  /* input,
   button {
     width: 100%;
     margin: 10px auto;
@@ -77,9 +75,9 @@ const LoginFormStyled = styled.form`
       padding-left: 10px;
       font-size: 18px;
     }
-  }
+  } */
 
-  button {
+  /* button {
     background: ${theme.colors.primary_burger};
     color: white;
     font-weight: ${theme.weights.bold};
@@ -87,5 +85,5 @@ const LoginFormStyled = styled.form`
     font-size: ${theme.fonts.P0};
     padding: 15px 10px;
     border: 1px solid ${theme.colors.primary_burger};
-  }
+  } */
 `
