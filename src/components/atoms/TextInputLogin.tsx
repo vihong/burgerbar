@@ -26,9 +26,10 @@ const TextInputStyled = styled.div`
   align-items: center;
   padding: 18px 24px;
   margin: 18px 0; // should be there or in parent style?
+  /* height: 17px; // add this if you want pixel perfect with Button Height */
   white-space: nowrap;
   .icon {
-    font-size: ${theme.fonts.P1};
+    font-size: ${theme.fonts.P0};
     margin-right: ${theme.gridUnit * 1.6}px;
     color: ${theme.colors.greySemiDark};
     min-width: 1em; // that way, the icon size is NOT affected by width of the entire component.

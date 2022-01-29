@@ -24,8 +24,6 @@ const PrimaryButtonStyled = styled.button`
   text-decoration: none; //removes the text decoration in case you’re applying the .btn class to a link.
   line-height: 1;
 
-  /* padding: var(--space-xs) var(--space-sm); */
-  padding: ${theme.spacing.xs} ${theme.spacing.sm};
   padding: 18px 24px;
   border-radius: ${theme.borderRadius.round};
   font-size: ${theme.fonts.P0};

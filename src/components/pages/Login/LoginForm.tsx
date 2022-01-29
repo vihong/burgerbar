@@ -40,13 +40,13 @@ export default function LoginForm() {
 
 const LoginFormStyled = styled.form`
   /* border: 1px solid red; */
-  text-align: center;
   /* background: ${theme.colors.incognito}; */
+  /* box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2); */
+  text-align: center;
   max-width: 500px;
   min-width: 200px;
   margin: 30px auto;
   padding: 2.5rem 2rem;
-  /* box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2); */
   border-radius: 5px;
   hr {
     border: 1.5px solid #f56a2c;
@@ -67,19 +67,4 @@ const LoginFormStyled = styled.form`
   button {
     width: 100%;
   }
-
-  /* input,
-  button {
-    width: 100%;
-    margin: 10px auto;
-
-    &[type: = "text" ] {
-      color: #1d1d1d;
-      position: relative;
-      bottom: 5px;
-      text-align: left;
-      padding-left: 10px;
-      font-size: 18px;
-    }
-  } */
 `
