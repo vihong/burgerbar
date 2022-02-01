@@ -1,28 +1,26 @@
 import React, { useContext } from "react"
 import OrderContext from "context/OrderContext"
 import styled from "styled-components"
-import { theme } from "theme"
 import Profile from "components/molecules/Profile"
 import ToggleButton from "components/atoms/Buttons/ToggleButton"
-import toast from "react-hot-toast"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 export default function NavBarRightSide() {
   const { isModeAdmin, setIsModeAdmin, name } = useContext(OrderContext)
 
   const toggleButtonAdmin = () => {
-    !isModeAdmin &&
-      toast("Astuce : cliquez sur un produit pour le modifier", {
-        position: "top-center",
-        duration: 5000,
-        style: {
-          borderRadius: theme.borderRadius.round,
-          background: theme.colors.black,
-          color: "#fff",
-          position: "relative",
-          top: "12vh",
-          right: "-550px",
-          width: "250px",
-        },
+    if (!isModeAdmin)
+      toast.info("Astuce : cliquer sur un produit pour le modifier", {
+        // icon: <FaUserSecret size={30} />,
+        theme: "dark",
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       })
     setIsModeAdmin(!isModeAdmin)
   }
@@ -30,7 +28,8 @@ export default function NavBarRightSide() {
   return (
     <NavBarRightSideStyled>
       <ToggleButton isChecked={isModeAdmin} toggleIsChecked={toggleButtonAdmin} />
-      <Profile name={name} description={isModeAdmin ? "Admin" : "Client"} />
+      <Profile name={name} description={"Se déconnecter"} />
+      <ToastContainer className="toaster" bodyClassName="body-toast" />
     </NavBarRightSideStyled>
   )
 }
@@ -48,13 +47,18 @@ const NavBarRightSideStyled = styled.div`
     text-decoration: none;
   }
 
-  .enter-admin-mode {
-    background-color: ${theme.colors.green};
-    color: ${theme.colors.white};
+  .toaster {
+    /* border: 1px solid red; */
+    min-width: 400px;
   }
 
-  .quit-admin-mode {
-    background-color: ${theme.colors.redSecondary};
-    color: ${theme.colors.white};
+  .body-toast {
+    .Toastify__toast-icon.Toastify--animate-icon.Toastify__zoom-enter {
+      margin-right: 20px;
+      margin-left: 5px;
+    }
+    div {
+      line-height: 1.3em;
+    }
   }
 `

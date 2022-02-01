@@ -114,9 +114,9 @@ const MenuStyled = styled.div`
   padding: 50px 50px 150px;
   overflow-y: scroll;
   background-color: ${theme.colors.background_white};
-  box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%) inset;
+  box-shadow: 0 8px 8px 0 rgb(0 0 0 / 20%) inset;
   justify-items: center; // hallelujah! this centers the grid itself
-  border-bottom-right-radius: ${theme.borderRadius.round};
+  border-bottom-right-radius: ${theme.borderRadius.extraRound};
 
   .burger-animation-enter {
     opacity: 0.01;
@@ -168,12 +168,14 @@ const MenuStyled = styled.div`
   }
 
   .is-hoverable {
+    border-radius: ${theme.borderRadius.extraRound};
+
     :hover {
       transform: scale(1.05);
       transition: ease-out 0.4s;
       box-shadow: 0 0 8px 0 rgb(255 154 35 / 100%);
-      border-radius: ${theme.borderRadius.round};
       cursor: pointer;
+      border-radius: ${theme.borderRadius.extraRound};
     }
   }
   .add-to-basket-button {

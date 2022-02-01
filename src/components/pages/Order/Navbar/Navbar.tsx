@@ -24,6 +24,7 @@ const NavbarStyled = styled.nav`
   padding: 0px 20px;
   border-top-left-radius: ${theme.borderRadius.round};
   border-top-right-radius: ${theme.borderRadius.round};
+  border-bottom: 1px solid ${theme.colors.greyLight};
 
   .icon {
     width: 30px;

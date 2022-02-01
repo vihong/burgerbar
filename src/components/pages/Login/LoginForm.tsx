@@ -28,7 +28,7 @@ export default function LoginForm() {
       {/* Add a TextInputForm.tsx specifically for LoginForm for now and then you'll refactor everything under one component */}
       <TextInput
         placeholder={"Entrez votre prénom"}
-        IconComponent={<BsPersonCircle className="icon" />}
+        IconComponent={<BsPersonCircle className="icon" style={{ color: theme.colors.greyBlue }} />}
         value={username}
         onChange={handleChange}
         required

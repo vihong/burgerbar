@@ -50,7 +50,7 @@ const SelectInputStyled = styled.div`
   .icon {
     font-size: ${theme.fonts.P1};
     margin-right: ${theme.gridUnit * 1.6}px;
-    color: ${theme.colors.greySemiDark};
+    color: ${theme.colors.greyBlue};
     min-width: 1em;
   }
 

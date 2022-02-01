@@ -1,11 +1,11 @@
 const colors = {
-  black: "#212225",
+  black: "#17161a",
   incognito: "#333",
   white: "#fff",
   background_white: "#f5f5f7",
   background_black: "#1e2025",
   // background_black: "#333",
-  primary: "#ff9a23",
+  primary: "#ffa01b",
   primary_burger: "#ff9f1b",
   green: "green",
   success: "#60bd4f",
@@ -16,6 +16,7 @@ const colors = {
   greyMedium: "#a7a8ad",
   greySemiDark: "#93a2b1",
   greyDark: "#6f737e",
+  greyBlue: "#747b91",
 }
 
 const spacing = {
@@ -44,6 +45,7 @@ const gridUnit = 8
 const borderRadius = {
   subtle: 1,
   round: "5px",
+  extraRound: "15px",
   circle: "50%",
 }
 const shadows = {}
