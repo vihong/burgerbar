@@ -141,7 +141,7 @@ const CardStyled = styled.div`
     .card-title {
       /* border: 1px solid red; */
       margin: auto 0;
-      font-size: ${theme.fonts.P2};
+      font-size: ${theme.fonts.P1};
       font-weight: ${theme.weights.medium};
       color: ${theme.colors.black};
       text-align: left;

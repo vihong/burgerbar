@@ -33,7 +33,7 @@ export default function LoginForm() {
         onChange={handleChange}
         required
       />
-      <PrimaryButton label IconComponent={<IoChevronForward />} />
+      <PrimaryButton label="Accéder à mon espace" IconComponent={<IoChevronForward />} />
     </LoginFormStyled>
   )
 }

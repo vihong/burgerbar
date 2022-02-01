@@ -104,6 +104,14 @@ function RibbonAnimated() {
   )
 }
 
+interface PlusIconProps {
+  className: string
+}
+
+function PlusIcon({ className }: PlusIconProps) {
+  return <div>+</div>
+}
+
 const MenuStyled = styled.div`
   flex: 1;
   display: grid;
@@ -117,6 +125,18 @@ const MenuStyled = styled.div`
   box-shadow: 0 8px 20px 8px rgb(0 0 0 / 20%) inset;
   justify-items: center; // hallelujah! this centers the grid itself
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
+
+  .icon {
+    /* border: 1px solid red; */
+    padding: 5px;
+    font-size: 20px;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin-right: 0;
+    color: ${theme.colors.white};
+    background: ${theme.colors.primary};
+  }
 
   .burger-animation-enter {
     opacity: 0.01;
@@ -184,8 +204,9 @@ const MenuStyled = styled.div`
     background-color: ${theme.colors.primary};
     border-radius: ${theme.borderRadius.round};
     border: 1px solid ${theme.colors.primary};
-    padding: 0.7em 1.5em;
+    padding: 12px 18px;
     font-weight: ${theme.weights.semiBold};
+    font-size: ${theme.fonts.XS};
     :hover {
       color: ${theme.colors.primary};
       background-color: ${theme.colors.white};
