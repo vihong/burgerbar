@@ -12,14 +12,14 @@ export default function NavBarRightSide() {
   const toggleButtonAdmin = () => {
     !isModeAdmin &&
       toast("Astuce : cliquez sur un produit pour le modifier", {
-        position: "top-center",
+        position: "bottom-center",
         duration: 5000,
         style: {
           borderRadius: theme.borderRadius.round,
           background: theme.colors.black,
           color: "#fff",
           position: "relative",
-          top: "12vh",
+          bottom: "4vh",
           right: "-550px",
           width: "250px",
         },
