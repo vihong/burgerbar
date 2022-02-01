@@ -24,7 +24,7 @@ export const fakeMenu1 = [
 export const fakeMenu2 = [
   {
     id: 1,
-    imageSource: "/images/burger1.png",
+    imageSource: "/images/meal1.png",
     title: "Burger Meal",
     price: 5.2,
     quantity: 1,

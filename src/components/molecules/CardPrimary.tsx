@@ -164,6 +164,7 @@ const CardStyled = styled.div`
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        font-weight: ${theme.weights.semiBold};
       }
       .right-description {
         display: flex;
