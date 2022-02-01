@@ -44,6 +44,7 @@ const ToggleButtonStyled = styled.div`
       width: 200px;
       position: relative;
       font-size: ${theme.fonts.XXS};
+      letter-spacing: 0.5px;
       border: 2px solid ${theme.colors.black};
       padding: 0;
       margin: 0;
@@ -121,6 +122,7 @@ const ToggleButtonStyled = styled.div`
       right: auto;
       opacity: 1;
       color: ${theme.colors.black};
+      letter-spacing: 0px;
     }
 
     // small circle when checked
