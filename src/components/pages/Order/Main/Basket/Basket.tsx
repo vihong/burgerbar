@@ -39,6 +39,7 @@ const BasketStyled = styled.div`
   flex: 1;
   border-bottom-left-radius: ${theme.borderRadius.round};
   height: 80vh;
+  box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 20%) inset;
 
   .header-votre-commande {
     border-bottom-left-radius: ${theme.borderRadius.round};

@@ -63,7 +63,7 @@ const CardStyled = styled.div`
   border-radius: ${theme.borderRadius.extraRound};
   padding: 20px; // 20px padding-top to avoid click conflict with delete button
   padding-bottom: 10px;
-  box-shadow: -4px 4px 15px 0 rgb(0 0 0 / 20%);
+  box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
   display: grid;
   grid-template-rows: 65% 1fr;
   grid-gap: 0px;
@@ -144,7 +144,7 @@ const CardStyled = styled.div`
       font-size: ${theme.fonts.P2};
       font-weight: ${theme.weights.medium};
       color: ${theme.colors.black};
-      text-align: center;
+      text-align: left;
       white-space: nowrap;
       overflow: hidden;
       width: 100%;

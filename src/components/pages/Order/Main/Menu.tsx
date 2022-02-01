@@ -4,12 +4,12 @@ import styled from "styled-components/macro"
 import OrderContext from "context/OrderContext"
 import { theme } from "theme"
 import { formatPrice } from "utils/maths"
-import Button from "components/atoms/Button"
 import { MenuItem } from "typescript/MenuItem"
 import { isProductAdvertised, isProductAvailable } from "enums"
 import { convertStringToBoolean } from "utils/string"
 import Ribbon from "components/atoms/Ribbon"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
+import PrimaryButton from "components/atoms/PrimaryButton"
 
 export default function Menu() {
   const {
@@ -80,7 +80,7 @@ export default function Menu() {
                 hasDeleteButton={isModeAdmin}
                 bottomLeftDescription={formatPrice(burger.price)}
                 bottomRightDescription={
-                  <Button
+                  <PrimaryButton
                     label="Ajouter"
                     onClick={(event: React.MouseEvent<HTMLElement>) => onAddButton(event, burger)}
                     className={addButtonClass}
@@ -114,7 +114,7 @@ const MenuStyled = styled.div`
   padding: 50px 50px 150px;
   overflow-y: scroll;
   background-color: ${theme.colors.background_white};
-  box-shadow: 0 8px 8px 0 rgb(0 0 0 / 20%) inset;
+  box-shadow: 0 8px 20px 8px rgb(0 0 0 / 20%) inset;
   justify-items: center; // hallelujah! this centers the grid itself
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
 
@@ -180,20 +180,20 @@ const MenuStyled = styled.div`
   }
   .add-to-basket-button {
     cursor: pointer;
-    background-color: ${theme.colors.white};
-    color: ${theme.colors.primary};
+    color: ${theme.colors.white};
+    background-color: ${theme.colors.primary};
     border-radius: ${theme.borderRadius.round};
     border: 1px solid ${theme.colors.primary};
     padding: 0.7em 1.5em;
     font-weight: ${theme.weights.semiBold};
     :hover {
-      background-color: ${theme.colors.primary};
-      color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+      background-color: ${theme.colors.white};
       border: 1px solid ${theme.colors.primary};
     }
     :active {
-      color: ${theme.colors.primary};
-      background: ${theme.colors.white};
+      background-color: ${theme.colors.primary};
+      color: ${theme.colors.white};
     }
 
     &.is-disabled {
