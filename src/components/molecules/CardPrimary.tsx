@@ -60,7 +60,7 @@ const CardStyled = styled.div`
   /* border: 1px solid red; */
   width: 200px;
   height: 300px;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 20px; // 20px padding-top to avoid click conflict with delete button
   padding-bottom: 10px;
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
@@ -115,6 +115,7 @@ const CardStyled = styled.div`
         height: 100%;
         z-index: 1;
         animation: ${fadeInFromTop} 500ms;
+        border-radius: 15px;
       }
 
       .transparent-layer {
@@ -126,6 +127,7 @@ const CardStyled = styled.div`
         opacity: 70%;
         background: snow;
         z-index: 1;
+        border-radius: 15px;
       }
     }
   }
