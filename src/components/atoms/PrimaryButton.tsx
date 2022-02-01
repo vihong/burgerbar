@@ -7,10 +7,10 @@ interface PrimaryButtonProps {
   IconComponent?: JSX.Element
 }
 
-export default function PrimaryButton({ IconComponent, ...restProps }: PrimaryButtonProps) {
+export default function PrimaryButton({ IconComponent, label, ...restProps }: PrimaryButtonProps) {
   return (
     <PrimaryButtonStyled {...restProps}>
-      <span>Accéder à mon espace</span>
+      <span>{label}</span>
       {IconComponent && <div className="icon">{IconComponent}</div>}
     </PrimaryButtonStyled>
   )
