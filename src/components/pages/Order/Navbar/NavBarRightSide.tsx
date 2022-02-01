@@ -4,25 +4,25 @@ import styled from "styled-components"
 import { theme } from "theme"
 import Profile from "components/molecules/Profile"
 import ToggleButton from "components/atoms/Buttons/ToggleButton"
-import toast from "react-hot-toast"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import { FaUserSecret } from "react-icons/fa"
 
 export default function NavBarRightSide() {
   const { isModeAdmin, setIsModeAdmin, name } = useContext(OrderContext)
 
   const toggleButtonAdmin = () => {
-    !isModeAdmin &&
-      toast("Astuce : cliquez sur un produit pour le modifier", {
-        position: "bottom-center",
-        duration: 5000,
-        style: {
-          borderRadius: theme.borderRadius.round,
-          background: theme.colors.black,
-          color: "#fff",
-          position: "relative",
-          bottom: "4vh",
-          right: "-550px",
-          width: "250px",
-        },
+    if (!isModeAdmin)
+      toast.info("Astuce : cliquer sur un produit pour le modifier", {
+        // icon: <FaUserSecret size={30} />,
+        theme: "dark",
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       })
     setIsModeAdmin(!isModeAdmin)
   }
@@ -31,6 +31,7 @@ export default function NavBarRightSide() {
     <NavBarRightSideStyled>
       <ToggleButton isChecked={isModeAdmin} toggleIsChecked={toggleButtonAdmin} />
       <Profile name={name} description={"Se déconnecter"} />
+      <ToastContainer className="toaster" bodyClassName="body-toast" />
     </NavBarRightSideStyled>
   )
 }
@@ -46,5 +47,20 @@ const NavBarRightSideStyled = styled.div`
 
   .log-out-icon:visited {
     text-decoration: none;
+  }
+
+  .toaster {
+    /* border: 1px solid red; */
+    min-width: 400px;
+  }
+
+  .body-toast {
+    .Toastify__toast-icon.Toastify--animate-icon.Toastify__zoom-enter {
+      margin-right: 20px;
+      margin-left: 5px;
+    }
+    div {
+      line-height: 1.3em;
+    }
   }
 `
