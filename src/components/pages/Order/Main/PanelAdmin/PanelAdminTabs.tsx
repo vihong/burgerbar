@@ -86,15 +86,15 @@ const PanelAdminTabsStyled = styled.div`
     }
 
     &:active {
-      background: ${theme.colors.black};
+      background: ${theme.colors.background_black};
       color: ${theme.colors.white};
-      border: 1px solid ${theme.colors.black};
+      border: 1px solid ${theme.colors.background_black};
     }
 
     &.active {
-      background: ${theme.colors.black};
+      background: ${theme.colors.background_black};
       color: ${theme.colors.white};
-      border: 1px solid ${theme.colors.black};
+      border: 1px solid ${theme.colors.background_black};
     }
   }
 
@@ -121,8 +121,8 @@ const PanelAdminTabsStyled = styled.div`
     }
 
     &.active {
-      background: ${theme.colors.black};
-      border: 1px solid ${theme.colors.black};
+      background: ${theme.colors.background_black};
+      border: 1px solid ${theme.colors.background_black};
       color: ${theme.colors.white};
       font-weight: ${theme.weights.bold};
     }

@@ -68,6 +68,6 @@ const ProfileStyled = styled.div`
     display: flex;
     height: 100%;
     font-size: ${theme.fonts.P4};
-    color: ${theme.colors.black};
+    color: ${theme.colors.background_black};
   }
 `
