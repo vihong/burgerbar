@@ -31,7 +31,7 @@ const TextInputStyled = styled.div`
   .icon {
     font-size: ${theme.fonts.P1};
     margin-right: ${theme.gridUnit * 1.6}px;
-    color: ${theme.colors.greySemiDark};
+    color: ${theme.colors.greyBlue};
     min-width: 1em; // that way, the icon size is NOT affected by width of the entire component.
   }
 

@@ -42,6 +42,7 @@ const ProfileStyled = styled.div`
     margin-right: 10px;
     p {
       margin: 0;
+      color: ${theme.colors.greyBlue};
       b {
         color: ${theme.colors.primary};
       }
@@ -54,7 +55,7 @@ const ProfileStyled = styled.div`
         }
         small {
           font-size: ${theme.fonts.XXS};
-          color: ${theme.colors.greyDark};
+          color: ${theme.colors.greyBlue};
           font-weight: ${theme.weights.medium};
           text-decoration: none;
         }
@@ -68,6 +69,6 @@ const ProfileStyled = styled.div`
     display: flex;
     height: 100%;
     font-size: ${theme.fonts.P4};
-    color: ${theme.colors.background_black};
+    color: ${theme.colors.greyBlue};
   }
 `

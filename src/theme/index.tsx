@@ -1,5 +1,5 @@
 const colors = {
-  black: "#1d1e21",
+  black: "#17161a",
   incognito: "#333",
   white: "#fff",
   background_white: "#f5f5f7",
@@ -16,6 +16,7 @@ const colors = {
   greyMedium: "#a7a8ad",
   greySemiDark: "#93a2b1",
   greyDark: "#6f737e",
+  greyBlue: "#747b91",
 }
 
 const spacing = {
