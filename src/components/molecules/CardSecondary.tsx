@@ -58,7 +58,7 @@ const CardSecondaryStyled = styled.div`
   align-items: center;
   border-radius: ${theme.borderRadius.round};
   background: ${theme.colors.white};
-  box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
+  box-shadow: -4px 4px 15px 0 rgb(0 0 0 / 20%);
   position: relative;
 
   .image {
