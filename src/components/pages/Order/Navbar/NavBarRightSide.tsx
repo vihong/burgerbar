@@ -1,12 +1,10 @@
 import React, { useContext } from "react"
 import OrderContext from "context/OrderContext"
 import styled from "styled-components"
-import { theme } from "theme"
 import Profile from "components/molecules/Profile"
 import ToggleButton from "components/atoms/Buttons/ToggleButton"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import { FaUserSecret } from "react-icons/fa"
 
 export default function NavBarRightSide() {
   const { isModeAdmin, setIsModeAdmin, name } = useContext(OrderContext)
