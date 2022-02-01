@@ -30,7 +30,7 @@ export default function NavBarRightSide() {
   return (
     <NavBarRightSideStyled>
       <ToggleButton isChecked={isModeAdmin} toggleIsChecked={toggleButtonAdmin} />
-      <Profile name={name} description={isModeAdmin ? "Admin" : "Client"} />
+      <Profile name={name} description={"Se déconnecter"} />
     </NavBarRightSideStyled>
   )
 }
@@ -46,15 +46,5 @@ const NavBarRightSideStyled = styled.div`
 
   .log-out-icon:visited {
     text-decoration: none;
-  }
-
-  .enter-admin-mode {
-    background-color: ${theme.colors.green};
-    color: ${theme.colors.white};
-  }
-
-  .quit-admin-mode {
-    background-color: ${theme.colors.redSecondary};
-    color: ${theme.colors.white};
   }
 `
