@@ -2,10 +2,8 @@ import React, { useContext } from "react"
 import styled from "styled-components"
 import { BsPlusLg } from "react-icons/bs"
 import { MdModeEditOutline } from "react-icons/md"
-import { GiClick } from "react-icons/gi"
 import { theme } from "theme"
 import OrderContext from "context/OrderContext"
-import toast from "react-hot-toast"
 
 export default function ActionButtons() {
   const { isAddFormVisible, setIsAddFormVisible, isEditFormVisible, setIsEditFormVisible } =
@@ -23,17 +21,6 @@ export default function ActionButtons() {
   }
 
   const handlEditButton = () => {
-    if (!isEditFormVisible)
-      toast.success("Cliquer sur un produit pour le modifier", {
-        position: "top-center",
-        icon: <GiClick color={theme.colors.blue} />,
-        style: {
-          color: theme.colors.blue,
-          borderWidth: 1,
-          borderColor: theme.colors.blue,
-          borderStyle: "solid",
-        },
-      })
     setIsAddFormVisible(false)
     setIsEditFormVisible(!isEditFormVisible)
   }
