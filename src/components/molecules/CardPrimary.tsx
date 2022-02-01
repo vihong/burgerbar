@@ -63,7 +63,7 @@ const CardStyled = styled.div`
   border-radius: 15px;
   padding: 20px; // 20px padding-top to avoid click conflict with delete button
   padding-bottom: 10px;
-  box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
+  box-shadow: -4px 4px 15px 0 rgb(0 0 0 / 20%);
   display: grid;
   grid-template-rows: 65% 1fr;
   grid-gap: 0px;
