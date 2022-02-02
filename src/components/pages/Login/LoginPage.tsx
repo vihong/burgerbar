@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import NavBarLeftSide from "../Order/Navbar/NavbarLeftSide"
 import LoginForm from "./LoginForm"
-import Logo from "./Logo/Logo"
 
 interface LoginProps {
   path: string

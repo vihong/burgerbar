@@ -104,14 +104,6 @@ function RibbonAnimated() {
   )
 }
 
-interface PlusIconProps {
-  className: string
-}
-
-function PlusIcon({ className }: PlusIconProps) {
-  return <div>+</div>
-}
-
 const MenuStyled = styled.div`
   flex: 1;
   display: grid;
