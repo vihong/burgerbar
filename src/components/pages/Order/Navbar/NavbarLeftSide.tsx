@@ -2,40 +2,46 @@ import React from "react"
 import styled from "styled-components"
 import { theme } from "theme"
 
-export default function NavBarLeftSide() {
+interface NavBarLeftSideProps {
+  className?: string
+  onClick?: any
+}
+
+export default function NavBarLeftSide({ className, onClick }: NavBarLeftSideProps) {
   return (
-    <NavBarLeftSideStyled onClick={() => window.location.reload()}>
-      <img src="/images/logo-burger.png" alt="burger-icon" />
-      <h1>Burger Live</h1>
+    <NavBarLeftSideStyled onClick={onClick} className={className && className}>
+      <h1>Craazy</h1>
+      <img src="/images/logo-orange.png" alt="burger-icon" />
+      <h1>Burger</h1>
     </NavBarLeftSideStyled>
   )
 }
 
 const NavBarLeftSideStyled = styled.div`
   /* border: 1px solid red; */
-  height: 100%;
-  min-width: 210px;
+  max-height: 100%;
+  min-width: 200px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   cursor: pointer;
   img {
     /* border: 1px solid green; */
     object-fit: contain;
     object-position: center;
-    height: 4.5vh;
-    width: 100px; // for Safari and Firefox
+    height: ${theme.fonts.P6};
+    width: 80px; // for Safari and Firefox
+    margin: 0 5px;
   }
   h1 {
     /* border: 1px solid pink; */
-    display: flex;
-    width: 100%;
+    display: inline;
     text-align: center;
     color: ${theme.colors.primary};
-    margin-left: 5px;
-    font-size: ${theme.fonts.P5};
+    font-size: ${theme.fonts.P4};
+    line-height: 1em;
+    font-weight: ${theme.weights.bold};
     text-transform: uppercase;
-    font-family: "Gidugu", sans-serif;
     letter-spacing: 1.5px;
+    font-family: "Amatic SC", cursive;
   }
 `

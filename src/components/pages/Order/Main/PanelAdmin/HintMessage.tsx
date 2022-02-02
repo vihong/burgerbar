@@ -17,10 +17,12 @@ const HintMessageStyled = styled.div`
   width: 50%;
   height: 100%;
   animation: ${fadeIn} 1000ms;
-  font-size: ${theme.fonts.P0};
+  font-family: "Amatic SC", cursive;
+  font-size: ${theme.fonts.P3};
   display: flex;
   position: relative;
   top: 50px;
+  color: ${theme.colors.greyBlue};
   span {
     margin-right: 10px;
   }

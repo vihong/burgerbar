@@ -87,11 +87,18 @@ const CardSecondaryStyled = styled.div`
       margin-left: 0.9em;
       display: grid;
       line-height: 1.6;
+      font-family: "Amatic SC", cursive;
+      font-size: ${theme.fonts.P3};
+      font-weight: ${theme.weights.bold};
+      line-height: 1.3em;
+
       .price {
         color: ${theme.colors.primary};
         font-size: 0.9em;
         font-weight: ${theme.weights.medium};
         width: 100%;
+        font-family: "Open Sans", sans-serif;
+        font-size: ${theme.fonts.P0};
       }
     }
     .right-info {

@@ -2,6 +2,7 @@ import OrderContext from "context/OrderContext"
 import React, { useContext } from "react"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from "styled-components/macro"
+import { theme } from "theme"
 import Basket from "./Basket/Basket"
 import Menu from "./Menu"
 import PanelAdmin from "./PanelAdmin/PanelAdmin"
@@ -40,6 +41,7 @@ const MainStyled = styled.div`
     height: calc(95vh - 10vh);
     display: flex;
     box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%) inset;
+    border-bottom-right-radius: ${theme.borderRadius.extraRound};
 
     // menu
     > div:first-child {

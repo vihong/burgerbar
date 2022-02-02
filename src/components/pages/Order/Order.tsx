@@ -8,6 +8,7 @@ import { useBasket } from "hooks/useBasket"
 import { useMenu } from "hooks/useMenu"
 import { isProductAdvertised, isProductAvailable } from "enums"
 import Navbar from "components/pages/Order/Navbar/Navbar"
+import { theme } from "theme"
 
 interface OrderProps {
   path: string
@@ -78,7 +79,7 @@ export default function Order(props: OrderProps) {
 
 const OrderStyled = styled.div`
   /* border: 1px solid red; */
-  background-image: linear-gradient(to bottom, #ea9e2c 20%, #f7a62e 90%, #ffbe26);
+  background-image: linear-gradient(to bottom, #ff9f1b 20%, #f7a62e 70%, #ffbe26);
 
   .body {
     background-image: url(/images/pattern-burger.png);
@@ -89,6 +90,7 @@ const OrderStyled = styled.div`
     display: flex;
     /* background-color: #333; */
     .container {
+      border-radius: ${theme.borderRadius.extraRound};
       display: flex;
       flex-direction: column;
       height: 95vh;

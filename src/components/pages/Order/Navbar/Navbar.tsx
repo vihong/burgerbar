@@ -7,7 +7,7 @@ import NavBarRightSide from "./NavBarRightSide"
 export default function Navbar() {
   return (
     <NavbarStyled>
-      <NavBarLeftSide />
+      <NavBarLeftSide onClick={() => window.location.reload()} />
       <NavBarRightSide />
     </NavbarStyled>
   )
@@ -22,8 +22,8 @@ const NavbarStyled = styled.nav`
   align-items: center;
   height: 10vh;
   padding: 0px 20px;
-  border-top-left-radius: ${theme.borderRadius.round};
-  border-top-right-radius: ${theme.borderRadius.round};
+  border-top-left-radius: ${theme.borderRadius.extraRound};
+  border-top-right-radius: ${theme.borderRadius.extraRound};
   border-bottom: 1px solid ${theme.colors.greyLight};
 
   .icon {
