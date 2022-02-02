@@ -6,9 +6,9 @@ export default function Logo() {
   return (
     <LogoStyle>
       <div className="logo-png">
-        <img src="images/logo-burger-bicolor.png" alt="burger-icon" />
+        <img src="images/logo-orange.png" alt="burger-icon" />
       </div>
-      <h1>Burger Live</h1>
+      <h1>Crazy Burger</h1>
     </LogoStyle>
   )
 }
@@ -22,14 +22,15 @@ const LogoStyle = styled.div`
     justify-content: center;
     align-items: center;
     img {
-      width: 150px;
+      width: 200px;
     }
   }
   h1 {
-    font-size: ${theme.fonts.P5};
+    font-size: ${theme.fonts.P6};
     margin: 0;
-    color: ${theme.colors.white};
-    font-family: "Gidugu", sans-serif;
+    color: ${theme.colors.primary};
+    font-family: "Amatic SC", cursive;
+
     text-transform: uppercase;
     line-height: 1.3em; // to bring h1 close together to logo
     text-align: center;

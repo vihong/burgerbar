@@ -44,7 +44,8 @@ const ToggleButtonStyled = styled.div`
       width: 200px;
       position: relative;
       font-size: ${theme.fonts.XXS};
-      border: 2px solid ${theme.colors.black};
+      letter-spacing: 0.5px;
+      border: 2px solid ${theme.colors.background_black};
       padding: 0;
       margin: 0;
       cursor: pointer;
@@ -88,7 +89,7 @@ const ToggleButtonStyled = styled.div`
     }
 
     &.toggle:not(:checked) + label {
-      background-color: ${theme.colors.black};
+      background-color: ${theme.colors.background_black};
       /* text-align: right; */
     }
 
@@ -121,6 +122,7 @@ const ToggleButtonStyled = styled.div`
       right: auto;
       opacity: 1;
       color: ${theme.colors.black};
+      letter-spacing: 0px;
     }
 
     // small circle when checked

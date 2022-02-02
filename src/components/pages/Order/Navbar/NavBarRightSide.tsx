@@ -5,6 +5,7 @@ import Profile from "components/molecules/Profile"
 import ToggleButton from "components/atoms/Buttons/ToggleButton"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import { theme } from "theme"
 
 export default function NavBarRightSide() {
   const { isModeAdmin, setIsModeAdmin, name } = useContext(OrderContext)
@@ -49,7 +50,11 @@ const NavBarRightSideStyled = styled.div`
 
   .toaster {
     /* border: 1px solid red; */
-    min-width: 400px;
+    max-width: 300px;
+  }
+
+  .Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--info {
+    background: ${theme.colors.background_black};
   }
 
   .body-toast {

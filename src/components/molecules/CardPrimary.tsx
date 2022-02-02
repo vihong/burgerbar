@@ -141,14 +141,17 @@ const CardStyled = styled.div`
     .card-title {
       /* border: 1px solid red; */
       margin: auto 0;
-      font-size: ${theme.fonts.P2};
-      font-weight: ${theme.weights.medium};
+      font-size: ${theme.fonts.P4};
+      position: relative;
+      bottom: 10px;
+      font-weight: ${theme.weights.bold};
       color: ${theme.colors.black};
       text-align: left;
       white-space: nowrap;
       overflow: hidden;
       width: 100%;
       text-overflow: ellipsis;
+      font-family: "Amatic SC", cursive;
     }
 
     .card-description {
@@ -164,6 +167,7 @@ const CardStyled = styled.div`
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        font-weight: ${theme.weights.medium};
       }
       .right-description {
         display: flex;

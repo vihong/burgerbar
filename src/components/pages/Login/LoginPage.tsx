@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
+import NavBarLeftSide from "../Order/Navbar/NavbarLeftSide"
 import LoginForm from "./LoginForm"
-import Logo from "./Logo/Logo"
 
 interface LoginProps {
   path: string
@@ -10,7 +10,8 @@ interface LoginProps {
 export default function Login(props: LoginProps) {
   return (
     <LoginPageStyled>
-      <Logo />
+      {/* <Logo /> */}
+      <NavBarLeftSide className="logo" />
       <LoginForm />
     </LoginPageStyled>
   )
@@ -38,5 +39,11 @@ const LoginPageStyled = styled.div`
     right: 0;
     bottom: 0;
     z-index: -1;
+  }
+
+  .logo {
+    transform: scale(2.5);
+    img {
+    }
   }
 `

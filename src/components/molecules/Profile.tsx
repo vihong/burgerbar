@@ -58,6 +58,8 @@ const ProfileStyled = styled.div`
           color: ${theme.colors.greyBlue};
           font-weight: ${theme.weights.medium};
           text-decoration: none;
+          position: relative;
+          bottom: 2px;
         }
       }
     }

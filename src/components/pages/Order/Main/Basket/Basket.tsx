@@ -42,19 +42,26 @@ const BasketStyled = styled.div`
   box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 20%) inset;
 
   .header-votre-commande {
-    border-bottom-left-radius: ${theme.borderRadius.round};
+    border-bottom-left-radius: ${theme.borderRadius.extraRound};
     .title {
-      font-size: ${theme.fonts.P0};
+      font-size: ${theme.fonts.P2};
       text-align: center;
+      font-family: "Amatic SC", cursive;
+      font-weight: ${theme.weights.bold};
     }
   }
 
   .header-total {
     .total {
-      font-size: ${theme.fonts.P3};
+      font-size: ${theme.fonts.P4};
+      font-family: "Amatic SC", cursive;
+      font-weight: ${theme.weights.bold};
+      letter-spacing: 2px;
+
       span:first-child {
         /* border: 1px solid red; */
         font-weight: ${theme.weights.light};
+        font-family: "Amatic SC", cursive;
       }
     }
   }
