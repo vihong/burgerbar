@@ -1,7 +1,8 @@
+import { setMenuInFirebaseDB } from "api/helpers"
 import { useState } from "react"
 import { MenuItem } from "typescript/MenuItem"
 
-export const useMenu = (menuInitialValues: MenuItem[]) => {
+export const useMenu = (username: string | undefined, menuInitialValues: MenuItem[]) => {
   const [menuItems, setMenuItems] = useState<MenuItem[]>(menuInitialValues)
 
   const handleAdd = (itemCreated: MenuItem) => {
@@ -9,12 +10,14 @@ export const useMenu = (menuInitialValues: MenuItem[]) => {
 
     menuItemsCopy.unshift(itemCreated)
     setMenuItems(menuItemsCopy)
+    setMenuInFirebaseDB(username, menuItemsCopy)
   }
 
   const handleDelete = (idToDelete: number | undefined): void => {
     const menuItemsCopy = [...menuItems]
     const menuItemsUpdated = menuItemsCopy.filter((menuItem) => menuItem.id !== idToDelete)
     setMenuItems(menuItemsUpdated)
+    setMenuInFirebaseDB(username, menuItemsUpdated)
   }
 
   const handleEdit = (itemUpdated: MenuItem): void => {
@@ -22,6 +25,7 @@ export const useMenu = (menuInitialValues: MenuItem[]) => {
     const idOfItemUpdated: any = menuItems.findIndex((item) => item.id === itemUpdated.id)
     menuItemsCopy[idOfItemUpdated] = itemUpdated
     setMenuItems(menuItemsCopy)
+    setMenuInFirebaseDB(username, menuItemsCopy)
   }
 
   const handleIncrementQuantity = (productAdded: MenuItem) => {
