@@ -1,5 +1,5 @@
 import { db } from "./initFirebase"
-import { ref, set } from "firebase/database"
+import { child, get, getDatabase, ref, set } from "firebase/database"
 import { fakeMenu2 } from "fakeData/fakeMenu"
 import { MenuItem } from "typescript/MenuItem"
 
@@ -21,6 +21,24 @@ export const createUser = async (username: string, id: number) => {
 export const createMenu = async (username: string, menu: MenuItem[]) => {
   const response = await set(ref(db, `${username}/burgers`), [...menu])
   if (response === null) alert("error")
+}
+
+export const getUserAccount = (username: string, id: number, menu: MenuItem[]) => {
+  const dbRef = ref(getDatabase())
+  get(child(dbRef, `${username}`))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val())
+      } else {
+        console.log("No data available")
+        createUser(username, id)
+        createMenu(username, menu)
+      }
+    })
+    .catch((error) => {
+      console.error(error)
+      alert("error")
+    })
 }
 
 // // pour write data
