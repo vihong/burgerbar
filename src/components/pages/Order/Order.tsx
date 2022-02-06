@@ -48,8 +48,6 @@ export default function Order(props: OrderProps) {
       const data = snapshot.val()
       console.log("data: ", data)
       if (!data) return
-      // const newData = Object.values(data)
-      // console.log("newData:", newData)
       if (menuItems !== data) {
         setMenuItems(data.burgers)
       }
@@ -57,10 +55,15 @@ export default function Order(props: OrderProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  useEffect(() => {
+    if (!menuItems) setMenuItems([])
+  }, [menuItems])
+
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
     menuItems,
+    setMenuItems,
     handleAdd,
     handleDelete,
     handleEdit,
