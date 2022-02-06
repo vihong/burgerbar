@@ -1,7 +1,8 @@
+import { addProductToDB } from "api/helpers"
 import { useState } from "react"
 import { MenuItem } from "typescript/MenuItem"
 
-export const useMenu = (menuInitialValues: MenuItem[]) => {
+export const useMenu = (username: string | undefined, menuInitialValues: MenuItem[]) => {
   const [menuItems, setMenuItems] = useState<MenuItem[]>(menuInitialValues)
 
   const handleAdd = (itemCreated: MenuItem) => {
@@ -9,6 +10,7 @@ export const useMenu = (menuInitialValues: MenuItem[]) => {
 
     menuItemsCopy.unshift(itemCreated)
     setMenuItems(menuItemsCopy)
+    addProductToDB(username, menuItemsCopy)
   }
 
   const handleDelete = (idToDelete: number | undefined): void => {
