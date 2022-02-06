@@ -10,16 +10,16 @@ import { MenuItem } from "typescript/MenuItem"
  *
  */
 
-export const createUser = async (id: number, name: string) => {
-  const response = await set(ref(db, `${id}/user`), {
+export const createUser = async (username: string, id: number) => {
+  const response = await set(ref(db, `/${username}/userInfo`), {
     id: id,
-    name: name,
+    username: username,
   })
   if (response === null) alert("error")
 }
 
-export const createMenu = async (id: number, menu: MenuItem[]) => {
-  const response = await set(ref(db, `${id}/burgers`), [...menu])
+export const createMenu = async (username: string, menu: MenuItem[]) => {
+  const response = await set(ref(db, `${username}/burgers`), [...menu])
   if (response === null) alert("error")
 }
 

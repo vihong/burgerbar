@@ -16,9 +16,9 @@ export default function LoginForm() {
     event.preventDefault()
     event.currentTarget.reset()
     const id = new Date().getTime()
-    const name = username
-    await createUser(id, name)
-    await createMenu(id, fakeMenu2)
+
+    await createUser(username, id)
+    await createMenu(username, fakeMenu2)
     navigate(`/order/${username}`)
   }
 
