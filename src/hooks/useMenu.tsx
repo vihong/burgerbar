@@ -17,6 +17,7 @@ export const useMenu = (username: string | undefined, menuInitialValues: MenuIte
     const menuItemsCopy = [...menuItems]
     const menuItemsUpdated = menuItemsCopy.filter((menuItem) => menuItem.id !== idToDelete)
     setMenuItems(menuItemsUpdated)
+    addProductToDB(username, menuItemsUpdated)
   }
 
   const handleEdit = (itemUpdated: MenuItem): void => {
