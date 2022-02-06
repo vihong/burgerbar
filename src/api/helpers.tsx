@@ -41,5 +41,6 @@ export const getUserAccount = (username: string, id: number, menu: MenuItem[]) =
 }
 
 export const setMenuInFirebaseDB = async (username: string | undefined, menu: MenuItem[]) => {
-  const response = await set(ref(db, `${username}/burgers`), [...menu])
+  // @TODO: Add if promise is rejected
+  await set(ref(db, `${username}/burgers`), [...menu])
 }
