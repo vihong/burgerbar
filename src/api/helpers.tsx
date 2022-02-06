@@ -1,5 +1,7 @@
 import { db } from "./initFirebase"
 import { ref, set } from "firebase/database"
+import { fakeMenu2 } from "fakeData/fakeMenu"
+import { MenuItem } from "typescript/MenuItem"
 
 /** Analogy with a squirrel digging a hole. This has three logical parts to it:
  * 1) db
@@ -9,10 +11,15 @@ import { ref, set } from "firebase/database"
  */
 
 export const createUser = async (id: number, name: string) => {
-  const response = await set(ref(db, `${id}/burgers`), {
+  const response = await set(ref(db, `${id}/user`), {
     id: id,
     name: name,
   })
+  if (response === null) alert("error")
+}
+
+export const createMenu = async (id: number, menu: MenuItem[]) => {
+  const response = await set(ref(db, `${id}/burgers`), [...menu])
   if (response === null) alert("error")
 }
 
