@@ -4,11 +4,11 @@ import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from "styled-components/macro"
 import { theme } from "theme"
 import Basket from "./Basket/Basket"
-import Menu from "./Menu"
+import Menu from "./Menu/Menu"
 import PanelAdmin from "./PanelAdmin/PanelAdmin"
 
 export default function Main() {
-  const { isModeAdmin } = useContext(OrderContext)
+  const { isModeAdmin, menuItems } = useContext(OrderContext)
   return (
     <MainStyled>
       <Basket />
