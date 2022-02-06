@@ -40,21 +40,6 @@ export const getUserAccount = (username: string, id: number, menu: MenuItem[]) =
     })
 }
 
-export const addProductToDB = async (username: string | undefined, menu: MenuItem[]) => {
+export const setMenuInFirebaseDB = async (username: string | undefined, menu: MenuItem[]) => {
   const response = await set(ref(db, `${username}/burgers`), [...menu])
 }
-// // pour write data
-// export const writeUserData = async ({ name, age, id }) => {
-//   const response = await set(ref(db, "users/" + id), {
-//     id: id,
-//     name: name,
-//     age: age,
-//   })
-//   if (response === null) alert("error")
-// }
-
-// pour read data
-// export const useGetUsersInRealtime = (users, setUsers) => {
-//   //const dbRef = ref(db);
-//   //get(child(dbRef, "users" + userId));
-// }
