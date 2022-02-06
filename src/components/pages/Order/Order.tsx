@@ -55,10 +55,6 @@ export default function Order(props: OrderProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  useEffect(() => {
-    if (!menuItems) setMenuItems([])
-  }, [menuItems])
-
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,

@@ -6,8 +6,12 @@ export const useMenu = (username: string | undefined, menuInitialValues: MenuIte
   const [menuItems, setMenuItems] = useState<MenuItem[]>(menuInitialValues)
 
   const handleAdd = (itemCreated: MenuItem) => {
+    if (!menuItems) {
+      setMenuInFirebaseDB(username, [itemCreated])
+      setMenuItems([itemCreated])
+      return
+    }
     const menuItemsCopy = [...menuItems]
-
     menuItemsCopy.unshift(itemCreated)
     setMenuItems(menuItemsCopy)
     setMenuInFirebaseDB(username, menuItemsCopy)
