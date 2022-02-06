@@ -1,8 +1,15 @@
 import { db } from "./initFirebase"
 import { ref, set } from "firebase/database"
 
+/** Analogy with a squirrel digging a hole. This has three logical parts to it:
+ * 1) db
+ * 2) the location / path created in that db : je veux creuser un trou/chemin
+ * 3) the info we want to create at that location / path : à ce trou à, je veux ranger cette info.
+ *
+ */
+
 export const createUser = async (id: number, name: string) => {
-  const response = await set(ref(db, "users/" + id), {
+  const response = await set(ref(db, `${id}/burgers`), {
     id: id,
     name: name,
   })
