@@ -1,14 +1,14 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import OrderContext from "context/OrderContext"
 import styled from "styled-components/macro"
 import { MenuItem } from "typescript/MenuItem"
-import { fakeMenu2 } from "fakeData/fakeMenu"
 import Main from "./Main/Main"
 import { useBasket } from "hooks/useBasket"
 import { useMenu } from "hooks/useMenu"
 import { isProductAdvertised, isProductAvailable } from "enums"
 import Navbar from "components/pages/Order/Navbar/Navbar"
 import { theme } from "theme"
+import { getDatabase, onValue, ref } from "firebase/database"
 
 interface OrderProps {
   path: string
@@ -31,7 +31,7 @@ export default function Order(props: OrderProps) {
 
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
-  const { menuItems, handleAdd, handleEdit, handleDelete } = useMenu(fakeMenu2)
+  const { menuItems, setMenuItems, handleAdd, handleEdit, handleDelete } = useMenu([])
   const { basket, handleAddToBasket, handleDeleteFromBasket } = useBasket([])
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
@@ -40,6 +40,22 @@ export default function Order(props: OrderProps) {
   const [isEditFormVisible, setIsEditFormVisible] = useState(false)
 
   const titleEditBoxRef = useRef()
+
+  useEffect(() => {
+    const db = getDatabase()
+    const usersRef = ref(db, name)
+    onValue(usersRef, (snapshot) => {
+      const data = snapshot.val()
+      console.log("data: ", data)
+      if (!data) return
+      // const newData = Object.values(data)
+      // console.log("newData:", newData)
+      if (menuItems !== data) {
+        setMenuItems(data.burgers)
+      }
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const orderContextValue = {
     isModeAdmin,

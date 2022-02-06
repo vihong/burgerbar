@@ -6,13 +6,18 @@ import { theme } from "theme"
 import TextInput from "components/atoms/TextInputLogin"
 import PrimaryButton from "components/atoms/PrimaryButton"
 import { IoChevronForward } from "react-icons/io5"
+import { getUserAccount } from "api/helpers"
+import { fakeMenu2 } from "fakeData/fakeMenu"
 
 export default function LoginForm() {
   const [username, setUsername] = useState("")
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     event.currentTarget.reset()
+    const id = new Date().getTime()
+
+    getUserAccount(username, id, fakeMenu2)
     navigate(`/order/${username}`)
   }
 
