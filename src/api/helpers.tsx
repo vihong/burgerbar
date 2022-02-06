@@ -1,6 +1,5 @@
 import { db } from "./initFirebase"
 import { child, get, getDatabase, ref, set } from "firebase/database"
-import { fakeMenu2 } from "fakeData/fakeMenu"
 import { MenuItem } from "typescript/MenuItem"
 
 /** Analogy with a squirrel digging a hole. This has three logical parts to it:
