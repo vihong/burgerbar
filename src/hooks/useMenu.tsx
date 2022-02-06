@@ -24,6 +24,7 @@ export const useMenu = (username: string | undefined, menuInitialValues: MenuIte
     const idOfItemUpdated: any = menuItems.findIndex((item) => item.id === itemUpdated.id)
     menuItemsCopy[idOfItemUpdated] = itemUpdated
     setMenuItems(menuItemsCopy)
+    addProductToDB(username, menuItemsCopy)
   }
 
   const handleIncrementQuantity = (productAdded: MenuItem) => {
