@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import OrderContext from "context/OrderContext"
 import styled from "styled-components/macro"
 import { MenuItem } from "typescript/MenuItem"
@@ -9,6 +9,9 @@ import { useMenu } from "hooks/useMenu"
 import { isProductAdvertised, isProductAvailable } from "enums"
 import Navbar from "components/pages/Order/Navbar/Navbar"
 import { theme } from "theme"
+import { db } from "api/firebase"
+import { doc } from "firebase/firestore"
+import { useUserListener } from "api/helpers"
 
 interface OrderProps {
   path: string
@@ -31,13 +34,18 @@ export default function Order(props: OrderProps) {
 
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
-  const { menuItems, handleAdd, handleEdit, handleDelete } = useMenu(fakeMenu2)
+  const { menuItems, setMenuItems, handleAdd, handleEdit, handleDelete } = useMenu([])
   const { basket, handleAddToBasket, handleDeleteFromBasket } = useBasket([])
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isAddFormVisible, setIsAddFormVisible] = useState(true)
   const [isEditFormVisible, setIsEditFormVisible] = useState(false)
+
+  //@ts-ignore
+  const userDocRef = doc(db, "users", name)
+
+  useUserListener(userDocRef, setMenuItems)
 
   const titleEditBoxRef = useRef()
 

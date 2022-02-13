@@ -43,5 +43,5 @@ export const useMenu = (menuInitialValues: MenuItem[]) => {
     setMenuItems(menuItemsCopy)
   }
 
-  return { menuItems, handleAdd, handleEdit, handleDelete, handleIncrementQuantity }
+  return { menuItems, setMenuItems, handleAdd, handleEdit, handleDelete, handleIncrementQuantity }
 }

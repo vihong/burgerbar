@@ -6,13 +6,21 @@ import { theme } from "theme"
 import TextInput from "components/atoms/TextInputLogin"
 import PrimaryButton from "components/atoms/PrimaryButton"
 import { IoChevronForward } from "react-icons/io5"
+import { createNewUser, getOneUserFromFirebase } from "api/helpers"
 
 export default function LoginForm() {
   const [username, setUsername] = useState("")
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    event.currentTarget.reset()
+    /**je demande le user. Deux possibilités :
+     * 1) le user exist
+     * Dans ce cas, je retrieve le user et ses infos et je les utilise pour peupler la page d'après.
+     * 2) le user n'existe pas
+     * Dans ce cas, je le créé avec des infos de bases que j'utilise direct après pour passer à l'écran d'après puisque je les ai déjà.
+     */
+    const userRetrieved = await getOneUserFromFirebase(username)
+    if (!userRetrieved) createNewUser(username)
     navigate(`/order/${username}`)
   }
 
@@ -39,9 +47,6 @@ export default function LoginForm() {
 }
 
 const LoginFormStyled = styled.form`
-  /* border: 1px solid red; */
-  /* background: ${theme.colors.incognito}; */
-  /* box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2); */
   text-align: center;
   max-width: 500px;
   min-width: 400px;
