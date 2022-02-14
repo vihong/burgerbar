@@ -36,7 +36,7 @@ export const useUserListener = (userDocRef: any, setMenuItems: any) => {
     onSnapshot(userDocRef, (docSnap: any) => {
       const userFound = docSnap.data()
       // console.log("basket: ", basket) // here basket will ALWAYS be null cause out of scope of the websocket
-      console.log("user and burgers Found: ", userFound)
+      // console.log("user and burgers Found: ", userFound)
       setMenuItems(userFound?.burgers)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
