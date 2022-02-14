@@ -10,6 +10,8 @@ import { convertStringToBoolean } from "utils/string"
 import Ribbon from "components/atoms/Ribbon"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import PrimaryButton from "components/atoms/PrimaryButton"
+import _ from "lodash"
+import EmptyMenu from "./EmptyMenu"
 
 export default function Menu() {
   const {
@@ -59,6 +61,7 @@ export default function Menu() {
 
   let cardClassName = isModeAdmin ? "card is-hoverable" : "card"
 
+  if (_.isEmpty(menuItems)) return <EmptyMenu />
   return (
     <TransitionGroup component={MenuStyled}>
       {menuItems?.map((burger) => {

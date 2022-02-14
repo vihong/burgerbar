@@ -10,6 +10,12 @@ export const createNewUser = async (name: string) => {
   console.log(`${name} was successfully created`)
 }
 
+export const resetMenuInFireStore = async (name: string) => {
+  await setDoc(doc(db, "users", name), {
+    burgers: fakeMenu2,
+  })
+}
+
 export const getOneUserFromFirebase = async (name: string) => {
   const docRefToRetrieve = doc(db, "users", name)
   const docSnap = await getDoc(docRefToRetrieve)

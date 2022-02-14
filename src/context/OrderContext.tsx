@@ -11,6 +11,7 @@ interface OrderContextValue {
   handleAdd: (itemCreated: MenuItem, userName: string) => void
   handleDelete: (id: number | undefined, userName: string) => void
   handleEdit: (itemToEdit: MenuItem, userName: string) => void
+  setMenuItems: React.Dispatch<React.SetStateAction<MenuItem[]>>
   itemBeingSelected: MenuItem
   setItemBeingSelected: React.Dispatch<React.SetStateAction<MenuItem>>
   titleEditBoxRef: React.MutableRefObject<any>
@@ -31,6 +32,7 @@ export default createContext<OrderContextValue>({
   isModeAdmin: false,
   setIsModeAdmin: () => {},
   menuItems: [],
+  setMenuItems: () => {},
   handleAdd: () => {},
   handleDelete: () => {},
   handleEdit: () => {},

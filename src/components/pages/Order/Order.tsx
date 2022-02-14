@@ -59,6 +59,7 @@ export default function Order(props: OrderProps) {
     isModeAdmin,
     setIsModeAdmin,
     menuItems,
+    setMenuItems,
     handleAdd,
     handleDelete,
     handleEdit,
