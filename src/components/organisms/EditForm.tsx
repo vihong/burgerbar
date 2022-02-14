@@ -18,7 +18,7 @@ interface FormProps {
 }
 
 export default function EditForm({ formTitle, buttonLabel }: FormProps) {
-  const { itemBeingSelected, setItemBeingSelected, handleEdit, titleEditBoxRef } =
+  const { itemBeingSelected, setItemBeingSelected, handleEdit, titleEditBoxRef, name } =
     useContext(OrderContext)
 
   const [isDoneEditing, setIsDoneEditing] = useState(false)
@@ -32,7 +32,7 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
       [event.target.name]: singleValueBeingChangedNow,
     }
     setItemBeingSelected(itemUpdated)
-    handleEdit(itemUpdated)
+    name && handleEdit(itemUpdated, name)
   }
 
   const handleOnFocus = (event: React.FocusEvent<HTMLInputElement>) => {

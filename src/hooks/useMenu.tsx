@@ -5,7 +5,7 @@ import { MenuItem } from "typescript/MenuItem"
 export const useMenu = (menuInitialValues: MenuItem[]) => {
   const [menuItems, setMenuItems] = useState<MenuItem[]>(menuInitialValues)
 
-  const handleAdd = (itemCreated: MenuItem, username: string | undefined) => {
+  const handleAdd = (itemCreated: MenuItem, username: string) => {
     const menuItemsCopy = [...menuItems]
 
     menuItemsCopy.unshift(itemCreated)
@@ -19,11 +19,12 @@ export const useMenu = (menuInitialValues: MenuItem[]) => {
     setMenuItems(menuItemsUpdated)
   }
 
-  const handleEdit = (itemUpdated: MenuItem): void => {
+  const handleEdit = (itemUpdated: MenuItem, username: string): void => {
     const menuItemsCopy = [...menuItems]
     const idOfItemUpdated: any = menuItems.findIndex((item) => item.id === itemUpdated.id)
     menuItemsCopy[idOfItemUpdated] = itemUpdated
     setMenuItems(menuItemsCopy)
+    syncBothMenus(username, menuItemsCopy)
   }
 
   const handleIncrementQuantity = (productAdded: MenuItem) => {

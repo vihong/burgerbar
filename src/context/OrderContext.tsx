@@ -10,7 +10,7 @@ interface OrderContextValue {
   menuItems: MenuItem[]
   handleAdd: (itemCreated: MenuItem, userName: string) => void
   handleDelete: (id: number | undefined) => void
-  handleEdit: (itemToEdit: MenuItem) => void
+  handleEdit: (itemToEdit: MenuItem, userName: string) => void
   itemBeingSelected: MenuItem
   setItemBeingSelected: React.Dispatch<React.SetStateAction<MenuItem>>
   titleEditBoxRef: React.MutableRefObject<any>
