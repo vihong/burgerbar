@@ -11,7 +11,7 @@ import Navbar from "components/pages/Order/Navbar/Navbar"
 import { theme } from "theme"
 import { db } from "api/firebase"
 import { doc } from "firebase/firestore"
-import { useUserListener } from "api/helpers"
+import { syncBothMenus, useUserListener } from "api/helpers"
 
 interface OrderProps {
   path: string
@@ -45,10 +45,9 @@ export default function Order(props: OrderProps) {
   //@ts-ignore
   const userDocRef = doc(db, "users", name)
 
-  useUserListener(userDocRef, setMenuItems)
-
   const titleEditBoxRef = useRef()
 
+  useUserListener(userDocRef, setMenuItems)
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,

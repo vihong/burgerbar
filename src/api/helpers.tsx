@@ -39,3 +39,10 @@ export const useUserListener = (userDocRef: any, setMenuItems: any) => {
     })
   }, [])
 }
+
+export const syncBothMenus = async (name: any, menuItems: any) => {
+  await setDoc(doc(db, "users", name), {
+    burgers: menuItems,
+  })
+  console.log(`${name} was successfully created`)
+}
