@@ -23,6 +23,7 @@ export default function Menu() {
     titleEditBoxRef,
     handleAddToBasket,
     handleDeleteFromBasket,
+    name,
   } = useContext(OrderContext)
 
   const handleCardSelected = async (idSelected: number | undefined) => {
@@ -38,7 +39,7 @@ export default function Menu() {
 
   const handleDeleteButton = (event: React.MouseEvent<HTMLElement>, id: number | undefined) => {
     event.stopPropagation()
-    handleDelete(id)
+    name && handleDelete(id, name)
     handleDeleteFromBasket(id)
     setItemBeingSelected({
       id: 0,

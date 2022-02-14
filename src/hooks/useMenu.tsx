@@ -13,10 +13,11 @@ export const useMenu = (menuInitialValues: MenuItem[]) => {
     syncBothMenus(username, menuItemsCopy)
   }
 
-  const handleDelete = (idToDelete: number | undefined): void => {
+  const handleDelete = async (idToDelete: number | undefined, username: string) => {
     const menuItemsCopy = [...menuItems]
     const menuItemsUpdated = menuItemsCopy.filter((menuItem) => menuItem.id !== idToDelete)
-    setMenuItems(menuItemsUpdated)
+    await setMenuItems(menuItemsUpdated)
+    syncBothMenus(username, menuItemsUpdated)
   }
 
   const handleEdit = (itemUpdated: MenuItem, username: string): void => {
