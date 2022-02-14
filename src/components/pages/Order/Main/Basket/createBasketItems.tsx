@@ -32,7 +32,7 @@ export function createBasketItems(basket: BasketItem[], menuItems: MenuItem[]) {
 
 export const updateBasketWithFreshMenu = (basket: BasketItem[], freshMenu: MenuItem[]) => {
   const basketUpdatedWithFreshMenu = basket.filter((basketItem) => {
-    const result = freshMenu.find((menuItem) => menuItem.id == basketItem.id)
+    const result = freshMenu.find((menuItem) => menuItem.id === basketItem.id)
     if (result === undefined) return false
     else return true
   })

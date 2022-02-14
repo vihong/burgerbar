@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react"
 import OrderContext from "context/OrderContext"
 import styled from "styled-components/macro"
 import { MenuItem } from "typescript/MenuItem"
-import { fakeMenu2 } from "fakeData/fakeMenu"
 import Main from "./Main/Main"
 import { useBasket } from "hooks/useBasket"
 import { useMenu } from "hooks/useMenu"
@@ -55,6 +54,7 @@ export default function Order(props: OrderProps) {
     console.log("basketRefreshed: ", basketRefreshed)
     setBasket(basketRefreshed)
   }, [menuItems])
+
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,

@@ -13,7 +13,7 @@ import _ from "lodash"
 import EmptyBasket from "./EmptyBasket"
 
 export default function Basket() {
-  const { menuItems, basket, setBasket } = useContext(OrderContext)
+  const { menuItems, basket } = useContext(OrderContext)
   console.log("basket: ", basket)
 
   const basketWithMenuItems = createBasketItems(basket, menuItems)

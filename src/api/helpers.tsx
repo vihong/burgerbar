@@ -31,7 +31,7 @@ export const getOneUserFromFirebase = async (name: string) => {
 }
 
 export const useUserListener = (userDocRef: any, setMenuItems: any) => {
-  // console.log("basket: ", basket)
+  // console.log("basket: ", basket) // here, basket has the same value as in the state.
   useEffect(() => {
     onSnapshot(userDocRef, (docSnap: any) => {
       const userFound = docSnap.data()
@@ -39,6 +39,7 @@ export const useUserListener = (userDocRef: any, setMenuItems: any) => {
       console.log("user and burgers Found: ", userFound)
       setMenuItems(userFound?.burgers)
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 }
 
