@@ -2,15 +2,13 @@ import { BasketItem } from "typescript/BasketItem"
 import { MenuItem } from "typescript/MenuItem"
 
 export function createBasketItems(basket: BasketItem[], menuItems: MenuItem[]) {
-  // à ce stade là, basket n'est jamais complet, il n'a pas d'image
-  console.log("basket: ", basket)
-  console.log("menuItems: ", menuItems)
+  // à ce stade là, basket n'est jamais complet, il n'a pas même pas d'imageSource
 
   //1. d'abord j'update basket en ne gardant que des produits existe vraiment dans la dernière version du menu : freshMenu.
-  //const basketRefreshed = updateBasketWithFreshMenu(basket, menuItems)
+  const basketRefreshed = updateBasketWithFreshMenu(basket, menuItems)
 
   //2. ensuite, je peux me mettre à continuer de construire les éléments de basket en toute sérénité (+ j'oublie pas de setBasket soit dit en passant)
-  const basketFinal = basket.map((basketItem) => {
+  const basketFinal = basketRefreshed.map((basketItem) => {
     let basketItemFinal: BasketItem = {
       id: undefined,
       price: 0,
@@ -32,6 +30,11 @@ export function createBasketItems(basket: BasketItem[], menuItems: MenuItem[]) {
   return basketFinal
 }
 
-const isInsideMenu = (basketItem: BasketItem, freshMenu: MenuItem[]): boolean => {
-  return false
+export const updateBasketWithFreshMenu = (basket: BasketItem[], freshMenu: MenuItem[]) => {
+  const basketUpdatedWithFreshMenu = basket.filter((basketItem) => {
+    const result = freshMenu.find((menuItem) => menuItem.id == basketItem.id)
+    if (result === undefined) return false
+    else return true
+  })
+  return basketUpdatedWithFreshMenu
 }

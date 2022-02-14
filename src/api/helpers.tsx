@@ -1,5 +1,5 @@
 import { db } from "./firebase"
-import { addDoc, collection, doc, getDoc, onSnapshot, setDoc } from "firebase/firestore"
+import { doc, getDoc, onSnapshot, setDoc } from "firebase/firestore"
 import { fakeMenu2 } from "fakeData/fakeMenu"
 import { useEffect } from "react"
 
@@ -35,7 +35,7 @@ export const useUserListener = (userDocRef: any, setMenuItems: any) => {
   useEffect(() => {
     onSnapshot(userDocRef, (docSnap: any) => {
       const userFound = docSnap.data()
-      // console.log("basket: ", basket)
+      // console.log("basket: ", basket) // here basket will ALWAYS be null cause out of scope of the websocket
       console.log("user and burgers Found: ", userFound)
       setMenuItems(userFound?.burgers)
     })

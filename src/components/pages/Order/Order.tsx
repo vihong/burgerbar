@@ -11,7 +11,8 @@ import Navbar from "components/pages/Order/Navbar/Navbar"
 import { theme } from "theme"
 import { db } from "api/firebase"
 import { doc } from "firebase/firestore"
-import { syncBothMenus, useUserListener } from "api/helpers"
+import { useUserListener } from "api/helpers"
+import { updateBasketWithFreshMenu } from "./Main/Basket/createBasketItems"
 
 interface OrderProps {
   path: string
@@ -35,7 +36,7 @@ export default function Order(props: OrderProps) {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
   const { menuItems, setMenuItems, handleAdd, handleEdit, handleDelete } = useMenu([])
-  const { basket, handleAddToBasket, handleDeleteFromBasket } = useBasket([])
+  const { basket, setBasket, handleAddToBasket, handleDeleteFromBasket } = useBasket([])
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
   const [isCollapsed, setIsCollapsed] = useState(false)
@@ -48,6 +49,12 @@ export default function Order(props: OrderProps) {
   const titleEditBoxRef = useRef()
 
   useUserListener(userDocRef, setMenuItems)
+
+  useEffect(() => {
+    const basketRefreshed = updateBasketWithFreshMenu(basket, menuItems)
+    console.log("basketRefreshed: ", basketRefreshed)
+    setBasket(basketRefreshed)
+  }, [menuItems])
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -66,6 +73,7 @@ export default function Order(props: OrderProps) {
     setIsCollapsed,
     handleAddToBasket,
     basket,
+    setBasket,
     handleDeleteFromBasket,
     name,
   }

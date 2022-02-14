@@ -22,6 +22,7 @@ interface OrderContextValue {
   setIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>
   handleAddToBasket: (burger: MenuItem) => void
   basket: BasketItem[]
+  setBasket: React.Dispatch<React.SetStateAction<BasketItem[]>>
   handleDeleteFromBasket: (id: ID) => void
   name?: string
 }
@@ -44,6 +45,7 @@ export default createContext<OrderContextValue>({
   setIsCollapsed: () => {},
   handleAddToBasket: () => {},
   basket: [],
+  setBasket: () => {},
   handleDeleteFromBasket: () => {},
   name: "",
 })
