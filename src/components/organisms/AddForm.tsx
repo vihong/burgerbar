@@ -22,7 +22,7 @@ interface FormProps {
 }
 
 export default function AddForm({ formTitle, buttonLabel }: FormProps) {
-  const { handleAdd, titleEditBoxRef } = useContext(OrderContext)
+  const { handleAdd, titleEditBoxRef, name } = useContext(OrderContext)
 
   // @TODO: make generic typing to have generic organism <Form />
   // because here : dynamic typing is here betweem useState<TYPE> and EMPTY_PRODUCT's TYPE
@@ -38,7 +38,7 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
       id: new Date().getTime(),
     }
 
-    handleAdd(newProductToAdd)
+    name && handleAdd(newProductToAdd, name)
     // @TODO: ID may not need to be undefined if you always give it a new Date
     setNewProduct(EMPTY_PRODUCT) // to reset form
     // toast.success("Ajouté au menu avec succès!")

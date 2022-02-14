@@ -1,14 +1,16 @@
+import { syncBothMenus } from "api/helpers"
 import { useState } from "react"
 import { MenuItem } from "typescript/MenuItem"
 
 export const useMenu = (menuInitialValues: MenuItem[]) => {
   const [menuItems, setMenuItems] = useState<MenuItem[]>(menuInitialValues)
 
-  const handleAdd = (itemCreated: MenuItem) => {
+  const handleAdd = (itemCreated: MenuItem, username: string | undefined) => {
     const menuItemsCopy = [...menuItems]
 
     menuItemsCopy.unshift(itemCreated)
     setMenuItems(menuItemsCopy)
+    syncBothMenus(username, menuItemsCopy)
   }
 
   const handleDelete = (idToDelete: number | undefined): void => {

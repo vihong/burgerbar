@@ -1,5 +1,5 @@
 import { db } from "./firebase"
-import { doc, getDoc, onSnapshot, setDoc } from "firebase/firestore"
+import { addDoc, collection, doc, getDoc, onSnapshot, setDoc } from "firebase/firestore"
 import { fakeMenu2 } from "fakeData/fakeMenu"
 import { useEffect } from "react"
 
@@ -44,5 +44,5 @@ export const syncBothMenus = async (name: any, menuItems: any) => {
   await setDoc(doc(db, "users", name), {
     burgers: menuItems,
   })
-  console.log(`${name} was successfully created`)
+  console.log(`${name} was successfully updated`)
 }
