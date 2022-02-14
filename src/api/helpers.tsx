@@ -31,11 +31,21 @@ export const getOneUserFromFirebase = async (name: string) => {
 }
 
 export const useUserListener = (userDocRef: any, setMenuItems: any) => {
+  // console.log("basket: ", basket) // here, basket has the same value as in the state.
   useEffect(() => {
     onSnapshot(userDocRef, (docSnap: any) => {
       const userFound = docSnap.data()
+      // console.log("basket: ", basket) // here basket will ALWAYS be null cause out of scope of the websocket
       console.log("user and burgers Found: ", userFound)
       setMenuItems(userFound?.burgers)
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+}
+
+export const syncBothMenus = async (name: any, menuItems: any) => {
+  await setDoc(doc(db, "users", name), {
+    burgers: menuItems,
+  })
+  console.log(`${name} was successfully updated`)
 }

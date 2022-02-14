@@ -1,27 +1,31 @@
+import { syncBothMenus } from "api/helpers"
 import { useState } from "react"
 import { MenuItem } from "typescript/MenuItem"
 
 export const useMenu = (menuInitialValues: MenuItem[]) => {
   const [menuItems, setMenuItems] = useState<MenuItem[]>(menuInitialValues)
 
-  const handleAdd = (itemCreated: MenuItem) => {
+  const handleAdd = (itemCreated: MenuItem, username: string) => {
     const menuItemsCopy = [...menuItems]
 
     menuItemsCopy.unshift(itemCreated)
     setMenuItems(menuItemsCopy)
+    syncBothMenus(username, menuItemsCopy)
   }
 
-  const handleDelete = (idToDelete: number | undefined): void => {
+  const handleDelete = (idToDelete: number | undefined, username: string) => {
     const menuItemsCopy = [...menuItems]
     const menuItemsUpdated = menuItemsCopy.filter((menuItem) => menuItem.id !== idToDelete)
     setMenuItems(menuItemsUpdated)
+    syncBothMenus(username, menuItemsUpdated)
   }
 
-  const handleEdit = (itemUpdated: MenuItem): void => {
+  const handleEdit = (itemUpdated: MenuItem, username: string): void => {
     const menuItemsCopy = [...menuItems]
     const idOfItemUpdated: any = menuItems.findIndex((item) => item.id === itemUpdated.id)
     menuItemsCopy[idOfItemUpdated] = itemUpdated
     setMenuItems(menuItemsCopy)
+    syncBothMenus(username, menuItemsCopy)
   }
 
   const handleIncrementQuantity = (productAdded: MenuItem) => {

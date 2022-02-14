@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react"
 import OrderContext from "context/OrderContext"
 import styled from "styled-components/macro"
 import { MenuItem } from "typescript/MenuItem"
-import { fakeMenu2 } from "fakeData/fakeMenu"
 import Main from "./Main/Main"
 import { useBasket } from "hooks/useBasket"
 import { useMenu } from "hooks/useMenu"
@@ -12,6 +11,7 @@ import { theme } from "theme"
 import { db } from "api/firebase"
 import { doc } from "firebase/firestore"
 import { useUserListener } from "api/helpers"
+import { updateBasketWithFreshMenu } from "./Main/Basket/createBasketItems"
 
 interface OrderProps {
   path: string
@@ -35,7 +35,7 @@ export default function Order(props: OrderProps) {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
   const { menuItems, setMenuItems, handleAdd, handleEdit, handleDelete } = useMenu([])
-  const { basket, handleAddToBasket, handleDeleteFromBasket } = useBasket([])
+  const { basket, setBasket, handleAddToBasket, handleDeleteFromBasket } = useBasket([])
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
   const [isCollapsed, setIsCollapsed] = useState(false)
@@ -45,9 +45,16 @@ export default function Order(props: OrderProps) {
   //@ts-ignore
   const userDocRef = doc(db, "users", name)
 
+  const titleEditBoxRef = useRef()
+
   useUserListener(userDocRef, setMenuItems)
 
-  const titleEditBoxRef = useRef()
+  useEffect(() => {
+    const basketRefreshed = updateBasketWithFreshMenu(basket, menuItems)
+    console.log("basketRefreshed: ", basketRefreshed)
+    setBasket(basketRefreshed)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [menuItems])
 
   const orderContextValue = {
     isModeAdmin,
@@ -67,9 +74,12 @@ export default function Order(props: OrderProps) {
     setIsCollapsed,
     handleAddToBasket,
     basket,
+    setBasket,
     handleDeleteFromBasket,
     name,
   }
+
+  if (!menuItems) return <span>Loading...</span>
 
   return (
     <OrderStyled>

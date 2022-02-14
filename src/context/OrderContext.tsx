@@ -8,9 +8,9 @@ interface OrderContextValue {
   isModeAdmin: boolean
   setIsModeAdmin: React.Dispatch<React.SetStateAction<boolean>>
   menuItems: MenuItem[]
-  handleAdd: (itemCreated: MenuItem) => void
-  handleDelete: (id: number | undefined) => void
-  handleEdit: (itemToEdit: MenuItem) => void
+  handleAdd: (itemCreated: MenuItem, userName: string) => void
+  handleDelete: (id: number | undefined, userName: string) => void
+  handleEdit: (itemToEdit: MenuItem, userName: string) => void
   itemBeingSelected: MenuItem
   setItemBeingSelected: React.Dispatch<React.SetStateAction<MenuItem>>
   titleEditBoxRef: React.MutableRefObject<any>
@@ -22,6 +22,7 @@ interface OrderContextValue {
   setIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>
   handleAddToBasket: (burger: MenuItem) => void
   basket: BasketItem[]
+  setBasket: React.Dispatch<React.SetStateAction<BasketItem[]>>
   handleDeleteFromBasket: (id: ID) => void
   name?: string
 }
@@ -44,6 +45,7 @@ export default createContext<OrderContextValue>({
   setIsCollapsed: () => {},
   handleAddToBasket: () => {},
   basket: [],
+  setBasket: () => {},
   handleDeleteFromBasket: () => {},
   name: "",
 })

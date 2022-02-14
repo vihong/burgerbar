@@ -14,10 +14,11 @@ import EmptyBasket from "./EmptyBasket"
 
 export default function Basket() {
   const { menuItems, basket } = useContext(OrderContext)
+  console.log("basket: ", basket)
 
   const basketWithMenuItems = createBasketItems(basket, menuItems)
 
-  const total = basketWithMenuItems.reduce((totalCommande, item) => {
+  const total = basketWithMenuItems.reduce((totalCommande: number, item: any) => {
     const isAvailable = convertStringToBoolean(item.isAvailable)
     if (isAvailable) totalCommande += replaceFrenchCommaWithDot(item.price) * item.quantity
     return totalCommande
