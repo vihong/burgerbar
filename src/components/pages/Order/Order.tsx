@@ -53,6 +53,7 @@ export default function Order(props: OrderProps) {
     const basketRefreshed = updateBasketWithFreshMenu(basket, menuItems)
     console.log("basketRefreshed: ", basketRefreshed)
     setBasket(basketRefreshed)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuItems])
 
   const orderContextValue = {
