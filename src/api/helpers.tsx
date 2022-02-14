@@ -31,9 +31,11 @@ export const getOneUserFromFirebase = async (name: string) => {
 }
 
 export const useUserListener = (userDocRef: any, setMenuItems: any) => {
+  // console.log("basket: ", basket)
   useEffect(() => {
     onSnapshot(userDocRef, (docSnap: any) => {
       const userFound = docSnap.data()
+      // console.log("basket: ", basket)
       console.log("user and burgers Found: ", userFound)
       setMenuItems(userFound?.burgers)
     })

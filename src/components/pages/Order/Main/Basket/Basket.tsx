@@ -11,13 +11,16 @@ import { replaceFrenchCommaWithDot } from "utils/maths"
 import { convertStringToBoolean } from "utils/string"
 import _ from "lodash"
 import EmptyBasket from "./EmptyBasket"
+import { BasketItem } from "typescript/BasketItem"
+import { MenuItem } from "typescript/MenuItem"
 
 export default function Basket() {
   const { menuItems, basket } = useContext(OrderContext)
+  console.log("basket: ", basket)
+  const basketRefreshed = updateBasketWithFreshMenu(basket, menuItems)
+  const basketWithMenuItems = createBasketItems(basketRefreshed, menuItems)
 
-  const basketWithMenuItems = createBasketItems(basket, menuItems)
-
-  const total = basketWithMenuItems.reduce((totalCommande, item) => {
+  const total = basketWithMenuItems.reduce((totalCommande: number, item: any) => {
     const isAvailable = convertStringToBoolean(item.isAvailable)
     if (isAvailable) totalCommande += replaceFrenchCommaWithDot(item.price) * item.quantity
     return totalCommande
@@ -32,6 +35,18 @@ export default function Basket() {
       <Header className="header-votre-commande" HeaderContent={<Title className="title" />} />
     </BasketStyled>
   )
+}
+
+const updateBasketWithFreshMenu = (basket: BasketItem[], freshMenu: MenuItem[]) => {
+  console.log("basket: ", basket)
+  console.log("freshMenu: ", freshMenu)
+  const basketUpdatedWithFreshMenu = basket.filter((basketItem) => {
+    const result = freshMenu.find((menuItem) => menuItem.id == basketItem.id)
+    if (result === undefined) return false
+    else return true
+  })
+  console.log("basketUpdatedWithFreshMenu: ", basketUpdatedWithFreshMenu)
+  return basketUpdatedWithFreshMenu
 }
 
 const BasketStyled = styled.div`
