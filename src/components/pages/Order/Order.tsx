@@ -10,7 +10,7 @@ import { isProductAdvertised, isProductAvailable } from "enums"
 import Navbar from "components/pages/Order/Navbar/Navbar"
 import { theme } from "theme"
 import { db } from "api/firebase"
-import { doc, getDoc } from "firebase/firestore"
+import { doc } from "firebase/firestore"
 import { useUserListener } from "api/helpers"
 
 interface OrderProps {
