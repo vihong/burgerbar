@@ -61,7 +61,6 @@ export default function Menu() {
 
   let cardClassName = isModeAdmin ? "card is-hoverable" : "card"
 
-  if (_.isEmpty(menuItems)) return <EmptyMenu />
   return (
     <TransitionGroup component={MenuStyled}>
       {menuItems?.map((burger) => {
