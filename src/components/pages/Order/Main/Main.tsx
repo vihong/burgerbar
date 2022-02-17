@@ -33,7 +33,6 @@ const MainStyled = styled.div`
   flex: 1;
   display: grid;
   grid-template-columns: 25% 1fr;
-  border: 1px solid red;
   position: relative;
 
   .sidebar {
