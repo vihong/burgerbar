@@ -10,8 +10,6 @@ import { convertStringToBoolean } from "utils/string"
 import Ribbon from "components/atoms/Ribbon"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import PrimaryButton from "components/atoms/PrimaryButton"
-import _ from "lodash"
-import EmptyMenu from "./EmptyMenu"
 
 export default function Menu() {
   const {
