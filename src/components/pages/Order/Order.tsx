@@ -47,7 +47,7 @@ export default function Order(props: OrderProps) {
 
   const titleEditBoxRef = useRef()
 
-  useUserListener(userDocRef, setMenuItems)
+  useUserListener(userDocRef, setMenuItems, setBasket)
 
   useEffect(() => {
     const basketRefreshed = updateBasketWithFreshMenu(basket, menuItems)

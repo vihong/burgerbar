@@ -6,5 +6,6 @@ export const setBasketInLocalStorage = (username: string, basket: BasketItem[]) 
 }
 
 export const getBasketFromLocalStorage = (username: string) => {
-  return localStorage.getItem(username)
+  const existingBasket = localStorage.getItem(username)
+  return existingBasket ? JSON.parse(existingBasket) : []
 }

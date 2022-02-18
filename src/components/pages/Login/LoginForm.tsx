@@ -22,7 +22,6 @@ export default function LoginForm() {
      */
     const userRetrieved = await getOneUserFromFirebase(username)
     if (!userRetrieved) createNewUser(username)
-    setBasketInLocalStorage(username, [])
     navigate(`/order/${username}`)
   }
 
