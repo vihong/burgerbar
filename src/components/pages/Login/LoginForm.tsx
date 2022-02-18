@@ -7,6 +7,7 @@ import TextInput from "components/atoms/TextInputLogin"
 import PrimaryButton from "components/atoms/PrimaryButton"
 import { IoChevronForward } from "react-icons/io5"
 import { createNewUser, getOneUserFromFirebase } from "api/helpers"
+import { setBasketInLocalStorage } from "api/localStorage"
 
 export default function LoginForm() {
   const [username, setUsername] = useState("")
@@ -21,6 +22,7 @@ export default function LoginForm() {
      */
     const userRetrieved = await getOneUserFromFirebase(username)
     if (!userRetrieved) createNewUser(username)
+    setBasketInLocalStorage(username, [])
     navigate(`/order/${username}`)
   }
 
