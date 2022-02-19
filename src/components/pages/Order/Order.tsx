@@ -50,6 +50,7 @@ export default function Order(props: OrderProps) {
 
   useUserListener(userDocRef, setMenuItems, setBasket, name)
 
+  // garder cela sinon on a des pb à chaque ajout dans le basket au niveau des animations
   useEffect(() => {
     const basketRefreshed = updateBasketWithFreshMenu(basket, menuItems)
     setBasket(basketRefreshed)
