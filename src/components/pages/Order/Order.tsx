@@ -12,7 +12,6 @@ import { db } from "api/firebase"
 import { doc } from "firebase/firestore"
 import { useUserListener } from "api/helpers"
 import { updateBasketWithFreshMenu } from "./Main/Basket/createBasketItems"
-import _ from "lodash"
 
 interface OrderProps {
   path: string
