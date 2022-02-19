@@ -7,7 +7,6 @@ import TextInput from "components/atoms/TextInputLogin"
 import PrimaryButton from "components/atoms/PrimaryButton"
 import { IoChevronForward } from "react-icons/io5"
 import { createNewUser, getOneUserFromFirebase } from "api/helpers"
-import { setBasketInLocalStorage } from "api/localStorage"
 
 export default function LoginForm() {
   const [username, setUsername] = useState("")

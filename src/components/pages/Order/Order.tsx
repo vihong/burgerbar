@@ -12,6 +12,11 @@ import { db } from "api/firebase"
 import { doc } from "firebase/firestore"
 import { useUserListener } from "api/helpers"
 import { updateBasketWithFreshMenu } from "./Main/Basket/createBasketItems"
+import {
+  getBasketFromLocalStorage,
+  hasExistingBasket,
+  setBasketInLocalStorage,
+} from "api/localStorage"
 
 interface OrderProps {
   path: string
@@ -50,8 +55,11 @@ export default function Order(props: OrderProps) {
   useUserListener(userDocRef, setMenuItems, setBasket)
 
   useEffect(() => {
+    // if (menuItems !== []) {
     const basketRefreshed = updateBasketWithFreshMenu(basket, menuItems)
+    console.log("basketRefreshed: ", basketRefreshed)
     setBasket(basketRefreshed)
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuItems])
 

@@ -2,7 +2,8 @@ import { db } from "./firebase"
 import { doc, getDoc, onSnapshot, setDoc } from "firebase/firestore"
 import { fakeMenu2 } from "fakeData/fakeMenu"
 import { useEffect } from "react"
-import { getBasketFromLocalStorage } from "./localStorage"
+import { getBasketFromLocalStorage, setBasketInLocalStorage } from "./localStorage"
+import { updateBasketWithFreshMenu } from "components/pages/Order/Main/Basket/createBasketItems"
 
 export const createNewUser = async (name: string) => {
   await setDoc(doc(db, "users", name), {
@@ -45,7 +46,11 @@ export const useUserListener = (userDocRef: any, setMenuItems: any, setBasket: a
       const username = docSnap.id
       // console.log("basket: ", basket) // here basket will ALWAYS be null cause out of scope of the websocket
       setMenuItems(userFound?.burgers)
-      setBasket(getBasketFromLocalStorage(username))
+      const basketFromStorage = getBasketFromLocalStorage(username)
+      const basketRefreshed = updateBasketWithFreshMenu(basketFromStorage, userFound?.burgers)
+      console.log("basketFromStorage: ", basketFromStorage)
+      setBasket(basketRefreshed)
+      setBasketInLocalStorage(username, basketRefreshed)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

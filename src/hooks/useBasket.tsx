@@ -44,6 +44,7 @@ export const useBasket = (basketInitialValues: BasketItem[], name: string | unde
     const basketCopy = [...basket]
     const basketCopyUpdated = basketCopy.filter((basketItem) => basketItem.id !== idToDelete)
     setBasket(basketCopyUpdated)
+    name && setBasketInLocalStorage(name, basketCopyUpdated)
   }
 
   return { basket, setBasket, handleAddToBasket, handleDeleteFromBasket }
