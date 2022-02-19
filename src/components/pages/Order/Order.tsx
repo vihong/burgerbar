@@ -12,11 +12,6 @@ import { db } from "api/firebase"
 import { doc } from "firebase/firestore"
 import { useUserListener } from "api/helpers"
 import { updateBasketWithFreshMenu } from "./Main/Basket/createBasketItems"
-import {
-  getBasketFromLocalStorage,
-  hasExistingBasket,
-  setBasketInLocalStorage,
-} from "api/localStorage"
 
 interface OrderProps {
   path: string
