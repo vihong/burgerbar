@@ -27,18 +27,17 @@ export const getOneUserFromFirebase = async (name: string) => {
     const user = docSnap.data()
     return user
   } else {
-    // doc.data() will be undefined in this case
-    //console.log("name No such document!")
     console.log(`${name} couldn't be found`)
     return
   }
-
-  // getDoc(docRefToRetrieve).then((doc) => {
-  //   console.log(doc.data())
-  // })
 }
 
-export const useUserListener = (userDocRef: any, setMenuItems: any, setBasket: any) => {
+export const useUserListener = (
+  userDocRef: any,
+  setMenuItems: any,
+  setBasket: any,
+  name: string | undefined
+) => {
   // console.log("basket: ", basket) // here, basket has the same value as in the state.
   useEffect(() => {
     // 1. here I retrieve the latest update of menuItems or "burgers"
@@ -46,14 +45,17 @@ export const useUserListener = (userDocRef: any, setMenuItems: any, setBasket: a
       const userFound = docSnap.data()
       const username = docSnap.id
       // console.log("basket: ", basket) // here basket will ALWAYS be null cause out of scope of the websocket
+
       // 2. here I update menu locally
-      setMenuItems(userFound?.burgers)
-      const basketFromStorage = getBasketFromLocalStorage(username)
-      const basketRefreshed = updateBasketWithFreshMenu(basketFromStorage, userFound?.burgers)
-      console.log("basketFromStorage: ", basketFromStorage)
-      // 2. here I update menu baset locally and in localStorage
-      setBasket(basketRefreshed)
-      setBasketInLocalStorage(username, basketRefreshed)
+      if (!userFound) name && createNewUser(name) // not very 'safe and secure' but great for demo purposes.
+      const freshMenu = userFound?.burgers
+      setMenuItems(freshMenu)
+      const oldBasket = getBasketFromLocalStorage(username)
+      const newBasket = updateBasketWithFreshMenu(oldBasket, freshMenu)
+
+      // 3. here I update menu baset locally and in localStorage
+      setBasket(newBasket)
+      setBasketInLocalStorage(username, newBasket)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

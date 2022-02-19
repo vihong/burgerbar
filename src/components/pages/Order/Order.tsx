@@ -47,14 +47,12 @@ export default function Order(props: OrderProps) {
 
   const titleEditBoxRef = useRef()
 
-  useUserListener(userDocRef, setMenuItems, setBasket)
+  useUserListener(userDocRef, setMenuItems, setBasket, name)
 
+  // garder cela sinon on a des pb à chaque ajout dans le basket au niveau des animations
   useEffect(() => {
-    // if (menuItems !== []) {
     const basketRefreshed = updateBasketWithFreshMenu(basket, menuItems)
-    console.log("basketRefreshed: ", basketRefreshed)
     setBasket(basketRefreshed)
-    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuItems])
 
@@ -82,6 +80,7 @@ export default function Order(props: OrderProps) {
     name,
   }
 
+  console.log("menuItems: ", menuItems)
   if (!menuItems) return <span>Loading...</span>
 
   return (
