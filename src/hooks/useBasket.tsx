@@ -1,9 +1,10 @@
+import { setBasketInLocalStorage } from "api/localStorage"
 import { useState } from "react"
 import { ID } from "typescript/AtomicType"
 import { BasketItem } from "typescript/BasketItem"
 import { MenuItem } from "typescript/MenuItem"
 
-export const useBasket = (basketInitialValues: BasketItem[]) => {
+export const useBasket = (basketInitialValues: BasketItem[], name: string | undefined) => {
   const [basket, setBasket] = useState<BasketItem[]>(basketInitialValues)
 
   const handleAddToBasket = (productInMenu: MenuItem) => {
@@ -28,11 +29,14 @@ export const useBasket = (basketInitialValues: BasketItem[]) => {
         isAdvertised: "false",
       }
       // add new basketItem to basketCopy
-      setBasket([newBasketItem, ...basketCopy])
+      const updatedBasket = [newBasketItem, ...basketCopy]
+      setBasket(updatedBasket)
+      name && setBasketInLocalStorage(name, updatedBasket)
       // setState
     } else {
       basketCopy[indexOfProductInBasket].quantity += 1
       setBasket(basketCopy)
+      name && setBasketInLocalStorage(name, basketCopy)
     }
   }
 
@@ -40,6 +44,7 @@ export const useBasket = (basketInitialValues: BasketItem[]) => {
     const basketCopy = [...basket]
     const basketCopyUpdated = basketCopy.filter((basketItem) => basketItem.id !== idToDelete)
     setBasket(basketCopyUpdated)
+    name && setBasketInLocalStorage(name, basketCopyUpdated)
   }
 
   return { basket, setBasket, handleAddToBasket, handleDeleteFromBasket }

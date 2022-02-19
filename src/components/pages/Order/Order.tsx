@@ -35,7 +35,7 @@ export default function Order(props: OrderProps) {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
   const { menuItems, setMenuItems, handleAdd, handleEdit, handleDelete } = useMenu([])
-  const { basket, setBasket, handleAddToBasket, handleDeleteFromBasket } = useBasket([])
+  const { basket, setBasket, handleAddToBasket, handleDeleteFromBasket } = useBasket([], name)
 
   const [itemBeingSelected, setItemBeingSelected] = useState<MenuItem>(EMPTY_PRODUCT)
   const [isCollapsed, setIsCollapsed] = useState(false)
@@ -47,11 +47,14 @@ export default function Order(props: OrderProps) {
 
   const titleEditBoxRef = useRef()
 
-  useUserListener(userDocRef, setMenuItems)
+  useUserListener(userDocRef, setMenuItems, setBasket)
 
   useEffect(() => {
+    // if (menuItems !== []) {
     const basketRefreshed = updateBasketWithFreshMenu(basket, menuItems)
+    console.log("basketRefreshed: ", basketRefreshed)
     setBasket(basketRefreshed)
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuItems])
 

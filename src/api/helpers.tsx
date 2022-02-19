@@ -2,6 +2,8 @@ import { db } from "./firebase"
 import { doc, getDoc, onSnapshot, setDoc } from "firebase/firestore"
 import { fakeMenu2 } from "fakeData/fakeMenu"
 import { useEffect } from "react"
+import { getBasketFromLocalStorage, setBasketInLocalStorage } from "./localStorage"
+import { updateBasketWithFreshMenu } from "components/pages/Order/Main/Basket/createBasketItems"
 
 export const createNewUser = async (name: string) => {
   await setDoc(doc(db, "users", name), {
@@ -36,20 +38,29 @@ export const getOneUserFromFirebase = async (name: string) => {
   // })
 }
 
-export const useUserListener = (userDocRef: any, setMenuItems: any) => {
+export const useUserListener = (userDocRef: any, setMenuItems: any, setBasket: any) => {
   // console.log("basket: ", basket) // here, basket has the same value as in the state.
   useEffect(() => {
+    // 1. here I retrieve the latest update of menuItems or "burgers"
     onSnapshot(userDocRef, (docSnap: any) => {
       const userFound = docSnap.data()
+      const username = docSnap.id
       // console.log("basket: ", basket) // here basket will ALWAYS be null cause out of scope of the websocket
-      // console.log("user and burgers Found: ", userFound)
+      // 2. here I update menu locally
       setMenuItems(userFound?.burgers)
+      const basketFromStorage = getBasketFromLocalStorage(username)
+      const basketRefreshed = updateBasketWithFreshMenu(basketFromStorage, userFound?.burgers)
+      console.log("basketFromStorage: ", basketFromStorage)
+      // 2. here I update menu baset locally and in localStorage
+      setBasket(basketRefreshed)
+      setBasketInLocalStorage(username, basketRefreshed)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 }
 
 export const syncBothMenus = async (name: any, menuItems: any) => {
+  //@TODO: change to update
   await setDoc(doc(db, "users", name), {
     burgers: menuItems,
   })
