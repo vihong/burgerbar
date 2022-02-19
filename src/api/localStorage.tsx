@@ -12,6 +12,5 @@ export const getBasketFromLocalStorage = (username: string) => {
 
 export const hasExistingBasket = (username: string) => {
   const basketInLocalStorage = localStorage[username]
-  console.log("basketInLocalStorage: ", basketInLocalStorage)
   return basketInLocalStorage ? true : false
 }
