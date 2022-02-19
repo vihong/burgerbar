@@ -12,6 +12,7 @@ import { db } from "api/firebase"
 import { doc } from "firebase/firestore"
 import { useUserListener } from "api/helpers"
 import { updateBasketWithFreshMenu } from "./Main/Basket/createBasketItems"
+import _ from "lodash"
 
 interface OrderProps {
   path: string
@@ -47,7 +48,7 @@ export default function Order(props: OrderProps) {
 
   const titleEditBoxRef = useRef()
 
-  useUserListener(userDocRef, setMenuItems, setBasket)
+  useUserListener(userDocRef, setMenuItems, setBasket, name)
 
   useEffect(() => {
     // if (menuItems !== []) {
@@ -82,6 +83,7 @@ export default function Order(props: OrderProps) {
     name,
   }
 
+  console.log("menuItems: ", menuItems)
   if (!menuItems) return <span>Loading...</span>
 
   return (

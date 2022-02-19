@@ -27,18 +27,17 @@ export const getOneUserFromFirebase = async (name: string) => {
     const user = docSnap.data()
     return user
   } else {
-    // doc.data() will be undefined in this case
-    //console.log("name No such document!")
     console.log(`${name} couldn't be found`)
     return
   }
-
-  // getDoc(docRefToRetrieve).then((doc) => {
-  //   console.log(doc.data())
-  // })
 }
 
-export const useUserListener = (userDocRef: any, setMenuItems: any, setBasket: any) => {
+export const useUserListener = (
+  userDocRef: any,
+  setMenuItems: any,
+  setBasket: any,
+  name: string | undefined
+) => {
   // console.log("basket: ", basket) // here, basket has the same value as in the state.
   useEffect(() => {
     // 1. here I retrieve the latest update of menuItems or "burgers"
@@ -47,6 +46,7 @@ export const useUserListener = (userDocRef: any, setMenuItems: any, setBasket: a
       const username = docSnap.id
       // console.log("basket: ", basket) // here basket will ALWAYS be null cause out of scope of the websocket
       // 2. here I update menu locally
+      if (!userFound) name && createNewUser(name) // not very 'safe and secure' but great for demo purposes.
       setMenuItems(userFound?.burgers)
       const basketFromStorage = getBasketFromLocalStorage(username)
       const basketRefreshed = updateBasketWithFreshMenu(basketFromStorage, userFound?.burgers)
@@ -54,6 +54,7 @@ export const useUserListener = (userDocRef: any, setMenuItems: any, setBasket: a
       // 2. here I update menu baset locally and in localStorage
       setBasket(basketRefreshed)
       setBasketInLocalStorage(username, basketRefreshed)
+      console.log("user and burgers Found: ", userFound)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
