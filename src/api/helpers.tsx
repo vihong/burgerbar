@@ -45,16 +45,17 @@ export const useUserListener = (
       const userFound = docSnap.data()
       const username = docSnap.id
       // console.log("basket: ", basket) // here basket will ALWAYS be null cause out of scope of the websocket
+
       // 2. here I update menu locally
       if (!userFound) name && createNewUser(name) // not very 'safe and secure' but great for demo purposes.
-      setMenuItems(userFound?.burgers)
-      const basketFromStorage = getBasketFromLocalStorage(username)
-      const basketRefreshed = updateBasketWithFreshMenu(basketFromStorage, userFound?.burgers)
-      console.log("basketFromStorage: ", basketFromStorage)
-      // 2. here I update menu baset locally and in localStorage
-      setBasket(basketRefreshed)
-      setBasketInLocalStorage(username, basketRefreshed)
-      console.log("user and burgers Found: ", userFound)
+      const freshMenu = userFound?.burgers
+      setMenuItems(freshMenu)
+      const oldBasket = getBasketFromLocalStorage(username)
+      const newBasket = updateBasketWithFreshMenu(oldBasket, freshMenu)
+
+      // 3. here I update menu baset locally and in localStorage
+      setBasket(newBasket)
+      setBasketInLocalStorage(username, newBasket)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
