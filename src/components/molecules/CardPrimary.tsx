@@ -17,6 +17,7 @@ interface CardPrimaryProps {
   bottomLeftDescription?: string
   bottomRightDescription?: JSX.Element
   isOverlapImageVisible?: boolean
+  isBeingSelected: boolean
 }
 
 export default function CardPrimary(props: CardPrimaryProps) {
@@ -29,11 +30,13 @@ export default function CardPrimary(props: CardPrimaryProps) {
     onCardClick,
     hasDeleteButton,
     isOverlapImageVisible,
+    isBeingSelected,
   } = props
 
+  let cardClassName = isBeingSelected ? { background: "orange" } : {}
   //@TODO: raise deleteButton and isOverLapImage (specific)
   return (
-    <CardStyled onClick={onCardClick}>
+    <CardStyled onClick={onCardClick} style={cardClassName}>
       {hasDeleteButton && <TiDelete className="delete-button" onClick={onDeleteButton} />}
       <div className="image">
         {isOverlapImageVisible && (

@@ -11,11 +11,13 @@ import Ribbon from "components/atoms/Ribbon"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import PrimaryButton from "components/atoms/PrimaryButton"
 import EmptyMenu from "./EmptyMenu"
+import { checkIsBeingSelected } from "utils/businessLogic"
 
 export default function Menu() {
   const {
     menuItems,
     handleDelete,
+    itemBeingSelected,
     setItemBeingSelected,
     isModeAdmin,
     setIsCollapsed,
@@ -77,6 +79,7 @@ export default function Menu() {
               {isBurgerAdvertised && <RibbonAnimated />}
               <CardPrimary
                 {...burger}
+                isBeingSelected={checkIsBeingSelected(itemBeingSelected, burger)}
                 isOverlapImageVisible={!isBurgerAvailable}
                 onDeleteButton={(event: React.MouseEvent<HTMLElement>) =>
                   handleDeleteButton(event, burger.id)

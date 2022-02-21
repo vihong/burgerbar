@@ -16,6 +16,7 @@ interface CardSecondaryProps {
   hasDeleteButton?: boolean | undefined
   isHoverable?: boolean
   onDelete?: any
+  isBeingSelected: boolean
 }
 
 export default function CardSecondary({
@@ -27,9 +28,12 @@ export default function CardSecondary({
   leftInfo,
   onDelete,
   onCardClick,
+  isBeingSelected,
 }: CardSecondaryProps) {
+  let cardClassName = isBeingSelected ? { background: "orange" } : {}
+
   return (
-    <CardSecondaryStyled onClick={onCardClick}>
+    <CardSecondaryStyled onClick={onCardClick} style={cardClassName}>
       <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
