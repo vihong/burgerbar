@@ -8,7 +8,7 @@ import Menu from "./Menu/Menu"
 import PanelAdmin from "./PanelAdmin/PanelAdmin"
 
 export default function Main() {
-  const { isModeAdmin, name } = useContext(OrderContext)
+  const { isModeAdmin } = useContext(OrderContext)
   return (
     <MainStyled>
       <Basket />
