@@ -32,6 +32,10 @@ export const EMPTY_PRODUCT = {
 export default function Order(props: OrderProps) {
   const { name } = props
 
+  // Everytime the page gets refreshed, the whole component is UNmounted then REmounted. So the useState() with isInitialLoad is
+  // destroyed and recreated with always an initial value of "false".
+  const [isInitialLoad, setIsInitialLoad] = useState(false)
+
   const [isModeAdmin, setIsModeAdmin] = useState(false)
 
   const { menuItems, setMenuItems, handleAdd, handleEdit, handleDelete } = useMenu([])
@@ -47,7 +51,7 @@ export default function Order(props: OrderProps) {
 
   const titleEditBoxRef = useRef()
 
-  useUserListener(userDocRef, setMenuItems, setBasket, name)
+  useUserListener(userDocRef, setMenuItems, setBasket, name, isInitialLoad, setIsInitialLoad)
 
   // garder cela sinon on a des pb à chaque ajout dans le basket au niveau des animations
   useEffect(() => {
@@ -78,6 +82,7 @@ export default function Order(props: OrderProps) {
     setBasket,
     handleDeleteFromBasket,
     name,
+    isInitialLoad,
   }
 
   console.log("menuItems: ", menuItems)

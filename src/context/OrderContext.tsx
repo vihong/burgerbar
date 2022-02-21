@@ -26,6 +26,7 @@ interface OrderContextValue {
   setBasket: React.Dispatch<React.SetStateAction<BasketItem[]>>
   handleDeleteFromBasket: (id: ID) => void
   name?: string
+  isInitialLoad: boolean
 }
 
 export default createContext<OrderContextValue>({
@@ -50,4 +51,5 @@ export default createContext<OrderContextValue>({
   setBasket: () => {},
   handleDeleteFromBasket: () => {},
   name: "",
+  isInitialLoad: true,
 })

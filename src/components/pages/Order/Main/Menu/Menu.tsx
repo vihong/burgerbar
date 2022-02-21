@@ -10,6 +10,8 @@ import { convertStringToBoolean } from "utils/string"
 import Ribbon from "components/atoms/Ribbon"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import PrimaryButton from "components/atoms/PrimaryButton"
+import _ from "lodash"
+import EmptyMenu from "./EmptyMenu"
 
 export default function Menu() {
   const {
@@ -24,6 +26,7 @@ export default function Menu() {
     handleAddToBasket,
     handleDeleteFromBasket,
     name,
+    isInitialLoad,
   } = useContext(OrderContext)
 
   const handleCardSelected = async (idSelected: number | undefined) => {
@@ -58,6 +61,8 @@ export default function Menu() {
   }
 
   let cardClassName = isModeAdmin ? "card is-hoverable" : "card"
+
+  if (isInitialLoad && menuItems.length === 0) return <EmptyMenu />
 
   return (
     <TransitionGroup component={MenuStyled}>

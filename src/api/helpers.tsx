@@ -36,12 +36,17 @@ export const useUserListener = (
   userDocRef: any,
   setMenuItems: any,
   setBasket: any,
-  name: string | undefined
+  name: string | undefined,
+  isInitialLoad: boolean,
+  setIsInitialLoad: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   // console.log("basket: ", basket) // here, basket has the same value as in the state.
   useEffect(() => {
     // 1. here I retrieve the latest update of menuItems or "burgers"
     onSnapshot(userDocRef, (docSnap: any) => {
+      console.log("isInitialLoad: ", isInitialLoad)
+      setIsInitialLoad(true)
+
       const userFound = docSnap.data()
       const username = docSnap.id
       // console.log("basket: ", basket) // here basket will ALWAYS be null cause out of scope of the websocket
@@ -49,6 +54,7 @@ export const useUserListener = (
       // 2. here I update menu locally
       if (!userFound) name && createNewUser(name) // not very 'safe and secure' but great for demo purposes.
       const freshMenu = userFound?.burgers
+      console.log("freshMenu.length: ", freshMenu.length)
       setMenuItems(freshMenu)
       const oldBasket = getBasketFromLocalStorage(username)
       const newBasket = updateBasketWithFreshMenu(oldBasket, freshMenu)

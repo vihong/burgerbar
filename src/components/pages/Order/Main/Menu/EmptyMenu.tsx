@@ -6,7 +6,7 @@ import styled from "styled-components/macro"
 import { theme } from "theme"
 
 export default function EmptyMenu() {
-  const { name, handleAdd } = useContext(OrderContext)
+  const { name } = useContext(OrderContext)
   return (
     <EmptyMenuStyled>
       <h2>Plus de produit ?</h2>
