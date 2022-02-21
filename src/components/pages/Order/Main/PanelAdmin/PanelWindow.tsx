@@ -27,5 +27,5 @@ const PanelWindowStyled = styled.div`
   display: flex;
   align-items: flex-start;
   border-top: 1px solid ${theme.colors.greyLight};
-  border-bottom-right-radius: ${theme.borderRadius.round};
+  border-bottom-right-radius: ${theme.borderRadius.extraRound};
 `
