@@ -17,3 +17,8 @@ export function createNewItem(
   const itemCreated = { id, imageSource, title, price, quantity, isAvailable, isAdvertised }
   return itemCreated
 }
+
+export const checkIsBeingSelected = (itemBeingSelected: MenuItem, burger: MenuItem): boolean => {
+  if (itemBeingSelected?.id === burger.id) return true
+  return false
+}

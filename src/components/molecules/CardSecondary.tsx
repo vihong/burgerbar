@@ -16,6 +16,7 @@ interface CardSecondaryProps {
   hasDeleteButton?: boolean | undefined
   isHoverable?: boolean
   onDelete?: any
+  isBeingSelected: boolean
 }
 
 export default function CardSecondary({
@@ -27,19 +28,36 @@ export default function CardSecondary({
   leftInfo,
   onDelete,
   onCardClick,
+  isBeingSelected,
 }: CardSecondaryProps) {
+  let cardClassName = isBeingSelected ? { background: theme.colors.primary } : {}
+
   return (
-    <CardSecondaryStyled onClick={onCardClick}>
+    <CardSecondaryStyled onClick={onCardClick} style={cardClassName}>
       <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
       <div className="image">
         <img src={!imageSource ? IMAGE_BY_DEFAULT : imageSource} alt={title} />
       </div>
-      <div className="text-info">
+      <div
+        className="text-info"
+        style={{ color: isBeingSelected ? "white" : theme.colors.primary }}
+      >
         <div className="left-info">
-          <span className="title">{title}</span>
-          {LeftInfo ? LeftInfo : <span className="price">{leftInfo}</span>}
+          <span className="title" style={{ color: isBeingSelected ? "black" : theme.colors.black }}>
+            {title}
+          </span>
+          {LeftInfo ? (
+            LeftInfo
+          ) : (
+            <span
+              className="price"
+              style={{ color: isBeingSelected ? "white" : theme.colors.primary }}
+            >
+              {leftInfo}
+            </span>
+          )}
         </div>
         {RightInfo ? RightInfo : <span className="right-info">{rightinfo}</span>}
       </div>
@@ -93,7 +111,6 @@ const CardSecondaryStyled = styled.div`
       line-height: 1.3em;
 
       .price {
-        color: ${theme.colors.primary};
         font-size: 0.9em;
         font-weight: ${theme.weights.medium};
         width: 100%;
@@ -103,7 +120,6 @@ const CardSecondaryStyled = styled.div`
     }
     .right-info {
       /* border: 2px solid red; */
-      color: ${theme.colors.primary};
       font-weight: ${theme.weights.medium};
       /* text-align: center; */
       margin-right: 20px;

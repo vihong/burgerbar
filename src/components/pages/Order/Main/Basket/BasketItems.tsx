@@ -6,6 +6,7 @@ import { useContext } from "react"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from "styled-components"
 import { BasketItem } from "typescript/BasketItem"
+import { checkIsBeingSelected } from "utils/businessLogic"
 import { formatPrice } from "utils/maths"
 import { convertStringToBoolean } from "utils/string"
 
@@ -23,6 +24,7 @@ export default function BasketItems({ basket }: BasketItemsProps) {
     setIsAddFormVisible,
     setIsEditFormVisible,
     titleEditBoxRef,
+    itemBeingSelected,
   } = useContext(OrderContext)
 
   // @TODO: Refactor this with Menu.tsx
@@ -55,6 +57,7 @@ export default function BasketItems({ basket }: BasketItemsProps) {
                 onCardClick={() => handleCardSelected(basketItem.id)}
                 key={basketItem.id}
                 {...basketItem}
+                isBeingSelected={isModeAdmin && checkIsBeingSelected(itemBeingSelected, basketItem)}
                 LeftInfo={
                   <CasinoEffect
                     count={isAvailable ? formatPrice(basketItem.price) : "Non disponible"}
