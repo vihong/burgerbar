@@ -6,11 +6,11 @@ import styled from "styled-components/macro"
 import { theme } from "theme"
 
 export default function EmptyMenu() {
-  const { name, handleAdd } = useContext(OrderContext)
+  const { name } = useContext(OrderContext)
   return (
     <EmptyMenuStyled>
-      <h2>Plus de produit ?</h2>
-      <h2>Cliquez ci-dessous pour en regénérer</h2>
+      <h2>Le menu est vide ?</h2>
+      <h2>Cliquez ci-dessous pour le réinitialiser</h2>
       <PrimaryButton
         label={"Générer de nouveaux produits"}
         onClick={() => name && resetMenuInFireStore(name)}

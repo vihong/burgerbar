@@ -6,10 +6,9 @@ import { theme } from "theme"
 import Basket from "./Basket/Basket"
 import Menu from "./Menu/Menu"
 import PanelAdmin from "./PanelAdmin/PanelAdmin"
-import ResetMenu from "./ResetMenu"
 
 export default function Main() {
-  const { isModeAdmin, name } = useContext(OrderContext)
+  const { isModeAdmin } = useContext(OrderContext)
   return (
     <MainStyled>
       <Basket />
@@ -23,7 +22,6 @@ export default function Main() {
           </TransitionGroup>
         )}
       </div>
-      {isModeAdmin && <ResetMenu userAccount={name} />}
     </MainStyled>
   )
 }

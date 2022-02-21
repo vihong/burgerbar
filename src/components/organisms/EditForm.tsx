@@ -139,7 +139,7 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
           </div>
         ) : (
           <span className="hint-message">
-            Saisissez le formulaire pour modifier votre produit{" "}
+            Cliquer sur un produit du menu pour le modifier{" "}
             <span className="real-time">en temps réel</span>
           </span>
         )}
