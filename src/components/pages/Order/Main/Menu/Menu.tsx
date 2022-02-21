@@ -79,7 +79,7 @@ export default function Menu() {
               {isBurgerAdvertised && <RibbonAnimated />}
               <CardPrimary
                 {...burger}
-                isBeingSelected={checkIsBeingSelected(itemBeingSelected, burger)}
+                isBeingSelected={isModeAdmin && checkIsBeingSelected(itemBeingSelected, burger)}
                 isOverlapImageVisible={!isBurgerAvailable}
                 onDeleteButton={(event: React.MouseEvent<HTMLElement>) =>
                   handleDeleteButton(event, burger.id)
@@ -91,7 +91,11 @@ export default function Menu() {
                   <PrimaryButton
                     label="Ajouter"
                     onClick={(event: React.MouseEvent<HTMLElement>) => onAddButton(event, burger)}
-                    className={addButtonClass}
+                    className={
+                      isModeAdmin && checkIsBeingSelected(itemBeingSelected, burger)
+                        ? `${addButtonClass} with-focus`
+                        : addButtonClass
+                    }
                     disabled={!isBurgerAvailable}
                   />
                 }
@@ -221,6 +225,21 @@ const MenuStyled = styled.div`
       opacity: 50%;
       cursor: not-allowed;
       z-index: 2;
+    }
+
+    &.with-focus {
+      border: 1px solid white;
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+      :hover {
+        color: ${theme.colors.white};
+        background-color: ${theme.colors.primary};
+        border: 1px solid ${theme.colors.white};
+      }
+      :active {
+        background-color: ${theme.colors.white};
+        color: ${theme.colors.primary};
+      }
     }
   }
 

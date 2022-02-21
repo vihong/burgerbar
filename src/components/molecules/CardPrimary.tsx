@@ -33,11 +33,16 @@ export default function CardPrimary(props: CardPrimaryProps) {
     isBeingSelected,
   } = props
 
-  let cardClassName = isBeingSelected ? { background: "orange" } : {}
+  let cardClassName = isBeingSelected ? { background: theme.colors.primary } : {}
   //@TODO: raise deleteButton and isOverLapImage (specific)
   return (
     <CardStyled onClick={onCardClick} style={cardClassName}>
-      {hasDeleteButton && <TiDelete className="delete-button" onClick={onDeleteButton} />}
+      {hasDeleteButton && (
+        <TiDelete
+          className={isBeingSelected ? "delete-button with-focus" : "delete-button"}
+          onClick={onDeleteButton}
+        />
+      )}
       <div className="image">
         {isOverlapImageVisible && (
           <div className="overlap">
@@ -51,7 +56,12 @@ export default function CardPrimary(props: CardPrimaryProps) {
       <div className="card-text">
         <span className="card-title">{title}</span>
         <div className="card-description">
-          <span className="left-description">{bottomLeftDescription}</span>
+          <span
+            className="left-description"
+            style={{ color: isBeingSelected ? "white" : theme.colors.primary }}
+          >
+            {bottomLeftDescription}
+          </span>
           <span className="right-description">{bottomRightDescription}</span>
         </div>
       </div>
@@ -94,6 +104,16 @@ const CardStyled = styled.div`
     }
     :active {
       color: ${theme.colors.primary};
+    }
+
+    &.with-focus {
+      color: white;
+      :hover {
+        color: ${theme.colors.red};
+      }
+      :active {
+        color: ${theme.colors.white};
+      }
     }
   }
 

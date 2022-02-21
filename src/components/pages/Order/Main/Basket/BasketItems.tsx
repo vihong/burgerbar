@@ -57,7 +57,7 @@ export default function BasketItems({ basket }: BasketItemsProps) {
                 onCardClick={() => handleCardSelected(basketItem.id)}
                 key={basketItem.id}
                 {...basketItem}
-                isBeingSelected={checkIsBeingSelected(itemBeingSelected, basketItem)}
+                isBeingSelected={isModeAdmin && checkIsBeingSelected(itemBeingSelected, basketItem)}
                 LeftInfo={
                   <CasinoEffect
                     count={isAvailable ? formatPrice(basketItem.price) : "Non disponible"}
