@@ -48,7 +48,7 @@ export default function AddForm({ formTitle, buttonLabel }: FormProps) {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const singleValueBeingChangedNow = event.target.value
-    console.log("singleValueBeingChangedNow: ", singleValueBeingChangedNow)
+    // console.log("singleValueBeingChangedNow: ", singleValueBeingChangedNow)
     const newProductUpdated = {
       ...newProduct,
       [event.target.name]: singleValueBeingChangedNow,

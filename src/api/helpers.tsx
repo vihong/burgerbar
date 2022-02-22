@@ -9,7 +9,7 @@ export const createNewUser = async (name: string) => {
   await setDoc(doc(db, "users", name), {
     burgers: fakeMenu2,
   })
-  console.log(`${name} was successfully created`)
+  // console.log(`${name} was successfully created`)
 }
 
 export const resetMenuInFireStore = async (name: string) => {
@@ -22,12 +22,12 @@ export const getOneUserFromFirebase = async (name: string) => {
   const docRefToRetrieve = doc(db, "users", name)
   const docSnap = await getDoc(docRefToRetrieve)
   if (docSnap.exists()) {
-    console.log("User found:", docSnap.id)
-    console.log("Document data:", docSnap.data())
+    // console.log("User found:", docSnap.id)
+    // console.log("Document data:", docSnap.data())
     const user = docSnap.data()
     return user
   } else {
-    console.log(`${name} couldn't be found`)
+    // console.log(`${name} couldn't be found`)
     return
   }
 }
