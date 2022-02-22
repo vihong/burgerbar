@@ -92,7 +92,6 @@ export default function Order(props: OrderProps) {
     isInitialLoadingDone,
   }
 
-  console.log("menuItems: ", menuItems)
   if (!menuItems) return <span>Loading...</span>
 
   return (

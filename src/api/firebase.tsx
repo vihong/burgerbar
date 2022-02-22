@@ -8,13 +8,13 @@ import { getFirestore } from "@firebase/firestore"
  */
 
 const myFirebaseConfig = {
-  apiKey: "AIzaSyCguRlfYCl1zt5Pw7VveLPgp3WEdZZOnEc", // à ranger dans un .env file sinon tout le monde a accès à la base de donnée et la modifier comme bon leur semble
-  authDomain: "burgerlive-firebase.firebaseapp.com",
-  projectId: "burgerlive-firebase",
-  storageBucket: "burgerlive-firebase.appspot.com",
-  messagingSenderId: "278675976543",
-  appId: "1:278675976543:web:2430919f0047dc5190c6ea",
-  measurementId: "G-37Z986M1SV",
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_PROJECTID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_APPID,
+  measurementId: process.env.REACT_APP_MEASUREMENTID,
 }
 
 initializeApp(myFirebaseConfig)
