@@ -117,6 +117,8 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
             onChange={handleChange}
             name="isAvailable"
             value={itemBeingSelected.isAvailable}
+            onBlur={handleOnBlur}
+            onFocus={handleOnFocus}
           />
           <SelectInput
             options={[
@@ -127,6 +129,8 @@ export default function EditForm({ formTitle, buttonLabel }: FormProps) {
             onChange={handleChange}
             name="isAdvertised"
             value={itemBeingSelected.isAdvertised}
+            onBlur={handleOnBlur}
+            onFocus={handleOnFocus}
           />
         </div>
       </div>
