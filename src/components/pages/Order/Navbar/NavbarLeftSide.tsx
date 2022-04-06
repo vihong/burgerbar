@@ -10,7 +10,7 @@ interface NavBarLeftSideProps {
 export default function NavBarLeftSide({ className, onClick }: NavBarLeftSideProps) {
   return (
     <NavBarLeftSideStyled onClick={onClick} className={className && className}>
-      <h1>Craazy</h1>
+      <h1>Crazee</h1>
       <img src="/images/logo-orange.png" alt="burger-icon" />
       <h1>Burger</h1>
     </NavBarLeftSideStyled>

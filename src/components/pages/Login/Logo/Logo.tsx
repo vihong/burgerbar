@@ -8,7 +8,7 @@ export default function Logo() {
       <div className="logo-png">
         <img src="images/logo-orange.png" alt="burger-icon" />
       </div>
-      <h1>Crazy Burger</h1>
+      <h1>Crazee Burger</h1>
     </LogoStyle>
   )
 }

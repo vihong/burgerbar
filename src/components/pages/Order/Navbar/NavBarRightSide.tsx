@@ -12,7 +12,7 @@ export default function NavBarRightSide() {
 
   const toggleButtonAdmin = () => {
     if (!isModeAdmin)
-      toast.info("Astuce : cliquer sur un produit pour le modifier", {
+      toast.info("Mode admin activé", {
         // icon: <FaUserSecret size={30} />,
         theme: "dark",
         position: "bottom-right",
