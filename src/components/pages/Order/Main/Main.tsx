@@ -32,6 +32,8 @@ const MainStyled = styled.div`
   display: grid;
   grid-template-columns: 25% 1fr;
   position: relative;
+  border-bottom-left-radius: ${theme.borderRadius.extraRound};
+  border-bottom-right-radius: ${theme.borderRadius.extraRound};
 
   .sidebar {
     /* background: green; */
@@ -42,7 +44,6 @@ const MainStyled = styled.div`
     height: calc(95vh - 10vh);
     display: flex;
     box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%) inset;
-    border-bottom-right-radius: ${theme.borderRadius.extraRound};
 
     // menu
     > div:first-child {
